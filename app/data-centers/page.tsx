@@ -112,7 +112,11 @@ export default function DataCentersPage() {
             <DataCentersSections
               sections={bundle.sections}
               sources={sources}
-              labels={{ statsLabel: p.statsLabel, highlightsLabel: p.highlightsLabel }}
+              labels={{
+                statsLabel: p.statsLabel,
+                highlightsLabel: p.highlightsLabel,
+                downloadsLabel: p.downloadsLabel,
+              }}
             />
 
             {bundle.noiseTable || bundle.economicTable ? (

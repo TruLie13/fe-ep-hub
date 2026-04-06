@@ -25,11 +25,13 @@ export default function DisclaimerFooter() {
             m: 0,
             maxWidth: "md",
             mx: "auto",
-            textAlign: { xs: "left", sm: "center" },
+            // textAlign: { xs: "left", sm: "center" },
             lineHeight: 1.6,
           }}
         >
           {t.footer.disclaimer}
+          <br />
+          {t.footer.disclaimer2}
         </Typography>
       </Container>
     </Box>

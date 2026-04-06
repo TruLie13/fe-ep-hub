@@ -28,8 +28,9 @@ export const metadata: Metadata = {
     "Plain-language explainers about data centers, AI, water use, and how to read local infrastructure proposals.",
 };
 
-/** Same as data-centers section boxes: offset #hash scroll so targets sit below the sticky MainNav. */
-const learnAnchorSx = { scrollMarginTop: 96 } as const;
+/** Section cards: match data-centers (`borderRadius: 3` × theme.shape.borderRadius) + hash scroll offset below sticky MainNav. */
+const learnSectionCardSx = { borderRadius: 3 } as const;
+const learnAnchorSx = { scrollMarginTop: 96, ...learnSectionCardSx } as const;
 
 export default function LearnPage() {
   const t = dict();
@@ -529,7 +530,7 @@ export default function LearnPage() {
               <Grid container spacing={2}>
                 {gl.entries.map((entry) => (
                   <Grid key={entry.term} size={{ xs: 12, sm: 6 }}>
-                    <Card variant="outlined" sx={{ height: "100%" }}>
+                    <Card variant="outlined" sx={{ height: "100%", ...learnSectionCardSx }}>
                       <CardContent>
                         <Typography variant="subtitle2" gutterBottom>
                           {entry.term}

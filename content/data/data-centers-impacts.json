@@ -36,9 +36,9 @@
   
   "Integrating hyperscale data centers into municipal infrastructure involves more than a real estate transaction. This shift changes the daily water and electricity requirements for the region while placing waste heat and pollution near neighborhoods. El Paso features a Chihuahuan Desert climate, finite groundwater, and an isolated grid. A large facility places a heavy burden on these systems simultaneously.",
   
-  "Cooling is the primary engineering challenge in arid environments. When outdoor temperatures exceed 100°F (38°C), removing heat from a building requires significant energy or water. This efficiency loss is known as the desert penalty. Operators often choose between evaporative cooling or high electricity use for chillers. Residents deserve to see these trade-offs with clear numbers attached[cite: 1, 2].",
+  "Cooling is the primary engineering challenge in arid environments. When outdoor temperatures exceed 100°F (38°C), removing heat from a building requires significant energy or water. This efficiency loss is known as the desert penalty. Operators often choose between evaporative cooling or high electricity use for chillers. Residents deserve to see these trade-offs with clear numbers attached.",
   
-  "Regional data reveals a gap between corporate sustainability claims and local physics. Programs labeled as water positive often restore habitats far from the local aquifer . Renewable energy claims frequently rely on annual accounting rather than guaranteeing clean power during every hour of operation . This summary focuses on local questions: actual withdrawals, fuel consumption, and the enforcement of limits ."
+  "Regional data reveals a gap between corporate sustainability claims and local physics. Programs labeled as water positive often restore habitats far from the local aquifer. Renewable energy claims frequently rely on annual accounting rather than guaranteeing clean power during every hour of operation. This summary focuses on local questions: actual withdrawals, fuel consumption, and the enforcement of limits."
   
   ],
   
@@ -76,23 +76,23 @@
   
   "paragraphs": [
   
-  "Marketing terms can obscure how cooling systems function . A closed loop often refers to the internal technology cooling system which circulates fluid over server chips . This internal circuit is sealed . However, the external facility loop rejects heat into the atmosphere through evaporation . Meta has secured a permit for up to 2.5 million gallons of water per day for the El Paso site . This permit confirms that the facility will evaporate large volumes of water during peak heat .",
+  "Marketing terms can obscure how cooling systems function. A closed loop often refers to the internal technology cooling system which circulates fluid over server chips. This internal circuit is sealed. However, the external facility loop rejects heat into the atmosphere through evaporation. Meta has secured a permit for up to 2.5 million gallons of water per day for the El Paso site. This permit confirms that the facility will evaporate large volumes of water during peak heat.",
   
-  "Corporate water positive goals often fund restoration projects in distant parts of a watershed . These credits do not physically return water to the local aquifer . Neighbors in other regions have noted that water returned to a general watershed is different from water available for local drinking .",
+  "Corporate water positive goals often fund restoration projects in distant parts of a watershed. These credits do not physically return water to the local aquifer. Neighbors in other regions have noted that water returned to a general watershed is different from water available for local drinking.",
   
-  "Artificial intelligence workloads increase thermal density, requiring 50kW to 100kW per rack compared to 5kW for traditional servers . This shift drives up cooling demand . Effective policies tie limits to intensity metrics like liters per kilowatt-hour . Communities should require reclaimed water for industrial cooling to protect potable supplies ."
+  "Artificial intelligence workloads increase thermal density, requiring 50kW to 100kW per rack compared to 5kW for traditional servers. This shift drives up cooling demand. Effective policies tie limits to intensity metrics like liters per kilowatt-hour. Communities should require reclaimed water for industrial cooling to protect potable supplies."
   
   ],
   
   "bullets": [
   
-  "Request peak daily withdrawal totals and drought rules .",
+  "Request peak daily withdrawal totals and drought rules.",
   
-  "Verify if makeup water is potable or reclaimed .",
+  "Verify if makeup water is potable or reclaimed.",
   
-  "Require binding intensity limits over one-time press releases .",
+  "Require binding intensity limits over one-time press releases.",
   
-  "Establish a Water Usage Effectiveness (WUE) limit below 0.3 L/kWh ."
+  "Establish a Water Usage Effectiveness (WUE) limit below 0.3 L/kWh."
   
   ],
   
@@ -163,21 +163,21 @@
   
   "paragraphs": [
   
-  "El Paso Electric proposes the McCloud natural gas plant to power the Meta data center . This 366 MW facility would consist of 813 modular natural gas generators . A proposed bridge strategy allows the customer to fund the asset for five years before it integrates into the general ratepayer base . Open proceedings are necessary to weigh the long-term impact on bills and climate goals .",
+  "El Paso Electric proposes the McCloud natural gas plant to power the Meta data center. This 366 MW facility would consist of 813 modular natural gas generators. A proposed bridge strategy allows the customer to fund the asset for five years before it integrates into the general ratepayer base. Open proceedings are necessary to weigh the long-term impact on bills and climate goals.",
   
-  "Renewable energy pledges usually match production annually . The grid requires balance every second . Without large-scale storage, facilities run on fossil fuels at night when solar generation is unavailable . Hourly matching ensures green power is available at the specific time of use .",
+  "Renewable energy pledges usually match production annually. The grid requires balance every second. Without large-scale storage, facilities run on fossil fuels at night when solar generation is unavailable. Hourly matching ensures green power is available at the specific time of use.",
   
-  "Regional grid strain is worsened by nearby developments like Project Jupiter in Santa Teresa, New Mexico . Clustered facilities create a resource sink . Cumulative planning is essential because individual statements often overlook the combined stress on transmission systems ."
+  "Regional grid strain is worsened by nearby developments like Project Jupiter in Santa Teresa, New Mexico. Clustered facilities create a resource sink. Cumulative planning is essential because individual statements often overlook the combined stress on transmission systems."
   
   ],
   
   "bullets": [
   
-  "Review utility dockets for details on infrastructure costs .",
+  "Review utility dockets for details on infrastructure costs.",
   
-  "Ask who covers costs for new plants after the initial bridge period .",
+  "Ask who covers costs for new plants after the initial bridge period.",
   
-  "Verify if renewable claims account for nighttime AI training loads ."
+  "Verify if renewable claims account for nighttime AI training loads."
   
   ],
   
@@ -215,11 +215,11 @@
   
   "paragraphs": [
   
-  "Hyperscale sites rely on large backup diesel and gas-fired systems so power stays available during tests and grid stress . El Paso sits in a federal ozone non-attainment basin . Ozone forms when nitrogen oxides and other compounds bake in sunlight and heat .",
+  "Hyperscale sites rely on large backup diesel and gas-fired systems so power stays available during tests and grid stress. El Paso sits in a federal ozone non-attainment basin. Ozone forms when nitrogen oxides and other compounds bake in sunlight and heat.",
   
-  "El Paso ranked **ninth among major U.S. cities** for annual average fine particulate pollution (PM2.5), at **7.8 micrograms per cubic meter** . The same IQAir release, ranked **Los Angeles** highest among major U.S. metros for PM2.5, with **San Antonio, Houston, and Fort Worth** above El Paso among Texas cities (worse particulate levels) . An IQAir science manager told reporters that **Texas has a relatively sparse air quality monitoring network for its size**, so not every neighborhood has hyper-local readings .",
+  "El Paso ranked **ninth among major U.S. cities** for annual average fine particulate pollution (PM2.5), at **7.8 micrograms per cubic meter**. The same IQAir release, ranked **Los Angeles** highest among major U.S. metros for PM2.5, with **San Antonio, Houston, and Fort Worth** above El Paso among Texas cities (worse particulate levels). An IQAir science manager told reporters that **Texas has a relatively sparse air quality monitoring network for its size**, so not every neighborhood has hyper-local readings.",
   
-  "That El Paso Matters piece also described **early 2025** dust storms that yielded **four of the five most polluted days on record** at EPA's long-running **Chamizal** monitor in South Central El Paso (daily data since 1999) and **two of the worst days ever** at a monitor in **Socorro** in far East El Paso County . The story tied the dust to **record heat**, **long-running drought**, and **stronger-than-average spring winds** kicking up bare soil . Those swings show why annual rankings alone understate bad-air weeks when new industrial sources are proposed ."
+  "That El Paso Matters piece also described **early 2025** dust storms that yielded **four of the five most polluted days on record** at EPA's long-running **Chamizal** monitor in South Central El Paso (daily data since 1999) and **two of the worst days ever** at a monitor in **Socorro** in far East El Paso County. The story tied the dust to **record heat**, **long-running drought**, and **stronger-than-average spring winds** kicking up bare soil. Those swings show why annual rankings alone understate bad-air weeks when new industrial sources are proposed."
   
   ],
   
@@ -233,11 +233,11 @@
   
   "items": [
   
-  "**Diesel particulate matter (DPM):** Large diesel generators used for emergency power and routine testing emit fine particulate matter (PM2.5) that can penetrate deep into the lungs . That stacks on top of regional PM2.5 pressure in a city that national surveys already rank among the worst for big-city particulate averages .",
+  "**Diesel particulate matter (DPM):** Large diesel generators used for emergency power and routine testing emit fine particulate matter (PM2.5) that can penetrate deep into the lungs. That stacks on top of regional PM2.5 pressure in a city that national surveys already rank among the worst for big-city particulate averages.",
   
-  "**NOx, carbon monoxide, and smog:** When diesel or gas turbines run, they release nitrogen oxides (NOx), a primary ingredient in ground-level ozone . Hot, sunny El Paso days already convert NOx and other precursors into smog in the local airshed .",
+  "**NOx, carbon monoxide, and smog:** When diesel or gas turbines run, they release nitrogen oxides (NOx), a primary ingredient in ground-level ozone. Hot, sunny El Paso days already convert NOx and other precursors into smog in the local airshed.",
   
-  "**Health near point sources:** Nearby residents can face higher asthma rates, reduced lung function, and cardiovascular stress from repeated exposure to plumes from backup testing and operations ."
+  "**Health near point sources:** Nearby residents can face higher asthma rates, reduced lung function, and cardiovascular stress from repeated exposure to plumes from backup testing and operations."
   
   ]
   
@@ -251,11 +251,11 @@
   
   "items": [
   
-  "**McCloud natural gas plant:** El Paso Electric has advanced a proposed 366-megawatt natural gas plant (McCloud) in public filings tied to serving the region's data center load .",
+  "**McCloud natural gas plant:** El Paso Electric has advanced a proposed 366-megawatt natural gas plant (McCloud) in public filings tied to serving the region's data center load.",
   
-  "**Smog and ozone:** A new gas plant adds NOx and other ozone precursors in a basin that already struggles with federal ozone standards . Stagnant summer heat can make secondary smog formation worse .",
+  "**Smog and ozone:** A new gas plant adds NOx and other ozone precursors in a basin that already struggles with federal ozone standards. Stagnant summer heat can make secondary smog formation worse.",
   
-  "**Methane along the gas system:** Pipelines, compressors, and other gas infrastructure can leak methane, a potent greenhouse gas that worsens long-term climate instability ."
+  "**Methane along the gas system:** Pipelines, compressors, and other gas infrastructure can leak methane, a potent greenhouse gas that worsens long-term climate instability."
   
   ]
   
@@ -269,9 +269,9 @@
   
   "items": [
   
-  "**Urban heat:** Data centers vent enormous waste heat from servers and cooling systems . In El Paso's desert climate that can strengthen local heat-island effects, keeping neighborhoods hotter than surrounding open land .",
+  "**Urban heat:** Data centers vent enormous waste heat from servers and cooling systems. In El Paso's desert climate that can strengthen local heat-island effects, keeping neighborhoods hotter than surrounding open land.",
   
-  "**Dust and particles:** Press coverage of IQAir's 2025 assessments tied a sharp rise in measured pollution in El Paso to historic dust storms, including figures on the order of a 46 percent increase summarized in national reporting . Construction dust and industrial plumes can also mix with windblown dust, worsening irritating particulate loads for people breathing outdoors ."
+  "**Dust and particles:** Press coverage of IQAir's 2025 assessments tied a sharp rise in measured pollution in El Paso to historic dust storms, including figures on the order of a 46 percent increase summarized in national reporting. Construction dust and industrial plumes can also mix with windblown dust, worsening irritating particulate loads for people breathing outdoors."
   
   ]
   
@@ -281,11 +281,11 @@
   
   "paragraphsAfterLists": [
   
-  "Comparative research in other dense U.S. data center markets has linked large backup generator fleets to regional pollution burdens similar in scale to conventional power plants, a benchmark El Paso should use when sizing test hours and stack limits .",
+  "Comparative research in other dense U.S. data center markets has linked large backup generator fleets to regional pollution burdens similar in scale to conventional power plants, a benchmark El Paso should use when sizing test hours and stack limits.",
   
-  "Modular natural gas generators emit significantly less particulate matter than traditional diesel units . However, gas infrastructure creates a permanent fossil fuel commitment . Some programs pay operators to run these generators during peak grid stress rather than true emergencies .",
+  "Modular natural gas generators emit significantly less particulate matter than traditional diesel units. However, gas infrastructure creates a permanent fossil fuel commitment. Some programs pay operators to run these generators during peak grid stress rather than true emergencies.",
   
-  "Transparency should include the frequency and duration of backup operations . Agreements should prohibit running generators for economic profit through demand response programs ."
+  "Transparency should include the frequency and duration of backup operations. Agreements should prohibit running generators for economic profit through demand response programs."
   
   ],
   
@@ -337,11 +337,11 @@
   
   "paragraphs": [
   
-  "The **urban heat island (UHI)** effect occurs when cities replace natural land cover with dense concentrations of pavement, buildings, and other surfaces that absorb and retain heat . In a high-desert environment like El Paso, that pattern creates specific challenges for **public health and infrastructure**, including added pressure on ozone chemistry and the electricity grid when temperatures stay elevated .",
+  "The **urban heat island (UHI)** effect occurs when cities replace natural land cover with dense concentrations of pavement, buildings, and other surfaces that absorb and retain heat. In a high-desert environment like El Paso, that pattern creates specific challenges for **public health and infrastructure**, including added pressure on ozone chemistry and the electricity grid when temperatures stay elevated.",
   
-  "National analyses rank El Paso among U.S. cities with large measured gaps between urban heat intensity and tree-supported cooling, which matters for where new industrial heat sources are sited . Community heat mapping in the region also documents sharp block-by-block differences in temperature and heat index .",
+  "National analyses rank El Paso among U.S. cities with large measured gaps between urban heat intensity and tree-supported cooling, which matters for where new industrial heat sources are sited. Community heat mapping in the region also documents sharp block-by-block differences in temperature and heat index.",
   
-  "A **March 2026** preprint by Marinoni et al. uses decades of **land surface temperature (LST)** from remote sensing to isolate what they call the **data heat island (DHI)** effect around AI data centers worldwide . They estimate that after operations begin, surrounding land surface temperatures rise by about **3.6°F** on average (about **2°C**), with **extreme uplifts above 16°F in arid settings** . In the largest cases they report LST surges up to about **16.4°F (9.1°C)** near major facilities . The warming footprint is not fence-limited: increased LST is detected out to about **6.2 miles (10 km)** from sites . The authors estimate that **more than 340 million people** could be affected by this temperature increase worldwide ."
+  "A **March 2026** preprint by Marinoni et al. uses decades of **land surface temperature (LST)** from remote sensing to isolate what they call the **data heat island (DHI)** effect around AI data centers worldwide. They estimate that after operations begin, surrounding land surface temperatures rise by about **3.6°F** on average (about **2°C**), with **extreme uplifts above 16°F in arid settings**. In the largest cases they report LST surges up to about **16.4°F (9.1°C)** near major facilities. The warming footprint is not fence-limited: increased LST is detected out to about **6.2 miles (10 km)** from sites. The authors estimate that **more than 340 million people** could be affected by this temperature increase worldwide."
   
   ],
   
@@ -355,11 +355,11 @@
   
   "items": [
   
-  "**Thermal mass:** Materials like asphalt, steel, and concrete have high heat capacity . They absorb solar radiation during the day and release it slowly at night, which can **prevent the city from cooling down** as much as the surrounding desert .",
+  "**Thermal mass:** Materials like asphalt, steel, and concrete have high heat capacity. They absorb solar radiation during the day and release it slowly at night, which can **prevent the city from cooling down** as much as the surrounding desert.",
   
-  "**Waste heat:** Air conditioning units, vehicle engines, and industrial facilities (including **data centers**) vent waste heat directly into the local atmosphere, further raising ambient temperatures .",
+  "**Waste heat:** Air conditioning units, vehicle engines, and industrial facilities (including **data centers**) vent waste heat directly into the local atmosphere, further raising ambient temperatures.",
   
-  "**Evapotranspiration:** Trees and plants cool the air by releasing water vapor . In urban areas with minimal greenery, natural cooling mechanism is weakened and pavement dominates ."
+  "**Evapotranspiration:** Trees and plants cool the air by releasing water vapor. In urban areas with minimal greenery, natural cooling mechanism is weakened and pavement dominates."
   
   ]
   
@@ -369,19 +369,19 @@
   
   "title": "**Specific impacts on El Paso:** desert baseline, geography, and equity",
   
-  "lead": "El Paso faces a **double burden** where the UHI effect amplifies the naturally high temperatures of the Chihuahuan Desert .",
+  "lead": "El Paso faces a **double burden** where the UHI effect amplifies the naturally high temperatures of the Chihuahuan Desert.",
   
   "items": [
   
-  "**Nighttime temperature spikes:** The surrounding desert may drop in temperature after sunset, but **urban pockets** in the city stay significantly warmer . That loss of nighttime cooling can prevent the human body from recovering from daytime heat stress .",
+  "**Nighttime temperature spikes:** The surrounding desert may drop in temperature after sunset, but **urban pockets** in the city stay significantly warmer. That loss of nighttime cooling can prevent the human body from recovering from daytime heat stress.",
   
-  "**Geographic trapping:** El Paso's topography, such as the **Franklin Mountains** and the surrounding **basin**, can trap warm, stagnant air over developed areas, creating a heat-dome effect that lingers over densely populated neighborhoods .",
+  "**Geographic trapping:** El Paso's topography, such as the **Franklin Mountains** and the surrounding **basin**, can trap warm, stagnant air over developed areas, creating a heat-dome effect that lingers over densely populated neighborhoods.",
   
-  "**Increased ozone formation:** Heat acts as a catalyst for chemical reactions between vehicle exhaust and industrial emissions . Higher temperatures from the UHI effect can contribute to **ground-level ozone (smog)**, a major respiratory irritant .",
+  "**Increased ozone formation:** Heat acts as a catalyst for chemical reactions between vehicle exhaust and industrial emissions. Higher temperatures from the UHI effect can contribute to **ground-level ozone (smog)**, a major respiratory irritant.",
   
-  "**Disproportionate neighborhood impact:** Research into El Paso **heat equity** shows that lower-income neighborhoods often have **less tree canopy** and more heat-absorbing surfaces . Those areas can be **5 to 10°F hotter** than greener, wealthier parts of the city .",
+  "**Disproportionate neighborhood impact:** Research into El Paso **heat equity** shows that lower-income neighborhoods often have **less tree canopy** and more heat-absorbing surfaces. Those areas can be **5 to 10°F hotter** than greener, wealthier parts of the city.",
   
-  "**Energy grid strain:** As the heat island effect raises local temperatures, demand for air conditioning rises . That can create a feedback loop: higher demand leads to more power plant emissions and more waste heat from AC condensers, further warming the city ."
+  "**Energy grid strain:** As the heat island effect raises local temperatures, demand for air conditioning rises. That can create a feedback loop: higher demand leads to more power plant emissions and more waste heat from AC condensers, further warming the city."
   
   ]
   
@@ -395,13 +395,13 @@
   
   "items": [
   
-  "**Average signal:** Mean LST increase near AI data centers after start of operations is about **3.6°F**; the paper estimates **more than 340 million people** could be affected by the associated warming globally .",
+  "**Average signal:** Mean LST increase near AI data centers after start of operations is about **3.6°F**; the paper estimates **more than 340 million people** could be affected by the associated warming globally.",
   
-  "**Arid extremes:** The largest uplifts appear in dry climates; the work reports extreme cases above **16°F** for land surface temperature, with peak single-site LST change up to about **16.4°F (9.1°C)** .",
+  "**Arid extremes:** The largest uplifts appear in dry climates; the work reports extreme cases above **16°F** for land surface temperature, with peak single-site LST change up to about **16.4°F (9.1°C)**.",
   
-  "**Beyond the property line:** Elevated LST is not confined to the campus; the analysis finds a footprint on the order of **6.2 miles (10 km)** from facilities .",
+  "**Beyond the property line:** Elevated LST is not confined to the campus; the analysis finds a footprint on the order of **6.2 miles (10 km)** from facilities.",
   
-  "**Surfaces and nighttime retention:** Large LST changes reflect materials such as roofs and pavement that **store solar energy by day** and **release it at night**, which can disrupt the overnight cooling cycle that matters for public health ."
+  "**Surfaces and nighttime retention:** Large LST changes reflect materials such as roofs and pavement that **store solar energy by day** and **release it at night**, which can disrupt the overnight cooling cycle that matters for public health."
   
   ]
   
@@ -411,9 +411,9 @@
   
   "paragraphsAfterLists": [
   
-  "**Data centers and El Paso's heat:** Large-scale data centers add a new variable to the local UHI . These facilities use **massive industrial cooling** to dissipate heat from thousands of servers . In a desert climate, that can add a **constant stream of hot, dry air** near the site and potentially extend the **duration and intensity** of heat-island conditions for nearby residents .",
+  "**Data centers and El Paso's heat:** Large-scale data centers add a new variable to the local UHI. These facilities use **massive industrial cooling** to dissipate heat from thousands of servers. In a desert climate, that can add a **constant stream of hot, dry air** near the site and potentially extend the **duration and intensity** of heat-island conditions for nearby residents.",
   
-  "The Marinoni et al. results suggest **data heat island** signals can be especially large in **arid** settings and extend **many miles** beyond the fence. This adds **cumulative** stress on top of regional UHI and desert heat, not a neutral background . Permits and community benefit agreements should plan for **LST and heat index** near homes, not only property-line rules ."
+  "The Marinoni et al. results suggest **data heat island** signals can be especially large in **arid** settings and extend **many miles** beyond the fence. This adds **cumulative** stress on top of regional UHI and desert heat, not a neutral background. Permits and community benefit agreements should plan for **LST and heat index** near homes, not only property-line rules."
   
   ],
   
@@ -465,13 +465,13 @@
   
   "paragraphs": [
   
-  "Air handling units and cooling towers generate constant low-frequency noise . This sound travels further and penetrates walls more easily than high-frequency noise . Residents in other desert markets describe the sound as a constant drone .",
+  "Air handling units and cooling towers generate constant low-frequency noise. This sound travels further and penetrates walls more easily than high-frequency noise. Residents in other desert markets describe the sound as a constant drone.",
   
-  "The City of El Paso states on its Data Center Resource Hub that data centers must comply with Title 9.40 of the El Paso City Code. In industrial zones the maximum sound level is 70 to 75 decibels (dBA) at the property line. For facilities near residential areas the limit is lower: 50 dBA at night . When homes are at stake, the decibel limit that protects you is checked at the **receiving property line**: the **resident's lot line**, where sound is measured outside your home, not at the operator's fence. Title 9.40 defines when the test applies at the neighbor's line versus the industrial line; read the chapter for the exact wording.",
+  "The City of El Paso states on its Data Center Resource Hub that data centers must comply with Title 9.40 of the El Paso City Code. In industrial zones the maximum sound level is 70 to 75 decibels (dBA) at the property line. For facilities near residential areas the limit is lower: 50 dBA at night. When homes are at stake, the decibel limit that protects you is checked at the **receiving property line**: the **resident's lot line**, where sound is measured outside your home, not at the operator's fence. Title 9.40 defines when the test applies at the neighbor's line versus the industrial line; read the chapter for the exact wording.",
   
   "Those numbers describe what the code can permit. They should not be read as a guarantee of peace next door. A facility can stay within industrial fence-line limits while still producing a round-the-clock hum that carries into yards and bedrooms. Public health guidance often points to lower night noise for undisturbed sleep than a single headline figure suggests. Neighbors deserve clarity that compliance with Title 9.40 of the El Paso City Code is a legal floor, not proof that a hyperscale site will feel acceptable at the property line.",
   
-  "Arizona has updated municipal standards in the Phoenix area toward **lower** decibel limits and **measurement at the data center property line** (the source fence), so the plant must meet stricter limits where it sits . That contrasts with rules that only chase complaints at a distant lot without tightening the facility itself. Thermal inversions common in desert winters can bend sound downward, carrying it into distant neighborhoods ."
+  "Arizona has updated municipal standards in the Phoenix area toward **lower** decibel limits and **measurement at the data center property line** (the source fence), so the plant must meet stricter limits where it sits. That contrasts with rules that only chase complaints at a distant lot without tightening the facility itself. Thermal inversions common in desert winters can bend sound downward, carrying it into distant neighborhoods."
   
   ],
   
@@ -481,7 +481,7 @@
   
   "title": "Health issues for nearby residents",
   
-  "lead": "Because data center noise is constant and often contains low-frequency tones, it can be more disruptive than intermittent city noises like traffic .",
+  "lead": "Because data center noise is constant and often contains low-frequency tones, it can be more disruptive than intermittent city noises like traffic.",
   
   "items": [
   
@@ -503,7 +503,7 @@
   
   "title": "Impact on wildlife",
   
-  "lead": "Wildlife relies heavily on the \"acoustical environment\" for survival. A constant 24/7 hum creates a masking effect that drowns out natural sounds .",
+  "lead": "Wildlife relies heavily on the \"acoustical environment\" for survival. A constant 24/7 hum creates a masking effect that drowns out natural sounds.",
   
   "items": [
   
@@ -525,7 +525,7 @@
   
   "paragraphsAfterLists": [
   
-  "Independent monitoring and objective caps at the line named in the permit beat vague comfort standards ."
+  "Independent monitoring and objective caps at the line named in the permit beat vague comfort standards."
   
   ],
   
@@ -565,7 +565,7 @@
   
   { "label": "Investment (reported)", "value": "~$10B", "hint": "Press coverage, 2026" },
   
-  { "label": "Jobs (press promise)", "value": "~300", "hint": "Not a contractual hiring floor" },
+  { "label": "Jobs guaranteed* in contract", "value": "50", "hint": "Not a contractual hiring floor" },
   
   { "label": "Incentives (order of magnitude)", "value": "~$110M", "hint": "Clawbacks if targets slip" }
   
@@ -581,9 +581,9 @@
   
   "paragraphs": [
   
-  "Reports indicate a $10 billion investment for the El Paso site, with company statements in the press floating on the order of 300 new jobs . That figure is a public promise, not a contractually guaranteed employment level. Research suggests permanent operational roles often total less than 20% of peak construction employment . Data centers are capital-intensive rather than labor-intensive .",
+  "Reports indicate a $10 billion investment for the El Paso site, with company statements in the press floating on the order of 300 new jobs. That figure is a public promise, not a contractually guaranteed employment level. Research suggests permanent operational roles often total less than 20% of peak construction employment. Data centers are capital-intensive rather than labor-intensive.",
   
-  "El Paso has offered roughly $110 million in incentives . If that promise is taken at face value, the order of magnitude is hundreds of thousands of dollars per promised job; the number rises if realized permanent jobs end up far below the headline . Clawback clauses are legal tools that recover public funds if job or environmental targets are missed . Independent watchdogs recommend tying tax abatements to verifiable outcomes ."
+  "El Paso has offered roughly $110 million in incentives. If that promise is taken at face value, the order of magnitude is hundreds of thousands of dollars per promised job; the number rises if realized permanent jobs end up far below the headline. Clawback clauses are legal tools that recover public funds if job or environmental targets are missed. Independent watchdogs recommend tying tax abatements to verifiable outcomes."
   
   ],
   
@@ -605,10 +605,15 @@
       "Staff are legally barred from proposing new taxes.",
       "Meta picks contractors; the City pays the bill."
     ],
+    "download": {
+      "href": "/documents/Wurldwide-380-Agreement.pdf",
+      "label": "Download the 380 agreement (PDF)",
+      "fileName": "Wurldwide-380-Agreement.pdf"
+    },
     "paragraphs": [
       "The 380 Economic Development Program Agreement is the primary contract between the City of El Paso and Wurldwide LLC. While public narratives focus on growth, the document establishes a 35-year framework of subsidies and restricted local authority. The City represents that the agreement is a valid and binding obligation.",
       "One major discrepancy involves employment figures. Press releases often suggest hundreds of roles, yet the contract only requires a minimum of 50 full-time jobs. This requirement does not take effect until four years after the project reaches completion. If the job count slips, the City's only remedy is a reduction in grant amounts.",
-      "Financial transparency is another concern regarding public infrastructure. Meta must build a portion of Stan Roberts Sr. Avenue, but the City is obligated to reimburse them up to $7,500,000. This cap can increase by 20% if costs exceed initial estimates. Once finished, the City assumes all future maintenance costs for the road."
+      "Financial transparency is another concern regarding public infrastructure. Meta must build a portion of Stan Roberts Sr. Avenue, but the **City is obligated to reimburse Meta up to $7,500,000**. This cap can increase by 20% if costs exceed initial estimates. Once finished, the City assumes all future maintenance costs for the road."
     ],
     "bulletGroups": [
       {
@@ -649,6 +654,11 @@
       "NDAs required for City inspectors",
       "Company can force notes to be left on site."
     ],
+    "download": {
+      "href": "/documents/Wurldwide-380-Agreement.pdf",
+      "label": "Download the 380 agreement (PDF)",
+      "fileName": "Wurldwide-380-Agreement.pdf"
+    },
     "paragraphs": [
       "Public oversight of a hyperscale facility is restricted by the 380 agreement. Section 4.7 limits the City to one inspection per year. The company requires 30 days of written notice before any official can enter the property. These visits must happen during normal business hours. They also require a security escort provided by the operator. This creates a controlled environment for any audit of water or energy use.",
       "The contract also imposes secrecy on City employees via Section 4.7. Any individual inspecting the site can be forced to sign a confidentiality agreement. The company has the right to demand that any notes or documents viewed by City representatives stay at the project site. This prevents the creation of a public paper trail regarding internal operations or equipment performance.",
@@ -698,23 +708,23 @@
     
     "paragraphs": [
     
-    "**Water:** Prioritize reclaimed supplies for all industrial cooling . Prohibit the use of potable aquifer water for primary cooling functions .",
+    "**Water:** Prioritize reclaimed supplies for all industrial cooling. Prohibit the use of potable aquifer water for primary cooling functions.",
     
-    "**Energy:** Maintain legal intervention in utility cases regarding new gas plants . Require the facility to fund local solar and battery storage instead of dedicated fossil fuel units .",
+    "**Energy:** Maintain legal intervention in utility cases regarding new gas plants. Require the facility to fund local solar and battery storage instead of dedicated fossil fuel units.",
     
-    "**Air and noise:** Set strict decibel limits measured at the data center property line and at the receiving resident lot line . Require independent monitoring of acoustics and emissions .",
+    "**Air and noise:** Set strict decibel limits measured at the data center property line and at the receiving resident lot line. Require independent monitoring of acoustics and emissions.",
     
-    "**Governance:** Implement tiered incentives . Grant full abatements only when facilities meet both job and water reuse targets ."
+    "**Governance:** Implement tiered incentives. Grant full abatements only when facilities meet both job and water reuse targets."
     
     ],
     
     "bullets": [
     
-    "Mandate disclosure of ultimate parent companies on all applications .",
+    "Mandate disclosure of ultimate parent companies on all applications.",
     
-    "Require facilities to be liquid ready for future high-efficiency cooling .",
+    "Require facilities to be liquid ready for future high-efficiency cooling.",
     
-    "Establish a citizen oversight board with power to review annual audits ."
+    "Establish a citizen oversight board with power to review annual audits."
     
     ],
     
@@ -729,7 +739,7 @@
   
   "noiseTable": {
   
-  "caption": "El Paso official summary (Title 9.40 of the El Paso City Code) compared to Arizona-style source-line measurement and other benchmarks. Verify which line a permit uses (resident receiving lot line vs data center fence) in the municipal code before citing in a permit or appeal .",
+  "caption": "El Paso official summary (Title 9.40 of the El Paso City Code) compared to Arizona-style source-line measurement and other benchmarks. Verify which line a permit uses (resident receiving lot line vs data center fence) in the municipal code before citing in a permit or appeal.",
   
   "rows": [
   
@@ -795,7 +805,7 @@
   
   "economicTable": {
   
-  "caption": "Reported job creation and investment figures .",
+  "caption": "Reported job creation and investment figures.",
   
   "rows": [
   

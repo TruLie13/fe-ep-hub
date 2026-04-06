@@ -79,12 +79,33 @@ export const appTheme = extendTheme({
       lineHeight: 1.3,
       letterSpacing: "-0.01em",
     },
+    /** In-card section titles (Learn subheads, data-centers cards); rem scales with user font preferences. */
+    h4: {
+      fontWeight: 600,
+      fontSize: "1.25rem",
+      lineHeight: 1.35,
+      letterSpacing: "-0.01em",
+    },
+    h5: {
+      fontWeight: 600,
+      fontSize: "1.1875rem",
+      lineHeight: 1.35,
+      letterSpacing: "-0.01em",
+    },
     h6: {
       fontWeight: 600,
+      fontSize: "1.125rem",
+      lineHeight: 1.4,
       letterSpacing: "-0.01em",
     },
     subtitle1: {
       fontWeight: 600,
+      letterSpacing: "-0.01em",
+    },
+    subtitle2: {
+      fontWeight: 600,
+      fontSize: "0.9375rem",
+      lineHeight: 1.4,
       letterSpacing: "-0.01em",
     },
     body1: {
@@ -93,6 +114,12 @@ export const appTheme = extendTheme({
     },
     body2: {
       lineHeight: 1.6,
+      fontSize: "0.875rem",
+    },
+    caption: {
+      fontSize: "0.75rem",
+      lineHeight: 1.5,
+      letterSpacing: "0.02em",
     },
     overline: {
       fontWeight: 700,

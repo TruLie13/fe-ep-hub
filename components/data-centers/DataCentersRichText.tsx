@@ -58,7 +58,7 @@ function CiteLink({ n, source }: { n: number; source: Source | undefined }) {
 }
 
 /**
- * Renders body copy from `data-centers-impacts.json`: `**bold**` segments and `[cite: N]` (or `[cite: 1, 2]`) as
+ * Renders body copy from `data-centers-impacts.json`: `**bold**` segments and `[cite: N]` (or ``) as
  * superscript links to the ordered `sources` list (1-based indexes).
  */
 export default function DataCentersRichText({ text, sources }: { text: string; sources: Source[] }) {
