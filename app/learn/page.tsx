@@ -250,7 +250,7 @@ export default function LearnPage() {
                 </Typography>
                 <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: "68ch" }}>
                   {rp.overviewDetailLead}
-                  <Link href="/data-centers" color="primary" underline="hover" fontWeight={600}>
+                  <Link href="/data-center" color="primary" underline="hover" fontWeight={600}>
                     {rp.overviewDetailLinkLabel}
                   </Link>
                   .
@@ -369,7 +369,7 @@ export default function LearnPage() {
                   {re.description}
                 </Typography>
                 <Box sx={{ mt: 2 }}>
-                  <Button variant="contained" href="/data-centers" endIcon={<ArrowForwardRoundedIcon />}>
+                  <Button variant="contained" href="/data-center" endIcon={<ArrowForwardRoundedIcon />}>
                     {re.fullAnalysisCta}
                   </Button>
                 </Box>
@@ -447,7 +447,7 @@ export default function LearnPage() {
                   <Typography variant="body2" color="text.secondary" paragraph>
                     {re.mandatesP1}
                   </Typography>
-                  <Button href="/data-centers#recommendations" size="small" endIcon={<ArrowForwardRoundedIcon />}>
+                  <Button href="/data-center#recommendations" size="small" endIcon={<ArrowForwardRoundedIcon />}>
                     {re.mandatesLink}
                   </Button>
                 </CardContent>

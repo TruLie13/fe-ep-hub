@@ -12,11 +12,11 @@
     "siteTagline": "We are all in this together",
     "home": "Home",
     "learn": "Learn",
-    "dataCenters": "Data centers",
+    "dataCenters": "Meta Data Center",
     "government": "Government",
     "pledge": "Pledge",
     "news": "News",
-    "meetings": "Meetings",
+    "meetings": "City Meetings",
     "contribute": "Contribute",
     "takePledge": "Take pledge",
     "menu": "Menu",
@@ -295,7 +295,7 @@
     },
     "sections": [
       {
-        "id": "data-centers",
+        "id": "data-center",
         "title": "Data centers",
         "eyebrow": "Data Centers 101",
         "subsections": [

@@ -5,7 +5,7 @@
       "id": "doe-datacenter-energy",
       "kind": "gov_doc",
       "title": "U.S. Department of Energy — data center and IT energy use",
-      "url": "https://www.energy.gov/eere/buildings/data-centers-and-servers",
+      "url": "https://www.energy.gov/eere/buildings/data-center-and-servers",
       "publisher": "U.S. DOE",
       "relevanceNote": "Federal overview of why large facilities draw significant electricity.",
       "citationLabel": "U.S. Department of Energy, Data Centers and Servers",
@@ -122,7 +122,7 @@
       "provenance": "repo"
     },
     {
-      "id": "wri-data-centers-us-communities-2026",
+      "id": "wri-data-center-us-communities-2026",
       "kind": "article",
       "title": "World Resources Institute — Seven ways data centers affect U.S. communities",
       "url": "https://tools.wri.org/insights/us-data-center-growth-impacts",
@@ -235,7 +235,7 @@
       "id": "doe-ai-datacenter-load",
       "kind": "gov_doc",
       "title": "U.S. DOE — data centers and energy (AI load context)",
-      "url": "https://www.energy.gov/eere/buildings/data-centers-and-servers",
+      "url": "https://www.energy.gov/eere/buildings/data-center-and-servers",
       "publisher": "U.S. DOE",
       "relevanceNote": "Federal overview of rising electricity demand from data centers and servers.",
       "citationLabel": "U.S. DOE — Data centers and servers",
@@ -322,10 +322,10 @@
       "provenance": "repo"
     },
     {
-      "id": "el-paso-city-data-centers-hub",
+      "id": "el-paso-city-data-center-hub",
       "kind": "gov_doc",
       "title": "City of El Paso — Data Center Resource Hub",
-      "url": "https://www.elpasotexas.gov/data-centers/",
+      "url": "https://www.elpasotexas.gov/data-center/",
       "publisher": "City of El Paso",
       "relevanceNote": "Official FAQ on data center regulation, including Title 9.40 of the El Paso City Code (noise).",
       "citationLabel": "City of El Paso — Data Center Resource Hub",
@@ -342,20 +342,20 @@
       "provenance": "repo"
     },
     {
-      "id": "ehp-dangers-data-centers",
+      "id": "ehp-dangers-data-center",
       "kind": "article",
       "title": "Environmental Health Project — The Dangers of Data Centers",
-      "url": "https://www.environmentalhealthproject.org/post/the-dangers-of-data-centers",
+      "url": "https://www.environmentalhealthproject.org/post/the-dangers-of-data-center",
       "publisher": "Environmental Health Project",
       "relevanceNote": "Overview of respiratory, cardiovascular, noise, and related risks from data center infrastructure.",
       "citationLabel": "Environmental Health Project — The Dangers of Data Centers",
       "provenance": "repo"
     },
     {
-      "id": "eesi-noise-data-centers-2026",
+      "id": "eesi-noise-data-center-2026",
       "kind": "article",
       "title": "EESI — Communities Are Raising Noise Pollution Concerns About Data Centers",
-      "url": "https://www.eesi.org/articles/view/communities-are-raising-noise-pollution-concernsabout-data-centers",
+      "url": "https://www.eesi.org/articles/view/communities-are-raising-noise-pollution-concernsabout-data-center",
       "publisher": "Environmental and Energy Study Institute",
       "relevanceNote": "Community noise complaints, siting, and health stressors tied to data center operations.",
       "citationLabel": "EESI — Data centers and noise pollution (2026)",
@@ -372,7 +372,7 @@
       "provenance": "repo"
     },
     {
-      "id": "sierra-club-data-centers-factsheet-2025",
+      "id": "sierra-club-data-center-factsheet-2025",
       "kind": "report",
       "title": "Sierra Club — Data center impacts factsheet",
       "url": "https://www.sierraclub.org/sites/default/files/2025-07/data-center-factsheet-4.pdf",
@@ -401,6 +401,16 @@
       "publisher": "City of El Paso",
       "relevanceNote": "Local copy of the Meta / Wurldwide 380 agreement; The contract between the City of El Paso and Wurldwide LLC (Meta).",
       "citationLabel": "380 Agreement — Meta / Wurldwide & City of El Paso (PDF)",
+      "provenance": "repo"
+    },
+    {
+      "id": "batavian-stream-data-center-economic-benefits-2026",
+      "kind": "article",
+      "title": "Letter: Questions raised about Stream Data Center's economic benefits for Genesee County",
+      "url": "https://www.thebatavian.com/reader-submitted/letter-questions-raised-about-stream-data-center-economic-benefits-for-genesee",
+      "publisher": "The Batavian",
+      "relevanceNote": "Reader letter citing Good Jobs First analysis on subsidy scale, tax offsets, and jobs-to-incentives concerns in a separate U.S. data center case.",
+      "citationLabel": "The Batavian — Stream data center economic benefits letter (2026)",
       "provenance": "repo"
     }
   ]

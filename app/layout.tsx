@@ -103,7 +103,7 @@ export default function RootLayout({
                       <MuiLink href="/learn" underline="hover" color="primary.main">
                         {t.footer.learnBasics}
                       </MuiLink>
-                      <MuiLink href="/data-centers" underline="hover" color="primary.main">
+                      <MuiLink href="/data-center" underline="hover" color="primary.main">
                         {t.footer.dataCentersImpacts}
                       </MuiLink>
                     </Stack>

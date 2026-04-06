@@ -60,7 +60,7 @@ export default function Home() {
                   <Button variant="contained" size="large" href="/learn" endIcon={<ArrowForwardRoundedIcon />}>
                     {t.home.startLearning}
                   </Button>
-                  <Button variant="outlined" size="large" href="/data-centers" endIcon={<ArrowForwardRoundedIcon />}>
+                  <Button variant="outlined" size="large" href="/data-center" endIcon={<ArrowForwardRoundedIcon />}>
                     {t.home.viewRegionalImpacts}
                   </Button>
                   <Button variant="outlined" size="large" href="/pledge">

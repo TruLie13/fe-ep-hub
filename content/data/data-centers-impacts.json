@@ -252,7 +252,7 @@
         "texas-tribune-meta-gas-2026",
         "cbs-el-paso-los-angeles-polluted-2025",
         "virginia-data-center-air-quality-study",
-        "wri-data-centers-us-communities-2026"
+        "wri-data-center-us-communities-2026"
       ],
       "takeaways": [
         "IQAir 2024: El Paso 9th for PM2.5 (majors).",
@@ -399,14 +399,14 @@
         "Independent monitoring and objective caps at the line named in the permit beat vague comfort standards."
       ],
       "sourceIds": [
-        "el-paso-city-data-centers-hub",
+        "el-paso-city-data-center-hub",
         "phoenix-data-center-staff-report-2025",
         "epa-noise-pollution-overview",
         "el-paso-noise-ordinance",
-        "ehp-dangers-data-centers",
-        "eesi-noise-data-centers-2026",
+        "ehp-dangers-data-center",
+        "eesi-noise-data-center-2026",
         "nps-effects-noise-wildlife",
-        "sierra-club-data-centers-factsheet-2025"
+        "sierra-club-data-center-factsheet-2025"
       ],
       "takeaways": [
         "Loud at fence; not quiet at home.",
@@ -445,7 +445,8 @@
       ],
       "sourceIds": [
         "cnbc-meta-el-paso-10b-2026",
-        "good-jobs-first-clawbacks"
+        "good-jobs-first-clawbacks",
+        "batavian-stream-data-center-economic-benefits-2026"
       ],
       "takeaways": [
         "Big build; few permanent jobs.",
@@ -580,43 +581,45 @@
       "icon": "gavel",
       "stats": [
         {
-          "label": "Water",
-          "value": "Reclaimed first",
-          "hint": "Ban potable for primary cooling"
+          "label": "Water Intensity",
+          "value": "< 0.3 L/kWh",
+          "hint": "Enforced via real-time metering for city auditors"
         },
         {
-          "label": "Power",
-          "value": "Community benefit",
-          "hint": "Solar plus storage over gas lock-in"
+          "label": "Noise Limit",
+          "value": "45 dBA (Night)",
+          "hint": "Measured at the source property line: not the neighbor"
         },
         {
-          "label": "Governance",
-          "value": "Tiered deals",
-          "hint": "Abatement tied to audited outcomes"
+          "label": "Abatements",
+          "value": "Tiered System",
+          "hint": "Automatic reduction if targets are missed"
         }
       ],
       "highlights": [
-        "Name parent firms on incentive deals.",
-        "Yearly public compliance dashboard."
+        "Mandate 'purple pipe' connection for all cooling.",
+        "Disclose ultimate parent companies during application."
       ],
       "paragraphs": [
-        "**Water:** Prioritize reclaimed supplies for all industrial cooling. Prohibit the use of potable aquifer water for primary cooling functions.",
-        "**Energy:** Maintain legal intervention in utility cases regarding new gas plants. Require the facility to fund local solar and battery storage instead of dedicated fossil fuel units.",
-        "**Air and noise:** Set strict decibel limits measured at the data center property line and at the receiving resident lot line. Require independent monitoring of acoustics and emissions.",
-        "**Governance:** Implement tiered incentives. Grant full abatements only when facilities meet both job and water reuse targets."
+        "**Water:** Codify a city-wide prohibition on evaporative cooling towers. Prohibit the use of potable aquifer water for primary cooling functions to decouple growth from the drinking supply.",
+        "**Energy:** Reject proposals for dedicated fossil fuel plants like the McCloud facility. Require 24/7 hourly renewable matching utilizing local storage assets instead of annual credit accounting.",
+        "**Air and Noise:** Adopt a specific Data Center Noise Ordinance requiring acoustic louvers and encapsulated generators. Prohibit participation in fossil-fuel-based demand response programs for profit.",
+        "**Governance:** Implement a tiered incentive structure where full tax abatement requires meeting both job and environmental benchmarks. Publicly publish audit results on a municipal dashboard."
       ],
       "bullets": [
-        "Mandate disclosure of ultimate parent companies on all applications.",
-        "Require facilities to be liquid ready for future high-efficiency cooling.",
-        "Establish a citizen oversight board with power to review annual audits."
+        "Require facilities to be 'Liquid Ready' for future high-efficiency cooling.",
+        "Mandate independent acoustic modeling and post-construction monitoring.",
+        "Establish a citizen oversight board to review annual compliance.",
+        "Require funding for a 'Virtual Power Plant' via residential solar and batteries."
       ],
       "sourceIds": [
+        "Strategic-Environmental-Operational-Assessment",
         "good-jobs-first-clawbacks",
-        "epa-ej"
+        "Ex-Wurldwide-380-Agreement-Seafox"
       ],
       "takeaways": [
-        "Name parent firms on incentive deals.",
-        "Yearly public compliance dashboard."
+        "Prioritize local storage over gas plant lock-in.",
+        "Link incentives to verifiable resource utilization rates."
       ]
     }
   ],
@@ -624,32 +627,25 @@
     "caption": "El Paso official summary (Title 9.40 of the El Paso City Code) compared to Arizona-style source-line measurement and other benchmarks. Verify which line a permit uses (resident receiving lot line vs data center fence) in the municipal code before citing in a permit or appeal.",
     "rows": [
       {
-        "jurisdiction": "Arizona / Phoenix-area direction (updated)",
-        "dayDb": "Lower caps (code)",
-        "nightDb": "Lower caps (code)",
-        "measurementPoint": "Data center property line (source)",
-        "sourceNote": "Staff-led updates: tighter dBA and meter at the facility lot line "
-      },
-      {
-        "jurisdiction": "Regional arid-city benchmark (advocacy)",
+        "jurisdiction": "Arizona / Phoenix-area direction",
         "dayDb": "55 dBA",
         "nightDb": "45 dBA",
-        "measurementPoint": "Property line (model)",
-        "sourceNote": "Desert hub zoning discussion "
+        "measurementPoint": "Data Center Property line",
+        "sourceNote": "Updated after residents complained about Data Centernoise"
       },
       {
-        "jurisdiction": "El Paso (city FAQ: data centers, Title 9.40 of the El Paso City Code)",
+        "jurisdiction": "El Paso (Title 9.40 of the El Paso City Code)",
         "dayDb": "70–75 dBA (industrial zone)",
         "nightDb": "50 dBA (near residential)",
-        "measurementPoint": "Facility line (industrial); resident lot line (homes)",
+        "measurementPoint": "Reesident property line (homes)",
         "sourceNote": "Hub summarizes property-line tests; limits that protect neighbors are enforced at the receiving (resident) lot line where Title 9.40 applies "
       },
       {
-        "jurisdiction": "Advocacy benchmark (This site)",
+        "jurisdiction": "Proposed Advocacy benchmark (pi.que llc)",
         "dayDb": "50 dBA",
         "nightDb": "45 dBA",
         "measurementPoint": "Should be at the data center property line",
-        "sourceNote": "Proposed standard "
+        "sourceNote": "Proposed standard by pi.que llc "
       }
     ]
   },
@@ -666,16 +662,16 @@
       {
         "project": "Stream Data Centers — New York",
         "investment": "$11.2B",
-        "promisedJobs": "—",
-        "actualOrRevisedJobs": "125",
-        "sourceNote": "Good Jobs First analysis "
+        "promisedJobs": "125",
+        "actualOrRevisedJobs": "-",
+        "sourceNote": "Jobs will cost $11 million each in lost tax revenue, one of the highest public costs Good Jobs First has ever seen "
       },
       {
         "project": "Meta — El Paso",
-        "investment": "$1.5B (initial) to $10B",
-        "promisedJobs": "~300 (company promise in press, not a contract)",
+        "investment": "$10B",
+        "promisedJobs": "~300 (company promise, only 50 in contract)",
         "actualOrRevisedJobs": "—",
-        "sourceNote": "Actual permanent jobs TBD; compare to clawback and audit terms when published "
+        "sourceNote": "Actual permanent jobs TBD"
       }
     ]
   }

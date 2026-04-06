@@ -29,12 +29,12 @@ const t = enDict;
 const navItems = [
   { href: "/", label: t.nav.home },
   { href: "/learn", label: t.nav.learn },
-  { href: "/data-centers", label: t.nav.dataCenters },
+  { href: "/data-center", label: t.nav.dataCenters },
   { href: "/local-government", label: t.nav.government },
-  { href: "/pledge", label: t.nav.pledge },
-  { href: "/news", label: t.nav.news },
+  // { href: "/pledge", label: t.nav.pledge }, // Temporarily hidden
   { href: "/city-meetings", label: t.nav.meetings },
-  { href: "/contribute", label: t.nav.contribute },
+  { href: "/news", label: t.nav.news },
+  // { href: "/contribute", label: t.nav.contribute }, // Temporarily hidden
 ];
 
 export default function MainNav() {
@@ -152,9 +152,10 @@ export default function MainNav() {
                 })}
               </Stack>
             </Box>
-            <Button href="/pledge" variant="contained" size="small" sx={{ display: { xs: "none", sm: "inline-flex" } }}>
+            {/* Temporarily hidden; keep for future re-enable */}
+            {/* <Button href="/pledge" variant="contained" size="small" sx={{ display: { xs: "none", sm: "inline-flex" } }}>
               {t.nav.takePledge}
-            </Button>
+            </Button> */}
             <IconButton
               edge="end"
               aria-label={t.nav.openMenu}
@@ -184,11 +185,12 @@ export default function MainNav() {
             </ListItemButton>
           ))}
         </List>
-        <Box sx={{ p: 2 }}>
+        {/* Temporarily hidden; keep for future re-enable */}
+        {/* <Box sx={{ p: 2 }}>
           <Button href="/pledge" variant="contained" fullWidth onClick={() => setOpen(false)}>
             {t.nav.takePledge}
           </Button>
-        </Box>
+        </Box> */}
       </Drawer>
     </AppBar>
   );

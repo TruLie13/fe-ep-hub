@@ -52,7 +52,7 @@ function buildDescription(
 
 /**
  * One homepage quick-fact card per included data-centers section, in JSON order.
- * Links use `/data-centers#[id]` to match section anchors on the impacts page.
+ * Links use `/data-center#[id]` to match section anchors on the impacts page.
  */
 export function buildHomeQuickFactsFromImpacts(sections: DataCentersImpactSection[]): HomeQuickFact[] {
   return sections
@@ -75,7 +75,7 @@ export function buildHomeQuickFactsFromImpacts(sections: DataCentersImpactSectio
         label: stripBoldMarkers(section.eyebrow),
         title,
         description,
-        href: `/data-centers#${section.id}`,
+        href: `/data-center#${section.id}`,
         iconKey: section.icon ?? null,
       };
     });

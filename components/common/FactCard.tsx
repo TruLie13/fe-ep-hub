@@ -10,7 +10,7 @@ export type FactCardProps = {
   title: string;
   description: string;
   tone?: "default" | "primary" | "warning";
-  /** When set, the whole card is a link (e.g. `/data-centers#section-id`). */
+  /** When set, the whole card is a link (e.g. `/data-center#section-id`). */
   href?: string;
   /** Same keys as data center section `icon` (e.g. `water`, `bolt`). */
   iconKey?: string | null;

@@ -6,14 +6,27 @@ import {
   CardContent,
   Chip,
   Link,
+  Paper,
   Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   Typography,
 } from "@mui/material";
 import type { SxProps, Theme } from "@mui/material/styles";
 import CitationLinks from "@/components/common/CitationLinks";
 import DataCentersRichText from "@/components/data-centers/DataCentersRichText";
 import { DataCenterSectionIcon } from "@/components/data-centers/dataCenterSectionIcon";
-import type { DataCentersImpactSection, SourcesBundle } from "@/content/schema";
+import type {
+  DataCentersEconomicTable,
+  DataCentersImpactSection,
+  DataCentersNoiseTable,
+  Source,
+  SourcesBundle,
+} from "@/content/schema";
 import { pickSources } from "@/lib/content/load";
 
 const anchorSx = {
@@ -37,6 +50,22 @@ export type DataCentersSectionsLabels = {
   downloadsLabel: string;
 };
 
+export type DataCentersNoiseTableLabels = {
+  jurisdiction: string;
+  day: string;
+  night: string;
+  where: string;
+  note: string;
+};
+
+export type DataCentersEconomicTableLabels = {
+  project: string;
+  investment: string;
+  promised: string;
+  actual: string;
+  note: string;
+};
+
 /**
  * Renders every entry in `content/data/data-centers-impacts.json` → `sections` (no per-section branches in the page).
  */
@@ -44,10 +73,22 @@ export default function DataCentersSections({
   sections,
   sources,
   labels,
+  noiseTable,
+  noiseTableSources,
+  noiseTableLabels,
+  economicTable,
+  economicTableSources,
+  economicTableLabels,
 }: {
   sections: DataCentersImpactSection[];
   sources: SourcesBundle;
   labels: DataCentersSectionsLabels;
+  noiseTable?: DataCentersNoiseTable;
+  noiseTableSources?: Source[];
+  noiseTableLabels?: DataCentersNoiseTableLabels;
+  economicTable?: DataCentersEconomicTable;
+  economicTableSources?: Source[];
+  economicTableLabels?: DataCentersEconomicTableLabels;
 }) {
   return (
     <>
@@ -335,6 +376,160 @@ export default function DataCentersSections({
                     </Typography>
                   ))}
                 </Stack>
+              ) : null}
+
+              {section.id === "noise" && noiseTable && noiseTableLabels ? (
+                <Box sx={{ mt: 3 }}>
+                  <Typography variant="h6" component="div" sx={{ mb: 2 }}>
+                    <DataCentersRichText
+                      text={noiseTable.caption}
+                      sources={noiseTableSources ?? []}
+                    />
+                  </Typography>
+                  <TableContainer component={Paper} variant="outlined">
+                    <Table
+                      size="small"
+                      sx={{
+                        "& .MuiTableCell-root": {
+                          borderColor: "rgba(255,255,255,0.28)",
+                        },
+                      }}
+                    >
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>{noiseTableLabels.jurisdiction}</TableCell>
+                          <TableCell>{noiseTableLabels.day}</TableCell>
+                          <TableCell>{noiseTableLabels.night}</TableCell>
+                          <TableCell>{noiseTableLabels.where}</TableCell>
+                          <TableCell>{noiseTableLabels.note}</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {(noiseTable.rows ?? []).map((row, ri) => (
+                          <TableRow key={`${row.jurisdiction}-${ri}`}>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.jurisdiction}
+                                  sources={noiseTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.dayDb}
+                                  sources={noiseTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.nightDb}
+                                  sources={noiseTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.measurementPoint}
+                                  sources={noiseTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.sourceNote}
+                                  sources={noiseTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Box>
+              ) : null}
+
+              {section.id === "socioeconomic" && economicTable && economicTableLabels ? (
+                <Box sx={{ mt: 3 }}>
+                  <Typography variant="h6" component="div" sx={{ mb: 2 }}>
+                    <DataCentersRichText
+                      text={economicTable.caption}
+                      sources={economicTableSources ?? []}
+                    />
+                  </Typography>
+                  <TableContainer component={Paper} variant="outlined">
+                    <Table
+                      size="small"
+                      sx={{
+                        "& .MuiTableCell-root": {
+                          borderColor: "rgba(255,255,255,0.28)",
+                        },
+                      }}
+                    >
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>{economicTableLabels.project}</TableCell>
+                          <TableCell>{economicTableLabels.investment}</TableCell>
+                          <TableCell>{economicTableLabels.promised}</TableCell>
+                          <TableCell>{economicTableLabels.actual}</TableCell>
+                          <TableCell>{economicTableLabels.note}</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {(economicTable.rows ?? []).map((row, ri) => (
+                          <TableRow key={`${row.project}-${ri}`}>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.project}
+                                  sources={economicTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.investment}
+                                  sources={economicTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.promisedJobs}
+                                  sources={economicTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.actualOrRevisedJobs}
+                                  sources={economicTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body2" component="div">
+                                <DataCentersRichText
+                                  text={row.sourceNote}
+                                  sources={economicTableSources ?? []}
+                                />
+                              </Typography>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Box>
               ) : null}
 
               <Box sx={{ mt: 3 }}>
