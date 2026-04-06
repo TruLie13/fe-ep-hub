@@ -1,0 +1,532 @@
+{
+  "meta": {
+    "siteTitle": "El Paso Hub | Responsible Data Center Policy",
+    "siteTemplateTitle": "%s | El Paso Hub",
+    "siteDescription": "A community education and advocacy site focused on responsible data center policy, water stewardship, and transparent local civic engagement.",
+    "ogTitle": "El Paso Hub | Responsible Data Center Policy",
+    "ogDescription": "Plain-language resources and local civic information on data center impacts in El Paso.",
+    "twitterDescription": "Learn the local impact of data centers, find official contacts, and support responsible technology growth."
+  },
+  "nav": {
+    "siteName": "El Paso Hub",
+    "siteTagline": "We are all in this together",
+    "home": "Home",
+    "learn": "Learn",
+    "dataCenters": "Data centers",
+    "government": "Government",
+    "pledge": "Pledge",
+    "news": "News",
+    "meetings": "Meetings",
+    "contribute": "Contribute",
+    "takePledge": "Take pledge",
+    "menu": "Menu",
+    "openMenu": "Open menu"
+  },
+  "footer": {
+    "mission": "El Paso Hub supports responsible technology growth, transparent governance, and sustainable water policy.",
+    "joinPledge": "Join the pledge",
+    "contributeTip": "Contribute a tip",
+    "learnBasics": "Learn the basics",
+    "dataCentersImpacts": "Data center impacts",
+    "disclaimer": "This website is created independently for the people of El Paso. This website is not affiliated with the City of El Paso, the County of El Paso, Legistar, Google News, Reddit, or any other organizations or brands referenced on this site.",
+    "ownerBefore": "public interest engineering by ",
+    "ownerBrand": "pi.que llc",
+    "ownerCopyrightRange": " © 2024 - ",
+    "ownerCopyrightEnd": ". all rights reserved."
+  },
+  "newsletter": {
+    "heading": "Email updates",
+    "description": "Get occasional updates on meetings, sources, and actions. We will not sell your email. Unsubscribe anytime once the list is live.",
+    "emailLabel": "Email",
+    "placeholder": "Coming soon",
+    "joinList": "Join list",
+    "help": "Provider integration is deferred; this block reserves UX and consent copy. You can temporarily link out from the button once you have a signup URL."
+  },
+  "common": {
+    "backToTop": "Back to top",
+    "printSavePdf": "Print / Save PDF",
+    "printSummary": "Print summary",
+    "sources": "Sources",
+    "referenceContext": "Reference context",
+    "open": "Open",
+    "continue": "Continue",
+    "openLink": "Open link",
+    "officialPage": "Official page",
+    "ballotpedia": "Ballotpedia",
+    "campaignSite": "Campaign site",
+    "contents": "Contents"
+  },
+  "home": {
+    "metaTitle": "El Paso Hub | Responsible Data Center Policy",
+    "heroTitle": "Data centers, local news, and the civic tools to act",
+    "heroSubtitle": "For El Paso, El Paso County, and nearby communities (including across the state line in New Mexico): plain-language explainers on data centers, curated regional headlines, local elected contacts, and public meeting schedules—so you can get informed and participate before decisions are final.",
+    "startLearning": "Start learning",
+    "takePledge": "Take the pledge",
+    "atAGlance": "At a glance",
+    "atAGlanceBody": "This site is organized around one issue—responsible data center policy in our region—with several ways in: Learn (basics and tradeoffs), News & links, Local government (who represents you), City meetings, plus pledge and contribute. Pick any door; they reinforce each other.",
+    "plainLanguageGuide": "Plain-language guide",
+    "viewRegionalImpacts": "Regional impacts",
+    "howItWorks": {
+      "eyebrow": "How this site is organized",
+      "title": "Understand, stay current, engage",
+      "description": "You do not need to read everything. Use the path that fits your time—each section opens in its own page.",
+      "steps": [
+        {
+          "title": "Understand the basics",
+          "body": "What data centers are, pros and cons, and what matters in a desert border region.",
+          "href": "/learn",
+          "linkLabel": "Go to Learn"
+        },
+        {
+          "title": "Follow what\u2019s happening",
+          "body": "Headlines and curated links so you can see local angles as stories develop.",
+          "href": "/news",
+          "linkLabel": "Go to News"
+        },
+        {
+          "title": "Engage with local government",
+          "body": "Find your representatives, see documented positions, and catch public meetings when decisions are on the table.",
+          "href": "/local-government",
+          "linkLabel": "Local government",
+          "secondaryHref": "/city-meetings",
+          "secondaryLinkLabel": "City meetings"
+        }
+      ]
+    },
+    "quickFacts": {
+      "eyebrow": "Quick facts",
+      "title": "Why neighbors are worried",
+      "description": "Hyperscale sites concentrate water, power, and pollution questions in one place. These six points are the short version.",
+      "desertHeat": {
+        "label": "Concern",
+        "title": "Desert cooling penalty",
+        "description": "Above 100°F, moving heat out of a building costs more energy and often more water than in mild climates—there is no free lunch in the Chihuahuan Desert."
+      },
+      "waterAccounting": {
+        "label": "Concern",
+        "title": "Corporate water math vs local aquifers",
+        "description": "Restoration credits in one part of a basin do not physically refill the aquifer your neighborhood shares with a cooling system unless the permit says so."
+      },
+      "regionalCluster": {
+        "label": "Concern",
+        "title": "A regional power sink",
+        "description": "Very large projects stack demand on the same grid and watershed as growth across the line in southern New Mexico—cumulative stress matters."
+      },
+      "gasAndLoad": {
+        "label": "Concern",
+        "title": "Gas generation and 24/7 load",
+        "description": "Reporting on local utility filings describes proposed gas-fired capacity tied to a major data center; night-time compute still needs power when solar is offline."
+      },
+      "airOzone": {
+        "label": "Concern",
+        "title": "Ozone and backup engines",
+        "description": "El Paso already faces tough ozone planning; adding NOx from new plants and frequent generator tests can make bad air days worse."
+      },
+      "jobsVsSubsidies": {
+        "label": "Concern",
+        "title": "Few jobs per billion",
+        "description": "Regional reporting cites multibillion-dollar campuses (Meta’s El Paso project at about $10B in 2026 press) with only hundreds of net new permanent jobs. Clawbacks should be part of the deal."
+      }
+    },
+    "waterImpact": {
+      "eyebrow": "Water impact",
+      "title": "Why water is a top concern",
+      "description": "When cooling demand rises, planners must weigh household needs, drought cycles, and future growth.",
+      "body": "This campaign pushes for efficiency standards, transparent reporting, and infrastructure choices that protect El Paso residents."
+    }
+  },
+  "learn": {
+    "metaTitle": "Learn",
+    "metaDescription": "Plain-language explainers about data centers, AI, water use, and how to read local infrastructure proposals.",
+    "title": "Learn",
+    "subtitle": "This page walks through what data centers and AI actually are, why they are not inherently harmful, and where the real problems lie, with particular focus on communities in water-stressed regions like El Paso.\n\nEvery section includes sources you can open and verify.",
+    "dc": {
+      "eyebrow": "Data Centers 101",
+      "title": "Data centers",
+      "description": "What they are, where they came from, and why they are not inherently harmful.",
+      "whatTitle": "What is a data center?",
+      "whatP1": "A data center is a building or campus of buildings filled with computers that store and process digital information for companies, governments, or online services. Think of it as a warehouse for computing: servers run 24/7, which means constant electricity and cooling. Cooling often involves water or large air systems, depending on design and climate.",
+      "whatP2": "Every time you send an email, stream a video, check the weather, or process a credit card transaction, a data center somewhere is doing the work behind the scenes.",
+      "historyTitle": "A brief history",
+      "historyP1": "Data centers are not new. The concept dates to the 1940s and 1950s, when room-sized mainframe computers needed dedicated, climate-controlled spaces. Through the 1970s and 1980s, corporate computer rooms grew alongside the minicomputer and early PC era.",
+      "historyP2": "The modern data center took shape in the 1990s with the rise of the internet: companies needed reliable, always-on server rooms to host websites and handle traffic. Colocation facilities appeared, letting multiple companies share the same building, power, and cooling.",
+      "historyP3": "By the 2010s, cloud computing concentrated workloads into massive hyperscale campuses operated by Amazon, Google, Microsoft, and others. Today these campuses can draw hundreds of megawatts, more power than a small city, and the pace of expansion is accelerating.",
+      "badTitle": "Are data centers bad?",
+      "badP1": "No. Data centers enable services that modern society depends on. Hospitals use them for electronic health records and telemedicine. Emergency services rely on them for 911 dispatch routing. Weather modeling, genomics research, financial transaction processing, and government benefits systems all run on data center infrastructure.",
+      "badP2": "Modern life depends on data centers. The civic question is whether a specific facility\u2019s design and location match the local water supply and power grid, with binding commitments rather than vague promises.",
+      "badP3": "A well-sited, efficiently cooled data center in a region with abundant water and renewable energy is a positive economic asset. The same building in a drought-prone desert with a strained grid is a different story entirely."
+    },
+    "ai": {
+      "eyebrow": "AI 101",
+      "title": "AI & machine learning",
+      "description": "What AI actually means, how long it has been around, and why the technology itself is not the problem.",
+      "whatTitle": "What does AI mean here?",
+      "whatP1": "Artificial intelligence, in the way engineers use the term, refers to software that can recognize patterns, make predictions, or automate decisions under uncertainty, without being explicitly programmed for every scenario. Engineers mean statistics and optimization at scale. The popular image of a sentient robot misses how these systems actually work.",
+      "whatP2": "Machine learning (ML) is the most common approach: instead of hand-coding rules, you feed a system large amounts of data and let it find patterns. Deep learning is a subset of ML that uses layered neural networks, the technology behind image recognition, language translation, and tools like ChatGPT.",
+      "historyTitle": "A brief history of the field",
+      "historyP1": "AI is not a product of the 2020s. The field was formally named in 1956 at a Dartmouth College workshop, but the intellectual roots go back further: Alan Turing\u2019s landmark 1950 paper \u201cComputing Machinery and Intelligence\u201d posed the question of whether machines could think.",
+      "historyP2": "From the 1960s through the 1980s, researchers pursued symbolic AI built on hand-crafted rules and expert systems. Results were promising but brittle. Starting in the 1990s, statistical machine learning gained traction as computing power grew and data became more available.",
+      "historyP3": "The deep learning revolution began around 2012 when neural networks dramatically outperformed older methods in image recognition. Since then, deep learning has expanded to natural language, protein folding, autonomous vehicles, and generative media. The field has been active for over 70 years. The recent hype cycle is just the latest chapter.",
+      "everydayTitle": "AI you already use every day",
+      "everydayIntro": "Long before anyone marketed \u201cAI-powered\u201d products, machine learning was quietly embedded in services most people use without thinking about it:",
+      "everydayChips": [
+        "Credit card fraud detection",
+        "Email spam filters",
+        "Netflix and Spotify recommendations",
+        "GPS route optimization",
+        "Voice assistants (Siri, Alexa)",
+        "Auto-correct and predictive text",
+        "Online search ranking",
+        "Photo face grouping",
+        "Language translation",
+        "Weather forecasting models"
+      ],
+      "everydayOutro": "Many layers of the internet and the services built on it rely on statistical and ML methods. The internet itself predates modern ML, but today it depends on these systems for routing, security, content delivery, and more. AI is infrastructure you have been using for years. It only sounds novel when vendors put a fresh label on it."
+    },
+    "realProblems": {
+      "eyebrow": "The real issue",
+      "title": "What we are actually worried about",
+      "description": "Data centers and AI are not the enemy. The problem is irresponsible siting, governance gaps, and corporate hype that inflates demand for rapid expansion.",
+      "overviewDetailLead": "This is a quick overview. For detailed issues visit the ",
+      "overviewDetailLinkLabel": "Data Center page",
+      "sitingTitle": "Wrong place, wrong resources",
+      "sitingP1": "A data center that uses potable water for cooling in a region under chronic drought stress is a fundamentally different proposition than the same building in the Pacific Northwest. El Paso sits in the Chihuahuan Desert, depends on the Rio Grande and the Hueco Bolson aquifer (both under strain), and faces summer temperatures that push cooling demand to its peak.",
+      "sitingP2": "Ask whether this specific facility should consume these specific shared resources in this specific location, and under what enforceable terms. Whether data centers exist in general is already settled; the live debate is about this project and this place.",
+      "hypeTitle": "AI hype and artificial demand",
+      "hypeP1": "The current wave of corporate AI marketing has created a gold-rush atmosphere. Companies are slapping \u201cAI-powered\u201d labels on trivial features such as search bars, email sorting, and photo filters, which either already used ML quietly or barely benefit from it. This marketing inflates the perceived need for new compute capacity.",
+      "hypeP2": "When every company claims it needs cutting-edge AI infrastructure, the aggregate demand projections balloon. Those inflated projections are then used to justify rapid data center expansion, often in regions where the sales pitch outpaces the actual local benefit or resource availability.",
+      "govTitle": "The governance gap",
+      "govP1": "Large infrastructure projects touch shared resources: water, electricity, land, roads, and the community\u2019s quality of life. Environmental justice and critical infrastructure frameworks help communities understand risks and negotiate fair outcomes with accountability at the center.",
+      "govP2": "The gap today is that many municipalities approve data center developments using processes designed for warehouses or light industrial use, without requiring the water, power, and noise commitments that a 24/7 compute facility actually demands."
+    },
+    "localLens": {
+      "eyebrow": "El Paso and the region",
+      "title": "Desert Southwest context",
+      "description": "Why the same facility that works fine in a wet climate can be a serious concern here.",
+      "waterTitle": "Water stress in the region",
+      "waterP1": "El Paso\u2019s water comes primarily from the Rio Grande and the Hueco Bolson aquifer. Both face long-term depletion pressure from population growth, agriculture, and climate change. The city has invested heavily in conservation and reclaimed-water programs, and that progress can be undermined by a single large industrial user drawing potable water for cooling.",
+      "waterP2": "When reviewing a data center proposal, ask whether the facility will use potable or reclaimed water, what its peak daily draw will be, and what happens during drought restrictions.\n\nThese questions go beyond narrow technical detail. They are community survival questions.",
+      "gridTitle": "Grid capacity and cooling",
+      "gridP1": "Summer temperatures in El Paso regularly exceed 100 \u00b0F. Cooling a building full of heat-generating servers in that climate is inherently more energy-intensive than in cooler regions where outside air can supplement mechanical cooling.",
+      "gridP2": "Ask for expected megawatt demand, grid interconnection plans, backup generation fuel type, and how costs or outages could affect residential neighbors. A facility that promises 50 MW today may request 200 MW in phase two, after the initial approvals are locked in."
+    },
+    "engage": {
+      "eyebrow": "Civic toolkit",
+      "title": "How to read a proposal and speak up",
+      "description": "You do not need a technical background. Ask for numbers, timelines, and who enforces them.",
+      "checklistTitle": "The five questions to ask",
+      "questions": [
+        {
+          "q": "How much water will this facility use, and what kind?",
+          "detail": "Ask for annual gallons, peak daily use, whether it is potable or reclaimed, and what happens during drought restrictions."
+        },
+        {
+          "q": "How much electricity will it draw?",
+          "detail": "Ask for megawatt capacity at build-out (not just phase one), grid interconnection details, and backup generation plans."
+        },
+        {
+          "q": "What are the binding commitments?",
+          "detail": "Promises in slide decks are not enforceable. Ask which numbers appear in the zoning conditions, permits, or water-use agreements."
+        },
+        {
+          "q": "Who enforces the terms, and what happens if they are violated?",
+          "detail": "A commitment without an enforcement mechanism and penalties is a suggestion. Ask which agency monitors and what the consequences are."
+        },
+        {
+          "q": "What is the net benefit to this community, specifically?",
+          "detail": "Jobs, tax revenue, and infrastructure improvements should be quantified and compared against resource costs and quality-of-life impacts."
+        }
+      ],
+      "hearingsTitle": "Public hearings and comment periods",
+      "hearingsP1": "Most large developments require public hearings before city council or the county commissioners court. You can attend in person, submit written comments during open comment periods, or both. Your voice is strongest when it references specific numbers (water draw, megawatts, jobs) rather than general opposition.",
+      "hearingsP2": "Check the city and county meeting agendas online. If a data center project is on the agenda, the staff report is usually posted several days before the hearing. Read it. Prepare two or three of the questions above and ask them on the record."
+    },
+    "regionalEvidence": {
+      "eyebrow": "Regional snapshot",
+      "title": "Lessons from other places",
+      "description": "Short summaries with sources. For the full harm analysis, charts, and policy ideas, use the Data centers page.",
+      "fullAnalysisCta": "Open the full Data centers impact page",
+      "waterTitle": "Water: closed-loop language and real makeup",
+      "waterP1": "Marketing may stress a closed fluid path next to servers, but heat still leaves the building. Large daily water permits are a signal that evaporation or makeup water is in the plan—not just pipe fill.",
+      "waterP2": "Corporate “water positive” programs can help habitats elsewhere; they do not automatically protect the Hueco or Mesilla bolson water your neighbors drink unless agreements say so.",
+      "energyTitle": "Energy: filings, gas proposals, and hourly reality",
+      "energyP1": "News reporting on El Paso Electric filings describes modular gas generation and questions about who pays during and after any bridge period. Those details belong in open dockets, not slogans.",
+      "energyP2": "Annual renewable matching is not the same as clean power every hour. Night-time load can still sit on fossil plants without massive storage.",
+      "airTitle": "Air: ozone planning and backup engines",
+      "airP1": "Research in dense data center markets shows generator fleets matter for NOx and particulates. El Paso’s ozone challenges make new combustion worth scrutinizing.",
+      "noiseTitle": "Noise: cities tightening rules after the fact",
+      "noiseP1": "Phoenix-area debates show retrofitting standards after saturation is painful. Measuring at the source property and capping decibels early prevents the Arizona pattern.",
+      "jobsTitle": "Jobs and incentives",
+      "jobsP1": "Press reporting places Meta’s El Paso campus near $10 billion in planned spend while citing on the order of 300 permanent roles as a company promise, not a contractual floor. That is still an extreme capital-per-job ratio if you take the headline at face value. Good Jobs First and similar groups document clawback policies so public money tracks outcomes.",
+      "mandatesTitle": "What El Paso can require",
+      "mandatesP1": "Reclaimed cooling water, intensity limits, public dashboards, clawbacks, and limits on running backup generators for profit are all on the menu—see the full page for a playbook.",
+      "mandatesLink": "Open policy recommendations"
+    },
+    "glossary": {
+      "eyebrow": "Quick reference",
+      "title": "Glossary",
+      "description": "Common terms you will see in data-center, energy, air-quality, and local incentive discussions.",
+      "entries": [
+        { "term": "Chapter 380 agreement", "definition": "Under Texas law, cities may use economic development programs (often called Chapter 380) to offer incentives such as grants or tax rebates tied to a project. Local contracts with a developer are often called the 380 agreement." },
+        { "term": "Clawback", "definition": "Contract terms that let a government recover part of an incentive if a company misses promised jobs, investment, or other targets." },
+        { "term": "Colocation", "definition": "A facility where multiple companies rent rack space and share power, cooling, and physical security rather than building their own building." },
+        { "term": "Data heat island (DHI)", "definition": "A measured pattern where land surface temperatures rise near large AI or hyperscale data centers after they operate, separate from ordinary urban heat. Studies use satellites to compare before and after." },
+        { "term": "Decibel (dBA)", "definition": "A-weighted decibels measure how loud sound seems to human hearing. City noise codes often set dBA limits at a property line or fence." },
+        { "term": "Deep learning", "definition": "A subset of ML using neural networks with many layers. Powers image recognition, language translation, and generative AI tools." },
+        { "term": "Environmental justice", "definition": "The fair treatment of all people regarding environmental laws and siting. It highlights when pollution or industrial burdens fall more heavily on some neighborhoods, often lower-income or historically marginalized." },
+        { "term": "Evapotranspiration", "definition": "Water vapor released by plants and soil. It cools the air naturally; paving and sparse tree cover reduce this cooling in cities." },
+        { "term": "Grid interconnection", "definition": "The utility process to connect a large new electrical customer to transmission and distribution. It can require studies, upgrades, and public rate cases." },
+        { "term": "Ground-level ozone", "definition": "A harmful air pollutant (smog) formed when nitrogen oxides and other compounds react in sunlight and heat. It is not the same as the protective ozone layer high in the atmosphere." },
+        { "term": "Hyperscale", "definition": "A data center operated by a cloud giant (Amazon, Google, Microsoft, Meta) with capacity exceeding 5,000 servers and 10,000+ sq ft, often much larger." },
+        { "term": "Land surface temperature (LST)", "definition": "Temperature of the ground, roofs, or other surfaces as measured from satellites or sensors. It can differ from air temperature in the shade and is used in heat and data-center impact research." },
+        { "term": "Machine learning (ML)", "definition": "A subset of AI where systems learn patterns from data instead of following hand-written rules. Most modern AI applications are ML-based." },
+        { "term": "Megawatt (MW)", "definition": "A unit of power equal to one million watts. A single large data center can draw 50\u2013200 MW, comparable to tens of thousands of homes." },
+        { "term": "Nitrogen oxides (NOx)", "definition": "Pollutants from fuel combustion (including backup generators and power plants). They help form ground-level ozone and particle pollution." },
+        { "term": "Non-attainment area", "definition": "An EPA designation for a region that does not meet a federal air quality standard until plans reduce pollution enough." },
+        { "term": "PM2.5", "definition": "Fine particulate matter 2.5 microns or smaller. It can penetrate deep into lungs and is tracked in air quality indexes." },
+        { "term": "Potable vs. reclaimed water", "definition": "Potable water is treated to drinking standards. Reclaimed (or recycled) water is treated wastewater reused for industrial cooling, which is often the better fit for data centers." },
+        { "term": "PUE (Power Usage Effectiveness)", "definition": "The ratio of total facility energy to IT equipment energy. A PUE of 1.0 is perfect efficiency; most facilities land between 1.2 and 1.6. Lower is better." },
+        { "term": "Renewable Energy Certificate (REC)", "definition": "A market instrument tied to renewable generation attributes. Buying RECs for annual matching does not by itself prove clean power every hour unless contracts require hourly alignment." },
+        { "term": "Training vs. inference", "definition": "Training is the computationally intense phase where an AI model learns from data. Inference is using the trained model for everyday predictions. Per request, inference is much lighter, but aggregate volume is huge." },
+        { "term": "Urban heat island (UHI)", "definition": "The tendency of built areas to stay warmer than nearby open land because of pavement, buildings, waste heat, and less plant cooling." },
+        { "term": "WUE (Water Usage Effectiveness)", "definition": "Water use divided by IT energy, often reported in liters per kilowatt-hour (L/kWh). It describes how much cooling water a site needs per unit of computing; lower usually means better efficiency." }
+      ]
+    },
+    "sections": [
+      {
+        "id": "data-centers",
+        "title": "Data centers",
+        "eyebrow": "Data Centers 101",
+        "subsections": [
+          { "id": "dc-what", "title": "What is a data center?" },
+          { "id": "dc-history", "title": "A brief history" },
+          { "id": "dc-not-the-enemy", "title": "Are data centers bad?" }
+        ]
+      },
+      {
+        "id": "artificial-intelligence",
+        "title": "AI & machine learning",
+        "eyebrow": "AI 101",
+        "subsections": [
+          { "id": "ai-what", "title": "What does AI mean here?" },
+          { "id": "ai-history", "title": "A brief history of the field" },
+          { "id": "ai-everyday", "title": "AI you already use every day" }
+        ]
+      },
+      {
+        "id": "real-problems",
+        "title": "What we are actually worried about",
+        "eyebrow": "The real issue",
+        "subsections": [
+          { "id": "rp-siting", "title": "Wrong place, wrong resources" },
+          { "id": "rp-hype", "title": "AI hype and artificial demand" },
+          { "id": "rp-governance", "title": "The governance gap" }
+        ]
+      },
+      {
+        "id": "local-lens",
+        "title": "Desert Southwest context",
+        "eyebrow": "El Paso and the region",
+        "subsections": [
+          { "id": "ll-water-stress", "title": "Water stress in the region" },
+          { "id": "ll-grid", "title": "Grid capacity and cooling" }
+        ]
+      },
+      {
+        "id": "regional-evidence",
+        "title": "Lessons from other places",
+        "eyebrow": "Regional snapshot",
+        "subsections": [
+          { "id": "re-water", "title": "Water: permits and accounting" },
+          { "id": "re-energy", "title": "Energy: grid and filings" },
+          { "id": "re-air", "title": "Air quality" },
+          { "id": "re-noise", "title": "Noise ordinances" },
+          { "id": "re-jobs", "title": "Jobs and incentives" },
+          { "id": "re-mandates", "title": "What El Paso can require" }
+        ]
+      },
+      {
+        "id": "how-to-engage",
+        "title": "How to read a proposal and speak up",
+        "eyebrow": "Civic toolkit",
+        "subsections": [
+          { "id": "engage-checklist", "title": "The five questions to ask" },
+          { "id": "engage-hearings", "title": "Public hearings and comment periods" }
+        ]
+      },
+      {
+        "id": "glossary",
+        "title": "Glossary",
+        "eyebrow": "Quick reference",
+        "subsections": []
+      }
+    ]
+  },
+  "dataCentersPage": {
+    "metaTitle": "Data centers and regional impact",
+    "metaDescription": "Water, power, air, noise, and incentive risks from hyperscale data centers in the desert border region—and practical policies El Paso can adopt.",
+    "title": "Data centers and regional impact",
+    "yearBadge": "2026",
+    "subtitle": "This page turns research and public reporting into a readable guide: how cooling works in desert heat, why grid and air questions stack up at the border, and what stronger oversight can look like. Every section lists sources you can verify.",
+    "statsLabel": "Key figures",
+    "highlightsLabel": "Takeaways",
+    "tocLabel": "On this page",
+    "tocExpandSections": "Show section list",
+    "tocCollapseSections": "Hide section list",
+    "tableNoiseJurisdiction": "Jurisdiction",
+    "tableNoiseDay": "Day",
+    "tableNoiseNight": "Night",
+    "tableNoiseWhere": "Where measured",
+    "tableNoiseNote": "Notes",
+    "tableEconProject": "Project",
+    "tableEconInvestment": "Investment (reported)",
+    "tableEconPromised": "Promised jobs",
+    "tableEconActual": "Actual / revised",
+    "tableEconNote": "Notes",
+    "learnLinkTitle": "Back to basics",
+    "learnLinkBody": "If terms like PUE, hyperscale, or RECs are new, the Learn page walks through definitions with citations.",
+    "learnLinkCta": "Go to Learn — basics and regional snapshot",
+    "engageLinkTitle": "Speak in public process",
+    "engageLinkBody": "When utilities or councils post agendas, comments carry more weight when they cite docket numbers and measurable limits.",
+    "engageLinkCta": "View city meetings"
+  },
+  "localGov": {
+    "metaTitle": "Local Government",
+    "metaDescription": "El Paso mayor and city council, plus El Paso County Commissioners Court \u2014 contacts, election timing, and stance notes.",
+    "title": "Local government",
+    "subtitle": "City offices (mayor and council) are listed separately from El Paso County (County Judge and commissioners). Contacts come from official city and county pages.",
+    "updateNote": "content/data/local-government.json",
+    "updateSuffix": "when rosters or elections change. The file nests each seat under city or county with sitting and running lists.",
+    "onBallotThisYear": "Election this year",
+    "notedElectionDate": "Noted election date:",
+    "email": "Email:",
+    "phone": "Phone:",
+    "publicStanceNotes": "Public Stance on Data Centers",
+    "noStances": "Want to know their stance? Reach out to them directly, then use the {contributeLink} page to share what they said (later our contribute form will accept images).",
+    "declaredForSeat": "Declared for this seat",
+    "vacantMessage": "Vacant \u2014 add a sitting official in the bundle when known.",
+    "cityEyebrow": "City government",
+    "cityTitle": "City of El Paso",
+    "cityDescription": "Mayor and eight city representatives (one per district). Phone numbers follow the city\u2019s district line pattern (915) 212-0001 through 212-0008.",
+    "cityCouncil": "City Council",
+    "countyEyebrow": "County government",
+    "countyTitle": "El Paso County",
+    "countyDescription": "The Commissioners Court includes the County Judge and four commissioners (Precincts 1\u20134). County roles often touch roads, unincorporated areas, and the county budget alongside city decisions.",
+    "commissionersCourt": "Commissioners Court",
+    "term": "Term:",
+    "liveDataNote": "Council Offices` roster verified via El Paso Legistar.",
+    "electionSeasonEyebrow": "Election season",
+    "electionSeasonTitle": "Candidates in active cycles",
+    "electionSeasonDescription": "Shown only when activeElectionCycleIds is non-empty in the local government bundle.",
+    "findRepsTitle": "How to find my representatives",
+    "findRepsDescription": "Your city and county representatives depend on where you live. The links below help you see which boundaries apply to your address.\n\nOnce you find your district, you can use the City Government and County Government sections to know who your representatives are.",
+    "findCityDistrict": "Find your city district",
+    "findCityDistrictHint": "City of El Paso interactive map (ArcGIS Experience).",
+    "findCountyPrecinct": "Find your county precinct",
+    "findCountyPrecinctHint": "El Paso County Elections commissioner precinct maps."
+  },
+  "pledge": {
+    "metaTitle": "Pledge",
+    "metaDescription": "Resident and business pledge pathways for transparent, efficient data center policy in El Paso. Live signup arrives in a later phase.",
+    "title": "Pledge",
+    "subtitle": "This page is static for now: it explains what pledges will mean and reserves space for supporter counts once a backend is connected.",
+    "apiNote": "Live submissions, moderation, and public name displays will ship with the API phase. For now, use this page to communicate expectations and collect interest informally.",
+    "residentTitle": "Resident pledge",
+    "residentBody": "A simple commitment to share accurate information, attend public meetings when possible, and ask for source-backed answers on water and power impacts.",
+    "supportersComingSoon": "Supporters (coming soon)",
+    "placeholderCount": "Placeholder count: \u2014",
+    "residentFuture": "Future: optional public name display with consent + moderation queue.",
+    "businessTitle": "Business & organization pledge",
+    "businessBody": "A pathway for local businesses and groups to signal support for efficiency standards, transparent reporting, and community accountability.",
+    "orgsComingSoon": "Organizations (coming soon)",
+    "efficiencyTbd": "Efficiency commitments TBD",
+    "businessFuture": "Future: badges for websites/social + efficiency promise language you approve.",
+    "newsletterEyebrow": "Stay connected",
+    "newsletterTitle": "Newsletter (static phase)",
+    "newsletterDescription": "Join the interest list while we connect a provider."
+  },
+  "news": {
+    "metaTitle": "News",
+    "metaDescription": "r/ElPaso posts and data-center coverage from Google News related to El Paso.",
+    "title": "News & links",
+    "subtitle": "Reddit posts and Google News coverage. All links open in a new tab.",
+    "redditSection": "Reddit curated posts",
+    "redditNote": "Posts by u/Tru_Lie in r/ElPaso. Opens on Reddit in a new tab.",
+    "redditAllLoaded": "That's all {count} Reddit posts.",
+    "videoPost": "Video",
+    "feedSection": "Recent coverage",
+    "feedNote": "Automatically sourced from Google News. Inclusion does not imply endorsement.",
+    "showMoreFeed": "Show more",
+    "feedAllLoaded": "That's all {count} recent articles.",
+    "noFeedResults": "No recent data-center articles found.",
+    "lastUpdatedNote": "Feeds refresh about every {minutes} minutes. Dates reflect each source.",
+    "redditLoadError": "Unable to load Reddit posts right now.",
+    "googleLoadError": "Unable to load Google News results right now."
+  },
+  "cityMeetings": {
+    "metaTitle": "City Meetings",
+    "metaDescription": "Upcoming and recent City of El Paso public meetings, hearings, and board sessions pulled live from the Legistar calendar.",
+    "title": "City meetings",
+    "subtitle": "Live meeting data from the City of El Paso Legistar calendar. Meetings are sorted by date with upcoming events first.",
+    "sourceNote": "Data provided by",
+    "sourceLabel": "El Paso Legistar",
+    "upcoming": "Upcoming",
+    "recent": "Recent",
+    "cancelled": "Cancelled",
+    "agenda": "Agenda",
+    "minutes": "Minutes",
+    "video": "Video",
+    "viewDetails": "View on Legistar",
+    "location": "Location",
+    "noUpcoming": "No upcoming meetings found.",
+    "officialScheduleDisclaimer": "This list follows the public Legistar API and may not show every scheduled meeting. For the official schedule, see the",
+    "officialCalendarLinkLabel": "Legistar calendar",
+    "noRecent": "No recent meetings found.",
+    "loadError": "Unable to load meetings right now. Please try again later.",
+    "allDay": "All day",
+    "participateTitle": "How to speak at City Council meetings",
+    "participateDescriptionOpen": "Sign-up forms open at 12:00 p.m. on the Wednesday before the City Council meeting.",
+    "participateDescriptionDeadline": "The deadline to sign up is 9:00 a.m. on the day of the City Council meeting.",
+    "signUpUnknown": "The next City Council meeting is not in our feed. The sign-up form links may not be active, until they re-open.  ",
+    "signUpClosedBefore": "Sign-up opens {opensDay} at 12:00 p.m. Mountain Time.",
+    "signUpOpen": "Sign-up is open for the meeting on {meetingDate}. Forms close at 9:00 a.m. on the day of the meeting.",
+    "signUpClosedAfter": "Sign-up for the City Council meeting on {meetingDate} has closed.",
+    "callToPublic": "Call to the public",
+    "callToPublicHint": "Speak on a city-related item that is NOT on the agenda.",
+    "speakOnItem": "Speak on an agenda item",
+    "speakOnItemHint": "Speak on an item that IS listed on the meeting agenda.",
+    "submitStatement": "Submit a written statement",
+    "submitStatementHint": "Submit a statement on an agenda item in writing instead of speaking.",
+    "clerkPage": "City Clerk forms & documents page",
+    "agendaItems": "Agenda items",
+    "fullAgendaPdf": "Full agenda (PDF)",
+    "loadingItems": "Loading agenda items…",
+    "noItems": "No agenda items available for this meeting.",
+    "itemsError": "Unable to load agenda items.",
+    "close": "Close",
+    "item": "Item",
+    "action": "Action",
+    "result": "Result",
+    "passed": "Passed",
+    "failed": "Failed",
+    "addToCalendar": "Add to calendar",
+    "share": "Share",
+    "copied": "Copied!"
+  },
+  "contribute": {
+    "metaTitle": "Contribute",
+    "metaDescription": "Submit tips for review or contribute improvements via GitHub.",
+    "title": "Contribute",
+    "subtitle": "Help keep this site accurate. Tips are reviewed before anything is published. Code and content improvements can also flow through GitHub.",
+    "tipTitle": "Submit a tip (reviewed)",
+    "tipBody": "This form is a UI placeholder \u2014 wire it to email, Airtable, or an API route when you are ready. For now it helps neighbors understand the intended workflow.",
+    "nameLabel": "Your name (optional)",
+    "emailLabel": "Email (optional)",
+    "messageLabel": "What did you notice?",
+    "sendTip": "Send tip (coming soon)",
+    "githubTitle": "Contribute via GitHub",
+    "githubBody": "Open an issue for corrections or discussion, or propose edits directly if the repository is public.",
+    "githubButton": "Replace with your repository link",
+    "modNote": "When you enable submissions, add spam protection and a clear moderation policy aligned with your legal and community guidelines."
+  }
+}

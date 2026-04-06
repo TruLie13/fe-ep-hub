@@ -1,0 +1,22 @@
+/* Handout-friendly printing: hide chrome, simplify layout */
+@media print {
+  .print-hide {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75rem;
+    word-break: break-all;
+  }
+
+  .printable-root {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}

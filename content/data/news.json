@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "links": [
+    {
+      "id": "news-placeholder-1",
+      "headline": "Replace with your first curated link",
+      "url": "https://www.reddit.com/",
+      "outlet": "Community / Reddit",
+      "summary": "Add a short note on why this thread or post matters for El Paso residents.",
+      "tags": ["community"],
+      "provenance": "repo"
+    },
+    {
+      "id": "news-placeholder-2",
+      "headline": "Local outlet coverage (add URL)",
+      "url": "https://www.elpasotimes.com/",
+      "outlet": "El Paso Times",
+      "summary": "Summarize the angle and date when you add a real article.",
+      "tags": ["press"],
+      "provenance": "repo"
+    }
+  ]
+}

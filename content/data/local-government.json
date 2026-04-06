@@ -1,0 +1,550 @@
+{
+  "schemaVersion": 2,
+  "electionCycles": [
+    {
+      "id": "cycle-2026-general",
+      "label": "November 2026 general (city & county)",
+      "electionDate": "2026-11-03"
+    }
+  ],
+  "activeElectionCycleIds": [],
+  "candidates": [],
+  "city": {
+    "mayor": {
+      "sitting": {
+        "id": "city-mayor-renard-johnson",
+        "displayName": "Renard U. Johnson",
+        "roleTitle": "Mayor of El Paso",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "mayor@elpasotexas.gov",
+          "officeUrl": "https://www.elpasotexas.gov/government/mayor/",
+          "phone": "(915) 212-0021"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Renard_Johnson",
+        "nextElectionDate": "2028-11-07",
+        "stanceIds": [
+          "stance-city-mayor-renard-johnson-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    },
+    "district1": {
+      "sitting": {
+        "id": "city-council-d1",
+        "displayName": "Alejandra Chávez",
+        "roleTitle": "City Council Representative — District 1",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "district1@elpasotexas.gov",
+          "phone": "(915) 212-0001",
+          "officeUrl": "https://www.elpasotexas.gov/government/district-1/"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Alejandra_Ch%C3%A1vez",
+        "nextElectionDate": "2026-11-03",
+        "stanceIds": [
+          "stance-city-council-d1-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    },
+    "district2": {
+      "sitting": {
+        "id": "city-council-d2",
+        "displayName": "Dr. Josh Acevedo",
+        "roleTitle": "City Council Representative — District 2",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "district2@elpasotexas.gov",
+          "phone": "(915) 212-0002",
+          "officeUrl": "https://www.elpasotexas.gov/government/district-2/"
+        },
+        "nextElectionDate": "2028-11-07",
+        "stanceIds": [
+          "stance-city-council-d2-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo",
+        "ballotpediaUrl": "https://ballotpedia.org/Joshua_Acevedo"
+      },
+      "running": []
+    },
+    "district3": {
+      "sitting": {
+        "id": "city-council-d3",
+        "displayName": "Deanna Maldonado-Rocha",
+        "roleTitle": "City Council Representative — District 3",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "district3@elpasotexas.gov",
+          "phone": "(915) 212-0003",
+          "officeUrl": "https://www.elpasotexas.gov/government/district-3/"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Deanna_Maldonado-Rocha",
+        "nextElectionDate": "2028-11-07",
+        "stanceIds": [
+          "stance-city-council-d3-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    },
+    "district4": {
+      "sitting": {
+        "id": "city-council-d4",
+        "displayName": "Cynthia Boyar Trejo",
+        "roleTitle": "City Council Representative — District 4",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "district4@elpasotexas.gov",
+          "phone": "(915) 212-0004",
+          "officeUrl": "https://www.elpasotexas.gov/government/district-4/"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Cynthia_Boyar_Trejo",
+        "nextElectionDate": "2028-11-07",
+        "stanceIds": [
+          "stance-city-council-d4-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    },
+    "district5": {
+      "sitting": {
+        "id": "city-council-d5",
+        "displayName": "Ivan Niño",
+        "roleTitle": "City Council Representative — District 5",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "district5@elpasotexas.gov",
+          "phone": "(915) 212-0005",
+          "officeUrl": "https://www.elpasotexas.gov/government/district-5/"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Ivan_Ni%C3%B1o",
+        "nextElectionDate": "2026-11-03",
+        "stanceIds": [
+          "stance-city-council-d5-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    },
+    "district6": {
+      "sitting": {
+        "id": "city-council-d6",
+        "displayName": "Art Fierro",
+        "roleTitle": "City Council Representative — District 6",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "district6@elpasotexas.gov",
+          "phone": "(915) 212-0006",
+          "officeUrl": "https://www.elpasotexas.gov/government/district-6/"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Art_Fierro",
+        "nextElectionDate": "2026-11-03",
+        "stanceIds": [
+          "stance-city-council-d6-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    },
+    "district7": {
+      "sitting": {
+        "id": "city-council-d7",
+        "displayName": "Lily Limón",
+        "roleTitle": "City Council Representative — District 7",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "district7@elpasotexas.gov",
+          "phone": "(915) 212-0007",
+          "officeUrl": "https://www.elpasotexas.gov/government/district-7/"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Lily_Limon",
+        "nextElectionDate": "2028-11-07",
+        "stanceIds": [
+          "stance-city-council-d7-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    },
+    "district8": {
+      "sitting": {
+        "id": "city-council-d8",
+        "displayName": "Chris Canales",
+        "roleTitle": "City Council Representative — District 8",
+        "jurisdiction": "City of El Paso",
+        "contact": {
+          "email": "district8@elpasotexas.gov",
+          "phone": "(915) 212-0008",
+          "officeUrl": "https://www.elpasotexas.gov/government/district-8/"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Chris_Canales",
+        "nextElectionDate": "2026-11-03",
+        "stanceIds": [
+          "stance-city-council-d8-dc"
+        ],
+        "sourceIds": [
+          "el-paso-city-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    }
+  },
+  "county": {
+    "countyJudge": {
+      "sitting": {
+        "id": "county-judge-ricardo-samaniego",
+        "displayName": "Ricardo Samaniego",
+        "roleTitle": "El Paso County Judge",
+        "jurisdiction": "El Paso County",
+        "contact": {
+          "email": "countyjudge@epcounty.com",
+          "officeUrl": "https://www.epcounty.com/judge/",
+          "phone": "(915) 546-2000"
+        },
+        "ballotpediaUrl": "https://ballotpedia.org/Ricardo_Samaniego",
+        "nextElectionDate": "2026-11-03",
+        "stanceIds": [
+          "stance-county-judge-ricardo-samaniego-dc"
+        ],
+        "sourceIds": [
+          "el-paso-county-gov"
+        ],
+        "provenance": "repo"
+      },
+      "running": []
+    },
+    "precinct1": {
+      "sitting": {
+        "id": "county-comm-p1",
+        "displayName": "Jacqueline “Jackie” Butler",
+        "roleTitle": "County Commissioner — Precinct 1",
+        "jurisdiction": "El Paso County",
+        "contact": {
+          "email": "commissioner1@epcounty.com",
+          "officeUrl": "https://www.epcounty.com/comm1/",
+          "phone": "(915) 546-2000"
+        },
+        "nextElectionDate": "2028-11-05",
+        "stanceIds": [
+          "stance-county-comm-p1-dc"
+        ],
+        "sourceIds": [
+          "el-paso-county-gov"
+        ],
+        "provenance": "repo",
+        "ballotpediaUrl": "https://ballotpedia.org/Jackie_Arroyo_Butler"
+      },
+      "running": []
+    },
+    "precinct2": {
+      "sitting": {
+        "id": "county-comm-p2",
+        "displayName": "David Stout",
+        "roleTitle": "County Commissioner — Precinct 2",
+        "jurisdiction": "El Paso County",
+        "contact": {
+          "email": "commissioner2@epcounty.com",
+          "officeUrl": "https://www.epcounty.com/comm2/",
+          "phone": "(915) 546-2000"
+        },
+        "nextElectionDate": "2026-11-03",
+        "stanceIds": [
+          "stance-county-comm-p2-dc"
+        ],
+        "sourceIds": [
+          "el-paso-county-gov"
+        ],
+        "provenance": "repo",
+        "ballotpediaUrl": "https://ballotpedia.org/David_Stout"
+      },
+      "running": []
+    },
+    "precinct3": {
+      "sitting": {
+        "id": "county-comm-p3",
+        "displayName": "Iliana Holguin",
+        "roleTitle": "County Commissioner — Precinct 3",
+        "jurisdiction": "El Paso County",
+        "contact": {
+          "email": "commissioner3@epcounty.com",
+          "officeUrl": "https://www.epcounty.com/comm3/",
+          "phone": "(915) 546-2000"
+        },
+        "nextElectionDate": "2028-11-05",
+        "stanceIds": [
+          "stance-county-comm-p3-dc"
+        ],
+        "sourceIds": [
+          "el-paso-county-gov"
+        ],
+        "provenance": "repo",
+        "ballotpediaUrl": "https://ballotpedia.org/Iliana_Holguin"
+      },
+      "running": []
+    },
+    "precinct4": {
+      "sitting": {
+        "id": "county-comm-p4",
+        "displayName": "Sergio Coronado",
+        "roleTitle": "County Commissioner — Precinct 4",
+        "jurisdiction": "El Paso County",
+        "contact": {
+          "email": "commissioner4@epcounty.com",
+          "officeUrl": "https://www.epcounty.com/comm4/",
+          "phone": "(915) 546-2000"
+        },
+        "nextElectionDate": "2026-11-03",
+        "stanceIds": [
+          "stance-county-comm-p4-dc"
+        ],
+        "sourceIds": [
+          "el-paso-county-gov"
+        ],
+        "provenance": "repo",
+        "ballotpediaUrl": "https://ballotpedia.org/Sergio_Coronado"
+      },
+      "running": []
+    }
+  },
+  "stances": [
+    {
+      "id": "stance-city-mayor-renard-johnson-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "Add a verified quote, vote, or public statement from the mayor’s office once you have a primary source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-mayor-renard-johnson"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d1-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d1"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d2-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d2"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d3-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d3"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d4-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d4"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d5-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d5"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d6-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d6"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d7-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d7"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d8-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d8"
+      },
+      "sourceIds": [
+        "el-paso-city-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-county-judge-ricardo-samaniego-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "Add a verified quote, vote, or public statement from the County Judge’s office or Commissioners Court record.",
+      "subject": {
+        "type": "official",
+        "officialId": "county-judge-ricardo-samaniego"
+      },
+      "sourceIds": [
+        "el-paso-county-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-county-comm-p1-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the commissioner for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "county-comm-p1"
+      },
+      "sourceIds": [
+        "el-paso-county-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-county-comm-p2-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "2026 election cycle: confirm the incumbent for Precinct 2 after the November general election and update contact info.",
+      "subject": {
+        "type": "official",
+        "officialId": "county-comm-p2"
+      },
+      "sourceIds": [
+        "el-paso-county-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-county-comm-p3-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the commissioner for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "county-comm-p3"
+      },
+      "sourceIds": [
+        "el-paso-county-gov"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-county-comm-p4-dc",
+      "topicKey": "data-center-efficiency",
+      "topicLabel": "Data center siting & efficiency",
+      "position": "unknown",
+      "summary": "No verified public position captured yet — ask the commissioner for a written stance and link the source.",
+      "subject": {
+        "type": "official",
+        "officialId": "county-comm-p4"
+      },
+      "sourceIds": [
+        "el-paso-county-gov"
+      ],
+      "provenance": "repo"
+    }
+  ]
+}

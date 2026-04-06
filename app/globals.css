@@ -1,0 +1,44 @@
+html {
+  height: 100%;
+  /* Avoid layout width jumping when scrollability toggles (e.g. in-page UI changes height). */
+  scrollbar-gutter: stable;
+  /* iOS / Chrome: remove gray-blue flash on tap (focus styling stays for keyboard below). */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Pointer/touch: no browser focus ring. Keyboard users still get :focus-visible. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Do not use `* { padding: 0 }` — it fights MUI Container gutters and makes mobile layouts feel “crashed into” the screen edges. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.22);
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "doe-datacenter-energy",
+      "kind": "gov_doc",
+      "title": "U.S. Department of Energy — data center and IT energy use",
+      "url": "https://www.energy.gov/eere/buildings/data-centers-and-servers",
+      "publisher": "U.S. DOE",
+      "relevanceNote": "Federal overview of why large facilities draw significant electricity.",
+      "citationLabel": "U.S. Department of Energy, Data Centers and Servers",
+      "provenance": "repo"
+    },
+    {
+      "id": "usgs-water-use",
+      "kind": "dataset",
+      "title": "USGS — Water use in the United States",
+      "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+      "publisher": "USGS",
+      "relevanceNote": "National context for water demand and regional stress.",
+      "citationLabel": "USGS Water Use in the United States",
+      "provenance": "repo"
+    },
+    {
+      "id": "epa-ej",
+      "kind": "gov_doc",
+      "title": "EPA — Environmental justice resources",
+      "url": "https://www.epa.gov/environmentaljustice",
+      "publisher": "U.S. EPA",
+      "relevanceNote": "Framework for community health and equity in siting decisions.",
+      "citationLabel": "U.S. EPA Environmental Justice",
+      "provenance": "repo"
+    },
+    {
+      "id": "cisa-critical-infra",
+      "kind": "gov_doc",
+      "title": "CISA — Critical infrastructure security and resilience",
+      "url": "https://www.cisa.gov/topics/critical-infrastructure-security-and-resilience",
+      "publisher": "CISA",
+      "relevanceNote": "How large digital infrastructure is categorized for resilience planning.",
+      "citationLabel": "CISA Critical Infrastructure Overview",
+      "provenance": "repo"
+    },
+    {
+      "id": "dc-history-computerworld",
+      "kind": "article",
+      "title": "The evolution of the data center",
+      "url": "https://www.computerworld.com/article/2593823/data-center-evolution.html",
+      "publisher": "Computerworld",
+      "relevanceNote": "Overview of the mainframe-to-hyperscale progression over six decades.",
+      "citationLabel": "Computerworld — The Evolution of the Data Center",
+      "provenance": "repo"
+    },
+    {
+      "id": "dc-uptime-benefits",
+      "kind": "report",
+      "title": "Uptime Institute — Data centers and the public good",
+      "url": "https://uptimeinstitute.com/resources/research-and-reports",
+      "publisher": "Uptime Institute",
+      "relevanceNote": "Industry research on positive societal roles of data center infrastructure.",
+      "citationLabel": "Uptime Institute Research",
+      "provenance": "repo"
+    },
+    {
+      "id": "ai-stanford-overview",
+      "kind": "report",
+      "title": "Stanford HAI — Artificial Intelligence Index Report",
+      "url": "https://aiindex.stanford.edu/report/",
+      "publisher": "Stanford University HAI",
+      "relevanceNote": "Annual overview of AI progress, adoption, and societal impact.",
+      "citationLabel": "Stanford HAI AI Index Report",
+      "provenance": "repo"
+    },
+    {
+      "id": "ai-turing-1950",
+      "kind": "article",
+      "title": "Alan Turing — Computing Machinery and Intelligence (1950)",
+      "url": "https://academic.oup.com/mind/article/LIX/236/433/986238",
+      "publisher": "Oxford Academic / Mind",
+      "relevanceNote": "The foundational paper that launched the field of artificial intelligence.",
+      "citationLabel": "Turing, \"Computing Machinery and Intelligence\" (1950)",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-city-gov",
+      "kind": "gov_doc",
+      "title": "City of El Paso — Government",
+      "url": "https://www.elpasotexas.gov/government/",
+      "publisher": "City of El Paso",
+      "relevanceNote": "Official roster pages for the mayor and city representatives.",
+      "citationLabel": "City of El Paso Government",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-county-gov",
+      "kind": "gov_doc",
+      "title": "County of El Paso — Commissioners Court",
+      "url": "https://www.epcounty.com/",
+      "publisher": "El Paso County",
+      "relevanceNote": "Official county government site for the County Judge and commissioners.",
+      "citationLabel": "County of El Paso",
+      "provenance": "repo"
+    },
+    {
+      "id": "texas-tribune-meta-gas-2026",
+      "kind": "article",
+      "title": "Plan to run El Paso data center on natural gas sparks concern",
+      "url": "https://www.texastribune.org/2026/01/26/texas-el-paso-meta-data-center-natural-gas-power-plant/",
+      "publisher": "The Texas Tribune",
+      "relevanceNote": "Reporting on proposed natural gas generation tied to a large El Paso data center and community concerns.",
+      "citationLabel": "Texas Tribune — Meta data center and natural gas (2026)",
+      "provenance": "repo"
+    },
+    {
+      "id": "cbs-el-paso-los-angeles-polluted-2025",
+      "kind": "article",
+      "title": "CBS News — El Paso, Los Angeles among the most polluted U.S. cities (2025 report)",
+      "url": "https://www.cbsnews.com/news/el-paso-los-angeles-among-most-polluted-us-cities-2025-air-quality-report/",
+      "publisher": "CBS News",
+      "relevanceNote": "IQAir coverage; El Paso ranking and 2025 dust-storm pollution spike context.",
+      "citationLabel": "CBS News — El Paso air pollution and IQAir (2025)",
+      "provenance": "repo"
+    },
+    {
+      "id": "wri-data-centers-us-communities-2026",
+      "kind": "article",
+      "title": "World Resources Institute — Seven ways data centers affect U.S. communities",
+      "url": "https://tools.wri.org/insights/us-data-center-growth-impacts",
+      "publisher": "World Resources Institute",
+      "relevanceNote": "Energy, air quality, water, and community-scale impacts of U.S. data center growth.",
+      "citationLabel": "WRI — U.S. data center growth and community impacts",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-matters-meta-epe-filings",
+      "kind": "article",
+      "title": "El Paso Electric filings detail power plant impact behind Meta’s data center",
+      "url": "https://elpasomatters.org/2026/03/29/meta-data-center-el-paso-10-billion-expansion-water-gas-electricity-usage/",
+      "publisher": "El Paso Matters",
+      "relevanceNote": "Local reporting on utility filings, generation design, and ratepayer questions.",
+      "citationLabel": "El Paso Matters — EPE filings and Meta expansion",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-matters-air-quality-rank-2025",
+      "kind": "article",
+      "title": "El Paso ranked among most-polluted major U.S. cities (IQAir 2024)",
+      "url": "https://elpasomatters.org/2025/03/12/el-paso-air-quality-rank-dust-pollution-wind-weather/",
+      "publisher": "El Paso Matters",
+      "relevanceNote": "IQAir 2024: El Paso 9th among major U.S. metros for PM2.5 (7.8 µg/m³); LA worst US; Chamizal/Socorro monitor records in 2025 dust; sparse Texas monitoring network.",
+      "citationLabel": "El Paso Matters — El Paso air quality ranking and PM2.5 (Mar 2025)",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-times-epe-power-plant",
+      "kind": "article",
+      "title": "El Paso Electric to build power plant for Meta data center complex",
+      "url": "https://www.elpasotimes.com/story/money/business/2026/03/26/el-paso-electric-to-build-power-plant-in-record-10-months-for-meta-platforms-data-center-complex/89212335007/",
+      "publisher": "El Paso Times",
+      "relevanceNote": "News coverage of proposed rapid-build gas generation for a large local data center.",
+      "citationLabel": "El Paso Times — EPE power plant and Meta",
+      "provenance": "repo"
+    },
+    {
+      "id": "cnbc-meta-el-paso-10b-2026",
+      "kind": "article",
+      "title": "Meta boosts investment in West Texas AI data center to $10 billion",
+      "url": "https://www.cnbc.com/2026/03/26/meta-to-spend-10-billion-on-ai-data-center-in-el-paso-1gw-by-2028.html",
+      "publisher": "CNBC",
+      "relevanceNote": "Reports Meta’s El Paso AI data center at about $10B, ~1 GW by 2028, and on the order of 300 new jobs (Mar 2026).",
+      "citationLabel": "CNBC — Meta El Paso AI data center ($10B, Mar 2026)",
+      "provenance": "repo"
+    },
+    {
+      "id": "epa-green-book-nonattainment",
+      "kind": "gov_doc",
+      "title": "EPA Green Book — nonattainment areas for criteria pollutants",
+      "url": "https://www.epa.gov/green-book",
+      "publisher": "U.S. EPA",
+      "relevanceNote": "Official reference for ozone and other nonattainment designations used in air quality planning.",
+      "citationLabel": "U.S. EPA Green Book",
+      "provenance": "repo"
+    },
+    {
+      "id": "good-jobs-first-clawbacks",
+      "kind": "report",
+      "title": "Good Jobs First — clawbacks and accountability in economic development",
+      "url": "https://www.goodjobsfirst.org/",
+      "publisher": "Good Jobs First",
+      "relevanceNote": "Research and advocacy on incentive clawbacks and corporate accountability.",
+      "citationLabel": "Good Jobs First",
+      "provenance": "repo"
+    },
+    {
+      "id": "meta-sustainability-water",
+      "kind": "report",
+      "title": "Meta — water stewardship and sustainability",
+      "url": "https://sustainability.fb.com/water/",
+      "publisher": "Meta",
+      "relevanceNote": "Corporate framing of water goals; compare to local permit and hydrology details in public records.",
+      "citationLabel": "Meta — Water (sustainability)",
+      "provenance": "repo"
+    },
+    {
+      "id": "phoenix-data-center-staff-report-2025",
+      "kind": "gov_doc",
+      "title": "City of Phoenix — GPA 2-25-Y data center text amendment (staff report)",
+      "url": "https://www.phoenix.gov/content/dam/phoenix/pddsite/documents/staffreports/gpa-2-25-y-data-center.pdf",
+      "publisher": "City of Phoenix Planning & Development",
+      "relevanceNote": "Municipal staff analysis of proposed data center zoning standards, including noise and siting.",
+      "citationLabel": "City of Phoenix — Data center GPA staff report (PDF)",
+      "provenance": "repo"
+    },
+    {
+      "id": "google-24-7-carbon-free",
+      "kind": "report",
+      "title": "Google — 24/7 carbon-free energy",
+      "url": "https://www.google.com/about/datacenters/cleanenergy/",
+      "publisher": "Google",
+      "relevanceNote": "Industry discussion of hourly matching versus annual renewable energy claims.",
+      "citationLabel": "Google — Carbon-free energy for data centers",
+      "provenance": "repo"
+    },
+    {
+      "id": "abq-journal-meta-los-lunas-water",
+      "kind": "article",
+      "title": "Facebook data center water use scrutinized",
+      "url": "https://www.abqjournal.com/news/local/facebook-data-center-water-use-scrutinized/article_521c48ac-c971-577c-bed2-3b0c7df4b0cc.html",
+      "publisher": "Albuquerque Journal",
+      "relevanceNote": "Regional reporting on data center water conflict and engineering responses in the Rio Grande corridor.",
+      "citationLabel": "Albuquerque Journal — Los Lunas data center water scrutiny",
+      "provenance": "repo"
+    },
+    {
+      "id": "doe-ai-datacenter-load",
+      "kind": "gov_doc",
+      "title": "U.S. DOE — data centers and energy (AI load context)",
+      "url": "https://www.energy.gov/eere/buildings/data-centers-and-servers",
+      "publisher": "U.S. DOE",
+      "relevanceNote": "Federal overview of rising electricity demand from data centers and servers.",
+      "citationLabel": "U.S. DOE — Data centers and servers",
+      "provenance": "repo"
+    },
+    {
+      "id": "arxiv-marinoni-data-heat-island-2026",
+      "kind": "article",
+      "title": "The data heat island effect: quantifying the impact of AI data centers in a warming world",
+      "url": "https://arxiv.org/abs/2603.20897",
+      "publisher": "arXiv",
+      "relevanceNote": "Global remote sensing of land surface temperature near AI data centers; quantifies data heat island effect and population exposure.",
+      "citationLabel": "Marinoni et al. — Data heat island effect (arXiv:2603.20897, 2026)",
+      "provenance": "repo"
+    },
+    {
+      "id": "climate-central-urban-heat-hot-spots-2024",
+      "kind": "report",
+      "title": "Climate Central — Urban heat hot spots in 65 U.S. cities",
+      "url": "https://www.climatecentral.org/climate-matters/urban-heat-islands-2024",
+      "publisher": "Climate Central",
+      "relevanceNote": "Urban heat island intensity and tree-cooling gaps; El Paso among major metros in the national scan.",
+      "citationLabel": "Climate Central — Urban heat islands (2024)",
+      "provenance": "repo"
+    },
+    {
+      "id": "noaa-urban-heat-island-initiative",
+      "kind": "gov_doc",
+      "title": "NOAA — Urban heat island mapping initiative (community campaigns)",
+      "url": "https://www.noaa.gov/news-release/noaa-seeks-applications-for-2024-urban-heat-island-initiative",
+      "publisher": "NOAA",
+      "relevanceNote": "Federal framework for neighborhood-scale urban heat mapping; border and Sun Belt cities participate in related campaigns.",
+      "citationLabel": "NOAA — Urban heat island mapping initiative",
+      "provenance": "repo"
+    },
+    {
+      "id": "capa-el-paso-heat-maps",
+      "kind": "report",
+      "title": "CAPA Strategies — City of El Paso urban heat mapping (Heat Watch)",
+      "url": "https://www.capastrategies.com/city-of-el-paso-maps-hottest-places-in-region",
+      "publisher": "CAPA Strategies",
+      "relevanceNote": "Neighborhood-level temperature and heat index patterns across the El Paso region.",
+      "citationLabel": "CAPA — El Paso urban heat mapping",
+      "provenance": "repo"
+    },
+    {
+      "id": "tpwd-urban-wildlife-forests",
+      "kind": "gov_doc",
+      "title": "TPWD — Urban wildlife and vegetation in Texas communities",
+      "url": "https://tpwd.texas.gov/huntwild/wild/wildlife_diversity/urban_program/",
+      "publisher": "Texas Parks and Wildlife Department",
+      "relevanceNote": "State guidance on vegetation and habitat in urban Texas; supports tree canopy and shade planning in hot climates.",
+      "citationLabel": "TPWD — Urban wildlife program",
+      "provenance": "repo"
+    },
+    {
+      "id": "epa-heat-island-compendium",
+      "kind": "gov_doc",
+      "title": "EPA — Reducing urban heat islands (compendium of strategies)",
+      "url": "https://www.epa.gov/heat-islands/heat-island-compendium",
+      "publisher": "U.S. EPA",
+      "relevanceNote": "Technical overview of UHI causes, waste heat from buildings and cooling, and mitigation strategies.",
+      "citationLabel": "U.S. EPA — Heat island compendium",
+      "provenance": "repo"
+    },
+    {
+      "id": "epa-noise-pollution-overview",
+      "kind": "gov_doc",
+      "title": "EPA — noise pollution and health",
+      "url": "https://www.epa.gov/clean-air-act-overview/noise-pollution",
+      "publisher": "U.S. EPA",
+      "relevanceNote": "Federal framing of noise as an environmental stressor.",
+      "citationLabel": "U.S. EPA — Noise pollution overview",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-noise-ordinance",
+      "kind": "gov_doc",
+      "title": "City of El Paso — Code of Ordinances (noise)",
+      "url": "https://library.municode.com/tx/el_paso/codes/code_of_ordinances",
+      "publisher": "City of El Paso / Municode",
+      "relevanceNote": "Municipal code: Title 9.40 of the El Paso City Code (noise); verify current chapter for enforcement details.",
+      "citationLabel": "City of El Paso — Code of Ordinances (Municode)",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-city-data-centers-hub",
+      "kind": "gov_doc",
+      "title": "City of El Paso — Data Center Resource Hub",
+      "url": "https://www.elpasotexas.gov/data-centers/",
+      "publisher": "City of El Paso",
+      "relevanceNote": "Official FAQ on data center regulation, including Title 9.40 of the El Paso City Code (noise).",
+      "citationLabel": "City of El Paso — Data Center Resource Hub",
+      "provenance": "repo"
+    },
+    {
+      "id": "virginia-data-center-air-quality-study",
+      "kind": "article",
+      "title": "Northern Virginia data center air pollution rivals power plant emissions (VCU research)",
+      "url": "https://www.news.vcu.edu/article/northern-virginia-data-center-air-pollution-rivals-power-plant-emissions",
+      "publisher": "Virginia Commonwealth University",
+      "relevanceNote": "Research summary on backup generators and regional air quality in a dense data center market.",
+      "citationLabel": "VCU News — Northern Virginia data center air pollution study",
+      "provenance": "repo"
+    },
+    {
+      "id": "ehp-dangers-data-centers",
+      "kind": "article",
+      "title": "Environmental Health Project — The Dangers of Data Centers",
+      "url": "https://www.environmentalhealthproject.org/post/the-dangers-of-data-centers",
+      "publisher": "Environmental Health Project",
+      "relevanceNote": "Overview of respiratory, cardiovascular, noise, and related risks from data center infrastructure.",
+      "citationLabel": "Environmental Health Project — The Dangers of Data Centers",
+      "provenance": "repo"
+    },
+    {
+      "id": "eesi-noise-data-centers-2026",
+      "kind": "article",
+      "title": "EESI — Communities Are Raising Noise Pollution Concerns About Data Centers",
+      "url": "https://www.eesi.org/articles/view/communities-are-raising-noise-pollution-concernsabout-data-centers",
+      "publisher": "Environmental and Energy Study Institute",
+      "relevanceNote": "Community noise complaints, siting, and health stressors tied to data center operations.",
+      "citationLabel": "EESI — Data centers and noise pollution (2026)",
+      "provenance": "repo"
+    },
+    {
+      "id": "nps-effects-noise-wildlife",
+      "kind": "gov_doc",
+      "title": "U.S. National Park Service — Effects of Noise on Wildlife",
+      "url": "https://www.nps.gov/subjects/sound/effects_wildlife.htm",
+      "publisher": "U.S. National Park Service",
+      "relevanceNote": "How anthropogenic noise masks natural soundscapes and disrupts animal behavior and ecology.",
+      "citationLabel": "U.S. NPS — Effects of noise on wildlife",
+      "provenance": "repo"
+    },
+    {
+      "id": "sierra-club-data-centers-factsheet-2025",
+      "kind": "report",
+      "title": "Sierra Club — Data center impacts factsheet",
+      "url": "https://www.sierraclub.org/sites/default/files/2025-07/data-center-factsheet-4.pdf",
+      "publisher": "Sierra Club",
+      "relevanceNote": "Broad data center impacts including noise, low-frequency sound, and community and ecological concerns.",
+      "citationLabel": "Sierra Club — Data center impacts (factsheet, 2025)",
+      "provenance": "repo"
+    },
+    {
+      "id": "rec-renewable-energy-certificates",
+      "kind": "report",
+      "title": "EPA Green Power Partnership — Renewable Energy Certificates (RECs)",
+      "url": "https://www.epa.gov/green-power-markets/renewable-energy-certificates-recs",
+      "publisher": "U.S. EPA",
+      "relevanceNote": "How RECs represent generation attributes; useful context for “100% renewable” marketing claims.",
+      "citationLabel": "U.S. EPA — Renewable Energy Certificates (RECs)",
+      "provenance": "repo"
+    },
+    {
+      "id": "wurldwide-380-agreement-pdf",
+      "kind": "gov_doc",
+      "title": "City of El Paso — 380 Economic Development Program Agreement (Meta / Wurldwide LLC)",
+      "url": "/documents/Wurldwide-380-Agreement.pdf",
+      "linkBehavior": "download",
+      "downloadFileName": "Wurldwide-380-Agreement.pdf",
+      "publisher": "City of El Paso",
+      "relevanceNote": "Local copy of the Meta / Wurldwide 380 agreement; The contract between the City of El Paso and Wurldwide LLC (Meta).",
+      "citationLabel": "380 Agreement — Meta / Wurldwide & City of El Paso (PDF)",
+      "provenance": "repo"
+    }
+  ]
+}

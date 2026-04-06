@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# El Paso Hub (eptruth)
 
-## Getting Started
+## What this website is
 
-First, run the development server:
+**El Paso Hub** is a public information and advocacy site for people in El Paso who care how large-scale data centers and related policy affect the region. It explains topics in plain language: environmental and infrastructure impacts, local government and meetings, how to take part (pledge, contribute tips), and where reporting comes from.
+
+The site includes sections such as a **home** overview, **learn** basics, a **data centers** area with structured impacts content and citations, **local government** contacts and process, **news** and **city meetings**, a community **pledge**, and a **contribute** path for tips. Copy and many data files live in JSON under `content/` and `dictionaries/` so pages can stay consistent and easier to update than hardcoding long text in components.
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS recommended; a current 20.x or newer runtime is a good match)
+
+## Setup and local development
+
+Install dependencies from the project root:
+
+```bash
+npm install
+```
+
+Start the development server (Turbopack):
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Other scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command | Purpose |
+| -------- | -------- |
+| `npm run lint` | Run ESLint |
+| `npm run typecheck` | TypeScript (`tsc --noEmit`) |
+| `npm test` | Vitest (unit tests) |
+| `npm run feed-health` | Feed health check script |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Important libraries
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+These are the main runtime dependencies from `package.json`:
 
-## Deploy on Vercel
+| Library | Role |
+| -------- | ------ |
+| [Next.js](https://nextjs.org/) | App Router, routing, RSC, `next/font`, production build |
+| [React](https://react.dev/) | UI and hooks |
+| [@mui/material](https://mui.com/material-ui/) | Layout, typography, forms, theming (CSS variables) |
+| [@mui/icons-material](https://mui.com/material-ui/material-icons/) | Icon set used in the UI |
+| [@mui/material-nextjs](https://mui.com/material-ui/integrations/nextjs/) | Emotion cache and App Router integration for MUI |
+| [@emotion/react](https://emotion.sh/docs/introduction) & [@emotion/styled](https://emotion.sh/docs/styled) | Styling layer used by MUI |
+| [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser) | XML parsing for feeds and related scripts |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Development:** TypeScript, ESLint (`eslint-config-next`), Vitest.
