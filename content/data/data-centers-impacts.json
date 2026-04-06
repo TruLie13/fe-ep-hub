@@ -1,858 +1,682 @@
 {
-
   "schemaVersion": 1,
-  
   "sections": [
-  
-  {
-  
-  "id": "introduction",
-  
-  "eyebrow": "Introduction",
-  
-  "title": "El Paso context and the hyperscale challenge",
-  
-  "icon": "map",
-  
-  "stats": [
-  
-  { "label": "Climate", "value": "Chihuahuan Desert", "hint": "Extreme summer heat raises cooling demand" },
-  
-  { "label": "Water", "value": "Finite aquifers", "hint": "Shared with residents and agriculture" },
-  
-  { "label": "Power", "value": "Isolated grid", "hint": "Nearby megaprojects stack regional load" }
-  
-  ],
-  
-  "highlights": [
-  
-  "Desert cooling costs water or watts.",
-  
-  "Green claims vs local water and fuel."
-  
-  ],
-  
-  "paragraphs": [
-  
-  "Integrating hyperscale data centers into municipal infrastructure involves more than a real estate transaction. This shift changes the daily water and electricity requirements for the region while placing waste heat and pollution near neighborhoods. El Paso features a Chihuahuan Desert climate, finite groundwater, and an isolated grid. A large facility places a heavy burden on these systems simultaneously.",
-  
-  "Cooling is the primary engineering challenge in arid environments. When outdoor temperatures exceed 100°F (38°C), removing heat from a building requires significant energy or water. This efficiency loss is known as the desert penalty. Operators often choose between evaporative cooling or high electricity use for chillers. Residents deserve to see these trade-offs with clear numbers attached.",
-  
-  "Regional data reveals a gap between corporate sustainability claims and local physics. Programs labeled as water positive often restore habitats far from the local aquifer. Renewable energy claims frequently rely on annual accounting rather than guaranteeing clean power during every hour of operation. This summary focuses on local questions: actual withdrawals, fuel consumption, and the enforcement of limits."
-  
-  ],
-  
-  "sourceIds": ["usgs-water-use", "doe-datacenter-energy"]
-  
-  },
-
-  {
-  
-  "id": "water",
-  
-  "eyebrow": "Water",
-  
-  "title": "Cooling, permits, and local hydrology",
-  
-  "icon": "water",
-  
-  "stats": [
-  
-  { "label": "Permit scale (reported)", "value": "2.5 MGD", "hint": "Peak withdrawal context for the site" },
-  
-  { "label": "Risk", "value": "Evaporative loss", "hint": "Heat rejection still consumes water" },
-  
-  { "label": "Policy lever", "value": "WUE caps", "hint": "Liters per kWh, reclaimed water" }
-  
-  ],
-  
-  "highlights": [
-  
-  "Closed loop is not zero water outside.",
-  
-  "Credits may not refill the local aquifer."
-  
-  ],
-  
-  "paragraphs": [
-  
-  "Marketing terms can obscure how cooling systems function. A closed loop often refers to the internal technology cooling system which circulates fluid over server chips. This internal circuit is sealed. However, the external facility loop rejects heat into the atmosphere through evaporation. Meta has secured a permit for up to 2.5 million gallons of water per day for the El Paso site. This permit confirms that the facility will evaporate large volumes of water during peak heat.",
-  
-  "Corporate water positive goals often fund restoration projects in distant parts of a watershed. These credits do not physically return water to the local aquifer. Neighbors in other regions have noted that water returned to a general watershed is different from water available for local drinking.",
-  
-  "Artificial intelligence workloads increase thermal density, requiring 50kW to 100kW per rack compared to 5kW for traditional servers. This shift drives up cooling demand. Effective policies tie limits to intensity metrics like liters per kilowatt-hour. Communities should require reclaimed water for industrial cooling to protect potable supplies."
-  
-  ],
-  
-  "bullets": [
-  
-  "Request peak daily withdrawal totals and drought rules.",
-  
-  "Verify if makeup water is potable or reclaimed.",
-  
-  "Require binding intensity limits over one-time press releases.",
-  
-  "Establish a Water Usage Effectiveness (WUE) limit below 0.3 L/kWh."
-  
-  ],
-  
-  "sourceIds": ["meta-sustainability-water", "abq-journal-meta-los-lunas-water"]
-  
-  },
-   
-  {
-    "id": "emergency-priority",
-    "eyebrow": "Emergency Water",
-    "title": "Crisis Priority and the 'Equality' Trap",
-    "icon": "shield-alert",
-    "stats": [
-      { "label": "Legal Hurdle", "value": "Section 14.9", "hint": "The 'Moratoria' clause in the agreement" },
-      { "label": "Priority", "value": "Industrial parity", "hint": "Tech sites must be treated like homes" },
-      { "label": "Trigger", "value": "Public health", "hint": "The only way to break the rule" }
-    ],
-    "highlights": [
-      "New crisis rules must apply to everyone equally.",
-      "The City cannot target tech sites during a drought."
-    ],
-    "paragraphs": [
-      "Section 14.9 of the 380 agreement creates a major hurdle for emergency resource management. The City is prohibited from enacting new policies that specifically target the project's water or power consumption. Any conservation mandate must be 'generally applicable on a City-wide basis' to remain valid. This clause ensures that the data center maintains the same resource priority as a local hospital or a family home during a shortage.",
-      "This creates a situation where the City cannot prioritize households over industrial cooling during a severe drought. If the aquifers drop to critical levels, the City must apply restrictions to all residents before it can legally force the data center to reduce its intake. The agreement protects the facility from being singled out for its massive consumption patterns.",
-      "Public health and safety is the only legal exception to this rule. However, the 'generally applicable' requirement remains a high bar for local government. This prevents the City from using its police power to manage the data center as a unique industrial risk. Residents should ask if this parity is appropriate for a facility that evaporates millions of gallons per day."
-    ],
-    "bulletGroups": [
-      {
-        "title": "Risks of the Parity Clause",
-        "lead": "Treating a hyperscale facility as a standard customer during a crisis places a heavy burden on the community.",
-        "items": [
-          "**Drought Lock-in:** The City cannot pass 'data center only' water cuts, even if the facility's 2.5 MGD use threatens the local water table.",
-          "**Grid Stress:** During peak heat events, the City cannot legally demand the facility power down unless they mandate similar cuts for the general public.",
-          "**Legal Litigation:** Any attempt to prioritize residential needs over the facility could trigger a breach of contract and a lawsuit from the parent company."
-        ]
-      }
-    ],
-    "sourceIds": ["Ex-Wurldwide-380-Agreement-Seafox"]
-  },
-
-  {
-  
-  "id": "energy",
-  
-  "eyebrow": "Energy",
-  
-  "title": "Grid load, modular gas, and hourly reality",
-  
-  "icon": "bolt",
-  
-  "stats": [
-  
-  { "label": "McCloud Gas Plant", "value": "366 MW", "hint": "Modular gas units, per public reporting" },
-  
-  { "label": "Bridge period", "value": "Years", "hint": "Ask who pays after" },
-  
-  { "label": "Regional cluster", "value": "Santa Teresa", "hint": "Project Jupiter adds cumulative stress" }
-  
-  ],
-  
-  "highlights": [
-  
-  "Annual match is not hourly clean power.",
-  
-  "Night use can still run on fossil fuel."
-  
-  ],
-  
-  "paragraphs": [
-  
-  "El Paso Electric proposes the McCloud natural gas plant to power the Meta data center. This 366 MW facility would consist of 813 modular natural gas generators. A proposed bridge strategy allows the customer to fund the asset for five years before it integrates into the general ratepayer base. Open proceedings are necessary to weigh the long-term impact on bills and climate goals.",
-  
-  "Renewable energy pledges usually match production annually. The grid requires balance every second. Without large-scale storage, facilities run on fossil fuels at night when solar generation is unavailable. Hourly matching ensures green power is available at the specific time of use.",
-  
-  "Regional grid strain is worsened by nearby developments like Project Jupiter in Santa Teresa, New Mexico. Clustered facilities create a resource sink. Cumulative planning is essential because individual statements often overlook the combined stress on transmission systems."
-  
-  ],
-  
-  "bullets": [
-  
-  "Review utility dockets for details on infrastructure costs.",
-  
-  "Ask who covers costs for new plants after the initial bridge period.",
-  
-  "Verify if renewable claims account for nighttime AI training loads."
-  
-  ],
-  
-  "sourceIds": ["texas-tribune-meta-gas-2026", "el-paso-matters-meta-epe-filings"]
-  
-  },
-  
-  {
-  
-  "id": "air",
-  
-  "eyebrow": "Air quality",
-  
-  "title": "Ozone, backup power, and point-source pollution",
-  
-  "icon": "air",
-  
-  "stats": [
-  
-  { "label": "Ozone context", "value": "Non-attainment", "hint": "El Paso air planning pressure" },
-  
-  { "label": "McCloud (proposed)", "value": "366 MW", "hint": "Gas plant tied to regional load" },
-  
-  { "label": "Watch item", "value": "Demand response", "hint": "Generators for profit, not outages" }
-  
-  ],
-  
-  "highlights": [
-  
-  "IQAir 2024: El Paso 9th for PM2.5 (majors).",
-  
-  "McCloud: smog precursors + methane leaks."
-  
-  ],
-  
-  "paragraphs": [
-  
-  "Hyperscale sites rely on large backup diesel and gas-fired systems so power stays available during tests and grid stress. El Paso sits in a federal ozone non-attainment basin. Ozone forms when nitrogen oxides and other compounds bake in sunlight and heat.",
-  
-  "El Paso ranked **ninth among major U.S. cities** for annual average fine particulate pollution (PM2.5), at **7.8 micrograms per cubic meter**. The same IQAir release, ranked **Los Angeles** highest among major U.S. metros for PM2.5, with **San Antonio, Houston, and Fort Worth** above El Paso among Texas cities (worse particulate levels). An IQAir science manager told reporters that **Texas has a relatively sparse air quality monitoring network for its size**, so not every neighborhood has hyper-local readings.",
-  
-  "That El Paso Matters piece also described **early 2025** dust storms that yielded **four of the five most polluted days on record** at EPA's long-running **Chamizal** monitor in South Central El Paso (daily data since 1999) and **two of the worst days ever** at a monitor in **Socorro** in far East El Paso County. The story tied the dust to **record heat**, **long-running drought**, and **stronger-than-average spring winds** kicking up bare soil. Those swings show why annual rankings alone understate bad-air weeks when new industrial sources are proposed."
-  
-  ],
-  
-  "bulletGroups": [
-  
-  {
-  
-  "title": "**Direct local hazards:** diesel and natural gas backup",
-  
-  "lead": "On-site equipment can create concentrated air quality risks next to the fence line.",
-  
-  "items": [
-  
-  "**Diesel particulate matter (DPM):** Large diesel generators used for emergency power and routine testing emit fine particulate matter (PM2.5) that can penetrate deep into the lungs. That stacks on top of regional PM2.5 pressure in a city that national surveys already rank among the worst for big-city particulate averages.",
-  
-  "**NOx, carbon monoxide, and smog:** When diesel or gas turbines run, they release nitrogen oxides (NOx), a primary ingredient in ground-level ozone. Hot, sunny El Paso days already convert NOx and other precursors into smog in the local airshed.",
-  
-  "**Health near point sources:** Nearby residents can face higher asthma rates, reduced lung function, and cardiovascular stress from repeated exposure to plumes from backup testing and operations."
-  
-  ]
-  
-  },
-  
-  {
-  
-  "title": "**Regional hazards:** new fossil fuel infrastructure",
-  
-  "lead": "Steady megawatt demand often comes with new power plants and fuel delivery networks.",
-  
-  "items": [
-  
-  "**McCloud natural gas plant:** El Paso Electric has advanced a proposed 366-megawatt natural gas plant (McCloud) in public filings tied to serving the region's data center load.",
-  
-  "**Smog and ozone:** A new gas plant adds NOx and other ozone precursors in a basin that already struggles with federal ozone standards. Stagnant summer heat can make secondary smog formation worse.",
-  
-  "**Methane along the gas system:** Pipelines, compressors, and other gas infrastructure can leak methane, a potent greenhouse gas that worsens long-term climate instability."
-  
-  ]
-  
-  },
-  
-  {
-  
-  "title": "**Secondary stressors:** heat and dust",
-  
-  "lead": "Desert conditions amplify how industrial and backup emissions mix with other pollution.",
-  
-  "items": [
-  
-  "**Urban heat:** Data centers vent enormous waste heat from servers and cooling systems. In El Paso's desert climate that can strengthen local heat-island effects, keeping neighborhoods hotter than surrounding open land.",
-  
-  "**Dust and particles:** Press coverage of IQAir's 2025 assessments tied a sharp rise in measured pollution in El Paso to historic dust storms, including figures on the order of a 46 percent increase summarized in national reporting. Construction dust and industrial plumes can also mix with windblown dust, worsening irritating particulate loads for people breathing outdoors."
-  
-  ]
-  
-  }
-  
-  ],
-  
-  "paragraphsAfterLists": [
-  
-  "Comparative research in other dense U.S. data center markets has linked large backup generator fleets to regional pollution burdens similar in scale to conventional power plants, a benchmark El Paso should use when sizing test hours and stack limits.",
-  
-  "Modular natural gas generators emit significantly less particulate matter than traditional diesel units. However, gas infrastructure creates a permanent fossil fuel commitment. Some programs pay operators to run these generators during peak grid stress rather than true emergencies.",
-  
-  "Transparency should include the frequency and duration of backup operations. Agreements should prohibit running generators for economic profit through demand response programs."
-  
-  ],
-  
-  "sourceIds": [
-  
-  "epa-green-book-nonattainment",
-  
-  "el-paso-matters-air-quality-rank-2025",
-  
-  "texas-tribune-meta-gas-2026",
-  
-  "cbs-el-paso-los-angeles-polluted-2025",
-  
-  "virginia-data-center-air-quality-study",
-  
-  "wri-data-centers-us-communities-2026"
-  
-  ]
-  
-  },
-  
-  {
-  
-  "id": "heat-island",
-  
-  "eyebrow": "Heat island",
-  
-  "title": "Urban heat, the desert, and waste heat from digital infrastructure",
-  
-  "icon": "heat",
-  
-  "stats": [
-  
-  { "label": "Regional pattern", "value": "Desert + UHI", "hint": "Chihuahuan heat plus built surfaces" },
-  
-  { "label": "Data heat island (study)", "value": "~3.6°F LST", "hint": "Avg. surface warming after operations (global remote sensing)" },
-  
-  { "label": "Spatial footprint", "value": "6.2 mi", "hint": "Signal to ~10 km in Marinoni et al." }
-  
-  ],
-  
-  "highlights": [
-  
-  "Night: city pockets lose desert cool-down.",
-  
-  "DHI: warming measured miles past the fence."
-  
-  ],
-  
-  "paragraphs": [
-  
-  "The **urban heat island (UHI)** effect occurs when cities replace natural land cover with dense concentrations of pavement, buildings, and other surfaces that absorb and retain heat. In a high-desert environment like El Paso, that pattern creates specific challenges for **public health and infrastructure**, including added pressure on ozone chemistry and the electricity grid when temperatures stay elevated.",
-  
-  "National analyses rank El Paso among U.S. cities with large measured gaps between urban heat intensity and tree-supported cooling, which matters for where new industrial heat sources are sited. Community heat mapping in the region also documents sharp block-by-block differences in temperature and heat index.",
-  
-  "A **March 2026** preprint by Marinoni et al. uses decades of **land surface temperature (LST)** from remote sensing to isolate what they call the **data heat island (DHI)** effect around AI data centers worldwide. They estimate that after operations begin, surrounding land surface temperatures rise by about **3.6°F** on average (about **2°C**), with **extreme uplifts above 16°F in arid settings**. In the largest cases they report LST surges up to about **16.4°F (9.1°C)** near major facilities. The warming footprint is not fence-limited: increased LST is detected out to about **6.2 miles (10 km)** from sites. The authors estimate that **more than 340 million people** could be affected by this temperature increase worldwide."
-  
-  ],
-  
-  "bulletGroups": [
-  
-  {
-  
-  "title": "**How the heat island effect works:** thermal mass, waste heat, and evapotranspiration",
-  
-  "lead": "Built surfaces and equipment change how solar energy moves through the city.",
-  
-  "items": [
-  
-  "**Thermal mass:** Materials like asphalt, steel, and concrete have high heat capacity. They absorb solar radiation during the day and release it slowly at night, which can **prevent the city from cooling down** as much as the surrounding desert.",
-  
-  "**Waste heat:** Air conditioning units, vehicle engines, and industrial facilities (including **data centers**) vent waste heat directly into the local atmosphere, further raising ambient temperatures.",
-  
-  "**Evapotranspiration:** Trees and plants cool the air by releasing water vapor. In urban areas with minimal greenery, natural cooling mechanism is weakened and pavement dominates."
-  
-  ]
-  
-  },
-  
-  {
-  
-  "title": "**Specific impacts on El Paso:** desert baseline, geography, and equity",
-  
-  "lead": "El Paso faces a **double burden** where the UHI effect amplifies the naturally high temperatures of the Chihuahuan Desert.",
-  
-  "items": [
-  
-  "**Nighttime temperature spikes:** The surrounding desert may drop in temperature after sunset, but **urban pockets** in the city stay significantly warmer. That loss of nighttime cooling can prevent the human body from recovering from daytime heat stress.",
-  
-  "**Geographic trapping:** El Paso's topography, such as the **Franklin Mountains** and the surrounding **basin**, can trap warm, stagnant air over developed areas, creating a heat-dome effect that lingers over densely populated neighborhoods.",
-  
-  "**Increased ozone formation:** Heat acts as a catalyst for chemical reactions between vehicle exhaust and industrial emissions. Higher temperatures from the UHI effect can contribute to **ground-level ozone (smog)**, a major respiratory irritant.",
-  
-  "**Disproportionate neighborhood impact:** Research into El Paso **heat equity** shows that lower-income neighborhoods often have **less tree canopy** and more heat-absorbing surfaces. Those areas can be **5 to 10°F hotter** than greener, wealthier parts of the city.",
-  
-  "**Energy grid strain:** As the heat island effect raises local temperatures, demand for air conditioning rises. That can create a feedback loop: higher demand leads to more power plant emissions and more waste heat from AC condensers, further warming the city."
-  
-  ]
-  
-  },
-  
-  {
-  
-  "title": "**Data heat island (Marinoni et al.):** global remote sensing",
-  
-  "lead": "A March 2026 study by the University of Cambridge identified a 'Data Heat Island' effect. AI data centers increase surrounding land surface temperatures by an average of 3.6°F. In extreme conditions, particularly in arid climates, surface temperatures can spike by more than 16°F ",
-  
-  "items": [
-  
-  "**Average signal:** Mean LST increase near AI data centers after start of operations is about **3.6°F**; the paper estimates **more than 340 million people** could be affected by the associated warming globally.",
-  
-  "**Arid extremes:** The largest uplifts appear in dry climates; the work reports extreme cases above **16°F** for land surface temperature, with peak single-site LST change up to about **16.4°F (9.1°C)**.",
-  
-  "**Beyond the property line:** Elevated LST is not confined to the campus; the analysis finds a footprint on the order of **6.2 miles (10 km)** from facilities.",
-  
-  "**Surfaces and nighttime retention:** Large LST changes reflect materials such as roofs and pavement that **store solar energy by day** and **release it at night**, which can disrupt the overnight cooling cycle that matters for public health."
-  
-  ]
-  
-  }
-  
-  ],
-  
-  "paragraphsAfterLists": [
-  
-  "**Data centers and El Paso's heat:** Large-scale data centers add a new variable to the local UHI. These facilities use **massive industrial cooling** to dissipate heat from thousands of servers. In a desert climate, that can add a **constant stream of hot, dry air** near the site and potentially extend the **duration and intensity** of heat-island conditions for nearby residents.",
-  
-  "The Marinoni et al. results suggest **data heat island** signals can be especially large in **arid** settings and extend **many miles** beyond the fence. This adds **cumulative** stress on top of regional UHI and desert heat, not a neutral background. Permits and community benefit agreements should plan for **LST and heat index** near homes, not only property-line rules."
-  
-  ],
-  
-  "sourceIds": [
-  
-  "arxiv-marinoni-data-heat-island-2026",
-  
-  "climate-central-urban-heat-hot-spots-2024",
-  
-  "noaa-urban-heat-island-initiative",
-  
-  "capa-el-paso-heat-maps",
-  
-  "tpwd-urban-wildlife-forests",
-  
-  "epa-heat-island-compendium"
-  
-  ]
-  
-  },
-  
-  {
-  
-  "id": "noise",
-  
-  "eyebrow": "Noise",
-  
-  "title": "Cooling equipment, generators, and neighbor distance",
-  
-  "icon": "volume",
-  
-  "stats": [
-  
-  { "label": "Sources", "value": "AHUs, towers", "hint": "Low frequency travels far" },
-  
-  { "label": "Enforcement", "value": "Where measured", "hint": "Resident lot line vs data center fence" },
-  
-  { "label": "Weather", "value": "Inversions", "hint": "Can bend sound into neighborhoods" }
-  
-  ],
-  
-  "highlights": [
-  
-  "Loud at fence; not quiet at home.",
-  
-  "AZ: lower dBA at source fence."
-  
-  ],
-  
-  "paragraphs": [
-  
-  "Air handling units and cooling towers generate constant low-frequency noise. This sound travels further and penetrates walls more easily than high-frequency noise. Residents in other desert markets describe the sound as a constant drone.",
-  
-  "The City of El Paso states on its Data Center Resource Hub that data centers must comply with Title 9.40 of the El Paso City Code. In industrial zones the maximum sound level is 70 to 75 decibels (dBA) at the property line. For facilities near residential areas the limit is lower: 50 dBA at night. When homes are at stake, the decibel limit that protects you is checked at the **receiving property line**: the **resident's lot line**, where sound is measured outside your home, not at the operator's fence. Title 9.40 defines when the test applies at the neighbor's line versus the industrial line; read the chapter for the exact wording.",
-  
-  "Those numbers describe what the code can permit. They should not be read as a guarantee of peace next door. A facility can stay within industrial fence-line limits while still producing a round-the-clock hum that carries into yards and bedrooms. Public health guidance often points to lower night noise for undisturbed sleep than a single headline figure suggests. Neighbors deserve clarity that compliance with Title 9.40 of the El Paso City Code is a legal floor, not proof that a hyperscale site will feel acceptable at the property line.",
-  
-  "Arizona has updated municipal standards in the Phoenix area toward **lower** decibel limits and **measurement at the data center property line** (the source fence), so the plant must meet stricter limits where it sits. That contrasts with rules that only chase complaints at a distant lot without tightening the facility itself. Thermal inversions common in desert winters can bend sound downward, carrying it into distant neighborhoods."
-  
-  ],
-  
-  "bulletGroups": [
-  
-  {
-  
-  "title": "Health issues for nearby residents",
-  
-  "lead": "Because data center noise is constant and often contains low-frequency tones, it can be more disruptive than intermittent city noises like traffic.",
-  
-  "items": [
-  
-  "**Sleep disturbances:** The persistent hum can lead to chronic insomnia, fragmented sleep, and nightmares. Unlike white noise, the mechanical nature of the sound can prevent the brain from entering deep sleep cycles.",
-  
-  "**Cardiovascular issues:** Long-term exposure to noise above 65 decibels is linked to increased blood pressure (hypertension) and elevated heart rates, which are risk factors for heart disease.",
-  
-  "**Neurological and cognitive symptoms:** Residents near facilities in Texas and Arkansas have reported frequent migraines, vertigo (dizziness), and nausea. The low-frequency pressure waves can affect the inner ear and vestibular system.",
-  
-  "**Mental health:** Chronic noise pollution is a significant stressor that can lead to increased anxiety, irritability, and a general decrease in quality of life.",
-  
-  "**Hearing-related issues:** Constant exposure can cause tinnitus-like symptoms, where residents perceive a ringing or buzzing in the ears even when away from the site."
-  
-  ]
-  
-  },
-  
-  {
-  
-  "title": "Impact on wildlife",
-  
-  "lead": "Wildlife relies heavily on the \"acoustical environment\" for survival. A constant 24/7 hum creates a masking effect that drowns out natural sounds.",
-  
-  "items": [
-  
-  "**Communication interference:** Many species (birds, frogs, and insects) use specific frequencies to attract mates. The data center hum can mask these calls, leading to reduced reproductive success.",
-  
-  "**Predator-prey dynamics:** Predators (like owls or bats) that rely on hearing to locate prey find it harder to hunt. Conversely, prey animals may not hear a predator approaching over the mechanical noise.",
-  
-  "**Altered behavior:** Some birds have been observed changing the pitch of their songs or switching to nocturnal singing to be heard over industrial noise, which drains their energy reserves.",
-  
-  "**Physiological stress:** Animals exposed to chronic industrial noise show elevated levels of stress hormones (corticosterone), which can weaken their immune systems and reduce their overall lifespan.",
-  
-  "**Habitat abandonment:** Sensitive species may completely abandon otherwise suitable habitats to avoid the noise, leading to a loss of local biodiversity."
-  
-  ]
-  
-  }
-  
-  ],
-  
-  "paragraphsAfterLists": [
-  
-  "Independent monitoring and objective caps at the line named in the permit beat vague comfort standards."
-  
-  ],
-  
-  "sourceIds": [
-  
-  "el-paso-city-data-centers-hub",
-  
-  "phoenix-data-center-staff-report-2025",
-  
-  "epa-noise-pollution-overview",
-  
-  "el-paso-noise-ordinance",
-  
-  "ehp-dangers-data-centers",
-  
-  "eesi-noise-data-centers-2026",
-  
-  "nps-effects-noise-wildlife",
-  
-  "sierra-club-data-centers-factsheet-2025"
-  
-  ]
-  
-  },
-  
-  {
-  
-  "id": "socioeconomic",
-  
-  "eyebrow": "Jobs and incentives",
-  
-  "title": "Capital intensity, hiring, and clawbacks",
-  
-  "icon": "balance",
-  
-  "stats": [
-  
-  { "label": "Investment (reported)", "value": "~$10B", "hint": "Press coverage, 2026" },
-  
-  { "label": "Jobs guaranteed* in contract", "value": "50", "hint": "Not a contractual hiring floor" },
-  
-  { "label": "Incentives (order of magnitude)", "value": "~$110M", "hint": "Clawbacks if targets slip" }
-  
-  ],
-  
-  "highlights": [
-  
-  "Big build; few permanent jobs.",
-  
-  "Scrutinize dollars per promised job."
-  
-  ],
-  
-  "paragraphs": [
-  
-  "Reports indicate a $10 billion investment for the El Paso site, with company statements in the press floating on the order of 300 new jobs. That figure is a public promise, not a contractually guaranteed employment level. Research suggests permanent operational roles often total less than 20% of peak construction employment. Data centers are capital-intensive rather than labor-intensive.",
-  
-  "El Paso has offered roughly $110 million in incentives. If that promise is taken at face value, the order of magnitude is hundreds of thousands of dollars per promised job; the number rises if realized permanent jobs end up far below the headline. Clawback clauses are legal tools that recover public funds if job or environmental targets are missed. Independent watchdogs recommend tying tax abatements to verifiable outcomes."
-  
-  ],
-  
-  "sourceIds": ["cnbc-meta-el-paso-10b-2026", "good-jobs-first-clawbacks"]
-  
-  },
-
-  {
-    "id": "380-agreement",
-    "eyebrow": "380 Meta Agreement",
-    "title": "The 380 Meta Agreement: Decoding the fine print",
-    "icon": "gavel",
-    "stats": [
-      { "label": "Job Floor", "value": "50 Jobs", "hint": "Contractual minimum vs. press promises " },
-      { "label": "Road Subsidy", "value": "$7.5M+", "hint": "City reimbursement for 'private' construction " },
-      { "label": "Lock-in", "value": "35 Years", "hint": "Duration of tax and policy restrictions " }
-    ],
-    "highlights": [
-      "Staff are legally barred from proposing new taxes.",
-      "Meta picks contractors; the City pays the bill."
-    ],
-    "download": {
-      "href": "/documents/Wurldwide-380-Agreement.pdf",
-      "label": "Download the 380 agreement (PDF)",
-      "fileName": "Wurldwide-380-Agreement.pdf"
+    {
+      "id": "introduction",
+      "eyebrow": "Introduction",
+      "title": "El Paso context and the hyperscale challenge",
+      "icon": "map",
+      "stats": [
+        {
+          "label": "Climate",
+          "value": "Chihuahuan Desert",
+          "hint": "Extreme summer heat raises cooling demand"
+        },
+        {
+          "label": "Water",
+          "value": "Finite aquifers",
+          "hint": "Shared with residents and agriculture"
+        },
+        {
+          "label": "Power",
+          "value": "Isolated grid",
+          "hint": "Nearby megaprojects stack regional load"
+        }
+      ],
+      "highlights": [
+        "Desert cooling costs water or watts.",
+        "Green claims vs local water and fuel."
+      ],
+      "paragraphs": [
+        "Integrating hyperscale data centers into municipal infrastructure involves more than a real estate transaction. This shift changes the daily water and electricity requirements for the region while placing waste heat and pollution near neighborhoods. El Paso features a Chihuahuan Desert climate, finite groundwater, and an isolated grid. A large facility places a heavy burden on these systems simultaneously.",
+        "Cooling is the primary engineering challenge in arid environments. When outdoor temperatures exceed 100°F (38°C), removing heat from a building requires significant energy or water. This efficiency loss is known as the desert penalty. Operators often choose between evaporative cooling or high electricity use for chillers. Residents deserve to see these trade-offs with clear numbers attached.",
+        "Regional data reveals a gap between corporate sustainability claims and local physics. Programs labeled as water positive often restore habitats far from the local aquifer. Renewable energy claims frequently rely on annual accounting rather than guaranteeing clean power during every hour of operation. This summary focuses on local questions: actual withdrawals, fuel consumption, and the enforcement of limits."
+      ],
+      "sourceIds": [
+        "usgs-water-use",
+        "doe-datacenter-energy"
+      ],
+      "takeaways": [
+        "Desert cooling costs water or watts.",
+        "Green claims vs local water and fuel."
+      ]
     },
-    "paragraphs": [
-      "The 380 Economic Development Program Agreement is the primary contract between the City of El Paso and Wurldwide LLC. While public narratives focus on growth, the document establishes a 35-year framework of subsidies and restricted local authority. The City represents that the agreement is a valid and binding obligation.",
-      "One major discrepancy involves employment figures. Press releases often suggest hundreds of roles, yet the contract only requires a minimum of 50 full-time jobs. This requirement does not take effect until four years after the project reaches completion. If the job count slips, the City's only remedy is a reduction in grant amounts.",
-      "Financial transparency is another concern regarding public infrastructure. Meta must build a portion of Stan Roberts Sr. Avenue, but the **City is obligated to reimburse Meta up to $7,500,000**. This cap can increase by 20% if costs exceed initial estimates. Once finished, the City assumes all future maintenance costs for the road."
-    ],
-    "bulletGroups": [
+    {
+      "id": "water",
+      "eyebrow": "Water",
+      "title": "Cooling, permits, and local hydrology",
+      "icon": "water",
+      "stats": [
+        {
+          "label": "Permit scale",
+          "value": "2.5 million gallons per day",
+          "hint": "Peak withdrawal context for the site"
+        },
+        {
+          "label": "Risk",
+          "value": "Evaporative loss",
+          "hint": "Heat rejection still consumes water"
+        },
+        {
+          "label": "Policy lever",
+          "value": "WUE caps",
+          "hint": "Liters per kWh, reclaimed water"
+        }
+      ],
+      "highlights": [
+        "The 2.5 Million Gallon Permit",
+        "The facility is permitted for up to 2.5 million gallons of daily evaporation during peak desert heat."
+      ],
+      "paragraphs": [
+        "Marketing terms can obscure how cooling systems function. A closed loop often refers to the internal technology cooling system which circulates fluid over server chips. This internal circuit is sealed. However, the external facility loop rejects heat into the atmosphere through evaporation. Meta has secured a permit for up to 2.5 million gallons of water per day for the El Paso site. This permit confirms that the facility will evaporate large volumes of water during peak heat.",
+        "Corporate water positive goals often fund restoration projects in distant parts of a watershed. These credits do not physically return water to the local aquifer. Neighbors in other regions have noted that water returned to a general watershed is different from water available for local drinking.",
+        "Artificial intelligence workloads increase thermal density, requiring 50kW to 100kW per rack compared to 5kW for traditional servers. This shift drives up cooling demand. Effective policies tie limits to intensity metrics like liters per kilowatt-hour. Communities should require reclaimed water for industrial cooling to protect potable supplies."
+      ],
+      "bullets": [
+        "Request peak daily withdrawal totals and drought rules.",
+        "Verify if makeup water is potable or reclaimed.",
+        "Require binding intensity limits over one-time press releases.",
+        "Establish a Water Usage Effectiveness (WUE) limit below 0.3 L/kWh."
+      ],
+      "sourceIds": [
+        "meta-sustainability-water",
+        "abq-journal-meta-los-lunas-water"
+      ],
+      "takeaways": [
+        "Closed loop is not zero water outside.",
+        "Credits may not refill the local aquifer."
+      ]
+    },
+    {
+      "id": "emergency-priority",
+      "eyebrow": "Emergency Water",
+      "title": "Crisis Priority and the 'Equality' Trap",
+      "icon": "shield-alert",
+      "stats": [
+        {
+          "label": "Legal Hurdle",
+          "value": "Section 14.9",
+          "hint": "The 'Moratoria' clause in the agreement"
+        },
+        {
+          "label": "Priority",
+          "value": "Industrial parity",
+          "hint": "Tech sites must be treated like homes"
+        },
+        {
+          "label": "Trigger",
+          "value": "Public health",
+          "hint": "The only way to break the rule"
+        }
+      ],
+      "highlights": [
+        "The Equality Trap",
+        "Section 14.9 prohibits the City from prioritizing your drinking water over industrial cooling during a crisis."
+      ],
+      "paragraphs": [
+        "Section 14.9 of the 380 agreement creates a major hurdle for emergency resource management. The City is prohibited from enacting new policies that specifically target the project's water or power consumption. Any conservation mandate must be 'generally applicable on a City-wide basis' to remain valid. This clause ensures that the data center maintains the same resource priority as a local hospital or a family home during a shortage.",
+        "This creates a situation where the City cannot prioritize households over industrial cooling during a severe drought. If the aquifers drop to critical levels, the City must apply restrictions to all residents before it can legally force the data center to reduce its intake. The agreement protects the facility from being singled out for its massive consumption patterns.",
+        "Public health and safety is the only legal exception to this rule. However, the 'generally applicable' requirement remains a high bar for local government. This prevents the City from using its police power to manage the data center as a unique industrial risk. Residents should ask if this parity is appropriate for a facility that evaporates millions of gallons per day."
+      ],
+      "bulletGroups": [
+        {
+          "title": "Risks of the Parity Clause",
+          "lead": "Treating a hyperscale facility as a standard customer during a crisis places a heavy burden on the community.",
+          "items": [
+            "**Drought Lock-in:** The City cannot pass 'data center only' water cuts, even if the facility's 2.5 MGD use threatens the local water table.",
+            "**Grid Stress:** During peak heat events, the City cannot legally demand the facility power down unless they mandate similar cuts for the general public.",
+            "**Legal Litigation:** Any attempt to prioritize residential needs over the facility could trigger a breach of contract and a lawsuit from the parent company."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "Ex-Wurldwide-380-Agreement-Seafox"
+      ],
+      "takeaways": [
+        "New crisis rules must apply to everyone equally.",
+        "The City cannot target tech sites during a drought."
+      ]
+    },
+    {
+      "id": "energy",
+      "eyebrow": "Energy",
+      "title": "Grid load, modular gas, and hourly reality",
+      "icon": "bolt",
+      "stats": [
+        {
+          "label": "McCloud Gas Plant",
+          "value": "366 MW",
+          "hint": "Modular gas units, per public reporting"
+        },
+        {
+          "label": "Bridge period",
+          "value": "Years",
+          "hint": "Ask who pays after"
+        },
+        {
+          "label": "Regional cluster",
+          "value": "Santa Teresa",
+          "hint": "Project Jupiter adds cumulative stress"
+        }
+      ],
+      "highlights": [
+        "The 366 Megawatt Gas Plant",
+        "A new natural gas plant is proposed to fuel the continuous energy demand of the data center."
+      ],
+      "paragraphs": [
+        "El Paso Electric proposes the McCloud natural gas plant to power the Meta data center. This 366 MW facility would consist of 813 modular natural gas generators. A proposed bridge strategy allows the customer to fund the asset for five years before it integrates into the general ratepayer base. Open proceedings are necessary to weigh the long-term impact on bills and climate goals.",
+        "Renewable energy pledges usually match production annually. The grid requires balance every second. Without large-scale storage, facilities run on fossil fuels at night when solar generation is unavailable. Hourly matching ensures green power is available at the specific time of use.",
+        "Regional grid strain is worsened by nearby developments like Project Jupiter in Santa Teresa, New Mexico. Clustered facilities create a resource sink. Cumulative planning is essential because individual statements often overlook the combined stress on transmission systems."
+      ],
+      "bullets": [
+        "Review utility dockets for details on infrastructure costs.",
+        "Ask who covers costs for new plants after the initial bridge period.",
+        "Verify if renewable claims account for nighttime AI training loads."
+      ],
+      "sourceIds": [
+        "texas-tribune-meta-gas-2026",
+        "el-paso-matters-meta-epe-filings"
+      ],
+      "takeaways": [
+        "Annual match is not hourly clean power.",
+        "Night use can still run on fossil fuel."
+      ]
+    },
+    {
+      "id": "air",
+      "eyebrow": "Air quality",
+      "title": "Ozone, backup power, and point-source pollution",
+      "icon": "air",
+      "stats": [
+        {
+          "label": "Ozone context",
+          "value": "Non-attainment",
+          "hint": "El Paso air planning pressure"
+        },
+        {
+          "label": "McCloud (proposed)",
+          "value": "366 MW",
+          "hint": "Gas plant tied to regional load"
+        },
+        {
+          "label": "Watch item",
+          "value": "Demand response",
+          "hint": "Generators for profit, not outages"
+        }
+      ],
+      "highlights": [
+        "9th Most Polluted Major City",
+        "El Paso already faces high particulate levels before adding new industrial backup generator plumes."
+      ],
+      "paragraphs": [
+        "Hyperscale sites rely on large backup diesel and gas-fired systems so power stays available during tests and grid stress. El Paso sits in a federal ozone non-attainment basin. Ozone forms when nitrogen oxides and other compounds bake in sunlight and heat.",
+        "El Paso ranked **ninth among major U.S. cities** for annual average fine particulate pollution (PM2.5), at **7.8 micrograms per cubic meter**. The same IQAir release, ranked **Los Angeles** highest among major U.S. metros for PM2.5, with **San Antonio, Houston, and Fort Worth** above El Paso among Texas cities (worse particulate levels). An IQAir science manager told reporters that **Texas has a relatively sparse air quality monitoring network for its size**, so not every neighborhood has hyper-local readings.",
+        "That El Paso Matters piece also described **early 2025** dust storms that yielded **four of the five most polluted days on record** at EPA's long-running **Chamizal** monitor in South Central El Paso (daily data since 1999) and **two of the worst days ever** at a monitor in **Socorro** in far East El Paso County. The story tied the dust to **record heat**, **long-running drought**, and **stronger-than-average spring winds** kicking up bare soil. Those swings show why annual rankings alone understate bad-air weeks when new industrial sources are proposed."
+      ],
+      "bulletGroups": [
+        {
+          "title": "**Direct local hazards:** diesel and natural gas backup",
+          "lead": "On-site equipment can create concentrated air quality risks next to the fence line.",
+          "items": [
+            "**Diesel particulate matter (DPM):** Large diesel generators used for emergency power and routine testing emit fine particulate matter (PM2.5) that can penetrate deep into the lungs. That stacks on top of regional PM2.5 pressure in a city that national surveys already rank among the worst for big-city particulate averages.",
+            "**NOx, carbon monoxide, and smog:** When diesel or gas turbines run, they release nitrogen oxides (NOx), a primary ingredient in ground-level ozone. Hot, sunny El Paso days already convert NOx and other precursors into smog in the local airshed.",
+            "**Health near point sources:** Nearby residents can face higher asthma rates, reduced lung function, and cardiovascular stress from repeated exposure to plumes from backup testing and operations."
+          ]
+        },
+        {
+          "title": "**Regional hazards:** new fossil fuel infrastructure",
+          "lead": "Steady megawatt demand often comes with new power plants and fuel delivery networks.",
+          "items": [
+            "**McCloud natural gas plant:** El Paso Electric has advanced a proposed 366-megawatt natural gas plant (McCloud) in public filings tied to serving the region's data center load.",
+            "**Smog and ozone:** A new gas plant adds NOx and other ozone precursors in a basin that already struggles with federal ozone standards. Stagnant summer heat can make secondary smog formation worse.",
+            "**Methane along the gas system:** Pipelines, compressors, and other gas infrastructure can leak methane, a potent greenhouse gas that worsens long-term climate instability."
+          ]
+        },
+        {
+          "title": "**Secondary stressors:** heat and dust",
+          "lead": "Desert conditions amplify how industrial and backup emissions mix with other pollution.",
+          "items": [
+            "**Urban heat:** Data centers vent enormous waste heat from servers and cooling systems. In El Paso's desert climate that can strengthen local heat-island effects, keeping neighborhoods hotter than surrounding open land.",
+            "**Dust and particles:** Press coverage of IQAir's 2025 assessments tied a sharp rise in measured pollution in El Paso to historic dust storms, including figures on the order of a 46 percent increase summarized in national reporting. Construction dust and industrial plumes can also mix with windblown dust, worsening irritating particulate loads for people breathing outdoors."
+          ]
+        }
+      ],
+      "paragraphsAfterLists": [
+        "Comparative research in other dense U.S. data center markets has linked large backup generator fleets to regional pollution burdens similar in scale to conventional power plants, a benchmark El Paso should use when sizing test hours and stack limits.",
+        "Modular natural gas generators emit significantly less particulate matter than traditional diesel units. However, gas infrastructure creates a permanent fossil fuel commitment. Some programs pay operators to run these generators during peak grid stress rather than true emergencies.",
+        "Transparency should include the frequency and duration of backup operations. Agreements should prohibit running generators for economic profit through demand response programs."
+      ],
+      "sourceIds": [
+        "epa-green-book-nonattainment",
+        "el-paso-matters-air-quality-rank-2025",
+        "texas-tribune-meta-gas-2026",
+        "cbs-el-paso-los-angeles-polluted-2025",
+        "virginia-data-center-air-quality-study",
+        "wri-data-centers-us-communities-2026"
+      ],
+      "takeaways": [
+        "IQAir 2024: El Paso 9th for PM2.5 (majors).",
+        "McCloud: smog precursors + methane leaks."
+      ]
+    },
+    {
+      "id": "heat-island",
+      "eyebrow": "Heat island",
+      "title": "Urban heat, the desert, and waste heat from digital infrastructure",
+      "icon": "heat",
+      "stats": [
+        {
+          "label": "Regional pattern",
+          "value": "Desert + UHI",
+          "hint": "Chihuahuan heat plus built surfaces"
+        },
+        {
+          "label": "Data heat island (study)",
+          "value": "~3.6°F LST",
+          "hint": "Avg. surface warming after operations (global remote sensing)"
+        },
+        {
+          "label": "Spatial footprint",
+          "value": "6.2 mi",
+          "hint": "Signal to ~10 km in Marinoni et al."
+        }
+      ],
+      "highlights": [
+        "16°F Surface Temperature Spike",
+        "AI data centers can increase surrounding ground temperatures by over 16 degrees in arid regions."
+      ],
+      "paragraphs": [
+        "The **urban heat island (UHI)** effect occurs when cities replace natural land cover with dense concentrations of pavement, buildings, and other surfaces that absorb and retain heat. In a high-desert environment like El Paso, that pattern creates specific challenges for **public health and infrastructure**, including added pressure on ozone chemistry and the electricity grid when temperatures stay elevated.",
+        "National analyses rank El Paso among U.S. cities with large measured gaps between urban heat intensity and tree-supported cooling, which matters for where new industrial heat sources are sited. Community heat mapping in the region also documents sharp block-by-block differences in temperature and heat index.",
+        "A **March 2026** preprint by Marinoni et al. uses decades of **land surface temperature (LST)** from remote sensing to isolate what they call the **data heat island (DHI)** effect around AI data centers worldwide. They estimate that after operations begin, surrounding land surface temperatures rise by about **3.6°F** on average (about **2°C**), with **extreme uplifts above 16°F in arid settings**. In the largest cases they report LST surges up to about **16.4°F (9.1°C)** near major facilities. The warming footprint is not fence-limited: increased LST is detected out to about **6.2 miles (10 km)** from sites. The authors estimate that **more than 340 million people** could be affected by this temperature increase worldwide."
+      ],
+      "bulletGroups": [
+        {
+          "title": "**How the heat island effect works:** thermal mass, waste heat, and evapotranspiration",
+          "lead": "Built surfaces and equipment change how solar energy moves through the city.",
+          "items": [
+            "**Thermal mass:** Materials like asphalt, steel, and concrete have high heat capacity. They absorb solar radiation during the day and release it slowly at night, which can **prevent the city from cooling down** as much as the surrounding desert.",
+            "**Waste heat:** Air conditioning units, vehicle engines, and industrial facilities (including **data centers**) vent waste heat directly into the local atmosphere, further raising ambient temperatures.",
+            "**Evapotranspiration:** Trees and plants cool the air by releasing water vapor. In urban areas with minimal greenery, natural cooling mechanism is weakened and pavement dominates."
+          ]
+        },
+        {
+          "title": "**Specific impacts on El Paso:** desert baseline, geography, and equity",
+          "lead": "El Paso faces a **double burden** where the UHI effect amplifies the naturally high temperatures of the Chihuahuan Desert.",
+          "items": [
+            "**Nighttime temperature spikes:** The surrounding desert may drop in temperature after sunset, but **urban pockets** in the city stay significantly warmer. That loss of nighttime cooling can prevent the human body from recovering from daytime heat stress.",
+            "**Geographic trapping:** El Paso's topography, such as the **Franklin Mountains** and the surrounding **basin**, can trap warm, stagnant air over developed areas, creating a heat-dome effect that lingers over densely populated neighborhoods.",
+            "**Increased ozone formation:** Heat acts as a catalyst for chemical reactions between vehicle exhaust and industrial emissions. Higher temperatures from the UHI effect can contribute to **ground-level ozone (smog)**, a major respiratory irritant.",
+            "**Disproportionate neighborhood impact:** Research into El Paso **heat equity** shows that lower-income neighborhoods often have **less tree canopy** and more heat-absorbing surfaces. Those areas can be **5 to 10°F hotter** than greener, wealthier parts of the city.",
+            "**Energy grid strain:** As the heat island effect raises local temperatures, demand for air conditioning rises. That can create a feedback loop: higher demand leads to more power plant emissions and more waste heat from AC condensers, further warming the city."
+          ]
+        },
+        {
+          "title": "**Data heat island (Marinoni et al.):** global remote sensing",
+          "lead": "A March 2026 study by the University of Cambridge identified a 'Data Heat Island' effect. AI data centers increase surrounding land surface temperatures by an average of 3.6°F. In extreme conditions, particularly in arid climates, surface temperatures can spike by more than 16°F ",
+          "items": [
+            "**Average signal:** Mean LST increase near AI data centers after start of operations is about **3.6°F**; the paper estimates **more than 340 million people** could be affected by the associated warming globally.",
+            "**Arid extremes:** The largest uplifts appear in dry climates; the work reports extreme cases above **16°F** for land surface temperature, with peak single-site LST change up to about **16.4°F (9.1°C)**.",
+            "**Beyond the property line:** Elevated LST is not confined to the campus; the analysis finds a footprint on the order of **6.2 miles (10 km)** from facilities.",
+            "**Surfaces and nighttime retention:** Large LST changes reflect materials such as roofs and pavement that **store solar energy by day** and **release it at night**, which can disrupt the overnight cooling cycle that matters for public health."
+          ]
+        }
+      ],
+      "paragraphsAfterLists": [
+        "**Data centers and El Paso's heat:** Large-scale data centers add a new variable to the local UHI. These facilities use **massive industrial cooling** to dissipate heat from thousands of servers. In a desert climate, that can add a **constant stream of hot, dry air** near the site and potentially extend the **duration and intensity** of heat-island conditions for nearby residents.",
+        "The Marinoni et al. results suggest **data heat island** signals can be especially large in **arid** settings and extend **many miles** beyond the fence. This adds **cumulative** stress on top of regional UHI and desert heat, not a neutral background. Permits and community benefit agreements should plan for **LST and heat index** near homes, not only property-line rules."
+      ],
+      "sourceIds": [
+        "arxiv-marinoni-data-heat-island-2026",
+        "climate-central-urban-heat-hot-spots-2024",
+        "noaa-urban-heat-island-initiative",
+        "capa-el-paso-heat-maps",
+        "tpwd-urban-wildlife-forests",
+        "epa-heat-island-compendium"
+      ],
+      "takeaways": [
+        "Night: city pockets lose desert cool-down.",
+        "DHI: warming measured miles past the fence."
+      ]
+    },
+    {
+      "id": "noise",
+      "eyebrow": "Noise",
+      "title": "Cooling equipment, generators, and neighbor distance",
+      "icon": "volume",
+      "stats": [
+        {
+          "label": "Sources",
+          "value": "AHUs, towers",
+          "hint": "Low frequency travels far"
+        },
+        {
+          "label": "Enforcement",
+          "value": "Where measured",
+          "hint": "Resident lot line vs data center fence"
+        },
+        {
+          "label": "Weather",
+          "value": "Inversions",
+          "hint": "Can bend sound into neighborhoods"
+        }
+      ],
+      "highlights": [
+        "The Property Line Loophole",
+        "Industrial humming is measured at the resident's lot line rather than the Data Center's property line."
+      ],
+      "paragraphs": [
+        "Air handling units and cooling towers generate constant low-frequency noise. This sound travels further and penetrates walls more easily than high-frequency noise. Residents in other desert markets describe the sound as a constant drone.",
+        "The City of El Paso states on its Data Center Resource Hub that data centers must comply with Title 9.40 of the El Paso City Code. In industrial zones the maximum sound level is 70 to 75 decibels (dBA) at the property line. For facilities near residential areas the limit is lower: 50 dBA at night. When homes are at stake, the decibel limit that protects you is checked at the **receiving property line**: the **resident's lot line**, where sound is measured outside your home, not at the operator's fence. Title 9.40 defines when the test applies at the neighbor's line versus the industrial line; read the chapter for the exact wording.",
+        "Those numbers describe what the code can permit. They should not be read as a guarantee of peace next door. A facility can stay within industrial fence-line limits while still producing a round-the-clock hum that carries into yards and bedrooms. Public health guidance often points to lower night noise for undisturbed sleep than a single headline figure suggests. Neighbors deserve clarity that compliance with Title 9.40 of the El Paso City Code is a legal floor, not proof that a hyperscale site will feel acceptable at the property line.",
+        "Arizona has updated municipal standards in the Phoenix area toward **lower** decibel limits and **measurement at the data center property line** (the source fence), so the plant must meet stricter limits where it sits. That contrasts with rules that only chase complaints at a distant lot without tightening the facility itself. Thermal inversions common in desert winters can bend sound downward, carrying it into distant neighborhoods."
+      ],
+      "bulletGroups": [
+        {
+          "title": "Health issues for nearby residents",
+          "lead": "Because data center noise is constant and often contains low-frequency tones, it can be more disruptive than intermittent city noises like traffic.",
+          "items": [
+            "**Sleep disturbances:** The persistent hum can lead to chronic insomnia, fragmented sleep, and nightmares. Unlike white noise, the mechanical nature of the sound can prevent the brain from entering deep sleep cycles.",
+            "**Cardiovascular issues:** Long-term exposure to noise above 65 decibels is linked to increased blood pressure (hypertension) and elevated heart rates, which are risk factors for heart disease.",
+            "**Neurological and cognitive symptoms:** Residents near facilities in Texas and Arkansas have reported frequent migraines, vertigo (dizziness), and nausea. The low-frequency pressure waves can affect the inner ear and vestibular system.",
+            "**Mental health:** Chronic noise pollution is a significant stressor that can lead to increased anxiety, irritability, and a general decrease in quality of life.",
+            "**Hearing-related issues:** Constant exposure can cause tinnitus-like symptoms, where residents perceive a ringing or buzzing in the ears even when away from the site."
+          ]
+        },
+        {
+          "title": "Impact on wildlife",
+          "lead": "Wildlife relies heavily on the \"acoustical environment\" for survival. A constant 24/7 hum creates a masking effect that drowns out natural sounds.",
+          "items": [
+            "**Communication interference:** Many species (birds, frogs, and insects) use specific frequencies to attract mates. The data center hum can mask these calls, leading to reduced reproductive success.",
+            "**Predator-prey dynamics:** Predators (like owls or bats) that rely on hearing to locate prey find it harder to hunt. Conversely, prey animals may not hear a predator approaching over the mechanical noise.",
+            "**Altered behavior:** Some birds have been observed changing the pitch of their songs or switching to nocturnal singing to be heard over industrial noise, which drains their energy reserves.",
+            "**Physiological stress:** Animals exposed to chronic industrial noise show elevated levels of stress hormones (corticosterone), which can weaken their immune systems and reduce their overall lifespan.",
+            "**Habitat abandonment:** Sensitive species may completely abandon otherwise suitable habitats to avoid the noise, leading to a loss of local biodiversity."
+          ]
+        }
+      ],
+      "paragraphsAfterLists": [
+        "Independent monitoring and objective caps at the line named in the permit beat vague comfort standards."
+      ],
+      "sourceIds": [
+        "el-paso-city-data-centers-hub",
+        "phoenix-data-center-staff-report-2025",
+        "epa-noise-pollution-overview",
+        "el-paso-noise-ordinance",
+        "ehp-dangers-data-centers",
+        "eesi-noise-data-centers-2026",
+        "nps-effects-noise-wildlife",
+        "sierra-club-data-centers-factsheet-2025"
+      ],
+      "takeaways": [
+        "Loud at fence; not quiet at home.",
+        "AZ: lower dBA at source fence."
+      ]
+    },
+    {
+      "id": "socioeconomic",
+      "eyebrow": "Jobs and incentives",
+      "title": "Capital intensity, hiring, and clawbacks",
+      "icon": "balance",
+      "stats": [
+        {
+          "label": "Investment (reported)",
+          "value": "~$10B",
+          "hint": "Press coverage, 2026"
+        },
+        {
+          "label": "Jobs guaranteed* in contract",
+          "value": "50",
+          "hint": "Not a contractual hiring floor"
+        },
+        {
+          "label": "Incentives (order of magnitude)",
+          "value": "~$110M",
+          "hint": "Clawbacks if targets slip"
+        }
+      ],
+      "highlights": [
+        "Only 50 Guaranteed* hires.",
+        "fifty permanent jobs for over one hundred million dollars in public incentives."
+      ],
+      "paragraphs": [
+        "Reports indicate a $10 billion investment for the El Paso site, with company statements in the press floating on the order of 300 new jobs. That figure is a public promise, not a contractually guaranteed employment level. Research suggests permanent operational roles often total less than 20% of peak construction employment. Data centers are capital-intensive rather than labor-intensive.",
+        "El Paso has offered roughly $110 million in incentives. If that promise is taken at face value, the order of magnitude is hundreds of thousands of dollars per promised job; the number rises if realized permanent jobs end up far below the headline. Clawback clauses are legal tools that recover public funds if job or environmental targets are missed. Independent watchdogs recommend tying tax abatements to verifiable outcomes."
+      ],
+      "sourceIds": [
+        "cnbc-meta-el-paso-10b-2026",
+        "good-jobs-first-clawbacks"
+      ],
+      "takeaways": [
+        "Big build; few permanent jobs.",
+        "Scrutinize dollars per promised job."
+      ]
+    },
+    {
+      "id": "380-agreement",
+      "eyebrow": "380 Meta Agreement",
+      "title": "The 380 Meta Agreement: Decoding the fine print",
+      "icon": "gavel",
+      "stats": [
+        {
+          "label": "Job Floor",
+          "value": "50 Jobs",
+          "hint": "Contractual minimum vs. press promises "
+        },
+        {
+          "label": "Road Subsidy",
+          "value": "$7.5M+",
+          "hint": "City reimbursement for 'private' construction "
+        },
+        {
+          "label": "Lock-in",
+          "value": "35 Years",
+          "hint": "Duration of tax and policy restrictions "
+        }
+      ],
+      "highlights": [
+        "The 35-Year Muzzle",
+        "Section 14.4 contractually bars City staff from recommending new taxes on the project until 2058."
+      ],
+      "download": {
+        "href": "/documents/Wurldwide-380-Agreement.pdf",
+        "label": "Download the 380 agreement (PDF)",
+        "fileName": "Wurldwide-380-Agreement.pdf"
+      },
+      "paragraphs": [
+        "The 380 Economic Development Program Agreement is the primary contract between the City of El Paso and Wurldwide LLC. While public narratives focus on growth, the document establishes a 35-year framework of subsidies and restricted local authority. The City represents that the agreement is a valid and binding obligation.",
+        "One major discrepancy involves employment figures. Press releases often suggest hundreds of roles, yet the contract only requires a minimum of 50 full-time jobs. This requirement does not take effect until four years after the project reaches completion. If the job count slips, the City's only remedy is a reduction in grant amounts.",
+        "Financial transparency is another concern regarding public infrastructure. Meta must build a portion of Stan Roberts Sr. Avenue, but the **City is obligated to reimburse Meta up to $7,500,000**. This cap can increase by 20% if costs exceed initial estimates. Once finished, the City assumes all future maintenance costs for the road."
+      ],
+      "bulletGroups": [
+        {
+          "title": "Policy 'Gotchas' and Governance Constraints",
+          "lead": "The contract includes several clauses that limit the City's power to govern the site or adapt to economic changes.",
+          "items": [
+            "**The Tax Muzzle:** Section 14.4 prohibits City staff from recommending or supporting any new taxes that specifically target the data center or the industry.",
+            "**The Regulatory Bubble:** Section 14.2 prevents the City from modifying zoning or building regulations in a way that adversely affects the project.",
+            "**The 'Zombie' Extension:** Section 5.2 states that for every year the City chooses not to appropriate funds for a grant, the contract term automatically extends by one year.",
+            "**No Public Bidding:** Section 4.6.4 waives competitive bidding requirements for the road project, allowing Meta to select its own contractors using public funds."
+          ]
+        },
+        {
+          "title": "Accountability and Enforcement Gaps",
+          "lead": "The City's ability to recover value or penalize failures is strictly limited by the contract language.",
+          "items": [
+            "**Sole Remedy:** For most breaches, the City's sole and exclusive remedy is to terminate the agreement.",
+            "**No Refunds:** Section 6.11 prevents the City from clawing back grants already paid, except in cases of specific immigration law violations.",
+            "**No Cross-Defaults:** Section 6.12 ensures that a failure in one phase of the project cannot be used to cancel or penalize other successful phases.",
+            "**Fee Waivers:** Section 5.3 waives nearly all impact, permit, and development fees, removing an immediate source of revenue for city services."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "Ex-Wurldwide-380-Agreement-Seafox"
+      ],
+      "takeaways": [
+        "Staff are legally barred from proposing new taxes.",
+        "Meta picks contractors; the City pays the bill."
+      ]
+    },
+    {
+      "id": "transparency",
+      "eyebrow": "380: Public Oversight",
+      "title": "Transparency and the 'Black Box' effect",
+      "icon": "eye-off",
+      "stats": [
+        {
+          "label": "Inspections",
+          "value": "1 Per Year",
+          "hint": "Maximum allowed under Section 4.7 "
+        },
+        {
+          "label": "Notice",
+          "value": "30 Days",
+          "hint": "Advance warning required for City staff under Section 4.7 "
+        },
+        {
+          "label": "Legal Shield",
+          "value": "Section 19",
+          "hint": "City must fight to keep data secret "
+        }
+      ],
+      "highlights": [
+        "The 'Black Box' Effect",
+        "Section 4.7 limits the City to only one scheduled inspection of the Data Center per year and requires a 30-day advance notice."
+      ],
+      "download": {
+        "href": "/documents/Wurldwide-380-Agreement.pdf",
+        "label": "Download the 380 agreement (PDF)",
+        "fileName": "Wurldwide-380-Agreement.pdf"
+      },
+      "paragraphs": [
+        "Public oversight of a hyperscale facility is restricted by the 380 agreement. Section 4.7 limits the City to one inspection per year. The company requires 30 days of written notice before any official can enter the property. These visits must happen during normal business hours. They also require a security escort provided by the operator. This creates a controlled environment for any audit of water or energy use.",
+        "The contract also imposes secrecy on City employees via Section 4.7. Any individual inspecting the site can be forced to sign a confidentiality agreement. The company has the right to demand that any notes or documents viewed by City representatives stay at the project site. This prevents the creation of a public paper trail regarding internal operations or equipment performance.",
+        "Section 19 governs how public information requests are handled. The City is contractually obligated to oppose the release of any information the company labels as confidential. This includes submitting legal briefs to the Texas Attorney General to prevent disclosure. The company pays the legal costs. However, the City acts as the legal barrier to public record access."
+      ],
+      "bulletGroups": [
+        {
+          "title": "The Oversight Gap",
+          "lead": "When a private company controls the flow of information, the public cannot verify compliance with environmental or job targets.",
+          "items": [
+            "**Restricted Access:** The one visit per year rule in Section 4.7 prevents the City from conducting surprise audits of water meters or noise levels.",
+            "**Escorted Tours:** Security escorts and pre-approved paths under Section 4.7 ensure that City staff only see what the company chooses to show.",
+            "**Legal Hurdles:** Taxpayers seeking information through the Public Information Act face a City government that is legally bound by Section 19 to fight against them."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "Ex-Wurldwide-380-Agreement-Seafox"
+      ],
+      "takeaways": [
+        "NDAs required for City inspectors",
+        "Company can force notes to be left on site."
+      ]
+    },
+    {
+      "id": "recommendations",
+      "eyebrow": "Policy",
+      "title": "What El Paso can require",
+      "icon": "gavel",
+      "stats": [
+        {
+          "label": "Water",
+          "value": "Reclaimed first",
+          "hint": "Ban potable for primary cooling"
+        },
+        {
+          "label": "Power",
+          "value": "Community benefit",
+          "hint": "Solar plus storage over gas lock-in"
+        },
+        {
+          "label": "Governance",
+          "value": "Tiered deals",
+          "hint": "Abatement tied to audited outcomes"
+        }
+      ],
+      "highlights": [
+        "Name parent firms on incentive deals.",
+        "Yearly public compliance dashboard."
+      ],
+      "paragraphs": [
+        "**Water:** Prioritize reclaimed supplies for all industrial cooling. Prohibit the use of potable aquifer water for primary cooling functions.",
+        "**Energy:** Maintain legal intervention in utility cases regarding new gas plants. Require the facility to fund local solar and battery storage instead of dedicated fossil fuel units.",
+        "**Air and noise:** Set strict decibel limits measured at the data center property line and at the receiving resident lot line. Require independent monitoring of acoustics and emissions.",
+        "**Governance:** Implement tiered incentives. Grant full abatements only when facilities meet both job and water reuse targets."
+      ],
+      "bullets": [
+        "Mandate disclosure of ultimate parent companies on all applications.",
+        "Require facilities to be liquid ready for future high-efficiency cooling.",
+        "Establish a citizen oversight board with power to review annual audits."
+      ],
+      "sourceIds": [
+        "good-jobs-first-clawbacks",
+        "epa-ej"
+      ],
+      "takeaways": [
+        "Name parent firms on incentive deals.",
+        "Yearly public compliance dashboard."
+      ]
+    }
+  ],
+  "noiseTable": {
+    "caption": "El Paso official summary (Title 9.40 of the El Paso City Code) compared to Arizona-style source-line measurement and other benchmarks. Verify which line a permit uses (resident receiving lot line vs data center fence) in the municipal code before citing in a permit or appeal.",
+    "rows": [
       {
-        "title": "Policy 'Gotchas' and Governance Constraints",
-        "lead": "The contract includes several clauses that limit the City's power to govern the site or adapt to economic changes.",
-        "items": [
-          "**The Tax Muzzle:** Section 14.4 prohibits City staff from recommending or supporting any new taxes that specifically target the data center or the industry.",
-          "**The Regulatory Bubble:** Section 14.2 prevents the City from modifying zoning or building regulations in a way that adversely affects the project.",
-          "**The 'Zombie' Extension:** Section 5.2 states that for every year the City chooses not to appropriate funds for a grant, the contract term automatically extends by one year.",
-          "**No Public Bidding:** Section 4.6.4 waives competitive bidding requirements for the road project, allowing Meta to select its own contractors using public funds."
-        ]
+        "jurisdiction": "Arizona / Phoenix-area direction (updated)",
+        "dayDb": "Lower caps (code)",
+        "nightDb": "Lower caps (code)",
+        "measurementPoint": "Data center property line (source)",
+        "sourceNote": "Staff-led updates: tighter dBA and meter at the facility lot line "
       },
       {
-        "title": "Accountability and Enforcement Gaps",
-        "lead": "The City's ability to recover value or penalize failures is strictly limited by the contract language.",
-        "items": [
-          "**Sole Remedy:** For most breaches, the City's sole and exclusive remedy is to terminate the agreement.",
-          "**No Refunds:** Section 6.11 prevents the City from clawing back grants already paid, except in cases of specific immigration law violations.",
-          "**No Cross-Defaults:** Section 6.12 ensures that a failure in one phase of the project cannot be used to cancel or penalize other successful phases.",
-          "**Fee Waivers:** Section 5.3 waives nearly all impact, permit, and development fees, removing an immediate source of revenue for city services."
-        ]
-      }
-    ],
-    "sourceIds": ["Ex-Wurldwide-380-Agreement-Seafox"]
-  },
-
-  {
-    "id": "transparency",
-    "eyebrow": "380: Public Oversight",
-    "title": "Transparency and the 'Black Box' effect",
-    "icon": "eye-off",
-    "stats": [
-      { "label": "Inspections", "value": "1 Per Year", "hint": "Maximum allowed under Section 4.7 " },
-      { "label": "Notice", "value": "30 Days", "hint": "Advance warning required for City staff under Section 4.7 " },
-      { "label": "Legal Shield", "value": "Section 19", "hint": "City must fight to keep data secret " }
-    ],
-    "highlights": [
-      "NDAs required for City inspectors",
-      "Company can force notes to be left on site."
-    ],
-    "download": {
-      "href": "/documents/Wurldwide-380-Agreement.pdf",
-      "label": "Download the 380 agreement (PDF)",
-      "fileName": "Wurldwide-380-Agreement.pdf"
-    },
-    "paragraphs": [
-      "Public oversight of a hyperscale facility is restricted by the 380 agreement. Section 4.7 limits the City to one inspection per year. The company requires 30 days of written notice before any official can enter the property. These visits must happen during normal business hours. They also require a security escort provided by the operator. This creates a controlled environment for any audit of water or energy use.",
-      "The contract also imposes secrecy on City employees via Section 4.7. Any individual inspecting the site can be forced to sign a confidentiality agreement. The company has the right to demand that any notes or documents viewed by City representatives stay at the project site. This prevents the creation of a public paper trail regarding internal operations or equipment performance.",
-      "Section 19 governs how public information requests are handled. The City is contractually obligated to oppose the release of any information the company labels as confidential. This includes submitting legal briefs to the Texas Attorney General to prevent disclosure. The company pays the legal costs. However, the City acts as the legal barrier to public record access."
-    ],
-    "bulletGroups": [
+        "jurisdiction": "Regional arid-city benchmark (advocacy)",
+        "dayDb": "55 dBA",
+        "nightDb": "45 dBA",
+        "measurementPoint": "Property line (model)",
+        "sourceNote": "Desert hub zoning discussion "
+      },
       {
-        "title": "The Oversight Gap",
-        "lead": "When a private company controls the flow of information, the public cannot verify compliance with environmental or job targets.",
-        "items": [
-          "**Restricted Access:** The one visit per year rule in Section 4.7 prevents the City from conducting surprise audits of water meters or noise levels.",
-          "**Escorted Tours:** Security escorts and pre-approved paths under Section 4.7 ensure that City staff only see what the company chooses to show.",
-          "**Legal Hurdles:** Taxpayers seeking information through the Public Information Act face a City government that is legally bound by Section 19 to fight against them."
-        ]
+        "jurisdiction": "El Paso (city FAQ: data centers, Title 9.40 of the El Paso City Code)",
+        "dayDb": "70–75 dBA (industrial zone)",
+        "nightDb": "50 dBA (near residential)",
+        "measurementPoint": "Facility line (industrial); resident lot line (homes)",
+        "sourceNote": "Hub summarizes property-line tests; limits that protect neighbors are enforced at the receiving (resident) lot line where Title 9.40 applies "
+      },
+      {
+        "jurisdiction": "Advocacy benchmark (This site)",
+        "dayDb": "50 dBA",
+        "nightDb": "45 dBA",
+        "measurementPoint": "Should be at the data center property line",
+        "sourceNote": "Proposed standard "
       }
-    ],
-    "sourceIds": ["Ex-Wurldwide-380-Agreement-Seafox"]
+    ]
   },
-
-  {
-  
-    "id": "recommendations",
-    
-    "eyebrow": "Policy",
-    
-    "title": "What El Paso can require",
-    
-    "icon": "gavel",
-    
-    "stats": [
-    
-    { "label": "Water", "value": "Reclaimed first", "hint": "Ban potable for primary cooling" },
-    
-    { "label": "Power", "value": "Community benefit", "hint": "Solar plus storage over gas lock-in" },
-    
-    { "label": "Governance", "value": "Tiered deals", "hint": "Abatement tied to audited outcomes" }
-    
-    ],
-    
-    "highlights": [
-    
-    "Name parent firms on incentive deals.",
-    
-    "Yearly public compliance dashboard."
-    
-    ],
-    
-    "paragraphs": [
-    
-    "**Water:** Prioritize reclaimed supplies for all industrial cooling. Prohibit the use of potable aquifer water for primary cooling functions.",
-    
-    "**Energy:** Maintain legal intervention in utility cases regarding new gas plants. Require the facility to fund local solar and battery storage instead of dedicated fossil fuel units.",
-    
-    "**Air and noise:** Set strict decibel limits measured at the data center property line and at the receiving resident lot line. Require independent monitoring of acoustics and emissions.",
-    
-    "**Governance:** Implement tiered incentives. Grant full abatements only when facilities meet both job and water reuse targets."
-    
-    ],
-    
-    "bullets": [
-    
-    "Mandate disclosure of ultimate parent companies on all applications.",
-    
-    "Require facilities to be liquid ready for future high-efficiency cooling.",
-    
-    "Establish a citizen oversight board with power to review annual audits."
-    
-    ],
-    
-    "sourceIds": ["good-jobs-first-clawbacks", "epa-ej"]
-    
-    }
-
-
- 
-  
-  ],
-  
-  "noiseTable": {
-  
-  "caption": "El Paso official summary (Title 9.40 of the El Paso City Code) compared to Arizona-style source-line measurement and other benchmarks. Verify which line a permit uses (resident receiving lot line vs data center fence) in the municipal code before citing in a permit or appeal.",
-  
-  "rows": [
-  
-  {
-  
-  "jurisdiction": "Arizona / Phoenix-area direction (updated)",
-  
-  "dayDb": "Lower caps (code)",
-  
-  "nightDb": "Lower caps (code)",
-  
-  "measurementPoint": "Data center property line (source)",
-  
-  "sourceNote": "Staff-led updates: tighter dBA and meter at the facility lot line "
-  
-  },
-  
-  {
-  
-  "jurisdiction": "Regional arid-city benchmark (advocacy)",
-  
-  "dayDb": "55 dBA",
-  
-  "nightDb": "45 dBA",
-  
-  "measurementPoint": "Property line (model)",
-  
-  "sourceNote": "Desert hub zoning discussion "
-  
-  },
-  
-  {
-  
-  "jurisdiction": "El Paso (city FAQ: data centers, Title 9.40 of the El Paso City Code)",
-  
-  "dayDb": "70–75 dBA (industrial zone)",
-  
-  "nightDb": "50 dBA (near residential)",
-  
-  "measurementPoint": "Facility line (industrial); resident lot line (homes)",
-  
-  "sourceNote": "Hub summarizes property-line tests; limits that protect neighbors are enforced at the receiving (resident) lot line where Title 9.40 applies "
-  
-  },
-  
-  {
-  
-  "jurisdiction": "Advocacy benchmark (This site)",
-  
-  "dayDb": "50 dBA",
-  
-  "nightDb": "45 dBA",
-  
-  "measurementPoint": "Should be at the data center property line",
-  
-  "sourceNote": "Proposed standard "
-  
-  }
-  
-  ]
-  
-  },
-  
   "economicTable": {
-  
-  "caption": "Reported job creation and investment figures.",
-  
-  "rows": [
-  
-  {
-  
-  "project": "Meta — Louisiana campus",
-  
-  "investment": "$10B",
-  
-  "promisedJobs": "300–500",
-  
-  "actualOrRevisedJobs": "~100",
-  
-  "sourceNote": "Local business press "
-  
-  },
-  
-  {
-  
-  "project": "Stream Data Centers — New York",
-  
-  "investment": "$11.2B",
-  
-  "promisedJobs": "—",
-  
-  "actualOrRevisedJobs": "125",
-  
-  "sourceNote": "Good Jobs First analysis "
-  
-  },
-  
-  {
-  
-  "project": "Meta — El Paso",
-  
-  "investment": "$1.5B (initial) to $10B",
-  
-  "promisedJobs": "~300 (company promise in press, not a contract)",
-  
-  "actualOrRevisedJobs": "—",
-  
-  "sourceNote": "Actual permanent jobs TBD; compare to clawback and audit terms when published "
-  
+    "caption": "Reported job creation and investment figures.",
+    "rows": [
+      {
+        "project": "Meta — Louisiana campus",
+        "investment": "$10B",
+        "promisedJobs": "300–500",
+        "actualOrRevisedJobs": "~100",
+        "sourceNote": "Local business press "
+      },
+      {
+        "project": "Stream Data Centers — New York",
+        "investment": "$11.2B",
+        "promisedJobs": "—",
+        "actualOrRevisedJobs": "125",
+        "sourceNote": "Good Jobs First analysis "
+      },
+      {
+        "project": "Meta — El Paso",
+        "investment": "$1.5B (initial) to $10B",
+        "promisedJobs": "~300 (company promise in press, not a contract)",
+        "actualOrRevisedJobs": "—",
+        "sourceNote": "Actual permanent jobs TBD; compare to clawback and audit terms when published "
+      }
+    ]
   }
-  
-  ]
-  
-  }
-  
-  }
+}

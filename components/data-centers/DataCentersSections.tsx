@@ -17,7 +17,8 @@ import type { DataCentersImpactSection, SourcesBundle } from "@/content/schema";
 import { pickSources } from "@/lib/content/load";
 
 const anchorSx = {
-  scrollMarginTop: { xs: 120, md: 120, lg: 96 },
+  // Mobile needs extra offset because the sticky "On this page" panel overlays section starts.
+  scrollMarginTop: { xs: 196, md: 120, lg: 96 },
 } as const;
 
 /** Long-form column width; body uses theme `body2` (same density as Learn cards + data-centers tables). */
@@ -62,10 +63,12 @@ export default function DataCentersSections({
           bullets.length > 0 ||
           paragraphsAfter.length > 0;
         const hasStats = (section.stats?.length ?? 0) > 0;
-        const hasHighlights = (section.highlights?.length ?? 0) > 0;
+        const takeawayChips =
+          (section.takeaways?.length ? section.takeaways : section.highlights) ?? [];
+        const hasTakeawayChips = takeawayChips.length > 0;
         /** Air below the title block before stats, chips, or body (clearer hierarchy than tight margins). */
         const headerBlockMb =
-          hasStats || hasHighlights || hasProseStack || Boolean(section.download)
+          hasStats || hasTakeawayChips || hasProseStack || Boolean(section.download)
             ? { xs: 3.5, md: 4 }
             : { xs: 2.5, md: 3 };
 
@@ -138,7 +141,7 @@ export default function DataCentersSections({
                 </Stack>
 
               {section.stats && section.stats.length > 0 ? (
-                <Box sx={{ mb: hasHighlights ? 3 : 2.5 }}>
+                <Box sx={{ mb: hasTakeawayChips ? 3 : 2.5 }}>
                   <Typography
                     variant="caption"
                     color="text.secondary"
@@ -166,9 +169,9 @@ export default function DataCentersSections({
                         variant="outlined"
                         title={st.hint ?? undefined}
                         sx={{
-                          width: { xs: "fit-content", sm: "100%" },
+                          width: "100%",
                           maxWidth: "100%",
-                          justifySelf: { xs: "start", sm: "stretch" },
+                          justifySelf: "stretch",
                           borderRadius: 2,
                           boxSizing: "border-box",
                         }}
@@ -177,6 +180,7 @@ export default function DataCentersSections({
                           sx={{
                             px: { xs: 2.25, sm: 2.5 },
                             py: { xs: 1.75, sm: 2 },
+                            textAlign: { xs: "center", sm: "left" },
                             "&:last-child": {
                               pb: { xs: 1.75, sm: 2 },
                             },
@@ -205,7 +209,7 @@ export default function DataCentersSections({
                 </Box>
               ) : null}
 
-              {section.highlights && section.highlights.length > 0 ? (
+              {hasTakeawayChips ? (
                 <Box
                   sx={{
                     mb: section.download ? 2 : hasProseStack ? 2.5 : 2,
@@ -221,7 +225,7 @@ export default function DataCentersSections({
                     {labels.highlightsLabel}
                   </Typography>
                   <Stack direction="row" flexWrap="wrap" gap={1}>
-                    {section.highlights.map((h, i) => (
+                    {takeawayChips.map((h, i) => (
                       <Chip
                         key={`${section.id}-hl-${i}`}
                         label={<DataCentersRichText text={h} sources={cite} />}

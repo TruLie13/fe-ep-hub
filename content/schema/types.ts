@@ -326,8 +326,16 @@ export interface DataCentersImpactSection {
   icon?: string;
   /** Short key figures shown above body copy. */
   stats?: DataCentersStatItem[];
-  /** Short takeaway lines for chips; keep each under ~38 characters for mobile layout. */
+  /**
+   * Short lines for homepage Quick facts (`buildHomeQuickFactsFromImpacts` uses `highlights[0]` / `[1]`).
+   * Keep wording tuned for that grid.
+   */
   highlights?: string[];
+  /**
+   * Takeaway chips on the data centers page (shown under "Takeaways"). When omitted, `highlights` is used.
+   * Use this when chip copy should differ from homepage quick-fact lines.
+   */
+  takeaways?: string[];
   /** Optional PDF or other file download (after Takeaways). */
   download?: DataCentersSectionDownload;
 }

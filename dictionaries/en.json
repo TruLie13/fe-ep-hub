@@ -60,11 +60,11 @@
   "home": {
     "metaTitle": "El Paso Hub | Responsible Data Center Policy",
     "heroTitle": "Data centers, local news, and the civic tools to act",
-    "heroSubtitle": "For El Paso, El Paso County, and nearby communities (including across the state line in New Mexico): plain-language explainers on data centers, curated regional headlines, local elected contacts, and public meeting schedules—so you can get informed and participate before decisions are final.",
+    "heroSubtitle": "This platform provides the research and civic tools to help you influence municipal policy. Start with our plain language guide to understand industrial trade offs or jump to the government page to find your representatives and take action.",
     "startLearning": "Start learning",
     "takePledge": "Take the pledge",
-    "atAGlance": "At a glance",
-    "atAGlanceBody": "This site is organized around one issue—responsible data center policy in our region—with several ways in: Learn (basics and tradeoffs), News & links, Local government (who represents you), City meetings, plus pledge and contribute. Pick any door; they reinforce each other.",
+    "atAGlance": "Navigate the Hub",
+    "atAGlanceBody": "This platform provides the research and civic tools to help you influence municipal policy. Start with our plain language guide to understand industrial trade offs or jump to the government page to find your representatives and take action.",
     "plainLanguageGuide": "Plain-language guide",
     "viewRegionalImpacts": "Regional impacts",
     "howItWorks": {
@@ -97,7 +97,7 @@
     "quickFacts": {
       "eyebrow": "Quick facts",
       "title": "Why neighbors are worried",
-      "description": "Hyperscale sites concentrate water, power, and pollution questions in one place. These six points are the short version.",
+      "description": "Hyperscale Data Center concentrate water, power, and pollution questions in one place. These nine points are the short version. Click the cards to learn more.",
       "desertHeat": {
         "label": "Concern",
         "title": "Desert cooling penalty",
@@ -140,7 +140,7 @@
     "metaTitle": "Learn",
     "metaDescription": "Plain-language explainers about data centers, AI, water use, and how to read local infrastructure proposals.",
     "title": "Learn",
-    "subtitle": "This page walks through what data centers and AI actually are, why they are not inherently harmful, and where the real problems lie, with particular focus on communities in water-stressed regions like El Paso.\n\nEvery section includes sources you can open and verify.",
+    "subtitle": "This page walks through the basics of what data centers and AI actually are, why they are not inherently harmful, and where the real problems lie, with particular focus on communities in water-stressed regions like El Paso.\n\nEvery section includes sources you can open and verify.",
     "dc": {
       "eyebrow": "Data Centers 101",
       "title": "Data centers",
@@ -368,7 +368,7 @@
     "metaDescription": "Water, power, air, noise, and incentive risks from hyperscale data centers in the desert border region—and practical policies El Paso can adopt.",
     "title": "Data centers and regional impact",
     "yearBadge": "2026",
-    "subtitle": "This page turns research and public reporting into a readable guide: how cooling works in desert heat, why grid and air questions stack up at the border, and what stronger oversight can look like. Every section lists sources you can verify.",
+    "subtitle": "This guide translates complex municipal contracts and environmental data into a clear resource. Understand how industrial cooling functions in extreme heat: the reality of grid demand: and the legal gaps in public oversight. Every section contains verifiable sources.",
     "statsLabel": "Key figures",
     "highlightsLabel": "Takeaways",
     "downloadsLabel": "Downloads",

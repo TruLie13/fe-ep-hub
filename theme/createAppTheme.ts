@@ -19,6 +19,8 @@ export const appTheme = extendTheme({
         mode: "light",
         primary: {
           main: tokens.light.accent,
+          light: "#3B82F6",
+          dark: "#1D4ED8",
           contrastText: tokens.light.accentContrast,
         },
         background: {
@@ -31,6 +33,10 @@ export const appTheme = extendTheme({
         },
         warning: {
           main: tokens.light.warning,
+          light: "#EA580C",
+          /** Dark orange fill: white text meets WCAG 2.2 AA for small UI labels (4.5:1). */
+          dark: "#9A3412",
+          contrastText: "#FFFFFF",
         },
         divider: tokens.light.border,
         warningSurface: tokens.light.warning,
@@ -41,6 +47,9 @@ export const appTheme = extendTheme({
         mode: "dark",
         primary: {
           main: tokens.dark.accent,
+          light: "#93C5FD",
+          /** Deeper blue for fills where white label text is required (see FactCard pills). */
+          dark: "#2563EB",
           contrastText: tokens.dark.accentContrast,
         },
         background: {
@@ -53,6 +62,9 @@ export const appTheme = extendTheme({
         },
         warning: {
           main: tokens.dark.warning,
+          light: "#FDBA74",
+          dark: "#9A3412",
+          contrastText: "#FFFFFF",
         },
         divider: tokens.dark.border,
         warningSurface: tokens.dark.warning,

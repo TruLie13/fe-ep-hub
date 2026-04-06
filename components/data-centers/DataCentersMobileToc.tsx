@@ -2,7 +2,7 @@
 
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { Box, ButtonBase, Collapse, Link, Stack, Typography } from "@mui/material";
+import { Box, ButtonBase, Link, Stack, Typography } from "@mui/material";
 import { useEffect, useId, useRef, useState } from "react";
 import type { DataCentersImpactSection } from "@/content/schema";
 import { useScrollSpyActiveId } from "@/lib/hooks/useScrollSpyActiveId";
@@ -72,11 +72,12 @@ export default function DataCentersMobileToc({
     >
       <Box
         sx={{
+          position: "relative",
           border: 1,
           borderColor: "divider",
           borderRadius: 2,
           bgcolor: "background.paper",
-          overflow: "hidden",
+          overflow: "visible",
         }}
       >
         <ButtonBase
@@ -91,6 +92,8 @@ export default function DataCentersMobileToc({
             textAlign: "left",
             px: 2,
             py: 1.5,
+            borderRadius: 2,
+            overflow: "hidden",
           }}
         >
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
@@ -105,47 +108,64 @@ export default function DataCentersMobileToc({
             {expanded ? <ExpandLess color="action" /> : <ExpandMore color="action" />}
           </Stack>
         </ButtonBase>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Stack
+        {expanded ? (
+          <Box
             id={panelId}
-            component="ul"
-            spacing={0}
-            sx={{ listStyle: "none", m: 0, p: 0, pb: 1, px: 2, maxHeight: 280, overflowY: "auto" }}
+            sx={{
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
+              zIndex: 2,
+              mt: 0.75,
+              border: 1,
+              borderColor: "divider",
+              borderRadius: 2,
+              bgcolor: "background.paper",
+              boxShadow: 3,
+              overflow: "hidden",
+            }}
           >
-            {sections.map((s) => {
-              const active = activeId === s.id;
-              return (
-                <Box key={s.id} component="li">
-                  <Link
-                    href={`#${s.id}`}
-                    underline="none"
-                    aria-current={active ? "location" : undefined}
-                    onClick={() => setExpanded(false)}
-                    sx={{
-                      display: "block",
-                      py: 1,
-                      px: 1,
-                      borderRadius: 1,
-                      bgcolor: active ? "action.selected" : "transparent",
-                    }}
-                  >
-                    <Typography
-                      variant="overline"
+            <Stack
+              component="ul"
+              spacing={0}
+              sx={{ listStyle: "none", m: 0, p: 0, pb: 1, px: 2, maxHeight: 280, overflowY: "auto" }}
+            >
+              {sections.map((s) => {
+                const active = activeId === s.id;
+                return (
+                  <Box key={s.id} component="li">
+                    <Link
+                      href={`#${s.id}`}
+                      underline="none"
+                      aria-current={active ? "location" : undefined}
+                      onClick={() => setExpanded(false)}
                       sx={{
-                        fontWeight: 700,
-                        letterSpacing: "0.12em",
-                        color: active ? "primary.main" : "text.secondary",
                         display: "block",
+                        py: 1,
+                        px: 1,
+                        borderRadius: 1,
+                        bgcolor: active ? "action.selected" : "transparent",
                       }}
                     >
-                      {s.eyebrow}
-                    </Typography>
-                  </Link>
-                </Box>
-              );
-            })}
-          </Stack>
-        </Collapse>
+                      <Typography
+                        variant="overline"
+                        sx={{
+                          fontWeight: 700,
+                          letterSpacing: "0.12em",
+                          color: active ? "primary.main" : "text.secondary",
+                          display: "block",
+                        }}
+                      >
+                        {s.eyebrow}
+                      </Typography>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Stack>
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );

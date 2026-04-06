@@ -12,54 +12,20 @@ import {
 } from "@mui/material";
 import CitationLinks from "@/components/common/CitationLinks";
 import FactCard from "@/components/common/FactCard";
-import PrintSectionButton from "@/components/common/PrintSectionButton";
 import SectionShell from "@/components/common/SectionShell";
-import { loadSourcesBundle, pickSources } from "@/lib/content/load";
+import { buildHomeQuickFactsFromImpacts } from "@/lib/content/home-quick-facts";
+import { loadDataCentersImpacts, loadSourcesBundle, pickSources } from "@/lib/content/load";
 import { dict } from "@/lib/i18n/dictionary";
 
 export default function Home() {
   const t = dict();
   const sources = loadSourcesBundle();
   const waterSources = pickSources(sources, ["usgs-water-use", "doe-datacenter-energy"]);
-
-  const quickFacts = [
-    {
-      label: t.home.quickFacts.desertHeat.label,
-      tone: "warning" as const,
-      title: t.home.quickFacts.desertHeat.title,
-      description: t.home.quickFacts.desertHeat.description,
-    },
-    {
-      label: t.home.quickFacts.waterAccounting.label,
-      tone: "warning" as const,
-      title: t.home.quickFacts.waterAccounting.title,
-      description: t.home.quickFacts.waterAccounting.description,
-    },
-    {
-      label: t.home.quickFacts.regionalCluster.label,
-      tone: "warning" as const,
-      title: t.home.quickFacts.regionalCluster.title,
-      description: t.home.quickFacts.regionalCluster.description,
-    },
-    {
-      label: t.home.quickFacts.gasAndLoad.label,
-      tone: "warning" as const,
-      title: t.home.quickFacts.gasAndLoad.title,
-      description: t.home.quickFacts.gasAndLoad.description,
-    },
-    {
-      label: t.home.quickFacts.airOzone.label,
-      tone: "warning" as const,
-      title: t.home.quickFacts.airOzone.title,
-      description: t.home.quickFacts.airOzone.description,
-    },
-    {
-      label: t.home.quickFacts.jobsVsSubsidies.label,
-      tone: "warning" as const,
-      title: t.home.quickFacts.jobsVsSubsidies.title,
-      description: t.home.quickFacts.jobsVsSubsidies.description,
-    },
-  ];
+  const impacts = loadDataCentersImpacts();
+  const quickFacts = buildHomeQuickFactsFromImpacts(impacts.sections).map((fact) => ({
+    ...fact,
+    tone: "warning" as const,
+  }));
 
   return (
     <Box id="printable-home" className="printable-root">
@@ -73,7 +39,7 @@ export default function Home() {
       >
         <Container maxWidth="lg" sx={{ py: { xs: 8, md: 11 } }}>
           <Grid container spacing={{ xs: 3, md: 4 }} alignItems="flex-start">
-            <Grid size={{ xs: 12, md: 7 }}>
+            <Grid size={{ xs: 12 }}>
               <Stack spacing={{ xs: 3.5, md: 3 }}>
                 <Box
                   sx={{
@@ -100,30 +66,7 @@ export default function Home() {
                   <Button variant="outlined" size="large" href="/pledge">
                     {t.home.takePledge}
                   </Button>
-                  <PrintSectionButton sectionId="printable-home" label={t.common.printSummary} />
                 </Stack>
-              </Stack>
-            </Grid>
-            <Grid size={{ xs: 12, md: 5 }}>
-              <Stack
-                spacing={2.5}
-                sx={{
-                  p: { xs: 2.5, sm: 3 },
-                  borderRadius: 3,
-                  border: 1,
-                  borderColor: "divider",
-                  bgcolor: "background.default",
-                }}
-              >
-                <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.14em" }}>
-                  {t.home.atAGlance}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {t.home.atAGlanceBody}
-                </Typography>
-                <Button variant="text" href="/learn" endIcon={<ArrowForwardRoundedIcon />} sx={{ alignSelf: "flex-start" }}>
-                  {t.home.plainLanguageGuide}
-                </Button>
               </Stack>
             </Grid>
           </Grid>
@@ -138,7 +81,7 @@ export default function Home() {
         >
           <Grid container spacing={2}>
             {quickFacts.map((fact) => (
-              <Grid key={fact.title} size={{ xs: 12, sm: 6, md: 4 }}>
+              <Grid key={fact.href} size={{ xs: 12, sm: 6, md: 4 }}>
                 <FactCard {...fact} />
               </Grid>
             ))}
