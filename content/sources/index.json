@@ -412,6 +412,26 @@
       "relevanceNote": "Reader letter citing Good Jobs First analysis on subsidy scale, tax offsets, and jobs-to-incentives concerns in a separate U.S. data center case.",
       "citationLabel": "The Batavian — Stream data center economic benefits letter (2026)",
       "provenance": "repo"
+    },
+    {
+      "id": "insta-art-fierro-380-and-future-concerns",
+      "kind": "article",
+      "title": "Art Fierro statement on 380 approval and future data center concerns",
+      "url": "https://www.instagram.com/p/DWXRg5aklmF/",
+      "publisher": "Instagram",
+      "relevanceNote": "Public statement from Art Fierro about the 380 vote and concerns about future regional resource strain.",
+      "citationLabel": "Instagram post — Art Fierro statement",
+      "provenance": "repo"
+    },
+    {
+      "id": "insta-chris-canales-no-more-data-centers",
+      "kind": "article",
+      "title": "Chris Canales statement opposing future data centers in El Paso",
+      "url": "https://www.instagram.com/p/DWShnLfDIOq/",
+      "publisher": "Instagram",
+      "relevanceNote": "Public statement from Chris Canales saying that based on new information he no longer wants data centers in El Paso.",
+      "citationLabel": "Instagram post — Chris Canales statement",
+      "provenance": "repo"
     }
   ]
 }

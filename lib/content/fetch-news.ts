@@ -5,6 +5,9 @@ import { NEWS_PAGE_REVALIDATE_SECONDS } from "@/lib/constants/news";
 const GOOGLE_NEWS_RSS =
   "https://news.google.com/rss/search?" +
   "q=%22data+center%22+(%22El+Paso%22+OR+%22West+Texas%22)&hl=en-US&gl=US&ceid=US:en";
+const GOOGLE_NEWS_RSS_NATIONAL =
+  "https://news.google.com/rss/search?" +
+  "q=%22data+center%22+(%22United+States%22+OR+U.S.+OR+federal+OR+state+OR+Congress+OR+DOE+OR+EPA+OR+FERC+OR+ERCOT+OR+PJM+OR+MISO)+(grid+OR+utility+OR+water+OR+cooling+OR+zoning+OR+permitting+OR+subsidy+OR+emissions+OR+noise)+-El+Paso+-%22West+Texas%22&hl=en-US&gl=US&ceid=US:en";
 
 const LOG_PREFIX = "[eptruth/news] Google News RSS";
 
@@ -17,6 +20,8 @@ interface RssItem {
 }
 
 const RELEVANCE_PATTERN = /data\s*cent/i;
+const US_CONTEXT_PATTERN =
+  /\b(united\s+states|u\.s\.|us\b|america|american|federal|congress|state|doe|epa|ferc|ercot|pjm|miso)\b/i;
 
 function isRelevant(item: RssItem): boolean {
   const text = `${item.title ?? ""} ${item.description ?? ""}`;
@@ -57,7 +62,18 @@ function stableId(url: string, index: number): string {
  * Throws on HTTP or parse failure so the news page can show a section-level error.
  */
 export async function fetchDataCenterNews(): Promise<NewsLink[]> {
-  const res = await fetch(GOOGLE_NEWS_RSS, {
+  return fetchGoogleNewsRss(GOOGLE_NEWS_RSS);
+}
+
+export async function fetchNationalDataCenterNews(): Promise<NewsLink[]> {
+  return fetchGoogleNewsRss(GOOGLE_NEWS_RSS_NATIONAL, true);
+}
+
+async function fetchGoogleNewsRss(
+  url: string,
+  usOnly = false,
+): Promise<NewsLink[]> {
+  const res = await fetch(url, {
     next: { revalidate: NEWS_PAGE_REVALIDATE_SECONDS },
   });
 
@@ -88,6 +104,11 @@ export async function fetchDataCenterNews(): Promise<NewsLink[]> {
 
   return items
     .filter(isRelevant)
+    .filter((item) => {
+      if (!usOnly) return true;
+      const text = `${item.title ?? ""} ${item.description ?? ""}`;
+      return US_CONTEXT_PATTERN.test(text);
+    })
     .slice(0, MAX_RESULTS)
     .map(
       (item, i): NewsLink => {

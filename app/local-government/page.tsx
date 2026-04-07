@@ -20,6 +20,7 @@ import SectionShell from "@/components/common/SectionShell";
 import type { Candidate, Official, Stance, StancePosition } from "@/content/schema";
 import { dict } from "@/lib/i18n/dictionary";
 import { loadLocalGovernmentBundle } from "@/lib/content/load";
+import { loadSourcesBundle } from "@/lib/content/load";
 import {
   CITY_SEAT_KEYS,
   COUNTY_SEAT_KEYS,
@@ -37,6 +38,7 @@ import {
   findMember,
   type LegistarMember,
 } from "@/lib/local-government/legistar";
+import type { Source } from "@/content/schema";
 
 export const metadata: Metadata = {
   title: "Local Government",
@@ -47,9 +49,9 @@ export const metadata: Metadata = {
 function stanceColor(position: StancePosition): "default" | "primary" | "secondary" | "success" | "warning" | "error" {
   switch (position) {
     case "support":
-      return "success";
-    case "oppose":
       return "error";
+    case "oppose":
+      return "success";
     case "mixed":
       return "warning";
     case "neutral":
@@ -77,6 +79,25 @@ function formatTermDate(iso: string): string {
   if (!iso) return "";
   const d = new Date(iso + "T00:00:00");
   return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
+
+function normalizePersonName(name: string): string {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/["']/g, "")
+    .replace(/\b(dr\.?|jr\.?|sr\.?|iii?|iv)\b/gi, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function hasNameChanged(officialName: string, legistarName?: string): boolean {
+  if (!legistarName) return false;
+  const a = normalizePersonName(officialName);
+  const b = normalizePersonName(legistarName);
+  if (!a || !b) return false;
+  return a !== b;
 }
 
 function FindRepsLink({
@@ -129,11 +150,17 @@ function OfficialCard({
   stances,
   labels,
   legistarMember,
+  sourceById,
+  instagramUrl,
+  instagramHandle,
 }: {
   official: Official;
   stances: Stance[];
   labels: CardLabels;
   legistarMember?: LegistarMember;
+  sourceById: Map<string, Source>;
+  instagramUrl: string;
+  instagramHandle: string;
 }) {
   const displayName = legistarMember?.fullName ?? official.displayName;
   const showReelectionBadge = isReelectionBadgeYear(
@@ -148,8 +175,11 @@ function OfficialCard({
     nextElectionDateFromTermEnd(legistarMember?.endDate) ??
     official.nextElectionDate;
 
-  const knownStances = stances.filter((s) => s.position !== "unknown");
-  const [noStancesBefore, noStancesAfter] = labels.noStances.split("{contributeLink}");
+  const officialReplaced = hasNameChanged(official.displayName, legistarMember?.fullName);
+  const knownStances = officialReplaced
+    ? []
+    : stances.filter((s) => s.position !== "unknown");
+  const [noStancesBefore, noStancesAfter] = labels.noStances.split("{instagramLink}");
 
   return (
     <Card variant="outlined" sx={{ height: "100%" }}>
@@ -158,7 +188,19 @@ function OfficialCard({
           <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap alignItems="center">
             <Typography variant="h6">{displayName}</Typography>
             {showReelectionBadge ? (
-              <Chip size="small" color="warning" label={labels.onBallotThisYear} />
+              <Chip
+                size="small"
+                label={labels.onBallotThisYear}
+                sx={{
+                  bgcolor: "#F6D365",
+                  border: "1px solid #E9B949",
+                  color: "#1F2937",
+                  "& .MuiChip-label": {
+                    color: "#1F2937",
+                    fontWeight: 700,
+                  },
+                }}
+              />
             ) : null}
           </Stack>
           <Typography variant="body2" color="text.secondary">
@@ -216,25 +258,68 @@ function OfficialCard({
 
           <Divider sx={{ my: 1 }} />
 
-          <Typography variant="subtitle2">{labels.publicStanceNotes}</Typography>
+          <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
+            <Typography variant="subtitle2">{labels.publicStanceNotes}</Typography>
+            {knownStances.length === 1 ? (
+              <Chip
+                size="small"
+                color={stanceColor(knownStances[0].position)}
+                label={knownStances[0].position}
+              />
+            ) : null}
+          </Stack>
           {knownStances.length === 0 ? (
             <Typography variant="body2" color="text.secondary">
               {noStancesBefore}
-              <Link href="/contribute" underline="always">
-                Contribute
+              <Link
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="always"
+                sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
+              >
+                {instagramHandle}
+                <OpenInNewRoundedIcon sx={{ fontSize: 12 }} aria-hidden />
               </Link>
               {noStancesAfter}
             </Typography>
           ) : (
             knownStances.map((stance) => (
               <Stack key={stance.id} spacing={0.75}>
-                <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
-                  <Chip size="small" label={stance.topicLabel} />
-                  <Chip size="small" color={stanceColor(stance.position)} label={stance.position} />
-                </Stack>
+                {knownStances.length > 1 ? (
+                  <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
+                    <Chip
+                      size="small"
+                      color={stanceColor(stance.position)}
+                      label={stance.position}
+                    />
+                  </Stack>
+                ) : null}
                 <Typography variant="body2" color="text.secondary">
                   {stance.summary}
                 </Typography>
+                {stance.sourceIds?.length ? (
+                  <Typography variant="caption" color="text.secondary">
+                    Source:{" "}
+                    {stance.sourceIds
+                      .map((id) => sourceById.get(id))
+                      .filter((source): source is Source => Boolean(source))
+                      .slice(0, 1)
+                      .map((source) => (
+                        <Link
+                          key={source.id}
+                          href={source.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          underline="hover"
+                          sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
+                        >
+                          {source.publisher ?? source.title}
+                          <OpenInNewRoundedIcon sx={{ fontSize: 12 }} />
+                        </Link>
+                      ))}
+                  </Typography>
+                ) : null}
               </Stack>
             ))
           )}
@@ -317,6 +402,8 @@ export default async function LocalGovernmentPage() {
   const candidates = activeCandidates(bundle);
   const { members: legistarMembers, mayor: legistarMayor } =
     await fetchCityLegistarOfficeData();
+  const sourceBundle = loadSourcesBundle();
+  const sourceById = new Map(sourceBundle.sources.map((s) => [s.id, s]));
 
   const cardLabels: CardLabels = {
     onBallotThisYear: t.localGov.onBallotThisYear,
@@ -331,6 +418,8 @@ export default async function LocalGovernmentPage() {
     campaignSite: t.common.campaignSite,
     term: t.localGov.term,
   };
+  const instagramUrl = t.common.instagramUrl;
+  const instagramHandle = t.common.instagramHandle;
 
   const councilKeys = CITY_SEAT_KEYS.filter((k): k is Exclude<CitySeatKey, "mayor"> => k !== "mayor");
 
@@ -409,7 +498,15 @@ export default async function LocalGovernmentPage() {
                   </Typography>
                   <Grid container spacing={2} sx={{ mt: 1 }}>
                     <Grid size={{ xs: 12, md: 8 }}>
-                      <OfficialCard official={official} stances={st} labels={cardLabels} legistarMember={member} />
+                      <OfficialCard
+                        official={official}
+                        stances={st}
+                        labels={cardLabels}
+                        legistarMember={member}
+                        sourceById={sourceById}
+                        instagramUrl={instagramUrl}
+                        instagramHandle={instagramHandle}
+                      />
                       <SeatRunningBlock candidates={seat.running} bundle={bundle} labels={cardLabels} />
                     </Grid>
                   </Grid>
@@ -443,7 +540,15 @@ export default async function LocalGovernmentPage() {
                   const member = findMember(legistarMembers, official.displayName);
                   return (
                     <Grid key={key} size={{ xs: 12, md: 6 }}>
-                      <OfficialCard official={official} stances={st} labels={cardLabels} legistarMember={member} />
+                      <OfficialCard
+                        official={official}
+                        stances={st}
+                        labels={cardLabels}
+                        legistarMember={member}
+                        sourceById={sourceById}
+                        instagramUrl={instagramUrl}
+                        instagramHandle={instagramHandle}
+                      />
                       <SeatRunningBlock candidates={seat.running} bundle={bundle} labels={cardLabels} />
                     </Grid>
                   );
@@ -473,7 +578,14 @@ export default async function LocalGovernmentPage() {
                   </Typography>
                   <Grid container spacing={2} sx={{ mt: 1 }}>
                     <Grid size={{ xs: 12, md: 8 }}>
-                      <OfficialCard official={official} stances={st} labels={cardLabels} />
+                      <OfficialCard
+                        official={official}
+                        stances={st}
+                        labels={cardLabels}
+                        sourceById={sourceById}
+                        instagramUrl={instagramUrl}
+                        instagramHandle={instagramHandle}
+                      />
                       <SeatRunningBlock candidates={seat.running} bundle={bundle} labels={cardLabels} />
                     </Grid>
                   </Grid>
@@ -506,7 +618,14 @@ export default async function LocalGovernmentPage() {
                   const st = officialStances(bundle, official.id);
                   return (
                     <Grid key={key} size={{ xs: 12, md: 6 }}>
-                      <OfficialCard official={official} stances={st} labels={cardLabels} />
+                      <OfficialCard
+                        official={official}
+                        stances={st}
+                        labels={cardLabels}
+                        sourceById={sourceById}
+                        instagramUrl={instagramUrl}
+                        instagramHandle={instagramHandle}
+                      />
                       <SeatRunningBlock candidates={seat.running} bundle={bundle} labels={cardLabels} />
                     </Grid>
                   );

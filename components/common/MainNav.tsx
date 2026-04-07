@@ -24,6 +24,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { getMainNavItems } from "@/lib/navigation/main-nav-items";
 import { tokens } from "@/theme/tokens";
+import ContentFontScaleControl from "@/components/common/ContentFontScaleControl";
 
 const t = enDict;
 const navItems = getMainNavItems(t.nav);
@@ -173,38 +174,55 @@ export default function MainNav() {
             </IconButton>
           </Stack>
         </Toolbar>
+        <Box sx={{ display: { xs: "none", md: "flex" }, justifyContent: "flex-end", pt: 1 }}>
+          <ContentFontScaleControl label={t.nav.textSize} />
+        </Box>
       </Container>
 
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)} PaperProps={{ sx: { width: 300 } }}>
-        <Box sx={{ p: 2 }}>
-          <Typography variant="subtitle1" fontWeight={700}>
-            {t.nav.menu}
-          </Typography>
-        </Box>
-        <Divider />
-        <List disablePadding>
-          {navItems.map((item) => (
-            <ListItemButton key={item.href} component={NextLink} href={item.href} onClick={() => setOpen(false)} selected={pathname === item.href}>
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          ))}
-        </List>
-        <Box sx={{ p: 2 }}>
-          <Button
-            component={NextLink}
-            href="/take-action"
-            variant="contained"
-            fullWidth
-            onClick={() => setOpen(false)}
-            sx={(theme) => ({
-              fontWeight: 700,
-              color: `${theme.palette.common.black} !important`,
-              "&:hover": { color: `${theme.palette.common.black} !important` },
-              "&:focusVisible": { color: `${theme.palette.common.black} !important` },
-            })}
-          >
-            {t.nav.takeAction}
-          </Button>
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={() => setOpen(false)}
+        PaperProps={{ sx: { width: 300 } }}
+        ModalProps={{
+          keepMounted: true,
+          disableScrollLock: true,
+        }}
+      >
+        <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
+          <Box sx={{ p: 2 }}>
+            <Typography variant="subtitle1" fontWeight={700}>
+              {t.nav.menu}
+            </Typography>
+          </Box>
+          <Divider />
+          <List disablePadding>
+            {navItems.map((item) => (
+              <ListItemButton key={item.href} component={NextLink} href={item.href} onClick={() => setOpen(false)} selected={pathname === item.href}>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            ))}
+          </List>
+          <Box sx={{ p: 2 }}>
+            <Button
+              component={NextLink}
+              href="/take-action"
+              variant="contained"
+              fullWidth
+              onClick={() => setOpen(false)}
+              sx={(theme) => ({
+                fontWeight: 700,
+                color: `${theme.palette.common.black} !important`,
+                "&:hover": { color: `${theme.palette.common.black} !important` },
+                "&:focusVisible": { color: `${theme.palette.common.black} !important` },
+              })}
+            >
+              {t.nav.takeAction}
+            </Button>
+          </Box>
+          <Box sx={{ mt: "auto", p: 2, pt: 0 }}>
+            <ContentFontScaleControl label={t.nav.textSize} />
+          </Box>
         </Box>
       </Drawer>
     </AppBar>

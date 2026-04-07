@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Box, Container, Link as MuiLink, Stack, Typography } from "@mui/material";
+import { CONTENT_FONT_SCALE_INIT_SCRIPT_INNER } from "@/lib/theme/contentFontScaleInitScriptInner";
 import { MUI_COLOR_SCHEME_INIT_SCRIPT_INNER } from "@/lib/theme/muiColorSchemeInitScriptInner";
 import MainNav from "@/components/common/MainNav";
 import BackToTopFab from "@/components/common/BackToTopFab";
@@ -72,10 +73,23 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: MUI_COLOR_SCHEME_INIT_SCRIPT_INNER }}
         />
+        <Script
+          id="content-font-scale-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }}
+        />
         <ThemeRegistry>
           <Stack minHeight="100vh">
             <MainNav />
-            <Box component="main" flex={1} sx={{ minWidth: 0 }}>
+            <Box
+              component="main"
+              flex={1}
+              sx={{
+                minWidth: 0,
+                "--content-font-scale": "var(--eptruth-content-font-scale, 0.9375)",
+                fontSize: "calc(1rem * var(--content-font-scale))",
+              }}
+            >
               {children}
             </Box>
             <Box

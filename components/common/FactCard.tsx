@@ -1,5 +1,6 @@
 "use client";
 
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Box, Card, CardActionArea, CardContent, Stack, Typography } from "@mui/material";
 import type { Theme } from "@mui/material/styles";
 import Link from "next/link";
@@ -14,6 +15,7 @@ export type FactCardProps = {
   href?: string;
   /** Same keys as data center section `icon` (e.g. `water`, `bolt`). */
   iconKey?: string | null;
+  ctaLabel?: string;
 };
 
 /** WCAG 2.2 AA: ≥4.5:1 for normal text; pills use dark fills + white text (not mid-tone `main` + auto contrastText). */
@@ -39,10 +41,18 @@ function badgeStyles(tone: FactCardProps["tone"], theme: Theme) {
 }
 
 /** Flat fact card: label as a simple tag, no heavy filled chips. */
-export default function FactCard({ label, title, description, tone = "default", href, iconKey }: FactCardProps) {
+export default function FactCard({
+  label,
+  title,
+  description,
+  tone = "default",
+  href,
+  iconKey,
+  ctaLabel = "Read full section",
+}: FactCardProps) {
   const body = (
-    <CardContent sx={{ p: 2.5 }}>
-      <Stack spacing={2}>
+    <CardContent sx={{ p: 2.5, height: "100%" }}>
+      <Stack spacing={2} sx={{ height: "100%" }}>
         <Stack direction="row" alignItems="center" spacing={1.5} alignSelf="flex-start" sx={{ flexWrap: "wrap", gap: 1.5 }}>
           {iconKey ? (
             <Box
@@ -81,9 +91,22 @@ export default function FactCard({ label, title, description, tone = "default", 
         <Typography component="h3" variant="h6">
           {title}
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.primary", opacity: 0.82 }}>
+        <Typography variant="body2" sx={{ color: "text.primary", opacity: 0.82, flex: 1 }}>
           {description}
         </Typography>
+        {href ? (
+          <Stack
+            direction="row"
+            spacing={0.75}
+            alignItems="center"
+            sx={{ pt: 0.5, color: "primary.main", mt: "auto" }}
+          >
+            <Typography variant="body2" sx={{ fontWeight: 700 }}>
+              {ctaLabel}
+            </Typography>
+            <ArrowForwardRoundedIcon sx={{ fontSize: "1rem" }} />
+          </Stack>
+        ) : null}
       </Stack>
     </CardContent>
   );

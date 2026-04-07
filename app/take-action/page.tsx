@@ -238,7 +238,8 @@ function ActionWayCard({
 }
 
 export default function TakeActionPage() {
-  const t = dict().takeAction;
+  const d = dict();
+  const t = d.takeAction;
 
   return (
     <Box>
@@ -301,7 +302,7 @@ export default function TakeActionPage() {
               <ActionWayCard headline={t.way5Headline} icon={ShareRoundedIcon}>
                 <>
                   {t.way5Before}
-                  <Link href={t.instagramUrl} target="_blank" rel="noopener noreferrer" color="primary" fontWeight={600} sx={{ textUnderlineOffset: "0.2em" }}>
+                  <Link href={d.common.instagramUrl} target="_blank" rel="noopener noreferrer" color="primary" fontWeight={600} sx={{ textUnderlineOffset: "0.2em" }}>
                     {t.way5Link}
                   </Link>
                   {t.way5After}

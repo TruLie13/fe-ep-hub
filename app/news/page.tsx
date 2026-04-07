@@ -6,7 +6,10 @@ import PageHero from "@/components/common/PageHero";
 import type { NewsLink } from "@/content/schema";
 import { RecentFeedList } from "@/components/news/RecentFeedList";
 import { NEWS_REFRESH_MINUTES } from "@/lib/constants/news";
-import { fetchDataCenterNews } from "@/lib/content/fetch-news";
+import {
+  fetchDataCenterNews,
+  fetchNationalDataCenterNews,
+} from "@/lib/content/fetch-news";
 import { fetchRedditElPasoPosts } from "@/lib/content/fetch-reddit-elpaso";
 import { dict } from "@/lib/i18n/dictionary";
 
@@ -16,7 +19,7 @@ export const revalidate = 900;
 export const metadata: Metadata = {
   title: "News",
   description:
-    "r/ElPaso posts and data-center coverage from Google News. Links open in a new tab.",
+    "r/ElPaso posts, local data-center coverage, and national data-center coverage from Google News. Links open in a new tab.",
 };
 
 export default async function NewsPage() {
@@ -24,14 +27,21 @@ export default async function NewsPage() {
   const nt = t.news;
 
   let feedLinks: NewsLink[] = [];
+  let nationalFeedLinks: NewsLink[] = [];
   let redditLinks: NewsLink[] = [];
   let feedError = false;
+  let nationalFeedError = false;
   let redditError = false;
 
   try {
     feedLinks = await fetchDataCenterNews();
   } catch {
     feedError = true;
+  }
+  try {
+    nationalFeedLinks = await fetchNationalDataCenterNews();
+  } catch {
+    nationalFeedError = true;
   }
 
   try {
@@ -41,6 +51,7 @@ export default async function NewsPage() {
   }
 
   const hasFeed = feedLinks.length > 0;
+  const hasNationalFeed = nationalFeedLinks.length > 0;
   const hasReddit = redditLinks.length > 0;
 
   const sectionGap = { mb: 5 as const };
@@ -118,6 +129,37 @@ export default async function NewsPage() {
         {!feedError && !hasFeed ? (
           <Typography variant="body2" color="text.secondary">
             {nt.noFeedResults}
+          </Typography>
+        ) : null}
+      </Stack>
+
+      <Stack spacing={2} sx={{ mt: 5 }}>
+        <Stack spacing={0.5}>
+          <Stack direction="row" spacing={1} alignItems="center">
+            <RssFeedRoundedIcon sx={{ fontSize: 18, color: "text.secondary" }} />
+            <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: "0.14em" }}>
+              {nt.nationalFeedSection}
+            </Typography>
+          </Stack>
+          <Typography variant="caption" color="text.secondary">
+            {nt.nationalFeedNote}
+          </Typography>
+        </Stack>
+        {nationalFeedError ? (
+          <Alert severity="info">{nt.googleLoadError}</Alert>
+        ) : null}
+        {hasNationalFeed ? (
+          <RecentFeedList
+            listLabel={nt.nationalFeedSection}
+            items={nationalFeedLinks}
+            openLabel={t.common.openLink}
+            showMoreLabel={nt.showMoreFeed}
+            allLoadedLabel={nt.feedAllLoaded}
+          />
+        ) : null}
+        {!nationalFeedError && !hasNationalFeed ? (
+          <Typography variant="body2" color="text.secondary">
+            {nt.noNationalFeedResults}
           </Typography>
         ) : null}
       </Stack>

@@ -1,5 +1,4 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
-import WaterDropRoundedIcon from "@mui/icons-material/WaterDropRounded";
 import {
   Box,
   Button,
@@ -11,24 +10,24 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import CitationLinks from "@/components/common/CitationLinks";
 import FactCard from "@/components/common/FactCard";
 import SectionShell from "@/components/common/SectionShell";
 import { buildHomeQuickFactsFromImpacts } from "@/lib/content/home-quick-facts";
-import { loadDataCentersImpacts, loadSourcesBundle, pickSources } from "@/lib/content/load";
+import { loadDataCentersImpacts } from "@/lib/content/load";
 import { dict } from "@/lib/i18n/dictionary";
 import { getMainNavItems } from "@/lib/navigation/main-nav-items";
 
 export default function Home() {
   const t = dict();
-  const sources = loadSourcesBundle();
-  const waterSources = pickSources(sources, ["usgs-water-use", "doe-datacenter-energy"]);
   const impacts = loadDataCentersImpacts();
   const quickFacts = buildHomeQuickFactsFromImpacts(impacts.sections).map((fact) => ({
     ...fact,
     tone: "warning" as const,
   }));
-  const howItWorksCards = getMainNavItems(t.nav)
+  const howItWorksCards = [
+    ...getMainNavItems(t.nav),
+    { href: "/take-action", label: t.nav.takeAction },
+  ]
     .filter((item) => item.href !== "/")
     .map((item) => ({
       ...item,
@@ -96,7 +95,7 @@ export default function Home() {
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ pb: { xs: 6, md: 10 } }}>
+      <Container maxWidth="lg" sx={{ pb: { xs: 3, md: 4 } }}>
         <SectionShell
           eyebrow={t.home.quickFacts.eyebrow}
           title={t.home.quickFacts.title}
@@ -105,13 +104,30 @@ export default function Home() {
           <Grid container spacing={2}>
             {quickFacts.map((fact) => (
               <Grid key={fact.href} size={{ xs: 12, sm: 6, md: 4 }}>
-                <FactCard {...fact} />
+                <FactCard {...fact} ctaLabel={t.home.quickFacts.readFullSection} />
               </Grid>
             ))}
           </Grid>
+          <Stack direction="row" spacing={0.75} alignItems="center" sx={{ pt: 0.5, color: "primary.main" }}>
+            <Typography
+              component="a"
+              href="/data-center"
+              variant="body2"
+              sx={{
+                fontWeight: 700,
+                color: "primary.main",
+                textDecoration: "none",
+                "&:hover": { textDecoration: "underline" },
+              }}
+            >
+              {t.home.quickFacts.readFullPage}
+            </Typography>
+            <ArrowForwardRoundedIcon sx={{ fontSize: "1rem" }} />
+          </Stack>
         </SectionShell>
       </Container>
 
+      {/*
       <SectionShell
         band
         eyebrow={t.home.waterImpact.eyebrow}
@@ -145,8 +161,9 @@ export default function Home() {
           </CardContent>
         </Card>
       </SectionShell>
+      */}
 
-      <Container maxWidth="lg" sx={{ pt: { xs: 5, md: 7 }, pb: { xs: 1, md: 2 } }}>
+      <Container maxWidth="lg" sx={{ pt: { xs: 2, md: 3 }, pb: { xs: 1, md: 2 } }}>
         <SectionShell
           eyebrow={t.home.howItWorks.eyebrow}
           title={t.home.howItWorks.title}
@@ -154,9 +171,32 @@ export default function Home() {
           dense
         >
           <Grid container spacing={2}>
-            {howItWorksCards.map((card, index) => (
-              <Grid key={card.href} size={{ xs: 12, md: 4 }}>
-                <Card variant="outlined" sx={{ height: "100%" }}>
+            {howItWorksCards.map((card, index) => {
+              const isTakeAction = card.href === "/take-action";
+              return (
+              <Grid
+                key={card.href}
+                size={{ xs: 12, md: isTakeAction ? 12 : 4 }}
+              >
+                <Card
+                  variant="outlined"
+                  sx={{
+                    height: "100%",
+                    ...(isTakeAction
+                      ? {
+                          position: "relative",
+                          overflow: "hidden",
+                          backgroundImage: {
+                            xs: "linear-gradient(90deg, rgba(6,13,30,0.96) 0%, rgba(6,13,30,0.88) 42%, rgba(6,13,30,0.72) 72%, rgba(6,13,30,0.58) 100%), url('/images/protest_image.webp')",
+                            md: "linear-gradient(90deg, rgba(6,13,30,0.90) 0%, rgba(6,13,30,0.80) 40%, rgba(6,13,30,0.56) 74%, rgba(6,13,30,0.40) 100%), url('/images/protest_image.webp')",
+                          },
+                          backgroundSize: "cover",
+                          backgroundPosition: "left center",
+                          backgroundRepeat: "no-repeat",
+                        }
+                      : null),
+                  }}
+                >
                   <CardActionArea href={card.href} sx={{ height: "100%", alignItems: "stretch" }}>
                     <CardContent sx={{ p: 2.5, display: "flex", flexDirection: "column", gap: 1.5, height: "100%" }}>
                       <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700, letterSpacing: "0.12em" }}>
@@ -166,7 +206,17 @@ export default function Home() {
                         {card.label}
                       </Typography>
                       <Typography variant="body2" color="text.secondary" sx={{ flex: 1 }}>
-                        {card.body}
+                        {isTakeAction ? (
+                          <>
+                            Use practical ways to engage, from public comment and outreach
+                            <Box component="span" sx={{ display: { xs: "inline", md: "block" } }}>
+                              {" "}
+                              to neighborhood volunteer efforts.
+                            </Box>
+                          </>
+                        ) : (
+                          card.body
+                        )}
                       </Typography>
                       <Stack direction="row" spacing={0.75} alignItems="center" sx={{ pt: 0.5, color: "primary.main" }}>
                         <Typography variant="body2" sx={{ fontWeight: 700 }}>
@@ -178,7 +228,8 @@ export default function Home() {
                   </CardActionArea>
                 </Card>
               </Grid>
-            ))}
+            );
+            })}
           </Grid>
         </SectionShell>
       </Container>

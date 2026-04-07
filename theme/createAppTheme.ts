@@ -1,6 +1,8 @@
 import { extendTheme } from "@mui/material/styles";
 import { tokens } from "./tokens";
 
+const contentScale = "var(--content-font-scale, 0.9375)";
+
 declare module "@mui/material/styles" {
   interface Palette {
     warningSurface: string;
@@ -75,38 +77,38 @@ export const appTheme = extendTheme({
     fontFamily: "var(--font-geist-sans), system-ui, -apple-system, sans-serif",
     h1: {
       fontWeight: 700,
-      fontSize: "clamp(2.125rem, 5vw, 3.25rem)",
+      fontSize: `calc(clamp(2.125rem, 5vw, 3.25rem) * ${contentScale})`,
       lineHeight: 1.08,
       letterSpacing: "-0.03em",
     },
     h2: {
       fontWeight: 700,
-      fontSize: "clamp(1.5rem, 3.2vw, 2.125rem)",
+      fontSize: `calc(clamp(1.5rem, 3.2vw, 2.125rem) * ${contentScale})`,
       lineHeight: 1.15,
       letterSpacing: "-0.02em",
     },
     h3: {
       fontWeight: 600,
-      fontSize: "1.25rem",
+      fontSize: `calc(1.25rem * ${contentScale})`,
       lineHeight: 1.3,
       letterSpacing: "-0.01em",
     },
     /** In-card section titles (Learn subheads, data-centers cards); rem scales with user font preferences. */
     h4: {
       fontWeight: 600,
-      fontSize: "1.25rem",
+      fontSize: `calc(1.25rem * ${contentScale})`,
       lineHeight: 1.35,
       letterSpacing: "-0.01em",
     },
     h5: {
       fontWeight: 600,
-      fontSize: "1.1875rem",
+      fontSize: `calc(1.1875rem * ${contentScale})`,
       lineHeight: 1.35,
       letterSpacing: "-0.01em",
     },
     h6: {
       fontWeight: 600,
-      fontSize: "1.125rem",
+      fontSize: `calc(1.125rem * ${contentScale})`,
       lineHeight: 1.4,
       letterSpacing: "-0.01em",
     },
@@ -116,27 +118,27 @@ export const appTheme = extendTheme({
     },
     subtitle2: {
       fontWeight: 600,
-      fontSize: "0.9375rem",
+      fontSize: `calc(0.9375rem * ${contentScale})`,
       lineHeight: 1.4,
       letterSpacing: "-0.01em",
     },
     body1: {
       lineHeight: 1.65,
-      fontSize: "1.0625rem",
+      fontSize: `calc(1.0625rem * ${contentScale})`,
     },
     body2: {
       lineHeight: 1.6,
-      fontSize: "0.875rem",
+      fontSize: `calc(0.875rem * ${contentScale})`,
     },
     caption: {
-      fontSize: "0.75rem",
+      fontSize: `calc(0.75rem * ${contentScale})`,
       lineHeight: 1.5,
       letterSpacing: "0.02em",
     },
     overline: {
       fontWeight: 700,
       letterSpacing: "0.14em",
-      fontSize: "0.6875rem",
+      fontSize: `calc(0.6875rem * ${contentScale})`,
     },
     button: {
       fontWeight: 600,

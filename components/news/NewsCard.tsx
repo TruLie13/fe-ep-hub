@@ -15,12 +15,12 @@ import Image from "next/image";
 import type { NewsLink } from "@/content/schema";
 import { formatPublishedLine } from "@/lib/date/format-published";
 
-/** 16:9 — link/image posts */
+/** 16:9 — non-Reddit link/image posts */
 const THUMB_IMAGE = {
   xs: { w: 108, h: 61 },
   sm: { w: 128, h: 72 },
 };
-/** Taller ~4:3 — video posts read better than ultra-wide stills */
+/** Taller ~4:3 — Reddit thumbnails (video + image) */
 const THUMB_VIDEO = {
   xs: { w: 108, h: 81 },
   sm: { w: 128, h: 96 },
@@ -38,8 +38,9 @@ export function NewsCard({
 }) {
   const showThumb = Boolean(item.thumbnailUrl);
   const isVideoPost = item.mediaHint === "video";
+  const isRedditPost = item.provenance === "reddit";
   const showVideoBadge = isVideoPost && Boolean(videoLabel);
-  const thumbSize = isVideoPost ? THUMB_VIDEO : THUMB_IMAGE;
+  const thumbSize = isRedditPost || isVideoPost ? THUMB_VIDEO : THUMB_IMAGE;
   const showOutletBadge = item.provenance !== "reddit";
 
   if (showThumb && item.thumbnailUrl) {
@@ -84,7 +85,7 @@ export function NewsCard({
               src={item.thumbnailUrl}
               alt=""
               fill
-              sizes={isVideoPost ? "(max-width: 600px) 108px, 128px" : "128px"}
+              sizes="(max-width: 600px) 108px, 128px"
               style={{ objectFit: "cover", objectPosition: "center" }}
               unoptimized={item.thumbnailUrl.startsWith("http")}
             />
