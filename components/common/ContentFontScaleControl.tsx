@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 const STORAGE_KEY = "eptruth-content-font-scale";
 
 const SCALE_OPTIONS = [
-  { value: "0.9375", label: "15px" },
-  { value: "1", label: "16px" },
-  { value: "1.125", label: "18px" },
-  { value: "1.25", label: "20px" },
+  { value: "0.9375", label: "Small" },
+  { value: "1", label: "Med" },
+  { value: "1.125", label: "Large" },
+  { value: "1.25", label: "X-large" },
 ] as const;
 
 type ScaleValue = (typeof SCALE_OPTIONS)[number]["value"];
@@ -23,21 +23,21 @@ type ContentFontScaleControlProps = {
 };
 
 export default function ContentFontScaleControl({ label }: ContentFontScaleControlProps) {
-  const [scale, setScale] = useState<ScaleValue>("0.9375");
-
-  useEffect(() => {
+  const [scale, setScale] = useState<ScaleValue>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved && isScaleValue(saved)) {
-        setScale(saved);
-        document.documentElement.style.setProperty("--eptruth-content-font-scale", saved);
-        return;
+        return saved;
       }
     } catch {
       // Ignore browser storage failures.
     }
-    document.documentElement.style.setProperty("--eptruth-content-font-scale", "0.9375");
-  }, []);
+    return "0.9375";
+  });
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--eptruth-content-font-scale", scale);
+  }, [scale]);
 
   const handleChange = (value: string) => {
     if (!isScaleValue(value)) return;
@@ -51,7 +51,7 @@ export default function ContentFontScaleControl({ label }: ContentFontScaleContr
   };
 
   return (
-    <FormControl size="small" sx={{ minWidth: 112 }}>
+    <FormControl size="small" sx={{ minWidth: 128 }}>
       <InputLabel id="content-font-size-label">{label}</InputLabel>
       <Select
         labelId="content-font-size-label"

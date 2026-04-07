@@ -35,12 +35,18 @@ export default function CollapsibleGovernmentSection({
   defaultExpanded = false,
   children,
 }: CollapsibleGovernmentSectionProps) {
+  // Initial render must match SSR: never read sessionStorage in useState (hydration mismatch).
   const [expanded, setExpanded] = useState(defaultExpanded);
 
   useEffect(() => {
     try {
       const raw = sessionStorage.getItem(`${STORAGE_PREFIX}${id}`);
-      if (raw !== null) setExpanded(raw === "1");
+      if (raw !== null) {
+        const next = raw === "1";
+        queueMicrotask(() => {
+          setExpanded(next);
+        });
+      }
     } catch {
       /* unavailable */
     }

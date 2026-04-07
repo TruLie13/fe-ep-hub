@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function decodeHashId(): string | null {
   if (typeof window === "undefined") return null;
@@ -36,14 +36,11 @@ function applyHashOverride(
  * from the viewport top. Respects `location.hash` when it targets a section in the reading zone.
  */
 export function useScrollSpyActiveId(ids: readonly string[], activationOffsetPx = 120) {
-  const idsRef = useRef(ids);
-  idsRef.current = ids;
-
   const [activeId, setActiveId] = useState<string | null>(() => ids[0] ?? null);
 
   useEffect(() => {
     const compute = () => {
-      const list = idsRef.current;
+      const list = ids;
       if (list.length === 0) {
         setActiveId(null);
         return;
@@ -80,7 +77,7 @@ export function useScrollSpyActiveId(ids: readonly string[], activationOffsetPx 
       window.removeEventListener("resize", compute);
       window.removeEventListener("hashchange", computeAfterLayout);
     };
-  }, [activationOffsetPx]);
+  }, [ids, activationOffsetPx]);
 
   return activeId;
 }

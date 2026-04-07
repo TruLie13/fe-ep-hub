@@ -9,7 +9,6 @@ import {
   CircularProgress,
   Dialog,
   DialogContent,
-  DialogTitle,
   Divider,
   IconButton,
   Link,
@@ -124,7 +123,6 @@ export default function AgendaModal({
   labels,
 }: Props) {
   const [raw, setRaw] = useState<RawItem[]>([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [fetched, setFetched] = useState<number | null>(null);
   const sectionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -136,8 +134,6 @@ export default function AgendaModal({
     if (!open || fetched === eventId) return;
 
     let cancelled = false;
-    setLoading(true);
-    setError(false);
 
     fetch(`/api/agenda-items?eventId=${eventId}`)
       .then((res) => {
@@ -147,20 +143,24 @@ export default function AgendaModal({
       .then((data) => {
         if (!cancelled) {
           setRaw(data);
+          setError(false);
           setFetched(eventId);
         }
       })
       .catch(() => {
-        if (!cancelled) setError(true);
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setError(true);
+          setFetched(eventId);
+        }
       });
 
     return () => {
       cancelled = true;
     };
   }, [open, eventId, fetched]);
+
+  const showError = error && fetched === eventId;
+  const loading = open && fetched !== eventId && !showError;
 
   const sections = useMemo(() => buildSections(raw), [raw]);
   const totalItems = useMemo(
@@ -270,7 +270,7 @@ export default function AgendaModal({
               {labels.loadingItems}
             </Typography>
           </Stack>
-        ) : error ? (
+        ) : showError ? (
           <Stack
             alignItems="center"
             justifyContent="center"

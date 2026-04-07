@@ -56,7 +56,7 @@ export default function MainNav() {
       >
         <Toolbar
           disableGutters
-          sx={(theme) => {
+          sx={() => {
             const specular = 0.05;
             const glassSheen = `linear-gradient(155deg, ${alpha("#ffffff", 0.05)} 0%, transparent 55%)`;
             return {

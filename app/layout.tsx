@@ -12,6 +12,7 @@ import OwnerFooter from "@/components/common/OwnerFooter";
 import ThemeRegistry from "@/components/theme/ThemeRegistry";
 import { dict } from "@/lib/i18n/dictionary";
 import JsonLd from "@/components/seo/JsonLd";
+import { GoogleAnalyticsPageView, GoogleAnalyticsScripts } from "@/components/analytics/GoogleAnalytics";
 import { buildRootMetadata, buildSiteJsonLd } from "@/lib/seo/site";
 import "./globals.css";
 import "@/styles/print.css";
@@ -55,6 +56,8 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }}
         />
+        <GoogleAnalyticsScripts />
+        <GoogleAnalyticsPageView />
         <ThemeRegistry>
           <Stack minHeight="100vh">
             <MainNav />

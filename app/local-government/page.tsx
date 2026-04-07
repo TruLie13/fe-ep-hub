@@ -335,6 +335,64 @@ function OfficialCard({
   );
 }
 
+function CandidateCard({
+  candidate,
+  stances,
+  campaignSiteLabel,
+  ballotpediaLabel,
+  compact = false,
+}: {
+  candidate: Candidate;
+  stances: Stance[];
+  campaignSiteLabel: string;
+  ballotpediaLabel: string;
+  compact?: boolean;
+}) {
+  return (
+    <Card variant="outlined">
+      <CardContent sx={compact ? { py: 1.5, "&:last-child": { pb: 1.5 } } : undefined}>
+        <Stack spacing={compact ? 0.75 : 1}>
+          <Typography variant={compact ? "subtitle2" : "h6"}>{candidate.displayName}</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {candidate.officeSought}
+            {candidate.party ? ` • ${candidate.party}` : ""}
+          </Typography>
+          {candidate.campaignWebsiteUrl ? (
+            <Button
+              size="small"
+              href={candidate.campaignWebsiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              endIcon={<OpenInNewRoundedIcon />}
+            >
+              {campaignSiteLabel}
+            </Button>
+          ) : null}
+          {candidate.ballotpediaUrl ? (
+            <Button
+              size="small"
+              variant="outlined"
+              href={candidate.ballotpediaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              endIcon={<OpenInNewRoundedIcon />}
+            >
+              {ballotpediaLabel}
+            </Button>
+          ) : null}
+          {stances.length > 0
+            ? stances.map((stance) => (
+                <Typography key={stance.id} variant="body2" color="text.secondary">
+                  {stance.topicLabel}: {stance.summary}
+                </Typography>
+              ))
+            : null}
+        </Stack>
+      </CardContent>
+    </Card>
+  );
+}
+
 function SeatRunningBlock({
   candidates,
   bundle,
@@ -354,47 +412,14 @@ function SeatRunningBlock({
         {candidates.map((candidate) => {
           const stances = candidateStances(bundle, candidate.id);
           return (
-            <Card key={candidate.id} variant="outlined">
-              <CardContent sx={{ py: 1.5, "&:last-child": { pb: 1.5 } }}>
-                <Stack spacing={0.75}>
-                  <Typography variant="subtitle2">{candidate.displayName}</Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {candidate.officeSought}
-                    {candidate.party ? ` • ${candidate.party}` : ""}
-                  </Typography>
-                  {candidate.campaignWebsiteUrl ? (
-                    <Button
-                      size="small"
-                      href={candidate.campaignWebsiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      endIcon={<OpenInNewRoundedIcon />}
-                    >
-                      {labels.campaignSite}
-                    </Button>
-                  ) : null}
-                  {candidate.ballotpediaUrl ? (
-                    <Button
-                      size="small"
-                      variant="outlined"
-                      href={candidate.ballotpediaUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      endIcon={<OpenInNewRoundedIcon />}
-                    >
-                      {labels.ballotpedia}
-                    </Button>
-                  ) : null}
-                  {stances.length > 0
-                    ? stances.map((stance) => (
-                        <Typography key={stance.id} variant="body2" color="text.secondary">
-                          {stance.topicLabel}: {stance.summary}
-                        </Typography>
-                      ))
-                    : null}
-                </Stack>
-              </CardContent>
-            </Card>
+            <CandidateCard
+              key={candidate.id}
+              candidate={candidate}
+              stances={stances}
+              campaignSiteLabel={labels.campaignSite}
+              ballotpediaLabel={labels.ballotpedia}
+              compact
+            />
           );
         })}
       </Stack>
@@ -504,7 +529,7 @@ export default async function LocalGovernmentPage() {
                     {citySeatLabel("mayor")}
                   </Typography>
                   <Grid container spacing={2} sx={{ mt: 1 }}>
-                    <Grid size={{ xs: 12, md: 8 }}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                       <OfficialCard
                         official={official}
                         stances={st}
@@ -584,7 +609,7 @@ export default async function LocalGovernmentPage() {
                     {countySeatLabel(key)}
                   </Typography>
                   <Grid container spacing={2} sx={{ mt: 1 }}>
-                    <Grid size={{ xs: 12, md: 8 }}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                       <OfficialCard
                         official={official}
                         stances={st}
@@ -655,45 +680,12 @@ export default async function LocalGovernmentPage() {
                 const stances = candidateStances(bundle, candidate.id);
                 return (
                   <Grid key={candidate.id} size={{ xs: 12, md: 6 }}>
-                    <Card variant="outlined">
-                      <CardContent>
-                        <Stack spacing={1}>
-                          <Typography variant="h6">{candidate.displayName}</Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {candidate.officeSought}
-                            {candidate.party ? ` • ${candidate.party}` : ""}
-                          </Typography>
-                          {candidate.campaignWebsiteUrl ? (
-                            <Button
-                              size="small"
-                              href={candidate.campaignWebsiteUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              endIcon={<OpenInNewRoundedIcon />}
-                            >
-                              {t.common.campaignSite}
-                            </Button>
-                          ) : null}
-                          {candidate.ballotpediaUrl ? (
-                            <Button
-                              size="small"
-                              variant="outlined"
-                              href={candidate.ballotpediaUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              endIcon={<OpenInNewRoundedIcon />}
-                            >
-                              {t.common.ballotpedia}
-                            </Button>
-                          ) : null}
-                          {stances.map((stance) => (
-                            <Typography key={stance.id} variant="body2" color="text.secondary">
-                              {stance.topicLabel}: {stance.summary}
-                            </Typography>
-                          ))}
-                        </Stack>
-                      </CardContent>
-                    </Card>
+                    <CandidateCard
+                      candidate={candidate}
+                      stances={stances}
+                      campaignSiteLabel={t.common.campaignSite}
+                      ballotpediaLabel={t.common.ballotpedia}
+                    />
                   </Grid>
                 );
               })}
