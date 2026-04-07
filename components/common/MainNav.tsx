@@ -22,20 +22,11 @@ import { alpha } from "@mui/material/styles";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { getMainNavItems } from "@/lib/navigation/main-nav-items";
 import { tokens } from "@/theme/tokens";
 
 const t = enDict;
-
-const navItems = [
-  { href: "/", label: t.nav.home },
-  { href: "/learn", label: t.nav.learn },
-  { href: "/data-center", label: t.nav.dataCenters },
-  { href: "/local-government", label: t.nav.government },
-  // { href: "/pledge", label: t.nav.pledge }, // Temporarily hidden
-  { href: "/city-meetings", label: t.nav.meetings },
-  { href: "/news", label: t.nav.news },
-  // { href: "/contribute", label: t.nav.contribute }, // Temporarily hidden
-];
+const navItems = getMainNavItems(t.nav);
 
 export default function MainNav() {
   const [open, setOpen] = useState(false);
@@ -152,10 +143,23 @@ export default function MainNav() {
                 })}
               </Stack>
             </Box>
-            {/* Temporarily hidden; keep for future re-enable */}
-            {/* <Button href="/pledge" variant="contained" size="small" sx={{ display: { xs: "none", sm: "inline-flex" } }}>
-              {t.nav.takePledge}
-            </Button> */}
+            <Button
+              component={NextLink}
+              href="/take-action"
+              variant="contained"
+              size="small"
+              aria-current={pathname === "/take-action" ? "page" : undefined}
+              sx={(theme) => ({
+                display: { xs: "none", md: "inline-flex" },
+                flexShrink: 0,
+                fontWeight: 700,
+                color: `${theme.palette.common.black} !important`,
+                "&:hover": { color: `${theme.palette.common.black} !important` },
+                "&:focusVisible": { color: `${theme.palette.common.black} !important` },
+              })}
+            >
+              {t.nav.takeAction}
+            </Button>
             <IconButton
               edge="end"
               aria-label={t.nav.openMenu}
@@ -185,12 +189,23 @@ export default function MainNav() {
             </ListItemButton>
           ))}
         </List>
-        {/* Temporarily hidden; keep for future re-enable */}
-        {/* <Box sx={{ p: 2 }}>
-          <Button href="/pledge" variant="contained" fullWidth onClick={() => setOpen(false)}>
-            {t.nav.takePledge}
+        <Box sx={{ p: 2 }}>
+          <Button
+            component={NextLink}
+            href="/take-action"
+            variant="contained"
+            fullWidth
+            onClick={() => setOpen(false)}
+            sx={(theme) => ({
+              fontWeight: 700,
+              color: `${theme.palette.common.black} !important`,
+              "&:hover": { color: `${theme.palette.common.black} !important` },
+              "&:focusVisible": { color: `${theme.palette.common.black} !important` },
+            })}
+          >
+            {t.nav.takeAction}
           </Button>
-        </Box> */}
+        </Box>
       </Drawer>
     </AppBar>
   );

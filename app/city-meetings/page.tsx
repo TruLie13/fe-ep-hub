@@ -26,6 +26,7 @@ import {
   isMeetingDateOnOrAfterTodayDenver,
   type CouncilSignUpWindowState,
 } from "@/lib/city-meetings/elPasoCalendar";
+import { fetchNextCityCouncilCalendarHint } from "@/lib/city-meetings/fetch-legistar-calendar-hint";
 import { fetchLegistarEvents } from "@/lib/city-meetings/fetch-legistar-events";
 import { dict, type Dictionary } from "@/lib/i18n/dictionary";
 
@@ -66,8 +67,18 @@ function fillPlaceholders(
 function signUpAlertCopy(
   mt: Dictionary["cityMeetings"],
   state: CouncilSignUpWindowState,
+  cityCouncilHint: { dateLabel: string; timeLabel: string } | null,
 ): { message: string; severity: "info" | "success" } {
   if (state.kind === "unknown") {
+    if (cityCouncilHint) {
+      return {
+        message: fillPlaceholders(mt.signUpUnknownWithHint, {
+          date: cityCouncilHint.dateLabel,
+          time: cityCouncilHint.timeLabel,
+        }),
+        severity: "info",
+      };
+    }
     return { message: mt.signUpUnknown, severity: "info" };
   }
   if (state.kind === "closed_before") {
@@ -127,10 +138,20 @@ export default async function CityMeetingsPage() {
   const t = dict();
   const mt = t.cityMeetings;
   let meetings: SerializedEvent[] = [];
+  let cityCouncilHint: { dateLabel: string; timeLabel: string } | null = null;
   let error = false;
 
   try {
     meetings = await fetchLegistarEvents();
+    const hasUpcomingCityCouncil = meetings.some(
+      (e) =>
+        e.EventBodyName === "City Council" &&
+        isMeetingDateOnOrAfterTodayDenver(e.EventDate) &&
+        !isCancelled(e),
+    );
+    if (!hasUpcomingCityCouncil) {
+      cityCouncilHint = await fetchNextCityCouncilCalendarHint();
+    }
   } catch {
     error = true;
   }
@@ -146,7 +167,7 @@ export default async function CityMeetingsPage() {
   recent.reverse();
 
   const signUpWindow = getCouncilSignUpWindow(upcoming);
-  const signUpAlert = signUpAlertCopy(mt, signUpWindow);
+  const signUpAlert = signUpAlertCopy(mt, signUpWindow, cityCouncilHint);
   const formLinksDisabled =
     signUpWindow.kind === "closed_before" ||
     signUpWindow.kind === "closed_after";

@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Card,
+  CardActionArea,
   CardContent,
   Container,
   Grid,
@@ -16,6 +17,7 @@ import SectionShell from "@/components/common/SectionShell";
 import { buildHomeQuickFactsFromImpacts } from "@/lib/content/home-quick-facts";
 import { loadDataCentersImpacts, loadSourcesBundle, pickSources } from "@/lib/content/load";
 import { dict } from "@/lib/i18n/dictionary";
+import { getMainNavItems } from "@/lib/navigation/main-nav-items";
 
 export default function Home() {
   const t = dict();
@@ -26,6 +28,15 @@ export default function Home() {
     ...fact,
     tone: "warning" as const,
   }));
+  const howItWorksCards = getMainNavItems(t.nav)
+    .filter((item) => item.href !== "/")
+    .map((item) => ({
+      ...item,
+      body:
+        t.home.howItWorks.overviewByHref[
+          item.href as keyof typeof t.home.howItWorks.overviewByHref
+        ] ?? t.home.howItWorks.description,
+    }));
 
   return (
     <Box id="printable-home" className="printable-root">
@@ -57,15 +68,27 @@ export default function Home() {
                   {t.home.heroSubtitle}
                 </Typography>
                 <Stack direction={{ xs: "column", sm: "row" }} spacing={2} alignItems={{ xs: "stretch", sm: "center" }} flexWrap="wrap" useFlexGap>
-                  <Button variant="contained" size="large" href="/learn" endIcon={<ArrowForwardRoundedIcon />}>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    href="/learn"
+                    endIcon={<ArrowForwardRoundedIcon />}
+                    sx={{
+                      color: "#000000 !important",
+                      "&:hover": { color: "#000000 !important" },
+                      "&:focusVisible": { color: "#000000 !important" },
+                    }}
+                  >
                     {t.home.startLearning}
                   </Button>
                   <Button variant="outlined" size="large" href="/data-center" endIcon={<ArrowForwardRoundedIcon />}>
                     {t.home.viewRegionalImpacts}
                   </Button>
-                  <Button variant="outlined" size="large" href="/pledge">
-                    {t.home.takePledge}
-                  </Button>
+                  {/*
+                    <Button variant="outlined" size="large" href="/pledge">
+                      {t.home.takePledge}
+                    </Button>
+                  */}
                 </Stack>
               </Stack>
             </Grid>
@@ -131,30 +154,28 @@ export default function Home() {
           dense
         >
           <Grid container spacing={2}>
-            {t.home.howItWorks.steps.map((step, index) => (
-              <Grid key={step.href} size={{ xs: 12, md: 4 }}>
+            {howItWorksCards.map((card, index) => (
+              <Grid key={card.href} size={{ xs: 12, md: 4 }}>
                 <Card variant="outlined" sx={{ height: "100%" }}>
-                  <CardContent sx={{ p: 2.5, display: "flex", flexDirection: "column", gap: 1.5, height: "100%" }}>
-                    <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700, letterSpacing: "0.12em" }}>
-                      {String(index + 1).padStart(2, "0")}
-                    </Typography>
-                    <Typography variant="h6" component="h3">
-                      {step.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ flex: 1 }}>
-                      {step.body}
-                    </Typography>
-                    <Stack direction="column" spacing={1} alignItems="flex-start" sx={{ pt: 0.5 }}>
-                      <Button href={step.href} size="small" endIcon={<ArrowForwardRoundedIcon />}>
-                        {step.linkLabel}
-                      </Button>
-                      {"secondaryHref" in step && step.secondaryHref ? (
-                        <Button href={step.secondaryHref} size="small" variant="text" endIcon={<ArrowForwardRoundedIcon />}>
-                          {step.secondaryLinkLabel}
-                        </Button>
-                      ) : null}
-                    </Stack>
-                  </CardContent>
+                  <CardActionArea href={card.href} sx={{ height: "100%", alignItems: "stretch" }}>
+                    <CardContent sx={{ p: 2.5, display: "flex", flexDirection: "column", gap: 1.5, height: "100%" }}>
+                      <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700, letterSpacing: "0.12em" }}>
+                        {String(index + 1).padStart(2, "0")}
+                      </Typography>
+                      <Typography variant="h6" component="h3">
+                        {card.label}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" sx={{ flex: 1 }}>
+                        {card.body}
+                      </Typography>
+                      <Stack direction="row" spacing={0.75} alignItems="center" sx={{ pt: 0.5, color: "primary.main" }}>
+                        <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                          {t.home.howItWorks.openPage}
+                        </Typography>
+                        <ArrowForwardRoundedIcon sx={{ fontSize: "1rem" }} />
+                      </Stack>
+                    </CardContent>
+                  </CardActionArea>
                 </Card>
               </Grid>
             ))}
