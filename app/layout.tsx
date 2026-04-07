@@ -11,6 +11,8 @@ import DisclaimerFooter from "@/components/common/DisclaimerFooter";
 import OwnerFooter from "@/components/common/OwnerFooter";
 import ThemeRegistry from "@/components/theme/ThemeRegistry";
 import { dict } from "@/lib/i18n/dictionary";
+import JsonLd from "@/components/seo/JsonLd";
+import { buildRootMetadata, buildSiteJsonLd } from "@/lib/seo/site";
 import "./globals.css";
 import "@/styles/print.css";
 
@@ -30,32 +32,7 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://elpasocivic.org"),
-  title: {
-    default: "El Paso Hub | Responsible Data Center Policy",
-    template: "%s | El Paso Hub",
-  },
-  description:
-    "A community education and advocacy site focused on responsible data center policy, water stewardship, and transparent local civic engagement.",
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    url: "https://elpasocivic.org",
-    siteName: "El Paso Hub",
-    title: "El Paso Hub | Responsible Data Center Policy",
-    description:
-      "Plain-language resources and local civic information on data center impacts in El Paso.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "El Paso Hub | Responsible Data Center Policy",
-    description:
-      "Learn the local impact of data centers, find official contacts, and support responsible technology growth.",
-  },
-};
+export const metadata: Metadata = buildRootMetadata();
 
 export default function RootLayout({
   children,
@@ -81,6 +58,7 @@ export default function RootLayout({
         <ThemeRegistry>
           <Stack minHeight="100vh">
             <MainNav />
+            <JsonLd data={buildSiteJsonLd()} />
             <Box
               component="main"
               flex={1}

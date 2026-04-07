@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
 import SectionShell from "@/components/common/SectionShell";
 import MeetingCard from "@/components/city-meetings/MeetingCard";
 import { type SerializedEvent } from "@/components/city-meetings/meeting-utils";
@@ -29,12 +30,17 @@ import {
 import { fetchNextCityCouncilCalendarHint } from "@/lib/city-meetings/fetch-legistar-calendar-hint";
 import { fetchLegistarEvents } from "@/lib/city-meetings/fetch-legistar-events";
 import { dict, type Dictionary } from "@/lib/i18n/dictionary";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
-export const metadata: Metadata = {
+const CITY_MEETINGS_SEO = {
   title: "City Meetings",
   description:
     "Upcoming and recent City of El Paso public meetings, hearings, and board sessions pulled live from the Legistar calendar.",
-};
+  path: "/city-meetings",
+  schemaType: "CollectionPage",
+} as const;
+
+export const metadata: Metadata = buildPageMetadata(CITY_MEETINGS_SEO);
 
 const LEGISTAR_CALENDAR_URL = "https://elpasotexas.legistar.com/Calendar.aspx";
 
@@ -196,6 +202,7 @@ export default async function CityMeetingsPage() {
 
   return (
     <Box>
+      <JsonLd data={buildPageJsonLd(CITY_MEETINGS_SEO)} />
       <PageHero
         title={mt.title}
         subtitle={mt.subtitle}

@@ -12,21 +12,35 @@ import {
 } from "@mui/material";
 import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
 import { dict } from "@/lib/i18n/dictionary";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = dict().support;
-  return {
+  const pageSeo = {
     title: t.metaTitle,
     description: t.metaDescription,
+    path: "/support" as const,
+    schemaType: "ContactPage" as const,
+  };
+  return {
+    ...buildPageMetadata(pageSeo),
   };
 }
 
 export default function SupportPage() {
   const t = dict().support;
+  const pageSeo = {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    path: "/support" as const,
+    schemaType: "ContactPage" as const,
+  };
 
   return (
     <Box>
+      <JsonLd data={buildPageJsonLd(pageSeo)} />
       <PageHero title={t.title} subtitle={t.subtitle} />
       <Container maxWidth="md" sx={{ py: { xs: 4, md: 8 } }}>
         <Stack spacing={3}>

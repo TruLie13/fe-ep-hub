@@ -5,19 +5,26 @@ import type { Metadata } from "next";
 import NewsletterSignup from "@/components/common/NewsletterSignup";
 import PageHero from "@/components/common/PageHero";
 import SectionShell from "@/components/common/SectionShell";
+import JsonLd from "@/components/seo/JsonLd";
 import { dict } from "@/lib/i18n/dictionary";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
-export const metadata: Metadata = {
+const PLEDGE_SEO = {
   title: "Pledge",
   description:
     "Resident and business pledge pathways for transparent, efficient data center policy in El Paso. Live signup arrives in a later phase.",
-};
+  path: "/pledge",
+  schemaType: "AboutPage",
+} as const;
+
+export const metadata: Metadata = buildPageMetadata(PLEDGE_SEO);
 
 export default function PledgePage() {
   const t = dict();
 
   return (
     <Box id="printable-pledge" className="printable-root">
+      <JsonLd data={buildPageJsonLd(PLEDGE_SEO)} />
       <PageHero title={t.pledge.title} subtitle={t.pledge.subtitle} />
       <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
       <Alert severity="info" sx={{ mb: 4 }}>

@@ -3,6 +3,7 @@ import RssFeedRoundedIcon from "@mui/icons-material/RssFeedRounded";
 import { Alert, Box, Container, Stack, Typography } from "@mui/material";
 import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
 import type { NewsLink } from "@/content/schema";
 import { RecentFeedList } from "@/components/news/RecentFeedList";
 import { NEWS_REFRESH_MINUTES } from "@/lib/constants/news";
@@ -12,15 +13,20 @@ import {
 } from "@/lib/content/fetch-news";
 import { fetchRedditElPasoPosts } from "@/lib/content/fetch-reddit-elpaso";
 import { dict } from "@/lib/i18n/dictionary";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
 /** Keep in sync with `NEWS_PAGE_REVALIDATE_SECONDS` in `@/lib/constants/news`. */
 export const revalidate = 900;
 
-export const metadata: Metadata = {
+const NEWS_SEO = {
   title: "News",
   description:
     "r/ElPaso posts, local data-center coverage, and national data-center coverage from Google News. Links open in a new tab.",
-};
+  path: "/news",
+  schemaType: "CollectionPage",
+} as const;
+
+export const metadata: Metadata = buildPageMetadata(NEWS_SEO);
 
 export default async function NewsPage() {
   const t = dict();
@@ -63,6 +69,7 @@ export default async function NewsPage() {
 
   return (
     <Box>
+      <JsonLd data={buildPageJsonLd(NEWS_SEO)} />
       <PageHero
         title={nt.title}
         subtitle={nt.subtitle}

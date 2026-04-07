@@ -10,12 +10,25 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import type { Metadata } from "next";
 import FactCard from "@/components/common/FactCard";
 import SectionShell from "@/components/common/SectionShell";
+import JsonLd from "@/components/seo/JsonLd";
 import { buildHomeQuickFactsFromImpacts } from "@/lib/content/home-quick-facts";
 import { loadDataCentersImpacts } from "@/lib/content/load";
 import { dict } from "@/lib/i18n/dictionary";
 import { getMainNavItems } from "@/lib/navigation/main-nav-items";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
+
+const HOME_SEO = {
+  title: "Responsible Data Center Policy",
+  description:
+    "Plain-language resources and local civic information on data center impacts, public process, and responsible growth in El Paso.",
+  path: "/",
+  schemaType: "WebPage",
+} as const;
+
+export const metadata: Metadata = buildPageMetadata(HOME_SEO);
 
 export default function Home() {
   const t = dict();
@@ -39,6 +52,7 @@ export default function Home() {
 
   return (
     <Box id="printable-home" className="printable-root">
+      <JsonLd data={buildPageJsonLd(HOME_SEO)} />
       {/* Flat hero: solid surface, typographic focus — no decorative gradients */}
       <Box
         sx={{

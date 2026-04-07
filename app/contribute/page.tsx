@@ -12,18 +12,25 @@ import {
 } from "@mui/material";
 import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
 import { dict } from "@/lib/i18n/dictionary";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
-export const metadata: Metadata = {
+const CONTRIBUTE_SEO = {
   title: "Contribute",
   description: "Submit tips for review or contribute improvements via GitHub.",
-};
+  path: "/contribute",
+  schemaType: "ContactPage",
+} as const;
+
+export const metadata: Metadata = buildPageMetadata(CONTRIBUTE_SEO);
 
 export default function ContributePage() {
   const t = dict();
 
   return (
     <Box>
+      <JsonLd data={buildPageJsonLd(CONTRIBUTE_SEO)} />
       <PageHero title={t.contribute.title} subtitle={t.contribute.subtitle} />
       <Container maxWidth="md" sx={{ py: { xs: 4, md: 8 } }}>
       <Stack spacing={3}>

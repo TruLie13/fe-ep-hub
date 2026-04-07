@@ -17,16 +17,22 @@ import CitationLinks from "@/components/common/CitationLinks";
 import PageHero from "@/components/common/PageHero";
 import PageHeroMetaRow from "@/components/common/PageHeroMetaRow";
 import PrintSectionButton from "@/components/common/PrintSectionButton";
+import JsonLd from "@/components/seo/JsonLd";
 import LearnToc from "@/components/learn/LearnToc";
 import { dict } from "@/lib/i18n/dictionary";
 import type { LearnSection } from "@/lib/learn/sections";
 import { loadSourcesBundle, pickSources } from "@/lib/content/load";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
-export const metadata: Metadata = {
+const LEARN_SEO = {
   title: "Learn",
   description:
     "Plain-language explainers about data centers, AI, water use, and how to read local infrastructure proposals.",
-};
+  path: "/learn",
+  schemaType: "CollectionPage",
+} as const;
+
+export const metadata: Metadata = buildPageMetadata(LEARN_SEO);
 
 /** Section cards: match data-centers (`borderRadius: 3` × theme.shape.borderRadius) + hash scroll offset below sticky MainNav. */
 const learnSectionCardSx = { borderRadius: 3 } as const;
@@ -59,6 +65,7 @@ export default function LearnPage() {
 
   return (
     <Box id="printable-learn" className="printable-root">
+      <JsonLd data={buildPageJsonLd(LEARN_SEO)} />
       <PageHero
         title={t.learn.title}
         subtitle={t.learn.subtitle}

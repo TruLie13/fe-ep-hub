@@ -14,6 +14,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
 import PageHeroMetaRow from "@/components/common/PageHeroMetaRow";
 import PrintSectionButton from "@/components/common/PrintSectionButton";
+import JsonLd from "@/components/seo/JsonLd";
 import StickyInPageToc from "@/components/common/StickyInPageToc";
 import type { StickyInPageTocItem } from "@/components/common/StickyInPageToc";
 import DataCentersMobileToc from "@/components/data-centers/DataCentersMobileToc";
@@ -21,18 +22,30 @@ import DataCentersSections from "@/components/data-centers/DataCentersSections";
 import DataCentersSectionNav from "@/components/data-centers/DataCentersSectionNav";
 import { dict } from "@/lib/i18n/dictionary";
 import { loadDataCentersImpacts, loadSourcesBundle, pickSources } from "@/lib/content/load";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
 export function generateMetadata(): Metadata {
   const p = dict().dataCentersPage;
-  return {
+  const pageSeo = {
     title: p.metaTitle,
     description: p.metaDescription,
+    path: "/data-center" as const,
+    schemaType: "CollectionPage" as const,
+  };
+  return {
+    ...buildPageMetadata(pageSeo),
   };
 }
 
 export default function DataCentersPage() {
   const t = dict();
   const p = t.dataCentersPage;
+  const pageSeo = {
+    title: p.metaTitle,
+    description: p.metaDescription,
+    path: "/data-center" as const,
+    schemaType: "CollectionPage" as const,
+  };
   const bundle = loadDataCentersImpacts();
   const sources = loadSourcesBundle();
   const noiseTableSources = pickSources(sources, bundle.noiseTable?.sourceIds ?? []);
@@ -45,6 +58,7 @@ export default function DataCentersPage() {
 
   return (
     <Box id="printable-data-centers" className="printable-root">
+      <JsonLd data={buildPageJsonLd(pageSeo)} />
       <PageHero
         title={p.title}
         subtitle={p.subtitle}

@@ -22,8 +22,10 @@ import type { Metadata } from "next";
 import NextLink from "next/link";
 import type { ComponentType, ReactNode } from "react";
 import PageHero from "@/components/common/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
 import SectionShell from "@/components/common/SectionShell";
 import { dict } from "@/lib/i18n/dictionary";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 import { tokens } from "@/theme/tokens";
 
 const inlineNavLinkSx = {
@@ -171,9 +173,14 @@ function VolunteerHandsCard({
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = dict().takeAction;
-  return {
+  const pageSeo = {
     title: t.metaTitle,
     description: t.metaDescription,
+    path: "/take-action" as const,
+    schemaType: "CollectionPage" as const,
+  };
+  return {
+    ...buildPageMetadata(pageSeo),
   };
 }
 
@@ -240,9 +247,16 @@ function ActionWayCard({
 export default function TakeActionPage() {
   const d = dict();
   const t = d.takeAction;
+  const pageSeo = {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    path: "/take-action" as const,
+    schemaType: "CollectionPage" as const,
+  };
 
   return (
     <Box>
+      <JsonLd data={buildPageJsonLd(pageSeo)} />
       <PageHero
         title={
           <Stack spacing={2} sx={{ alignItems: "flex-start" }}>

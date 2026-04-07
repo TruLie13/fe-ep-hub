@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
 import CollapsibleGovernmentSection from "@/components/local-government/CollapsibleGovernmentSection";
 import SectionShell from "@/components/common/SectionShell";
 import type { Candidate, Official, Stance, StancePosition } from "@/content/schema";
@@ -39,12 +40,17 @@ import {
   type LegistarMember,
 } from "@/lib/local-government/legistar";
 import type { Source } from "@/content/schema";
+import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
-export const metadata: Metadata = {
+const LOCAL_GOVERNMENT_SEO = {
   title: "Local Government",
   description:
     "El Paso mayor and city council, plus El Paso County Commissioners Court — contacts, election timing, and stance notes.",
-};
+  path: "/local-government",
+  schemaType: "CollectionPage",
+} as const;
+
+export const metadata: Metadata = buildPageMetadata(LOCAL_GOVERNMENT_SEO);
 
 function stanceColor(position: StancePosition): "default" | "primary" | "secondary" | "success" | "warning" | "error" {
   switch (position) {
@@ -425,6 +431,7 @@ export default async function LocalGovernmentPage() {
 
   return (
     <Box>
+      <JsonLd data={buildPageJsonLd(LOCAL_GOVERNMENT_SEO)} />
       <PageHero
         title={t.localGov.title}
         subtitle={t.localGov.subtitle}
