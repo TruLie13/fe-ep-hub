@@ -16,7 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import type { FormEvent, RefObject } from "react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import enDict from "@/dictionaries/en.json";
 import {
   formatUsPhone,
@@ -55,10 +55,11 @@ function ClientOnlyTurnstile({
   onExpire: () => void;
   onError: () => void;
 }) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
   if (!mounted) {
     return <Box sx={{ minHeight: 70 }} aria-hidden />;
   }
@@ -186,7 +187,7 @@ export default function NewsletterSignup({ withCard = true }: NewsletterSignupPr
         setSubmitting(false);
       }
     },
-    [email, firstName, isFormValid, lastName, needTurnstile, phoneDigits, turnstileToken],
+    [email, firstName, isFormValid, lastName, phoneDigits, turnstileToken],
   );
 
   const formDisabled = !newsletterConfigured || submitting || submitSucceeded;
