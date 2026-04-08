@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import { Box, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import { CONTENT_FONT_SCALE_INIT_SCRIPT_INNER } from "@/lib/theme/contentFontScaleInitScriptInner";
 import { MUI_COLOR_SCHEME_INIT_SCRIPT_INNER } from "@/lib/theme/muiColorSchemeInitScriptInner";
 import MainNav from "@/components/common/MainNav";
 import BackToTopFab from "@/components/common/BackToTopFab";
+import NewsletterSignup from "@/components/common/NewsletterSignup";
 import DisclaimerFooter from "@/components/common/DisclaimerFooter";
 import OwnerFooter from "@/components/common/OwnerFooter";
 import ThemeRegistry from "@/components/theme/ThemeRegistry";
@@ -71,6 +72,18 @@ export default function RootLayout({
               }}
             >
               {children}
+            </Box>
+            <Box
+              component="footer"
+              borderTop={1}
+              borderColor="divider"
+              py={{ xs: 4, md: 5 }}
+              px={0}
+              className="print-hide"
+            >
+              <Container maxWidth="lg">
+                <NewsletterSignup />
+              </Container>
             </Box>
             <DisclaimerFooter />
             <OwnerFooter />
