@@ -279,18 +279,32 @@ export default async function CityMeetingsPage() {
                   disabled={formLinksDisabled}
                 />
               </Stack>
-              <Link
-                href="https://www.elpasotexas.gov/city-clerk/forms/"
-                target="_blank"
-                rel="noopener noreferrer"
-                underline="always"
-                variant="body2"
-                color="text.secondary"
-                sx={{ display: "inline-flex", alignItems: "center", gap: 0.5, mt: 1 }}
-              >
-                {mt.clerkPage}
-                <OpenInNewRoundedIcon sx={{ fontSize: 14 }} />
-              </Link>
+              <Stack spacing={1} sx={{ mt: 1 }}>
+                <Link
+                  href="https://www.elpasotexas.gov/city-clerk/forms/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  underline="always"
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
+                >
+                  {mt.clerkPage}
+                  <OpenInNewRoundedIcon sx={{ fontSize: 14 }} />
+                </Link>
+                <Link
+                  href="https://www.youtube.com/@cityofelpasotx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  underline="always"
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
+                >
+                  {mt.youtubeChannel}
+                  <OpenInNewRoundedIcon sx={{ fontSize: 14 }} />
+                </Link>
+              </Stack>
             </Stack>
           </CardContent>
         </Card>

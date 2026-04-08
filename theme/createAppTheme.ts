@@ -242,6 +242,14 @@ export const appTheme = extendTheme({
         },
       },
     },
+    /** Keeps outlined fields visually aligned with cards (14px); avoids notch/label clashes from overly round corners. */
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          borderRadius: Number(theme.shape.borderRadius),
+        }),
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {

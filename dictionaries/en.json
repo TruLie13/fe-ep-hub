@@ -8,7 +8,7 @@
     "twitterDescription": "Learn the local impact of data centers, find official contacts, and support responsible technology growth."
   },
   "nav": {
-    "siteName": "El Paso Hub",
+    "siteName": "EP Hub",
     "siteTagline": "We are all in this together",
     "home": "Home",
     "learn": "Learn",
@@ -39,12 +39,28 @@
     "ownerCopyrightEnd": ". all rights reserved."
   },
   "newsletter": {
-    "heading": "Email updates",
-    "description": "Get occasional updates on meetings, sources, and actions. We will not sell your email. Unsubscribe anytime once the list is live.",
+    "heading": "Stay Informed",
+    "description": "Get occasional updates on meetings, municipal projects, and community initiatives. We will not sell your information. Unsubscribe anytime once the list is live.",
+    "firstNameLabel": "First name",
+    "firstNamePlaceholder": "Jane",
+    "lastNameLabel": "Last name",
+    "lastNamePlaceholder": "Doe",
+    "firstNameError": "Use letters A to Z only.",
+    "lastNameError": "Use letters A to Z only.",
     "emailLabel": "Email",
-    "placeholder": "Coming soon",
-    "joinList": "Join list",
-    "help": "Provider integration is deferred; this block reserves UX and consent copy. You can temporarily link out from the button once you have a signup URL."
+    "emailPlaceholder": "you@example.com",
+    "emailError": "Enter a valid email address.",
+    "phoneLabel": "Phone (optional)",
+    "phonePlaceholder": "(555) 555-0100",
+    "phoneError": "Enter all 10 digits or leave this field blank.",
+    "joinList": "Get Updates",
+    "consentFinePrint": "By signing up, you agree to receive communications from El Paso Hub regarding community projects, local initiatives, and civic updates. We value your privacy and will never sell your data. Unsubscribe at any time.",
+    "submitting": "Sending…",
+    "submitSuccess": "Thanks for signing up!",
+    "submitError": "Something went wrong. Check your connection and try again.",
+    "captchaError": "Security check failed. Refresh the page and try again.",
+    "captchaConfigError": "This site is missing the Turnstile secret key. Ask the site owner to set TURNSTILE_SECRET_KEY.",
+    "configHelp": "Newsletter signups need a server env: set NEWSLETTER_SCRIPT_URL (recommended) or NEXT_PUBLIC_NEWSLETTER_SCRIPT_URL to your Google Apps Script web app URL. If the form uses Turnstile, also set TURNSTILE_SECRET_KEY next to NEXT_PUBLIC_TURNSTILE_SITE_KEY."
   },
   "common": {
     "backToTop": "Back to top",
@@ -521,6 +537,7 @@
     "submitStatement": "Submit a written statement",
     "submitStatementHint": "Submit a statement on an agenda item in writing instead of speaking.",
     "clerkPage": "City Clerk forms & documents page",
+    "youtubeChannel": "City of El Paso YouTube (live streams and meeting recordings)",
     "agendaItems": "Agenda items",
     "fullAgendaPdf": "Full agenda (PDF)",
     "loadingItems": "Loading agenda items…",

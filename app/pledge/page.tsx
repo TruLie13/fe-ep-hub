@@ -84,7 +84,7 @@ export default function PledgePage() {
         description={t.pledge.newsletterDescription}
         dense
       >
-        <NewsletterSignup />
+        <NewsletterSignup withCard={false} />
       </SectionShell>
       </Container>
     </Box>
