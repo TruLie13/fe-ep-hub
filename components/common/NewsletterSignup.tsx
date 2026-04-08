@@ -165,7 +165,9 @@ export default function NewsletterSignup({ withCard = true }: NewsletterSignupPr
                 ? t.newsletter.captchaConfigError
                 : data.error === "not_configured"
                   ? t.newsletter.configHelp
-                  : t.newsletter.submitError;
+                  : data.error === "duplicate"
+                    ? t.newsletter.duplicateEmail
+                    : t.newsletter.submitError;
           setToast({ open: true, message: msg, severity: "error" });
           return;
         }

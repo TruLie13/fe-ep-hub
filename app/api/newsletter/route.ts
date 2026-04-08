@@ -1,6 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { parseNewsletterBody } from "@/lib/newsletter/parseNewsletterBody";
+import { parseGasWebAppResponse } from "@/lib/newsletter/parseGasWebAppResponse";
 import { verifyTurnstileToken } from "@/lib/newsletter/verifyTurnstile";
 
 function newsletterScriptUrl(): string {
@@ -79,12 +80,21 @@ export async function POST(request: NextRequest) {
       body,
     });
 
+    const text = await upstream.text();
+    const gas = parseGasWebAppResponse(text);
+
+    if (gas.kind === "duplicate") {
+      return NextResponse.json({ error: "duplicate" }, { status: 409 });
+    }
+    if (gas.kind === "ok") {
+      return NextResponse.json({ ok: true });
+    }
+
     if (!upstream.ok) {
       return NextResponse.json({ error: "upstream" }, { status: 502 });
     }
+    return NextResponse.json({ error: "upstream" }, { status: 502 });
   } catch {
     return NextResponse.json({ error: "upstream" }, { status: 502 });
   }
-
-  return NextResponse.json({ ok: true });
 }
