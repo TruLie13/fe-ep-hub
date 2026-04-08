@@ -23,8 +23,13 @@ type ContentFontScaleControlProps = {
 };
 
 const SCALE_STORAGE_EVENT = "eptruth-content-font-scale-change";
+let hasHydrated = false;
 
 function readStoredScale(): ScaleValue {
+  if (!hasHydrated) {
+    // Keep first client render identical to server markup.
+    return "1";
+  }
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved && isScaleValue(saved)) {
@@ -50,7 +55,31 @@ export default function ContentFontScaleControl({ label }: ContentFontScaleContr
   const scale = useSyncExternalStore(subscribeToScaleChange, readStoredScale, () => "1");
 
   useEffect(() => {
+    hasHydrated = true;
+    window.dispatchEvent(new Event(SCALE_STORAGE_EVENT));
+  }, []);
+
+  useEffect(() => {
     document.documentElement.style.setProperty("--eptruth-content-font-scale", scale);
+    // #region agent log
+    fetch("http://127.0.0.1:7761/ingest/4c13ac3f-bbb9-48c9-a6ca-6d1ae895ca0a", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "e909d1" },
+      body: JSON.stringify({
+        sessionId: "e909d1",
+        runId: "pre-fix",
+        hypothesisId: "H3",
+        location: "components/common/ContentFontScaleControl.tsx:66",
+        message: "Font scale synced to html variable",
+        data: {
+          scale,
+          storageValue: typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null,
+          htmlVar: document.documentElement.style.getPropertyValue("--eptruth-content-font-scale"),
+        },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+    // #endregion
   }, [scale]);
 
   const handleChange = (value: string) => {

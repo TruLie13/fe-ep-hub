@@ -1,4 +1,5 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
 import {
   Box,
   Button,
@@ -64,7 +65,41 @@ export default function DataCentersPage() {
         subtitle={p.subtitle}
         meta={
           <PageHeroMetaRow>
-            <PrintSectionButton sectionId="printable-data-centers" label={t.common.printSavePdf} />
+            <Stack
+              direction="column"
+              useFlexGap
+              sx={{ width: "100%", alignItems: "stretch" }}
+              rowGap={1.25}
+              columnGap={1}
+            >
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={1} useFlexGap flexWrap="wrap">
+                <Button
+                  component={Link}
+                  href="/documents/Wurldwide-380-Agreement.pdf"
+                  download="Wurldwide-380-Agreement.pdf"
+                  variant="outlined"
+                  size="small"
+                  endIcon={<DownloadRoundedIcon />}
+                  sx={{ width: { xs: "100%", sm: "auto" }, justifyContent: "space-between" }}
+                >
+                  Download 380 Meta Contract
+                </Button>
+                <Button
+                  component={Link}
+                  href="/documents/Data Center Mitigation Framework Evaluation.pdf"
+                  download="Data Center Mitigation Framework Evaluation.pdf"
+                  variant="outlined"
+                  size="small"
+                  endIcon={<DownloadRoundedIcon />}
+                  sx={{ width: { xs: "100%", sm: "auto" }, justifyContent: "space-between" }}
+                >
+                  Download Mitigation Framework
+                </Button>
+              </Stack>
+              <Box sx={{ width: "100%", mt: { xs: 0.75, sm: 0 } }}>
+                <PrintSectionButton sectionId="printable-data-centers" label={t.common.printSavePdf} />
+              </Box>
+            </Stack>
           </PageHeroMetaRow>
         }
       />

@@ -21,7 +21,7 @@ import {
 import { alpha } from "@mui/material/styles";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getMainNavItems } from "@/lib/navigation/main-nav-items";
 import { tokens } from "@/theme/tokens";
 import ContentFontScaleControl from "@/components/common/ContentFontScaleControl";
@@ -32,6 +32,28 @@ const navItems = getMainNavItems(t.nav);
 export default function MainNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    // #region agent log
+    fetch("http://127.0.0.1:7761/ingest/4c13ac3f-bbb9-48c9-a6ca-6d1ae895ca0a", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "e909d1" },
+      body: JSON.stringify({
+        sessionId: "e909d1",
+        runId: "pre-fix",
+        hypothesisId: "H2",
+        location: "components/common/MainNav.tsx:38",
+        message: "MainNav hydrated on client",
+        data: {
+          pathname,
+          siteTagline: t.nav.siteTagline,
+          htmlClassName: document.documentElement.className,
+        },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+    // #endregion
+  }, [pathname]);
 
   return (
     <AppBar

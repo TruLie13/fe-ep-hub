@@ -41,6 +41,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const t = dict();
+  // #region agent log
+  fetch("http://127.0.0.1:7761/ingest/4c13ac3f-bbb9-48c9-a6ca-6d1ae895ca0a", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "e909d1" },
+    body: JSON.stringify({
+      sessionId: "e909d1",
+      runId: "pre-fix",
+      hypothesisId: "H5",
+      location: "app/layout.tsx:46",
+      message: "RootLayout server render",
+      data: {
+        lang: "en",
+        hasChildren: Boolean(children),
+      },
+      timestamp: 0,
+    }),
+  }).catch(() => {});
+  // #endregion
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -67,7 +85,7 @@ export default function RootLayout({
               flex={1}
               sx={{
                 minWidth: 0,
-                "--content-font-scale": "var(--eptruth-content-font-scale, 0.9375)",
+                "--content-font-scale": "var(--eptruth-content-font-scale, 1)",
                 fontSize: "calc(1rem * var(--content-font-scale))",
               }}
             >
