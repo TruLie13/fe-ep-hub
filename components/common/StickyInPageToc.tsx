@@ -42,6 +42,7 @@ export type StickyInPageTocProps = {
 };
 
 const ACTIVATION_OFFSET_PX = 112;
+const DATA_CENTERS_STICKY_TOP_PX = 84;
 
 function flattenIds(items: StickyInPageTocItem[]): string[] {
   return items.flatMap((item) => [item.id, ...(item.nested?.map((n) => n.id) ?? [])]);
@@ -69,7 +70,7 @@ export default function StickyInPageToc({
   /** Sidebar TOC: visibility is controlled by the parent `aside` on the data-centers page, not here. */
   const dataCentersNavSx: SxProps<Theme> = {
     position: "sticky",
-    top: 96,
+    top: DATA_CENTERS_STICKY_TOP_PX,
     alignSelf: "flex-start",
     flexShrink: 0,
     width: "100%",

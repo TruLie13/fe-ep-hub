@@ -8,6 +8,7 @@ import type { DataCentersImpactSection } from "@/content/schema";
 import { useScrollSpyActiveId } from "@/lib/hooks/useScrollSpyActiveId";
 
 const ACTIVATION_OFFSET_PX = 112;
+const DATA_CENTERS_STICKY_TOP_PX = 84;
 
 export type DataCentersMobileTocProps = {
   label: string;
@@ -63,7 +64,7 @@ export default function DataCentersMobileToc({
       aria-label={ariaLabel ?? label}
       sx={{
         position: "sticky",
-        top: 96,
+        top: DATA_CENTERS_STICKY_TOP_PX,
         zIndex: 1,
         mb: { xs: 4, lg: 3 },
         display: { xs: "block", lg: "none" },

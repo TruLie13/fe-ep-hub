@@ -1,15 +1,15 @@
 "use client";
 
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "eptruth-content-font-scale";
 
 const SCALE_OPTIONS = [
-  { value: "0.9375", label: "Small" },
-  { value: "1", label: "Med" },
-  { value: "1.125", label: "Large" },
-  { value: "1.25", label: "X-large" },
+  { value: "1", label: "Small" },
+  { value: "1.125", label: "Med" },
+  { value: "1.25", label: "Large" },
+  { value: "1.375", label: "X-large" },
 ] as const;
 
 type ScaleValue = (typeof SCALE_OPTIONS)[number]["value"];
@@ -22,18 +22,32 @@ type ContentFontScaleControlProps = {
   label: string;
 };
 
-export default function ContentFontScaleControl({ label }: ContentFontScaleControlProps) {
-  const [scale, setScale] = useState<ScaleValue>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved && isScaleValue(saved)) {
-        return saved;
-      }
-    } catch {
-      // Ignore browser storage failures.
+const SCALE_STORAGE_EVENT = "eptruth-content-font-scale-change";
+
+function readStoredScale(): ScaleValue {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved && isScaleValue(saved)) {
+      return saved;
     }
-    return "0.9375";
-  });
+  } catch {
+    // Ignore browser storage failures.
+  }
+  return "1";
+}
+
+function subscribeToScaleChange(onStoreChange: () => void): () => void {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(SCALE_STORAGE_EVENT, onStoreChange);
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(SCALE_STORAGE_EVENT, onStoreChange);
+  };
+}
+
+export default function ContentFontScaleControl({ label }: ContentFontScaleControlProps) {
+  // Keep hydration stable by returning server-safe default first.
+  const scale = useSyncExternalStore(subscribeToScaleChange, readStoredScale, () => "1");
 
   useEffect(() => {
     document.documentElement.style.setProperty("--eptruth-content-font-scale", scale);
@@ -41,10 +55,9 @@ export default function ContentFontScaleControl({ label }: ContentFontScaleContr
 
   const handleChange = (value: string) => {
     if (!isScaleValue(value)) return;
-    setScale(value);
-    document.documentElement.style.setProperty("--eptruth-content-font-scale", value);
     try {
       localStorage.setItem(STORAGE_KEY, value);
+      window.dispatchEvent(new Event(SCALE_STORAGE_EVENT));
     } catch {
       // Ignore browser storage failures.
     }

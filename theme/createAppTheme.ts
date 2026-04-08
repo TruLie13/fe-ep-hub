@@ -1,7 +1,7 @@
 import { extendTheme } from "@mui/material/styles";
 import { tokens } from "./tokens";
 
-const contentScale = "var(--content-font-scale, 0.9375)";
+const contentScale = "var(--content-font-scale, 1)";
 
 declare module "@mui/material/styles" {
   interface Palette {
