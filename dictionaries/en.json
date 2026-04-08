@@ -57,6 +57,8 @@
     "consentFinePrint": "By signing up, you agree to receive communications from El Paso Hub regarding community projects, local initiatives, and civic updates. We value your privacy and will never sell your data. Unsubscribe at any time.",
     "submitting": "Sending…",
     "submitSuccess": "Thanks for signing up!",
+    "welcomeTitle": "Welcome to the Hub",
+    "welcomeBody": "Thanks for joining. We will send updates on meetings, municipal projects, and community initiatives.",
     "submitError": "Something went wrong. Check your connection and try again.",
     "captchaError": "Security check failed. Refresh the page and try again.",
     "captchaConfigError": "This site is missing the Turnstile secret key. Ask the site owner to set TURNSTILE_SECRET_KEY.",

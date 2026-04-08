@@ -1,6 +1,7 @@
 "use client";
 
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import MarkEmailReadOutlined from "@mui/icons-material/MarkEmailReadOutlined";
 import {
   Alert,
@@ -109,6 +110,7 @@ export default function NewsletterSignup({ withCard = true }: NewsletterSignupPr
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [submitSucceeded, setSubmitSucceeded] = useState(false);
   const [toast, setToast] = useState<{ open: boolean; message: string; severity: "success" | "error" }>({
     open: false,
     message: "",
@@ -174,6 +176,7 @@ export default function NewsletterSignup({ withCard = true }: NewsletterSignupPr
         setPhoneDigits("");
         setTurnstileToken(null);
         turnstileRef.current?.reset();
+        setSubmitSucceeded(true);
         setToast({ open: true, message: t.newsletter.submitSuccess, severity: "success" });
       } catch {
         setToast({ open: true, message: t.newsletter.submitError, severity: "error" });
@@ -184,7 +187,7 @@ export default function NewsletterSignup({ withCard = true }: NewsletterSignupPr
     [email, firstName, isFormValid, lastName, needTurnstile, phoneDigits, turnstileToken],
   );
 
-  const formDisabled = !newsletterConfigured || submitting;
+  const formDisabled = !newsletterConfigured || submitting || submitSucceeded;
 
   /** Shrunk labels sit in the outline notch; paper tint matches the surface behind the field (card vs page). */
   const outlinedLabelSlotProps = useMemo(
@@ -205,14 +208,24 @@ export default function NewsletterSignup({ withCard = true }: NewsletterSignupPr
     <Stack spacing={2.5} component={withCard ? "div" : "section"} aria-labelledby="newsletter-heading">
       <Box>
         <Stack direction="row" spacing={1.25} alignItems="center" flexWrap="wrap" useFlexGap>
-          <MarkEmailReadOutlined color="primary" sx={{ fontSize: 28 }} aria-hidden />
+          {submitSucceeded ? (
+            <CheckCircleRoundedIcon color="success" sx={{ fontSize: 32 }} aria-hidden />
+          ) : (
+            <MarkEmailReadOutlined color="primary" sx={{ fontSize: 28 }} aria-hidden />
+          )}
           <Typography id="newsletter-heading" component="h2" variant="h6">
-            {t.newsletter.heading}
+            {submitSucceeded ? t.newsletter.welcomeTitle : t.newsletter.heading}
           </Typography>
         </Stack>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, maxWidth: "min(65ch, 100%)" }}>
-          {t.newsletter.description}
-        </Typography>
+        {!submitSucceeded ? (
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, maxWidth: "min(65ch, 100%)" }}>
+            {t.newsletter.description}
+          </Typography>
+        ) : (
+          <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: "min(65ch, 100%)", lineHeight: 1.65 }}>
+            {t.newsletter.welcomeBody}
+          </Typography>
+        )}
       </Box>
 
       {!newsletterConfigured ? (
@@ -221,7 +234,7 @@ export default function NewsletterSignup({ withCard = true }: NewsletterSignupPr
         </Alert>
       ) : null}
 
-      {newsletterConfigured ? (
+      {newsletterConfigured && !submitSucceeded ? (
       <Box
         component="form"
         onSubmit={handleSubmit}
