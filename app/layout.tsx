@@ -1,12 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import { Box, Container, Link as MuiLink, Stack, Typography } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { CONTENT_FONT_SCALE_INIT_SCRIPT_INNER } from "@/lib/theme/contentFontScaleInitScriptInner";
 import { MUI_COLOR_SCHEME_INIT_SCRIPT_INNER } from "@/lib/theme/muiColorSchemeInitScriptInner";
 import MainNav from "@/components/common/MainNav";
 import BackToTopFab from "@/components/common/BackToTopFab";
-import NewsletterSignup from "@/components/common/NewsletterSignup";
 import DisclaimerFooter from "@/components/common/DisclaimerFooter";
 import OwnerFooter from "@/components/common/OwnerFooter";
 import ThemeRegistry from "@/components/theme/ThemeRegistry";
@@ -72,39 +71,6 @@ export default function RootLayout({
               }}
             >
               {children}
-            </Box>
-            <Box
-              component="footer"
-              borderTop={1}
-              borderColor="divider"
-              py={{ xs: 4, md: 5 }}
-              px={0}
-              className="print-hide"
-            >
-              <Container maxWidth="lg">
-                <Stack spacing={3}>
-                  <NewsletterSignup />
-                  <Stack spacing={1}>
-                    <Typography variant="body2" color="text.secondary">
-                      {t.footer.mission}
-                    </Typography>
-                    <Stack direction={{ xs: "column", sm: "row" }} spacing={1} flexWrap="wrap" useFlexGap>
-                      <MuiLink href="/pledge" underline="hover" color="primary.main">
-                        {t.footer.joinPledge}
-                      </MuiLink>
-                      <MuiLink href="/contribute" underline="hover" color="primary.main">
-                        {t.footer.contributeTip}
-                      </MuiLink>
-                      <MuiLink href="/learn" underline="hover" color="primary.main">
-                        {t.footer.learnBasics}
-                      </MuiLink>
-                      <MuiLink href="/data-center" underline="hover" color="primary.main">
-                        {t.footer.dataCentersImpacts}
-                      </MuiLink>
-                    </Stack>
-                  </Stack>
-                </Stack>
-              </Container>
             </Box>
             <DisclaimerFooter />
             <OwnerFooter />
