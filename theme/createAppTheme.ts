@@ -16,34 +16,6 @@ declare module "@mui/material/styles" {
 export const appTheme = extendTheme({
   cssVarPrefix: "eptruth",
   colorSchemes: {
-    light: {
-      palette: {
-        mode: "light",
-        primary: {
-          main: tokens.light.accent,
-          light: "#3B82F6",
-          dark: "#1D4ED8",
-          contrastText: tokens.light.accentContrast,
-        },
-        background: {
-          default: tokens.light.surface,
-          paper: tokens.light.surfaceAlt,
-        },
-        text: {
-          primary: tokens.light.textPrimary,
-          secondary: tokens.light.textSecondary,
-        },
-        warning: {
-          main: tokens.light.warning,
-          light: "#EA580C",
-          /** Dark orange fill: white text meets WCAG 2.2 AA for small UI labels (4.5:1). */
-          dark: "#9A3412",
-          contrastText: "#FFFFFF",
-        },
-        divider: tokens.light.border,
-        warningSurface: tokens.light.warning,
-      },
-    },
     dark: {
       palette: {
         mode: "dark",

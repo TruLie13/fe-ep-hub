@@ -73,10 +73,10 @@ export default function RootLayout({
   // #endregion
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark" data-mui-color-scheme="dark">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <template id="mui-color-scheme-init" dangerouslySetInnerHTML={{ __html: MUI_COLOR_SCHEME_INIT_SCRIPT_INNER }} />
-        <template id="content-font-scale-init" dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }} />
+        <script id="mui-color-scheme-init" dangerouslySetInnerHTML={{ __html: MUI_COLOR_SCHEME_INIT_SCRIPT_INNER }} />
+        <script id="content-font-scale-init" dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }} />
         <GoogleAnalyticsScripts />
         <GoogleAnalyticsPageView />
         <ThemeRegistry>
