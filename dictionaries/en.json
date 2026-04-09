@@ -84,7 +84,7 @@
   "home": {
     "metaTitle": "El Paso Hub | Responsible Data Center Policy",
     "heroTitle": "Data centers, local news, and the civic tools to act",
-    "heroSubtitle": "This platform provides the research and civic tools to help you influence municipal policy. Start with our plain language guide to understand industrial trade offs or jump to the government page to find your representatives and take action.",
+    "heroSubtitle": "Learn about Data Centers, their impact on our community, and how to get involved with our local government.",
     "startLearning": "Learn the Basics",
     "takePledge": "Take the pledge",
     "atAGlance": "Navigate the Hub",
@@ -93,7 +93,7 @@
     "viewRegionalImpacts": "Regional impacts",
     "howItWorks": {
       "eyebrow": "How this site is organized",
-      "title": "Understand, stay current, engage",
+      "title": "Understand, stay current.",
       "description": "You do not need to read everything. Use the path that fits your time—each section opens in its own page.",
       "openPage": "Open page",
       "overviewByHref": {
@@ -102,7 +102,7 @@
         "/local-government": "Find local representatives and contact information for city and county offices.",
         "/city-meetings": "Track upcoming meetings, agendas, and ways to participate in public comment.",
         "/news": "Follow recent coverage and local discussion links in one place.",
-        "/take-action": "Practical ways to engage, from public comment and outreach to neighborhood volunteer efforts.",
+        "/take-action": "Join local outreach efforts and participate in neighborhood volunteer initiatives.",
         "/support": "Help keep this free site active through optional tips or local sponsorship."
       },
       "steps": [

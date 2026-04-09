@@ -83,9 +83,10 @@ const newsletterCardBackdropSx = {
     xs: "linear-gradient(90deg, rgba(3,8,18,0.995) 0%, rgba(3,8,18,0.98) 37%, rgba(3,8,18,0.955) 67%, rgba(3,8,18,0.92) 100%), url('/images/elpaso_downtown.webp')",
     md: "linear-gradient(90deg, rgba(3,8,18,0.988) 0%, rgba(3,8,18,0.973) 37%, rgba(3,8,18,0.94) 71%, rgba(3,8,18,0.89) 100%), url('/images/elpaso_downtown.webp')",
   },
-  backgroundSize: "cover",
-  backgroundPosition: "left center",
-  backgroundRepeat: "no-repeat",
+  /* Gradient must fill the box; `cover` on both layers can leave a bright photo seam at an edge */
+  backgroundSize: "100% 100%, cover",
+  backgroundPosition: "center, left center",
+  backgroundRepeat: "no-repeat, no-repeat",
   minHeight: { xs: 300, sm: 320 },
 };
 

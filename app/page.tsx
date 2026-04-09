@@ -122,22 +122,18 @@ export default function Home() {
               </Grid>
             ))}
           </Grid>
-          <Stack direction="row" spacing={0.75} alignItems="center" sx={{ pt: 0.5, color: "primary.main" }}>
-            <Typography
-              component="a"
-              href="/data-center"
-              variant="body2"
-              sx={{
-                fontWeight: 700,
-                color: "primary.main",
-                textDecoration: "none",
-                "&:hover": { textDecoration: "underline" },
-              }}
-            >
-              {t.home.quickFacts.readFullPage}
-            </Typography>
-            <ArrowForwardRoundedIcon sx={{ fontSize: "1rem" }} />
-          </Stack>
+          <Button
+            variant="outlined"
+            size="large"
+            href="/data-center"
+            endIcon={<ArrowForwardRoundedIcon />}
+            sx={{
+              alignSelf: { xs: "stretch", sm: "flex-start" },
+              mt: { xs: 0.5, sm: 1 },
+            }}
+          >
+            {t.home.quickFacts.readFullPage}
+          </Button>
         </SectionShell>
       </Container>
 
@@ -213,30 +209,86 @@ export default function Home() {
                 >
                   <CardActionArea href={card.href} sx={{ height: "100%", alignItems: "stretch" }}>
                     <CardContent sx={{ p: 2.5, display: "flex", flexDirection: "column", gap: 1.5, height: "100%" }}>
-                      <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700, letterSpacing: "0.12em" }}>
+                      <Typography
+                        variant="overline"
+                        color="primary.main"
+                        sx={{
+                          fontWeight: 700,
+                          letterSpacing: "0.12em",
+                          ...(isTakeAction
+                            ? {
+                                textShadow:
+                                  "0 0 2px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.45)",
+                              }
+                            : {}),
+                        }}
+                      >
                         {String(index + 1).padStart(2, "0")}
                       </Typography>
-                      <Typography variant="h6" component="h3">
+                      <Typography
+                        variant="h6"
+                        component="h3"
+                        sx={
+                          isTakeAction
+                            ? {
+                                color: "common.white",
+                                fontWeight: 600,
+                                textShadow:
+                                  "0 0 2px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.95), 0 2px 14px rgba(0,0,0,0.4)",
+                              }
+                            : undefined
+                        }
+                      >
                         {card.label}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary" sx={{ flex: 1 }}>
-                        {isTakeAction ? (
-                          <>
-                            Use practical ways to engage, from public comment and outreach
-                            <Box component="span" sx={{ display: { xs: "inline", md: "block" } }}>
-                              {" "}
-                              to neighborhood volunteer efforts.
-                            </Box>
-                          </>
-                        ) : (
-                          card.body
-                        )}
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          flex: 1,
+                          ...(isTakeAction
+                            ? {
+                                color: "rgba(255,255,255,0.98)",
+                                fontWeight: 500,
+                                textShadow:
+                                  "0 0 3px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.95), 0 2px 18px rgba(0,0,0,0.55)",
+                              }
+                            : {}),
+                        }}
+                      >
+                        {card.body}
                       </Typography>
-                      <Stack direction="row" spacing={0.75} alignItems="center" sx={{ pt: 0.5, color: "primary.main" }}>
-                        <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                      <Stack
+                        direction="row"
+                        spacing={0.75}
+                        alignItems="center"
+                        sx={{ pt: 0.5, color: "primary.main", ...(isTakeAction ? { color: "primary.light" } : {}) }}
+                      >
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            fontWeight: 700,
+                            ...(isTakeAction
+                              ? {
+                                  textShadow:
+                                    "0 0 2px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.88), 0 2px 10px rgba(0,0,0,0.45)",
+                                }
+                              : {}),
+                          }}
+                        >
                           {t.home.howItWorks.openPage}
                         </Typography>
-                        <ArrowForwardRoundedIcon sx={{ fontSize: "1rem" }} />
+                        <ArrowForwardRoundedIcon
+                          sx={{
+                            fontSize: "1rem",
+                            ...(isTakeAction
+                              ? {
+                                  filter:
+                                    "drop-shadow(0 0 1px rgba(0,0,0,0.95)) drop-shadow(0 1px 2px rgba(0,0,0,0.85))",
+                                }
+                              : {}),
+                          }}
+                        />
                       </Stack>
                     </CardContent>
                   </CardActionArea>
