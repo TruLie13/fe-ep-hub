@@ -3,12 +3,20 @@
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { Box, ButtonBase, Link, Stack, Typography } from "@mui/material";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { DataCentersImpactSection } from "@/content/schema";
 import { useScrollSpyActiveId } from "@/lib/hooks/useScrollSpyActiveId";
 
 const ACTIVATION_OFFSET_PX = 112;
 const DATA_CENTERS_STICKY_TOP_PX = 84;
+
+/** Navbar Toolbar uses `borderRadius: 1`; same multiplier here for collapsed + expanded corners. */
+const MAIN_NAV_SHELL_BORDER_RADIUS = 1 as const;
+
+function navShellCornerRadius(theme: { shape: { borderRadius: number | string } }) {
+  const r = theme.shape.borderRadius;
+  return typeof r === "number" ? r * MAIN_NAV_SHELL_BORDER_RADIUS : r;
+}
 
 export type DataCentersMobileTocProps = {
   label: string;
@@ -29,31 +37,21 @@ export default function DataCentersMobileToc({
   const activeId = useScrollSpyActiveId(ids, ACTIVATION_OFFSET_PX);
   const [expanded, setExpanded] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const panelId = useId();
 
   const activeSection = sections.find((s) => s.id === activeId) ?? sections[0];
   const currentLabel = activeSection?.eyebrow ?? "";
 
   useEffect(() => {
-    const onPointerDown = (e: PointerEvent) => {
-      if (!expanded) return;
+    if (!expanded) return;
+    const onPointerDown = (event: PointerEvent) => {
       const root = rootRef.current;
-      if (!root?.contains(e.target as Node)) {
-        setExpanded(false);
-      }
-    };
-    const onFocusIn = (e: FocusEvent) => {
-      if (!expanded) return;
-      const root = rootRef.current;
-      if (!root?.contains(e.target as Node)) {
+      if (!root?.contains(event.target as Node)) {
         setExpanded(false);
       }
     };
     document.addEventListener("pointerdown", onPointerDown, true);
-    document.addEventListener("focusin", onFocusIn, true);
     return () => {
       document.removeEventListener("pointerdown", onPointerDown, true);
-      document.removeEventListener("focusin", onFocusIn, true);
     };
   }, [expanded]);
 
@@ -65,7 +63,7 @@ export default function DataCentersMobileToc({
       sx={{
         position: "sticky",
         top: DATA_CENTERS_STICKY_TOP_PX,
-        zIndex: 1,
+        zIndex: 3,
         mb: { xs: 4, lg: 3 },
         display: { xs: "block", lg: "none" },
         "@media print": { display: "none" },
@@ -76,16 +74,25 @@ export default function DataCentersMobileToc({
           position: "relative",
           border: 1,
           borderColor: "divider",
-          borderRadius: 2,
+          ...(expanded
+            ? {
+                borderTopLeftRadius: (theme) => navShellCornerRadius(theme),
+                borderTopRightRadius: (theme) => navShellCornerRadius(theme),
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 0,
+              }
+            : { borderRadius: MAIN_NAV_SHELL_BORDER_RADIUS }),
+          borderBottom: 1,
+          borderBottomColor: expanded ? "transparent" : "divider",
           bgcolor: "background.paper",
           overflow: "visible",
         }}
       >
         <ButtonBase
-          component="div"
-          onClick={() => setExpanded((v) => !v)}
+          component="button"
+          type="button"
+          onClick={() => setExpanded((current) => !current)}
           aria-expanded={expanded}
-          aria-controls={panelId}
           aria-label={`${label}, ${currentLabel}. ${expanded ? collapseSectionsLabel : expandSectionsLabel}`}
           sx={{
             width: "100%",
@@ -93,8 +100,14 @@ export default function DataCentersMobileToc({
             textAlign: "left",
             px: 2,
             py: 1.5,
-            borderRadius: 2,
-            overflow: "hidden",
+            ...(expanded
+              ? {
+                  borderTopLeftRadius: (theme) => navShellCornerRadius(theme),
+                  borderTopRightRadius: (theme) => navShellCornerRadius(theme),
+                  borderBottomLeftRadius: 0,
+                  borderBottomRightRadius: 0,
+                }
+              : { borderRadius: MAIN_NAV_SHELL_BORDER_RADIUS }),
           }}
         >
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
@@ -111,26 +124,27 @@ export default function DataCentersMobileToc({
         </ButtonBase>
         {expanded ? (
           <Box
-            id={panelId}
             sx={{
               position: "absolute",
               top: "100%",
-              left: 0,
-              right: 0,
-              zIndex: 2,
-              mt: 0.75,
+              left: -1,
+              right: -1,
+              zIndex: 4,
               border: 1,
+              borderTop: 0,
               borderColor: "divider",
-              borderRadius: 2,
+              borderBottomLeftRadius: (theme) => navShellCornerRadius(theme),
+              borderBottomRightRadius: (theme) => navShellCornerRadius(theme),
+              borderTopLeftRadius: 0,
+              borderTopRightRadius: 0,
               bgcolor: "background.paper",
-              boxShadow: 3,
               overflow: "hidden",
             }}
           >
             <Stack
               component="ul"
               spacing={0}
-              sx={{ listStyle: "none", m: 0, p: 0, pb: 1, px: 2, maxHeight: 280, overflowY: "auto" }}
+              sx={{ listStyle: "none", m: 0, p: 0.75, maxHeight: 220, overflowY: "auto" }}
             >
               {sections.map((s) => {
                 const active = activeId === s.id;
