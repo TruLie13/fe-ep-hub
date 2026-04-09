@@ -8,7 +8,6 @@ import {
   Container,
   Divider,
   Grid,
-  Link,
   Stack,
   Typography,
 } from "@mui/material";
@@ -159,7 +158,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="dc-what"
                 title={d.whatTitle}
-                citations={<CitationLinks sources={src(["doe-datacenter-energy"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["cisco-what-is-a-data-center", "wikipedia-data-center"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {d.whatP1}
@@ -172,7 +171,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="dc-history"
                 title={d.historyTitle}
-                citations={<CitationLinks sources={src(["dc-history-computerworld"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["dc-history-impactcp"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {d.historyP1}
@@ -188,7 +187,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="dc-not-the-enemy"
                 title={d.badTitle}
-                citations={<CitationLinks sources={src(["doe-datacenter-energy", "dc-uptime-benefits"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["dc-uptime-benefits"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {d.badP1}
@@ -213,7 +212,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="ai-what"
                 title={a.whatTitle}
-                citations={<CitationLinks sources={src(["ai-stanford-overview"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["ai-ibm-overview"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {a.whatP1}
@@ -226,7 +225,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="ai-history"
                 title={a.historyTitle}
-                citations={<CitationLinks sources={src(["ai-stanford-overview", "ai-turing-1950"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["ai-ibm-history", "ai-turing-1950"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {a.historyP1}
@@ -242,7 +241,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="ai-everyday"
                 title={a.everydayTitle}
-                citations={<CitationLinks sources={src(["ai-stanford-overview"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["ai-tableau-everyday-examples"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {a.everydayIntro}
@@ -265,19 +264,17 @@ export default function LearnPage() {
             {/* ------------------------------------------------------------------ */}
             <Stack component="section" id="real-problems" spacing={3} sx={learnAnchorSx}>
               <LearnSectionHeader eyebrow={rp.eyebrow} title={rp.title} description={rp.description}>
-                <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: "68ch" }}>
-                  {rp.overviewDetailLead}
-                  <Link href="/data-center" color="primary" underline="hover" fontWeight={600}>
-                    {rp.overviewDetailLinkLabel}
-                  </Link>
-                  .
-                </Typography>
+                <Box sx={{ mt: 2 }}>
+                  <Button variant="contained" href="/data-center" endIcon={<ArrowForwardRoundedIcon />}>
+                    {re.fullAnalysisCta}
+                  </Button>
+                </Box>
               </LearnSectionHeader>
 
               <LearnContentCard
                 id="rp-siting"
                 title={rp.sitingTitle}
-                citations={<CitationLinks sources={src(["usgs-water-use", "doe-datacenter-energy"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["wri-data-center-us-communities-2026"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {rp.sitingP1}
@@ -290,7 +287,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="rp-hype"
                 title={rp.hypeTitle}
-                citations={<CitationLinks sources={src(["ai-stanford-overview"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["ai-overuse-dataethics", "ai-washing-bbc"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {rp.hypeP1}
@@ -303,7 +300,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="rp-governance"
                 title={rp.govTitle}
-                citations={<CitationLinks sources={src(["epa-ej", "cisa-critical-infra"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["dc-global-regs-hwg", "dc-aljazeera-lawmakers-pause"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {rp.govP1}
@@ -325,7 +322,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="ll-water-stress"
                 title={ll.waterTitle}
-                citations={<CitationLinks sources={src(["usgs-water-use"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["el-paso-water-resources", "el-paso-oem-drought"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {ll.waterP1}
@@ -338,7 +335,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="ll-grid"
                 title={ll.gridTitle}
-                citations={<CitationLinks sources={src(["doe-datacenter-energy"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["texas-grid-rules-argus", "el-paso-electric-grid-ainvest"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {ll.gridP1}
@@ -346,86 +343,6 @@ export default function LearnPage() {
                 <Typography variant="body2" color="text.secondary">
                   {ll.gridP2}
                 </Typography>
-              </LearnContentCard>
-            </Stack>
-
-            <Divider />
-
-            {/* ------------------------------------------------------------------ */}
-            {/* REGIONAL EVIDENCE */}
-            {/* ------------------------------------------------------------------ */}
-            <Stack component="section" id="regional-evidence" spacing={3} sx={learnAnchorSx}>
-              <LearnSectionHeader eyebrow={re.eyebrow} title={re.title} description={re.description}>
-                <Box sx={{ mt: 2 }}>
-                  <Button variant="contained" href="/data-center" endIcon={<ArrowForwardRoundedIcon />}>
-                    {re.fullAnalysisCta}
-                  </Button>
-                </Box>
-              </LearnSectionHeader>
-
-              <LearnContentCard
-                id="re-water"
-                title={re.waterTitle}
-                citations={<CitationLinks sources={src(["usgs-water-use", "meta-sustainability-water", "abq-journal-meta-los-lunas-water"])} />}
-              >
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  {re.waterP1}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {re.waterP2}
-                </Typography>
-              </LearnContentCard>
-
-              <LearnContentCard
-                id="re-energy"
-                title={re.energyTitle}
-                citations={<CitationLinks sources={src(["texas-tribune-meta-gas-2026", "el-paso-matters-meta-epe-filings", "google-24-7-carbon-free"])} />}
-              >
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  {re.energyP1}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {re.energyP2}
-                </Typography>
-              </LearnContentCard>
-
-              <LearnContentCard
-                id="re-air"
-                title={re.airTitle}
-                citations={<CitationLinks sources={src(["epa-green-book-nonattainment", "virginia-data-center-air-quality-study"])} />}
-              >
-                <Typography variant="body2" color="text.secondary">
-                  {re.airP1}
-                </Typography>
-              </LearnContentCard>
-
-              <LearnContentCard
-                id="re-noise"
-                title={re.noiseTitle}
-                citations={<CitationLinks sources={src(["phoenix-data-center-staff-report-2025", "el-paso-noise-ordinance"])} />}
-              >
-                <Typography variant="body2" color="text.secondary">
-                  {re.noiseP1}
-                </Typography>
-              </LearnContentCard>
-
-              <LearnContentCard
-                id="re-jobs"
-                title={re.jobsTitle}
-                citations={<CitationLinks sources={src(["good-jobs-first-clawbacks", "el-paso-matters-meta-epe-filings"])} />}
-              >
-                <Typography variant="body2" color="text.secondary">
-                  {re.jobsP1}
-                </Typography>
-              </LearnContentCard>
-
-              <LearnContentCard id="re-mandates" title={re.mandatesTitle}>
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  {re.mandatesP1}
-                </Typography>
-                <Button href="/data-center#recommendations" size="small" endIcon={<ArrowForwardRoundedIcon />}>
-                  {re.mandatesLink}
-                </Button>
               </LearnContentCard>
             </Stack>
 
@@ -440,7 +357,7 @@ export default function LearnPage() {
               <LearnContentCard
                 id="engage-checklist"
                 title={eg.checklistTitle}
-                citations={<CitationLinks sources={src(["usgs-water-use", "doe-datacenter-energy"])} />}
+                citations={<CitationLinks title={t.learn.learnMoreLabel} sources={src(["usgs-water-use", "doe-datacenter-energy"])} />}
               >
                 <Stack spacing={1.5}>
                   {eg.questions.map((item, i) => (
@@ -459,7 +376,6 @@ export default function LearnPage() {
               <LearnContentCard
                 id="engage-hearings"
                 title={eg.hearingsTitle}
-                citations={<CitationLinks sources={src(["epa-ej"])} />}
               >
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {eg.hearingsP1}
@@ -467,6 +383,11 @@ export default function LearnPage() {
                 <Typography variant="body2" color="text.secondary">
                   {eg.hearingsP2}
                 </Typography>
+                <Box sx={{ mt: 2 }}>
+                  <Button variant="contained" href="/city-meetings" endIcon={<ArrowForwardRoundedIcon />}>
+                    Open the city meetings page
+                  </Button>
+                </Box>
               </LearnContentCard>
             </Stack>
 

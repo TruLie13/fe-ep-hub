@@ -12,6 +12,26 @@
       "provenance": "repo"
     },
     {
+      "id": "cisco-what-is-a-data-center",
+      "kind": "article",
+      "title": "What is a data center?",
+      "url": "https://www.cisco.com/site/us/en/learn/topics/computing/what-is-a-data-center.html#title-4805e48fbc",
+      "publisher": "Cisco",
+      "relevanceNote": "Overview definition, components, and common data center types.",
+      "citationLabel": "Cisco — What is a data center?",
+      "provenance": "repo"
+    },
+    {
+      "id": "wikipedia-data-center",
+      "kind": "article",
+      "title": "Data center",
+      "url": "https://en.wikipedia.org/wiki/Data_center",
+      "publisher": "Wikipedia",
+      "relevanceNote": "General reference for terminology and historical context.",
+      "citationLabel": "Wikipedia — Data center",
+      "provenance": "repo"
+    },
+    {
       "id": "usgs-water-use",
       "kind": "dataset",
       "title": "USGS — Water use in the United States",
@@ -42,23 +62,23 @@
       "provenance": "repo"
     },
     {
-      "id": "dc-history-computerworld",
+      "id": "dc-history-impactcp",
       "kind": "article",
-      "title": "The evolution of the data center",
-      "url": "https://www.computerworld.com/article/2593823/data-center-evolution.html",
-      "publisher": "Computerworld",
-      "relevanceNote": "Overview of the mainframe-to-hyperscale progression over six decades.",
-      "citationLabel": "Computerworld — The Evolution of the Data Center",
+      "title": "Data Centers 101: The Evolution of DCs Over Time",
+      "url": "https://impactcp.org/insights/data-centers-101-the-evolution-of-dcs-over-time/",
+      "publisher": "Impact Capital Partners",
+      "relevanceNote": "Overview timeline of data center evolution from mainframes to AI-era infrastructure.",
+      "citationLabel": "Impact Capital Partners — Data Centers 101",
       "provenance": "repo"
     },
     {
       "id": "dc-uptime-benefits",
-      "kind": "report",
-      "title": "Uptime Institute — Data centers and the public good",
-      "url": "https://uptimeinstitute.com/resources/research-and-reports",
-      "publisher": "Uptime Institute",
-      "relevanceNote": "Industry research on positive societal roles of data center infrastructure.",
-      "citationLabel": "Uptime Institute Research",
+      "kind": "article",
+      "title": "A Guide to Common Data Center Use Cases",
+      "url": "https://www.datacenter-asia.com/blog/a-guide-to-common-data-center-use-cases/",
+      "publisher": "Data Center Asia",
+      "relevanceNote": "Examples of practical data center use cases across cloud, finance, healthcare, AI, and continuity planning.",
+      "citationLabel": "Data Center Asia - Common data center use cases",
       "provenance": "repo"
     },
     {
@@ -69,6 +89,126 @@
       "publisher": "Stanford University HAI",
       "relevanceNote": "Annual overview of AI progress, adoption, and societal impact.",
       "citationLabel": "Stanford HAI AI Index Report",
+      "provenance": "repo"
+    },
+    {
+      "id": "ai-ibm-history",
+      "kind": "article",
+      "title": "History of artificial intelligence",
+      "url": "https://www.ibm.com/think/topics/history-of-artificial-intelligence",
+      "publisher": "IBM",
+      "relevanceNote": "Overview timeline of key AI milestones and historical eras.",
+      "citationLabel": "IBM - History of artificial intelligence",
+      "provenance": "repo"
+    },
+    {
+      "id": "ai-ibm-overview",
+      "kind": "article",
+      "title": "Artificial intelligence",
+      "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "publisher": "IBM",
+      "relevanceNote": "High-level definition of AI, common methods, and practical use cases.",
+      "citationLabel": "IBM - Artificial intelligence",
+      "provenance": "repo"
+    },
+    {
+      "id": "ai-tableau-everyday-examples",
+      "kind": "article",
+      "title": "Everyday examples and applications of artificial intelligence (AI)",
+      "url": "https://www.tableau.com/data-insights/ai/examples",
+      "publisher": "Tableau",
+      "relevanceNote": "Examples of common AI use in search, recommendations, navigation, assistants, and fraud detection.",
+      "citationLabel": "Tableau - Everyday examples of AI",
+      "provenance": "repo"
+    },
+    {
+      "id": "ai-overuse-dataethics",
+      "kind": "article",
+      "title": "Should we be Ashamed of AI Overuse?",
+      "url": "https://dataethics.eu/should-we-be-ashamed-of-ai-overuse/",
+      "publisher": "DataEthics",
+      "relevanceNote": "Commentary on AI overuse, energy demand, and resource pressure from rapid adoption.",
+      "citationLabel": "DataEthics - Should we be Ashamed of AI Overuse?",
+      "provenance": "repo"
+    },
+    {
+      "id": "ai-washing-bbc",
+      "kind": "article",
+      "title": "What is 'AI washing' and why is it a problem?",
+      "url": "https://www.bbc.com/news/articles/c9xx8122893o",
+      "publisher": "BBC",
+      "relevanceNote": "Explains AI hype claims, inflated positioning, and why misleading AI framing matters.",
+      "citationLabel": "BBC - What is AI washing?",
+      "provenance": "repo"
+    },
+    {
+      "id": "dc-global-regs-hwg",
+      "kind": "article",
+      "title": "How Global Data Center Regulations May Influence U.S. Policies",
+      "url": "https://hwglaw.com/2024/12/02/how-global-data-center-regs-may-influence-u-s-policies/",
+      "publisher": "HWG LLP",
+      "relevanceNote": "Overview of how global data center regulatory approaches could shape U.S. policy and oversight.",
+      "citationLabel": "HWG - Global data center regulations and U.S. policy",
+      "provenance": "repo"
+    },
+    {
+      "id": "dc-aljazeera-lawmakers-pause",
+      "kind": "article",
+      "title": "US lawmakers push for pause in data centres until AI safeguards in place",
+      "url": "https://www.aljazeera.com/economy/2026/3/26/us-lawmakers-push-for-pause-in-data-centres-until-ai-safeguards-in-place",
+      "publisher": "Al Jazeera",
+      "relevanceNote": "Reporting on U.S. federal proposals to pause new AI data centers pending national safeguards.",
+      "citationLabel": "Al Jazeera - US lawmakers push for AI data center pause",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-water-resources",
+      "kind": "gov_doc",
+      "title": "El Paso Water - Water Resources",
+      "url": "https://www.epwater.org/our-water/water-resources",
+      "publisher": "El Paso Water",
+      "relevanceNote": "Official local overview of El Paso's river, aquifer, and desalination water sources.",
+      "citationLabel": "El Paso Water - Water resources",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-oem-drought",
+      "kind": "gov_doc",
+      "title": "Drought - El Paso Office of Emergency Management",
+      "url": "https://elpasoready.org/drought/",
+      "publisher": "El Paso City-County Office of Emergency Management",
+      "relevanceNote": "Local drought preparedness guidance and conservation actions for El Paso residents.",
+      "citationLabel": "El Paso OEM - Drought guidance",
+      "provenance": "repo"
+    },
+    {
+      "id": "city-meetings-page",
+      "kind": "gov_doc",
+      "title": "City meetings",
+      "url": "/city-meetings",
+      "publisher": "El Paso Hub",
+      "relevanceNote": "Internal page with meeting schedules, agendas, and participation links.",
+      "citationLabel": "City meetings page",
+      "provenance": "repo"
+    },
+    {
+      "id": "texas-grid-rules-argus",
+      "kind": "article",
+      "title": "Texas grid rethinks rules as data centers surge",
+      "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2804108-texas-grid-rethinks-rules-as-data-centers-surge",
+      "publisher": "Argus Media",
+      "relevanceNote": "Coverage of Texas grid planning and market rule changes tied to growing data center demand.",
+      "citationLabel": "Argus Media - Texas grid rules and data center surge",
+      "provenance": "repo"
+    },
+    {
+      "id": "el-paso-electric-grid-ainvest",
+      "kind": "article",
+      "title": "El Paso Electric Grid Issues and Nuclear Stake Transfer Impact Investors",
+      "url": "https://www.ainvest.com/news/el-paso-electric-grid-issues-nuclear-stake-transfer-impact-investors-2604/",
+      "publisher": "AInvest",
+      "relevanceNote": "Summary reporting on local outage events, grid reliability concerns, and related regulatory context.",
+      "citationLabel": "AInvest - El Paso Electric grid issues overview",
       "provenance": "repo"
     },
     {
@@ -125,7 +265,7 @@
       "id": "wri-data-center-us-communities-2026",
       "kind": "article",
       "title": "World Resources Institute — Seven ways data centers affect U.S. communities",
-      "url": "https://tools.wri.org/insights/us-data-center-growth-impacts",
+      "url": "https://www.wri.org/insights/us-data-center-growth-impacts",
       "publisher": "World Resources Institute",
       "relevanceNote": "Energy, air quality, water, and community-scale impacts of U.S. data center growth.",
       "citationLabel": "WRI — U.S. data center growth and community impacts",
@@ -229,6 +369,16 @@
       "publisher": "Albuquerque Journal",
       "relevanceNote": "Regional reporting on data center water conflict and engineering responses in the Rio Grande corridor.",
       "citationLabel": "Albuquerque Journal — Los Lunas data center water scrutiny",
+      "provenance": "repo"
+    },
+    {
+      "id": "dc-water-stlpartners",
+      "kind": "article",
+      "title": "Data centres and water",
+      "url": "https://stlpartners.com/articles/data-centres/data-centres-and-water/",
+      "publisher": "STL Partners",
+      "relevanceNote": "Explains cooling-water tradeoffs and water management approaches in data center operations.",
+      "citationLabel": "STL Partners - Data centres and water",
       "provenance": "repo"
     },
     {

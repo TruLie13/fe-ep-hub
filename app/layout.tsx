@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import { Box, Container, Stack } from "@mui/material";
 import { CONTENT_FONT_SCALE_INIT_SCRIPT_INNER } from "@/lib/theme/contentFontScaleInitScriptInner";
 import { MUI_COLOR_SCHEME_INIT_SCRIPT_INNER } from "@/lib/theme/muiColorSchemeInitScriptInner";
@@ -27,6 +26,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// #region agent log
+fetch("http://127.0.0.1:7761/ingest/4c13ac3f-bbb9-48c9-a6ca-6d1ae895ca0a", {
+  method: "POST",
+  headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "438e36" },
+  body: JSON.stringify({
+    sessionId: "438e36",
+    runId: "baseline",
+    hypothesisId: "H1-H2",
+    location: "app/layout.tsx:31",
+    message: "layout module evaluated",
+    data: { hasDocument: typeof document !== "undefined" },
+    timestamp: Date.now(),
+  }),
+}).catch(() => {});
+// #endregion
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -44,17 +59,14 @@ export default function RootLayout({
   // #region agent log
   fetch("http://127.0.0.1:7761/ingest/4c13ac3f-bbb9-48c9-a6ca-6d1ae895ca0a", {
     method: "POST",
-    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "e909d1" },
+    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "438e36" },
     body: JSON.stringify({
-      sessionId: "e909d1",
-      runId: "pre-fix",
-      hypothesisId: "H5",
-      location: "app/layout.tsx:46",
-      message: "RootLayout server render",
-      data: {
-        lang: "en",
-        hasChildren: Boolean(children),
-      },
+      sessionId: "438e36",
+      runId: "baseline",
+      hypothesisId: "H1-H3-H4",
+      location: "app/layout.tsx:61",
+      message: "RootLayout render start",
+      data: { locale: "en", hasChildren: Boolean(children) },
       timestamp: 0,
     }),
   }).catch(() => {});
@@ -63,17 +75,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* Apply dark on <html> before paint (must match ThemeRegistry defaultMode + storageManager). */}
-        <Script
-          id="mui-color-scheme-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: MUI_COLOR_SCHEME_INIT_SCRIPT_INNER }}
-        />
-        <Script
-          id="content-font-scale-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }}
-        />
+        <template id="mui-color-scheme-init" dangerouslySetInnerHTML={{ __html: MUI_COLOR_SCHEME_INIT_SCRIPT_INNER }} />
+        <template id="content-font-scale-init" dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }} />
         <GoogleAnalyticsScripts />
         <GoogleAnalyticsPageView />
         <ThemeRegistry>

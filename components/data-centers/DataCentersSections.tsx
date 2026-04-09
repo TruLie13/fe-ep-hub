@@ -48,6 +48,7 @@ export type DataCentersSectionsLabels = {
   statsLabel: string;
   highlightsLabel: string;
   downloadsLabel: string;
+  sourcesLabel: string;
 };
 
 export type DataCentersNoiseTableLabels = {
@@ -533,7 +534,7 @@ export default function DataCentersSections({
               ) : null}
 
               <Box sx={{ mt: 3 }}>
-                <CitationLinks sources={cite} />
+                <CitationLinks title={labels.sourcesLabel} sources={cite} />
               </Box>
             </CardContent>
             </Card>

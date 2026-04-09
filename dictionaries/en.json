@@ -176,6 +176,7 @@
     "metaTitle": "Learn",
     "metaDescription": "Plain-language explainers about data centers, AI, water use, and how to read local infrastructure proposals.",
     "title": "Learn",
+    "learnMoreLabel": "Learn More:",
     "subtitle": "This page walks through the basics of what data centers and AI actually are, why they are not inherently harmful, and where the real problems lie, with particular focus on communities in water-stressed regions like El Paso.\n\nEvery section includes sources you can open and verify.",
     "dc": {
       "eyebrow": "Data Centers 101",
@@ -367,19 +368,6 @@
         "subsections": [
           { "id": "ll-water-stress", "title": "Water stress in the region" },
           { "id": "ll-grid", "title": "Grid capacity and cooling" }
-        ]
-      },
-      {
-        "id": "regional-evidence",
-        "title": "Lessons from other places",
-        "eyebrow": "Regional snapshot",
-        "subsections": [
-          { "id": "re-water", "title": "Water: permits and accounting" },
-          { "id": "re-energy", "title": "Energy: grid and filings" },
-          { "id": "re-air", "title": "Air quality" },
-          { "id": "re-noise", "title": "Noise ordinances" },
-          { "id": "re-jobs", "title": "Jobs and incentives" },
-          { "id": "re-mandates", "title": "What El Paso can require" }
         ]
       },
       {

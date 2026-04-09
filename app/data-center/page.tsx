@@ -157,6 +157,7 @@ export default function DataCentersPage() {
                 statsLabel: p.statsLabel,
                 highlightsLabel: p.highlightsLabel,
                 downloadsLabel: p.downloadsLabel,
+                sourcesLabel: t.common.sources,
               }}
               noiseTable={bundle.noiseTable}
               noiseTableSources={noiseTableSources}
