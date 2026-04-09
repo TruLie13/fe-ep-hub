@@ -465,20 +465,20 @@
       "id": "el-paso-noise-ordinance",
       "kind": "gov_doc",
       "title": "City of El Paso — Code of Ordinances (noise)",
-      "url": "https://library.municode.com/tx/el_paso/codes/code_of_ordinances",
+      "url": "https://library.municode.com/tx/el_paso/codes/code_of_ordinances?nodeId=TIT9HESA_CH9.40NO",
       "publisher": "City of El Paso / Municode",
       "relevanceNote": "Municipal code: Title 9.40 of the El Paso City Code (noise); verify current chapter for enforcement details.",
-      "citationLabel": "City of El Paso — Code of Ordinances (Municode)",
+      "citationLabel": "City of El Paso — Title 9.40 Noise Ordinance (Municode)",
       "provenance": "repo"
     },
     {
       "id": "el-paso-city-data-center-hub",
       "kind": "gov_doc",
       "title": "City of El Paso — Data Center Resource Hub",
-      "url": "https://www.elpasotexas.gov/data-center/",
+      "url": "https://www.elpasotexas.gov/data-centers/",
       "publisher": "City of El Paso",
       "relevanceNote": "Official FAQ on data center regulation, including Title 9.40 of the El Paso City Code (noise).",
-      "citationLabel": "City of El Paso — Data Center Resource Hub",
+      "citationLabel": "City of El Paso — FAQs: Does El Paso regulate data centers?",
       "provenance": "repo"
     },
     {
@@ -581,6 +581,36 @@
       "publisher": "Instagram",
       "relevanceNote": "Public statement from Chris Canales saying that based on new information he no longer wants data centers in El Paso.",
       "citationLabel": "Instagram post — Chris Canales statement",
+      "provenance": "repo"
+    },
+    {
+      "id": "meta-water-faq-local-anchor",
+      "kind": "gov_doc",
+      "title": "Data Center page — Water FAQ anchor",
+      "url": "http://localhost:3000/data-center#water",
+      "publisher": "El Paso Hub",
+      "relevanceNote": "Internal reference to the water section FAQ for Meta data center usage context.",
+      "citationLabel": "FAQs For META Data Center > How much water will this facility use?",
+      "provenance": "repo"
+    },
+    {
+      "id": "clee-regulating-dc-water-use-ca-2026",
+      "kind": "report",
+      "title": "Regulating Data Center Water Use in California",
+      "url": "https://www.law.berkeley.edu/wp-content/uploads/2026/02/Regulating-Data-Center-Water-Use-in-CA_Report_CLEE-2026.pdf",
+      "publisher": "UC Berkeley Center for Law, Energy & the Environment",
+      "relevanceNote": "Legal and policy framework for regulating data center water use with practical recommendations.",
+      "citationLabel": "UC Berkeley CLEE — Regulating Data Center Water Use in CA (2026)",
+      "provenance": "repo"
+    },
+    {
+      "id": "eat-your-frog-closed-loop-cooling-2025",
+      "kind": "article",
+      "title": "The fallacy of closed loop cooling systems",
+      "url": "https://eatyourfrog.substack.com/p/the-fallacy-of-closed-loop-cooling",
+      "publisher": "Eat Your Frog (Substack)",
+      "relevanceNote": "Explainer on why internal closed-loop cooling can still depend on external evaporative water loss.",
+      "citationLabel": "Eat Your Frog — The fallacy of closed loop cooling systems",
       "provenance": "repo"
     }
   ]

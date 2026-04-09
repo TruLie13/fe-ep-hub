@@ -533,9 +533,11 @@ export default function DataCentersSections({
                 </Box>
               ) : null}
 
-              <Box sx={{ mt: 3 }}>
-                <CitationLinks title={labels.sourcesLabel} sources={cite} />
-              </Box>
+              {section.id !== "introduction" ? (
+                <Box sx={{ mt: 3 }}>
+                  <CitationLinks title={labels.sourcesLabel} sources={cite} />
+                </Box>
+              ) : null}
             </CardContent>
             </Card>
           </Box>

@@ -79,8 +79,9 @@
         "Establish a Water Usage Effectiveness (WUE) limit below 0.3 L/kWh."
       ],
       "sourceIds": [
-        "meta-sustainability-water",
-        "abq-journal-meta-los-lunas-water"
+        "meta-water-faq-local-anchor",
+        "clee-regulating-dc-water-use-ca-2026",
+        "eat-your-frog-closed-loop-cooling-2025"
       ],
       "takeaways": [
         "Closed loop is not zero water outside.",
@@ -113,6 +114,11 @@
         "The Equality Trap",
         "Section 14.9 prohibits the City from prioritizing your drinking water over industrial cooling during a crisis."
       ],
+      "download": {
+        "href": "/documents/Wurldwide-380-Agreement.pdf",
+        "label": "Download the 380 agreement (PDF)",
+        "fileName": "Wurldwide-380-Agreement.pdf"
+      },
       "paragraphs": [
         "Section 14.9 of the 380 agreement creates a major hurdle for emergency resource management. The City is prohibited from enacting new policies that specifically target the project's water or power consumption. Any conservation mandate must be 'generally applicable on a City-wide basis' to remain valid. This clause ensures that the data center maintains the same resource priority as a local hospital or a family home during a shortage.",
         "This creates a situation where the City cannot prioritize households over industrial cooling during a severe drought. If the aquifers drop to critical levels, the City must apply restrictions to all residents before it can legally force the data center to reduce its intake. The agreement protects the facility from being singled out for its massive consumption patterns.",
@@ -130,7 +136,8 @@
         }
       ],
       "sourceIds": [
-        "Ex-Wurldwide-380-Agreement-Seafox"
+        "Ex-Wurldwide-380-Agreement-Seafox",
+        "wurldwide-380-agreement-pdf"
       ],
       "takeaways": [
         "New crisis rules must apply to everyone equally.",
@@ -331,7 +338,6 @@
         "climate-central-urban-heat-hot-spots-2024",
         "noaa-urban-heat-island-initiative",
         "capa-el-paso-heat-maps",
-        "tpwd-urban-wildlife-forests",
         "epa-heat-island-compendium"
       ],
       "takeaways": [
@@ -399,14 +405,10 @@
         "Independent monitoring and objective caps at the line named in the permit beat vague comfort standards."
       ],
       "sourceIds": [
-        "el-paso-city-data-center-hub",
-        "phoenix-data-center-staff-report-2025",
-        "epa-noise-pollution-overview",
         "el-paso-noise-ordinance",
-        "ehp-dangers-data-center",
-        "eesi-noise-data-center-2026",
         "nps-effects-noise-wildlife",
-        "sierra-club-data-center-factsheet-2025"
+        "sierra-club-data-center-factsheet-2025",
+        "el-paso-city-data-center-hub"
       ],
       "takeaways": [
         "Loud at fence; not quiet at home.",
@@ -445,8 +447,7 @@
       ],
       "sourceIds": [
         "cnbc-meta-el-paso-10b-2026",
-        "good-jobs-first-clawbacks",
-        "batavian-stream-data-center-economic-benefits-2026"
+        "wurldwide-380-agreement-pdf"
       ],
       "takeaways": [
         "Big build; few permanent jobs.",
@@ -600,6 +601,11 @@
         "Mandate 'purple pipe' connection for all cooling.",
         "Disclose ultimate parent companies during application."
       ],
+      "download": {
+        "href": "/documents/Data Center Mitigation Framework Evaluation.pdf",
+        "label": "Download Mitigation Framework",
+        "fileName": "Data Center Mitigation Framework Evaluation.pdf"
+      },
       "paragraphs": [
         "**Water:** Codify a city-wide prohibition on evaporative cooling towers. Prohibit the use of potable aquifer water for primary cooling functions to decouple growth from the drinking supply.",
         "**Energy:** Reject proposals for dedicated fossil fuel plants like the McCloud facility. Require 24/7 hourly renewable matching utilizing local storage assets instead of annual credit accounting.",
@@ -612,11 +618,7 @@
         "Establish a citizen oversight board to review annual compliance.",
         "Require funding for a 'Virtual Power Plant' via residential solar and batteries."
       ],
-      "sourceIds": [
-        "Strategic-Environmental-Operational-Assessment",
-        "good-jobs-first-clawbacks",
-        "Ex-Wurldwide-380-Agreement-Seafox"
-      ],
+      "sourceIds": [],
       "takeaways": [
         "Prioritize local storage over gas plant lock-in.",
         "Link incentives to verifiable resource utilization rates."
