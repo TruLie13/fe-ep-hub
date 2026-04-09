@@ -61,6 +61,10 @@ function isCancelled(event: SerializedEvent): boolean {
   );
 }
 
+function isCityCouncilMeeting(event: SerializedEvent): boolean {
+  return event.EventBodyName === "City Council";
+}
+
 function fillPlaceholders(
   template: string,
   vars: Record<string, string>,
@@ -169,6 +173,10 @@ export default async function CityMeetingsPage() {
     (e) => !isMeetingDateOnOrAfterTodayDenver(e.EventDate) && !isCancelled(e),
   );
   const cancelled = meetings.filter((e) => isCancelled(e));
+  const upcomingOrdered = [...upcoming].sort((a, b) => {
+    if (isCityCouncilMeeting(a) === isCityCouncilMeeting(b)) return 0;
+    return isCityCouncilMeeting(a) ? -1 : 1;
+  });
 
   recent.reverse();
 
@@ -316,20 +324,21 @@ export default async function CityMeetingsPage() {
         </Container>
       ) : null}
 
-      {upcoming.length > 0 ? (
+      {upcomingOrdered.length > 0 ? (
         <SectionShell
           band
           eyebrow={mt.upcoming}
-          title={`${upcoming.length} upcoming meeting${upcoming.length === 1 ? "" : "s"}`}
+          title={`${upcomingOrdered.length} upcoming meeting${upcomingOrdered.length === 1 ? "" : "s"}`}
         >
           <Stack spacing={2}>
             <Grid container spacing={2}>
-              {upcoming.map((event) => (
+              {upcomingOrdered.map((event) => (
                 <Grid key={event.EventId} size={{ xs: 12, sm: 6, md: 4 }}>
                   <MeetingCard
                     event={event}
                     labels={cardLabels}
                     dateLabel={formatDate(event.EventDate)}
+                    prioritizeVisual={isCityCouncilMeeting(event)}
                   />
                 </Grid>
               ))}

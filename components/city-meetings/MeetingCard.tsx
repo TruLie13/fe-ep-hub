@@ -44,6 +44,7 @@ type Props = {
   dateLabel: string;
   past?: boolean;
   cancelled?: boolean;
+  prioritizeVisual?: boolean;
 };
 
 export default function MeetingCard({
@@ -52,6 +53,7 @@ export default function MeetingCard({
   dateLabel,
   past,
   cancelled,
+  prioritizeVisual,
 }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -125,7 +127,7 @@ export default function MeetingCard({
                 size="small"
                 label={event.EventBodyName}
                 variant="outlined"
-                color="primary"
+                color={prioritizeVisual ? "warning" : "primary"}
               />
               {cancelled ? (
                 <Chip size="small" label={labels.cancelled} color="error" />
