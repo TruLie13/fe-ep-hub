@@ -75,19 +75,44 @@ function ClientOnlyTurnstile({
   );
 }
 
-/** Match home “Take action” card: dark gradient over a cover photo so type stays readable. */
-const newsletterCardBackdropSx = {
+/** Photo + gradient as separate layers, clipped by the card. */
+const newsletterCardShellSx = {
   position: "relative" as const,
   overflow: "hidden" as const,
-  backgroundImage: {
-    xs: "linear-gradient(90deg, rgba(3,8,18,0.995) 0%, rgba(3,8,18,0.98) 37%, rgba(3,8,18,0.955) 67%, rgba(3,8,18,0.92) 100%), url('/images/elpaso_downtown.webp')",
-    md: "linear-gradient(90deg, rgba(3,8,18,0.988) 0%, rgba(3,8,18,0.973) 37%, rgba(3,8,18,0.94) 71%, rgba(3,8,18,0.89) 100%), url('/images/elpaso_downtown.webp')",
-  },
-  /* Gradient must fill the box; `cover` on both layers can leave a bright photo seam at an edge */
-  backgroundSize: "100% 100%, cover",
-  backgroundPosition: "center, left center",
-  backgroundRepeat: "no-repeat, no-repeat",
   minHeight: { xs: 300, sm: 320 },
+  /* Matches scrim so any hairline at rounded corners is not bright paper / raw photo */
+  bgcolor: "#030812",
+  backgroundImage: "none",
+};
+
+/** Slight outward bleed avoids subpixel gaps next to the border radius and card border */
+const newsletterCardBackdropBleedSx = {
+  position: "absolute" as const,
+  top: "-3px",
+  left: "-3px",
+  right: "-3px",
+  bottom: "-3px",
+  borderRadius: "inherit",
+} as const;
+
+const newsletterCardPhotoLayerSx = {
+  ...newsletterCardBackdropBleedSx,
+  zIndex: 0,
+  backgroundImage: "url('/images/elpaso_downtown.webp')",
+  backgroundSize: "cover",
+  backgroundPosition: "left center",
+  backgroundRepeat: "no-repeat",
+};
+
+/** Stronger dim on the right so the fade never reads as “missing” overlay */
+const newsletterCardGradientLayerSx = {
+  ...newsletterCardBackdropBleedSx,
+  zIndex: 1,
+  pointerEvents: "none" as const,
+  backgroundImage: {
+    xs: "linear-gradient(90deg, rgba(3,8,18,0.995) 0%, rgba(3,8,18,0.985) 38%, rgba(3,8,18,0.97) 68%, rgba(3,8,18,0.96) 100%)",
+    md: "linear-gradient(90deg, rgba(3,8,18,0.99) 0%, rgba(3,8,18,0.98) 40%, rgba(3,8,18,0.97) 72%, rgba(3,8,18,0.95) 100%)",
+  },
 };
 
 /**
@@ -391,9 +416,11 @@ export default function NewsletterSignup({ withCard = true }: NewsletterSignupPr
       variant="outlined"
       component="section"
       aria-labelledby="newsletter-heading"
-      sx={newsletterCardBackdropSx}
+      sx={newsletterCardShellSx}
     >
-      <CardContent sx={{ position: "relative", zIndex: 1, p: { xs: 2.5, sm: 3 } }}>{inner}</CardContent>
+      <Box aria-hidden sx={newsletterCardPhotoLayerSx} />
+      <Box aria-hidden sx={newsletterCardGradientLayerSx} />
+      <CardContent sx={{ position: "relative", zIndex: 2, p: { xs: 2.5, sm: 3 } }}>{inner}</CardContent>
     </Card>
   );
 }
