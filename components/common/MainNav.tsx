@@ -7,7 +7,6 @@ import {
   Box,
   Button,
   Container,
-  Divider,
   Drawer,
   IconButton,
   Link,
@@ -190,19 +189,15 @@ export default function MainNav() {
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-          <Box sx={{ p: 2 }}>
-            <Typography variant="subtitle1" fontWeight={700}>
-              {t.nav.menu}
-            </Typography>
+          <Box component="nav" aria-label="Main navigation" sx={{ pt: 2 }}>
+            <List disablePadding>
+              {navItems.map((item) => (
+                <ListItemButton key={item.href} component={NextLink} href={item.href} onClick={() => setOpen(false)} selected={pathname === item.href}>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              ))}
+            </List>
           </Box>
-          <Divider />
-          <List disablePadding>
-            {navItems.map((item) => (
-              <ListItemButton key={item.href} component={NextLink} href={item.href} onClick={() => setOpen(false)} selected={pathname === item.href}>
-                <ListItemText primary={item.label} />
-              </ListItemButton>
-            ))}
-          </List>
           <Box sx={{ p: 2 }}>
             <Button
               component={NextLink}
