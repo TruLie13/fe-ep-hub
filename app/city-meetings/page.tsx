@@ -25,6 +25,8 @@ import {
   formatYmdLongDenver,
   getCouncilSignUpWindow,
   isMeetingDateOnOrAfterTodayDenver,
+  getEventYmdFromLegistar,
+  denverYmdAtLocalTime,
   type CouncilSignUpWindowState,
 } from "@/lib/city-meetings/elPasoCalendar";
 import { fetchNextCityCouncilCalendarHint } from "@/lib/city-meetings/fetch-legistar-calendar-hint";
@@ -45,7 +47,8 @@ export const metadata: Metadata = buildPageMetadata(CITY_MEETINGS_SEO);
 const LEGISTAR_CALENDAR_URL = "https://elpasotexas.legistar.com/Calendar.aspx";
 
 function formatDate(iso: string): string {
-  const d = new Date(iso);
+  const ymd = getEventYmdFromLegistar(iso);
+  const d = denverYmdAtLocalTime(ymd, 12, 0);
   return d.toLocaleDateString("en-US", {
     weekday: "short",
     month: "short",
