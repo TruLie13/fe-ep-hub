@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getCityMeetingsRevalidateSeconds } from "@/lib/city-meetings/revalidate";
 import { LEGISTAR_EL_PASO_EVENTS } from "@/lib/legistar/el-paso-web-api";
 
 export async function GET(request: NextRequest) {
@@ -11,8 +12,10 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  const revalidate = getCityMeetingsRevalidateSeconds();
+
   const res = await fetch(`${LEGISTAR_EL_PASO_EVENTS}/${eventId}/eventitems`, {
-    next: { revalidate: 900 },
+    next: { revalidate },
   });
 
   if (!res.ok) {
@@ -23,5 +26,9 @@ export async function GET(request: NextRequest) {
   }
 
   const data = await res.json();
-  return NextResponse.json(data);
+  return NextResponse.json(data, {
+    headers: {
+      "Cache-Control": `s-maxage=${revalidate}, stale-while-revalidate=${revalidate}`,
+    },
+  });
 }

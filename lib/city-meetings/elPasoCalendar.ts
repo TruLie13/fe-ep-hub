@@ -46,7 +46,18 @@ export function isMeetingDateOnOrAfterTodayDenver(eventDateIso: string): boolean
   return getEventYmdFromLegistar(eventDateIso) >= getTodayYmdDenver();
 }
 
-function getDenverWeekdayIndex(ymd: string): number {
+/** Local hour (0–23) in America/Denver for `now`. */
+export function getDenverLocalHour(now: Date = new Date()): number {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: EL_PASO_IANA,
+    hour: "2-digit",
+    hour12: false,
+  }).formatToParts(now);
+  const h = parseInt(parts.find((p) => p.type === "hour")?.value ?? "0", 10);
+  return h === 24 ? 0 : h;
+}
+
+export function getDenverWeekdayIndex(ymd: string): number {
   const [y, mo, d] = ymd.split("-").map(Number);
   for (let hourUtc = 0; hourUtc < 24; hourUtc++) {
     const t = new Date(Date.UTC(y, mo - 1, d, hourUtc, 0, 0));

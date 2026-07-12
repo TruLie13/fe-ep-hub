@@ -37,6 +37,11 @@ describe("fetchLegistarEvents", () => {
     expect(calledUrl).toMatch(/\$orderby=EventDate\sasc/);
     expect(calledUrl).toContain("$top=500");
     expect(result).toEqual([event]);
+    const init = fetchMock.mock.calls[0]?.[1] as RequestInit & {
+      next?: { revalidate?: number };
+    };
+    expect(typeof init.next?.revalidate).toBe("number");
+    expect(init.next?.revalidate).toBeGreaterThan(0);
   });
 
   it("returns empty array when response is not ok", async () => {

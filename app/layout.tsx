@@ -26,22 +26,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// #region agent log
-fetch("http://127.0.0.1:7761/ingest/4c13ac3f-bbb9-48c9-a6ca-6d1ae895ca0a", {
-  method: "POST",
-  headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "438e36" },
-  body: JSON.stringify({
-    sessionId: "438e36",
-    runId: "baseline",
-    hypothesisId: "H1-H2",
-    location: "app/layout.tsx:31",
-    message: "layout module evaluated",
-    data: { hasDocument: typeof document !== "undefined" },
-    timestamp: Date.now(),
-  }),
-}).catch(() => {});
-// #endregion
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -56,21 +40,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const t = dict();
-  // #region agent log
-  fetch("http://127.0.0.1:7761/ingest/4c13ac3f-bbb9-48c9-a6ca-6d1ae895ca0a", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "438e36" },
-    body: JSON.stringify({
-      sessionId: "438e36",
-      runId: "baseline",
-      hypothesisId: "H1-H3-H4",
-      location: "app/layout.tsx:61",
-      message: "RootLayout render start",
-      data: { locale: "en", hasChildren: Boolean(children) },
-      timestamp: 0,
-    }),
-  }).catch(() => {});
-  // #endregion
 
   return (
     <html lang="en" suppressHydrationWarning className="dark" data-mui-color-scheme="dark">

@@ -1,3 +1,5 @@
+import { getCityMeetingsRevalidateSeconds } from "./revalidate";
+
 const LEGISTAR_CALENDAR_URL = "https://elpasotexas.legistar.com/Calendar.aspx";
 
 export type CityCouncilCalendarHint = {
@@ -50,7 +52,9 @@ export function parseNextCityCouncilHint(
 
 export async function fetchNextCityCouncilCalendarHint(): Promise<CityCouncilCalendarHint | null> {
   try {
-    const res = await fetch(LEGISTAR_CALENDAR_URL, { next: { revalidate: 900 } });
+    const res = await fetch(LEGISTAR_CALENDAR_URL, {
+      next: { revalidate: getCityMeetingsRevalidateSeconds() },
+    });
     if (!res.ok) return null;
     const html = await res.text();
     return parseNextCityCouncilHint(html);
