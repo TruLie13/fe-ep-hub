@@ -3,9 +3,7 @@
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import {
   Box,
-  Card,
   CardActionArea,
-  CardContent,
   Chip,
   Link,
   Stack,
@@ -26,6 +24,7 @@ const THUMB_VIDEO = {
   sm: { w: 128, h: 96 },
 };
 
+/** Editorial list-row news item — border rules instead of identical outlined cards. */
 export function NewsCard({
   item,
   openLabel,
@@ -43,24 +42,30 @@ export function NewsCard({
   const thumbSize = isRedditPost || isVideoPost ? THUMB_VIDEO : THUMB_IMAGE;
   const showOutletBadge = item.provenance !== "reddit";
 
-  if (showThumb && item.thumbnailUrl) {
-    return (
-      <Card variant="outlined" sx={{ overflow: "hidden" }}>
-        <CardActionArea
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${item.headline} (opens in new tab)`}
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            textAlign: "left",
-            /* 16dp keyline on all sides; gap is only between thumb and text (no CardContent padding stacking). */
-            p: 2,
-            gap: 2,
-          }}
-        >
+  return (
+    <Box
+      sx={{
+        borderBottom: 1,
+        borderColor: "divider",
+      }}
+    >
+      <CardActionArea
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${item.headline} (opens in new tab)`}
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          textAlign: "left",
+          py: 2,
+          px: { xs: 0.5, sm: 1 },
+          gap: 2,
+          borderRadius: 1,
+        }}
+      >
+        {showThumb && item.thumbnailUrl ? (
           <Box
             sx={{
               position: "relative",
@@ -74,7 +79,6 @@ export function NewsCard({
                 width: thumbSize.sm.w,
                 height: thumbSize.sm.h,
               },
-              /* Next/Image inner img: enforce crop (avoid stretch while loading / after optimizer). */
               "& img": {
                 objectFit: "cover",
                 objectPosition: "center",
@@ -106,136 +110,80 @@ export function NewsCard({
               />
             ) : null}
           </Box>
+        ) : null}
 
-          <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Stack spacing={0.75}>
-              <Typography
-                variant="subtitle1"
-                component="h2"
-                fontWeight={600}
-                sx={{
-                  lineHeight: 1.35,
-                  fontSize: { xs: "0.95rem", sm: "1rem" },
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: "vertical",
-                  overflow: "hidden",
-                }}
-              >
-                {item.headline}
-              </Typography>
-
-              {item.publishedAt ? (
-                <Typography variant="caption" color="text.secondary" component="p" sx={{ m: 0 }}>
-                  {formatPublishedLine(item.publishedAt)}
-                </Typography>
-              ) : null}
-
-              {item.summary ? (
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{
-                    display: "-webkit-box",
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden",
-                    lineHeight: 1.45,
-                    fontSize: "0.8125rem",
-                  }}
-                >
-                  {item.summary}
-                </Typography>
-              ) : null}
-
-              <Stack
-                direction="row"
-                justifyContent={showOutletBadge ? "space-between" : "flex-end"}
-                alignItems="center"
-                gap={1}
-                sx={{ pt: 0.25 }}
-              >
-                {showOutletBadge ? (
-                  <Chip size="small" label={item.outlet} variant="outlined" sx={{ flexShrink: 1, minWidth: 0 }} />
-                ) : null}
-                <Link
-                  component="span"
-                  variant="body2"
-                  underline="hover"
-                  sx={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 0.35,
-                    flexShrink: 0,
-                    fontSize: "0.8125rem",
-                  }}
-                >
-                  {openLabel}
-                  <OpenInNewRoundedIcon sx={{ fontSize: 16 }} aria-hidden />
-                </Link>
-              </Stack>
-            </Stack>
-          </Box>
-        </CardActionArea>
-      </Card>
-    );
-  }
-
-  return (
-    <Card variant="outlined" sx={{ overflow: "hidden" }}>
-      <CardActionArea
-        href={item.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${item.headline} (opens in new tab)`}
-        sx={{ display: "flex", flexDirection: "column", alignItems: "stretch" }}
-      >
-        <CardContent sx={{ py: 2, "&:last-child": { pb: 2 } }}>
-          <Stack spacing={1}>
-            <Typography variant="subtitle1" component="h2" fontWeight={600} sx={{ lineHeight: 1.35 }}>
+        <Box sx={{ flex: 1, minWidth: 0 }}>
+          <Stack spacing={0.75}>
+            <Typography
+              variant="subtitle1"
+              component="h2"
+              fontWeight={600}
+              sx={{
+                lineHeight: 1.35,
+                fontSize: { xs: "1rem", sm: "1.0625rem" },
+                display: "-webkit-box",
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
               {item.headline}
             </Typography>
 
-            {item.publishedAt ? (
-              <Typography variant="caption" color="text.secondary">
-                {formatPublishedLine(item.publishedAt)}
-              </Typography>
-            ) : null}
+            <Stack direction="row" flexWrap="wrap" useFlexGap spacing={1} alignItems="center">
+              {showOutletBadge ? (
+                <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
+                  {item.outlet}
+                </Typography>
+              ) : null}
+              {showOutletBadge && item.publishedAt ? (
+                <Typography variant="caption" color="text.secondary" aria-hidden>
+                  ·
+                </Typography>
+              ) : null}
+              {item.publishedAt ? (
+                <Typography variant="caption" color="text.secondary">
+                  {formatPublishedLine(item.publishedAt)}
+                </Typography>
+              ) : null}
+            </Stack>
 
             {item.summary ? (
               <Typography
                 variant="body2"
                 color="text.secondary"
                 sx={{
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
+                  display: { xs: "none", sm: "-webkit-box" },
+                  WebkitLineClamp: 2,
                   WebkitBoxOrient: "vertical",
                   overflow: "hidden",
+                  lineHeight: 1.45,
                 }}
               >
                 {item.summary}
               </Typography>
             ) : null}
-
-            <Stack
-              direction="row"
-              justifyContent={showOutletBadge ? "space-between" : "flex-end"}
-              alignItems="center"
-              sx={{ pt: 0.5 }}
-            >
-              {showOutletBadge ? <Chip size="small" label={item.outlet} variant="outlined" /> : null}
-              <Link
-                component="span"
-                underline="hover"
-                sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
-              >
-                {openLabel}
-                <OpenInNewRoundedIcon sx={{ fontSize: 18 }} aria-hidden />
-              </Link>
-            </Stack>
           </Stack>
-        </CardContent>
+        </Box>
+
+        <Link
+          component="span"
+          variant="body2"
+          underline="hover"
+          sx={{
+            display: { xs: "none", sm: "inline-flex" },
+            alignItems: "center",
+            gap: 0.35,
+            flexShrink: 0,
+            fontSize: "0.8125rem",
+            color: "primary.main",
+            fontWeight: 600,
+          }}
+        >
+          {openLabel}
+          <OpenInNewRoundedIcon sx={{ fontSize: 16 }} aria-hidden />
+        </Link>
       </CardActionArea>
-    </Card>
+    </Box>
   );
 }

@@ -2,6 +2,8 @@ import { extendTheme } from "@mui/material/styles";
 import { tokens } from "./tokens";
 
 const contentScale = "var(--content-font-scale, 1)";
+const fontSans = "var(--font-plus-jakarta), system-ui, -apple-system, sans-serif";
+const fontDisplay = "var(--font-outfit), var(--font-plus-jakarta), system-ui, sans-serif";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -46,39 +48,44 @@ export const appTheme = extendTheme({
     },
   },
   typography: {
-    fontFamily: "var(--font-geist-sans), system-ui, -apple-system, sans-serif",
+    fontFamily: fontSans,
     h1: {
+      fontFamily: fontDisplay,
       fontWeight: 700,
-      fontSize: `calc(clamp(2.125rem, 5vw, 3.25rem) * ${contentScale})`,
+      fontSize: `calc(clamp(2.25rem, 5.2vw, 3.5rem) * ${contentScale})`,
       lineHeight: 1.08,
       letterSpacing: "-0.03em",
     },
     h2: {
+      fontFamily: fontDisplay,
       fontWeight: 700,
-      fontSize: `calc(clamp(1.5rem, 3.2vw, 2.125rem) * ${contentScale})`,
+      fontSize: `calc(clamp(1.625rem, 3.4vw, 2.25rem) * ${contentScale})`,
       lineHeight: 1.15,
       letterSpacing: "-0.02em",
     },
     h3: {
+      fontFamily: fontDisplay,
       fontWeight: 600,
-      fontSize: `calc(1.25rem * ${contentScale})`,
+      fontSize: `calc(1.3125rem * ${contentScale})`,
       lineHeight: 1.3,
       letterSpacing: "-0.01em",
     },
-    /** In-card section titles (Learn subheads, data-centers cards); rem scales with user font preferences. */
     h4: {
+      fontFamily: fontDisplay,
       fontWeight: 600,
       fontSize: `calc(1.25rem * ${contentScale})`,
       lineHeight: 1.35,
       letterSpacing: "-0.01em",
     },
     h5: {
+      fontFamily: fontDisplay,
       fontWeight: 600,
       fontSize: `calc(1.1875rem * ${contentScale})`,
       lineHeight: 1.35,
       letterSpacing: "-0.01em",
     },
     h6: {
+      fontFamily: fontDisplay,
       fontWeight: 600,
       fontSize: `calc(1.125rem * ${contentScale})`,
       lineHeight: 1.4,
@@ -96,21 +103,22 @@ export const appTheme = extendTheme({
     },
     body1: {
       lineHeight: 1.65,
-      fontSize: `calc(1.0625rem * ${contentScale})`,
+      /* Slightly above pre-refresh size — Plus Jakarta reads smaller optically than Geist */
+      fontSize: `calc(1.1875rem * ${contentScale})`,
     },
     body2: {
       lineHeight: 1.6,
-      fontSize: `calc(0.875rem * ${contentScale})`,
+      fontSize: `calc(1rem * ${contentScale})`,
     },
     caption: {
-      fontSize: `calc(0.75rem * ${contentScale})`,
+      fontSize: `calc(0.875rem * ${contentScale})`,
       lineHeight: 1.5,
-      letterSpacing: "0.02em",
+      letterSpacing: "0.01em",
     },
     overline: {
-      fontWeight: 700,
-      letterSpacing: "0.14em",
-      fontSize: `calc(0.6875rem * ${contentScale})`,
+      fontWeight: 600,
+      letterSpacing: "0.08em",
+      fontSize: `calc(0.8125rem * ${contentScale})`,
     },
     button: {
       fontWeight: 600,
@@ -126,6 +134,13 @@ export const appTheme = extendTheme({
       styleOverrides: {
         body: {
           textRendering: "optimizeLegibility",
+          backgroundColor: tokens.dark.surface,
+          backgroundImage: [
+            "radial-gradient(ellipse 110% 70% at 8% -15%, rgba(96, 165, 250, 0.06), transparent 55%)",
+            "radial-gradient(ellipse 80% 50% at 100% 0%, rgba(46, 56, 72, 0.45), transparent 50%)",
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E\")",
+          ].join(", "),
+          backgroundAttachment: "fixed",
         },
       },
     },
@@ -172,7 +187,7 @@ export const appTheme = extendTheme({
         sizeLarge: {
           paddingInline: 28,
           minHeight: 48,
-          fontSize: "1rem",
+          fontSize: "1.0625rem",
         },
         sizeSmall: {
           minHeight: 36,
@@ -214,7 +229,6 @@ export const appTheme = extendTheme({
         },
       },
     },
-    /** Keeps outlined fields visually aligned with cards (14px); avoids notch/label clashes from overly round corners. */
     MuiOutlinedInput: {
       styleOverrides: {
         root: ({ theme }) => ({

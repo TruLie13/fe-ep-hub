@@ -1,12 +1,12 @@
 "use client";
 
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import EventRoundedIcon from "@mui/icons-material/EventRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import ScheduleRoundedIcon from "@mui/icons-material/ScheduleRounded";
 import ListAltRoundedIcon from "@mui/icons-material/ListAltRounded";
 import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
 import {
+  Box,
   Button,
   Card,
   CardContent,
@@ -16,7 +16,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import AgendaModal, { type AgendaModalLabels } from "./AgendaModal";
 import {
   buildIcs,
@@ -47,6 +47,18 @@ type Props = {
   prioritizeVisual?: boolean;
 };
 
+function dateParts(iso: string) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) {
+    return { day: "—", month: "", weekday: "" };
+  }
+  return {
+    day: String(d.getDate()),
+    month: d.toLocaleString("en-US", { month: "short" }),
+    weekday: d.toLocaleString("en-US", { weekday: "short" }),
+  };
+}
+
 export default function MeetingCard({
   event,
   labels,
@@ -56,6 +68,7 @@ export default function MeetingCard({
   prioritizeVisual,
 }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
+  const parts = useMemo(() => dateParts(event.EventDate), [event.EventDate]);
 
   const handleAddToCalendar = useCallback(() => {
     const ics = buildIcs(event);
@@ -103,157 +116,155 @@ export default function MeetingCard({
           display: "flex",
           flexDirection: "column",
           opacity: cancelled ? 0.6 : 1,
-          transition: "border-color 160ms ease, transform 160ms ease",
+          transition: "border-color 160ms ease, background-color 160ms ease",
           "&:hover": {
-            borderColor: "primary.main",
-            transform: past || cancelled ? "none" : "translateY(-2px)",
+            borderColor: past || cancelled ? undefined : "divider",
+            bgcolor: past || cancelled ? undefined : "action.hover",
           },
           "@media (prefers-reduced-motion: reduce)": {
             transition: "none",
-            "&:hover": { transform: "none" },
           },
         }}
       >
         <CardContent sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
-          <Stack spacing={2} sx={{ flex: 1 }}>
-            <Stack
-              direction="row"
-              spacing={1}
-              flexWrap="wrap"
-              useFlexGap
-              alignItems="center"
+          <Stack direction="row" spacing={2} sx={{ flex: 1 }} alignItems="stretch">
+            <Box
+              sx={{
+                flexShrink: 0,
+                width: 64,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                pt: 0.25,
+                borderRight: 1,
+                borderColor: "divider",
+                pr: 2,
+              }}
+              aria-hidden
             >
-              <Chip
-                size="small"
-                label={event.EventBodyName}
-                variant="outlined"
-                color={prioritizeVisual ? "warning" : "primary"}
-              />
-              {cancelled ? (
-                <Chip size="small" label={labels.cancelled} color="error" />
-              ) : null}
-            </Stack>
-
-            <Stack spacing={1} sx={{ flex: 1 }}>
-              <Stack
-                direction="row"
-                spacing={1}
-                alignItems="center"
-                sx={{ color: "text.primary" }}
+              <Typography
+                variant="caption"
+                sx={{ fontWeight: 600, color: "text.secondary", textTransform: "uppercase", letterSpacing: "0.06em" }}
               >
-                <CalendarMonthRoundedIcon
-                  sx={{ fontSize: 18, color: "primary.main" }}
-                />
-                <Typography variant="subtitle2">{dateLabel}</Typography>
+                {parts.month}
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: "var(--font-outfit), var(--font-plus-jakarta), sans-serif",
+                  fontWeight: 700,
+                  fontSize: "2rem",
+                  lineHeight: 1,
+                  letterSpacing: "-0.03em",
+                  color: prioritizeVisual ? "warning.main" : "text.primary",
+                }}
+              >
+                {parts.day}
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5 }}>
+                {parts.weekday}
+              </Typography>
+            </Box>
+
+            <Stack spacing={1.75} sx={{ flex: 1, minWidth: 0 }}>
+              <Stack spacing={0.75}>
+                <Typography
+                  component="h3"
+                  variant="subtitle1"
+                  sx={{
+                    fontWeight: 700,
+                    lineHeight: 1.3,
+                    color: prioritizeVisual ? "warning.main" : "text.primary",
+                  }}
+                >
+                  {event.EventBodyName}
+                </Typography>
+                {cancelled ? (
+                  <Chip size="small" label={labels.cancelled} color="error" sx={{ alignSelf: "flex-start" }} />
+                ) : null}
               </Stack>
 
-              {event.EventTime ? (
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <ScheduleRoundedIcon
-                    sx={{ fontSize: 18, color: "text.secondary" }}
-                  />
-                  <Typography variant="body2" color="text.secondary">
-                    {event.EventTime}
-                  </Typography>
-                </Stack>
-              ) : null}
-
-              {event.EventLocation ? (
-                isVirtualMeetingLocation(event.EventLocation) ? (
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    alignItems="flex-start"
-                    sx={{ color: "text.secondary" }}
-                  >
-                    <LocationOnRoundedIcon
-                      sx={{
-                        fontSize: 18,
-                        color: "text.secondary",
-                        mt: 0.25,
-                        flexShrink: 0,
-                      }}
-                    />
-                    <Typography
-                      variant="body2"
-                      sx={{ textTransform: "capitalize" }}
-                    >
-                      {event.EventLocation.toLowerCase()}
+              <Stack spacing={0.75} sx={{ flex: 1 }}>
+                {event.EventTime ? (
+                  <Stack direction="row" spacing={1} alignItems="center">
+                    <ScheduleRoundedIcon sx={{ fontSize: 18, color: "text.secondary" }} />
+                    <Typography variant="body2" color="text.secondary">
+                      {event.EventTime}
                     </Typography>
                   </Stack>
-                ) : (
-                  <Link
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.EventLocation + ", El Paso, TX")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    underline="hover"
-                    color="text.secondary"
-                    sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}
-                  >
-                    <LocationOnRoundedIcon
-                      sx={{
-                        fontSize: 18,
-                        color: "text.secondary",
-                        mt: 0.25,
-                        flexShrink: 0,
-                      }}
-                    />
-                    <Typography
-                      variant="body2"
-                      sx={{ textTransform: "capitalize" }}
+                ) : null}
+
+                {event.EventLocation ? (
+                  isVirtualMeetingLocation(event.EventLocation) ? (
+                    <Stack direction="row" spacing={1} alignItems="flex-start" sx={{ color: "text.secondary" }}>
+                      <LocationOnRoundedIcon
+                        sx={{ fontSize: 18, color: "text.secondary", mt: 0.25, flexShrink: 0 }}
+                      />
+                      <Typography variant="body2" sx={{ textTransform: "capitalize" }}>
+                        {event.EventLocation.toLowerCase()}
+                      </Typography>
+                    </Stack>
+                  ) : (
+                    <Link
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.EventLocation + ", El Paso, TX")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      underline="hover"
+                      color="text.secondary"
+                      sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}
                     >
-                      {event.EventLocation.toLowerCase()}
-                    </Typography>
-                  </Link>
-                )
-              ) : null}
+                      <LocationOnRoundedIcon
+                        sx={{ fontSize: 18, color: "text.secondary", mt: 0.25, flexShrink: 0 }}
+                      />
+                      <Typography variant="body2" sx={{ textTransform: "capitalize" }}>
+                        {event.EventLocation.toLowerCase()}
+                      </Typography>
+                    </Link>
+                  )
+                ) : null}
+              </Stack>
 
-            </Stack>
-
-            {!cancelled ? (
-              <Button
-                size="small"
-                variant="outlined"
-                onClick={() => setModalOpen(true)}
-                startIcon={<ListAltRoundedIcon />}
-                sx={{ borderRadius: 9999, alignSelf: "flex-start" }}
-              >
-                {labels.agendaItems}
-              </Button>
-            ) : null}
-
-            <Stack
-              direction="row"
-              spacing={1}
-              alignItems="center"
-            >
-              {!past && !cancelled ? (
+              {!cancelled ? (
                 <Button
                   size="small"
-                  variant="text"
-                  onClick={handleAddToCalendar}
-                  startIcon={<EventRoundedIcon />}
-                  sx={{ borderRadius: 9999 }}
+                  variant="outlined"
+                  onClick={() => setModalOpen(true)}
+                  startIcon={<ListAltRoundedIcon />}
+                  sx={{ borderRadius: 9999, alignSelf: "flex-start" }}
                 >
-                  {labels.addToCalendar}
+                  {labels.agendaItems}
                 </Button>
               ) : null}
-              <Tooltip
-                title={copiedTip ? labels.copied : ""}
-                open={copiedTip}
-                arrow
-                disableInteractive
-              >
-                <Button
-                  size="small"
-                  variant="text"
-                  onClick={handleShare}
-                  startIcon={<ShareRoundedIcon />}
-                  sx={{ borderRadius: 9999, ml: !past && !cancelled ? 0 : undefined }}
+
+              <Stack direction="row" spacing={1} alignItems="center">
+                {!past && !cancelled ? (
+                  <Button
+                    size="small"
+                    variant="text"
+                    onClick={handleAddToCalendar}
+                    startIcon={<EventRoundedIcon />}
+                    sx={{ borderRadius: 9999 }}
+                  >
+                    {labels.addToCalendar}
+                  </Button>
+                ) : null}
+                <Tooltip
+                  title={copiedTip ? labels.copied : ""}
+                  open={copiedTip}
+                  arrow
+                  disableInteractive
                 >
-                  {labels.share}
-                </Button>
-              </Tooltip>
+                  <Button
+                    size="small"
+                    variant="text"
+                    onClick={handleShare}
+                    startIcon={<ShareRoundedIcon />}
+                    sx={{ borderRadius: 9999, ml: !past && !cancelled ? 0 : undefined }}
+                  >
+                    {labels.share}
+                  </Button>
+                </Tooltip>
+              </Stack>
             </Stack>
           </Stack>
         </CardContent>

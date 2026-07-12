@@ -53,7 +53,7 @@ function LearnSectionHeader({
 }: LearnSectionHeaderProps) {
   return (
     <Box>
-      <Typography variant="overline" sx={{ fontWeight: 700, letterSpacing: "0.16em", color: "text.secondary" }}>
+      <Typography variant="overline" sx={{ fontWeight: 600, letterSpacing: "0.08em", color: "text.secondary" }}>
         {eyebrow}
       </Typography>
       <Typography component="h2" variant="h3" sx={{ mt: 0.5 }}>

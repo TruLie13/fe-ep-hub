@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { Box, Container, Stack } from "@mui/material";
 import { CONTENT_FONT_SCALE_INIT_SCRIPT_INNER } from "@/lib/theme/contentFontScaleInitScriptInner";
 import { MUI_COLOR_SCHEME_INIT_SCRIPT_INNER } from "@/lib/theme/muiColorSchemeInitScriptInner";
@@ -16,13 +16,13 @@ import { buildRootMetadata, buildSiteJsonLd } from "@/lib/seo/site";
 import "./globals.css";
 import "@/styles/print.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -43,7 +43,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning className="dark" data-mui-color-scheme="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${plusJakarta.variable} ${outfit.variable}`}>
         <script id="mui-color-scheme-init" dangerouslySetInnerHTML={{ __html: MUI_COLOR_SCHEME_INIT_SCRIPT_INNER }} />
         <script id="content-font-scale-init" dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }} />
         <GoogleAnalyticsScripts />

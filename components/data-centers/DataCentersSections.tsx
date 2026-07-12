@@ -134,20 +134,11 @@ export default function DataCentersSections({
             >
               <CardContent sx={{ p: { xs: 3, md: 4 } }}>
                 <Stack spacing={{ xs: 2, md: 2.5 }} sx={{ mb: headerBlockMb }}>
-                  <Box
-                    sx={{
-                      width: 48,
-                      height: 4,
-                      borderRadius: 1,
-                      bgcolor: "primary.main",
-                    }}
-                    aria-hidden
-                  />
                   <Typography
                     variant="overline"
                     sx={{
-                      fontWeight: 700,
-                      letterSpacing: "0.14em",
+                      fontWeight: 600,
+                      letterSpacing: "0.08em",
                       color: "text.secondary",
                       lineHeight: 1.6,
                     }}

@@ -55,44 +55,18 @@ export default function MainNav() {
       >
         <Toolbar
           disableGutters
-          sx={() => {
-            const specular = 0.05;
-            const glassSheen = `linear-gradient(155deg, ${alpha("#ffffff", 0.05)} 0%, transparent 55%)`;
-            return {
-              position: "relative",
-              gap: 2,
-              justifyContent: "space-between",
-              minHeight: { xs: 56, sm: 60 },
-              px: { xs: 1.5, sm: 2 },
-              py: { xs: 1, sm: 0.75 },
-              borderRadius: 1,
-              overflow: "hidden",
-              isolation: "isolate",
-              bgcolor: alpha(tokens.dark.surface, 0.52),
-              backgroundImage: glassSheen,
-              backdropFilter: "blur(32px) saturate(150%)",
-              WebkitBackdropFilter: "blur(32px) saturate(150%)",
-              border: `1px solid ${alpha(tokens.dark.border, 0.55)}`,
-              boxShadow: [
-                `inset 0 1px 0 ${alpha("#ffffff", specular)}`,
-                `inset 0 -1px 0 ${alpha("#000000", 0.42)}`,
-                `0 12px 40px -12px ${alpha("#000000", 0.45)}`,
-                `0 4px 16px -6px ${alpha("#000000", 0.3)}`,
-              ].join(", "),
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                inset: 0,
-                borderRadius: "inherit",
-                pointerEvents: "none",
-                background: `linear-gradient(180deg, ${alpha("#ffffff", 0.04)} 0%, transparent 52%)`,
-                opacity: 0.85,
-              },
-              "& > *": {
-                position: "relative",
-                zIndex: 1,
-              },
-            };
+          sx={{
+            gap: 2,
+            justifyContent: "space-between",
+            minHeight: { xs: 56, sm: 60 },
+            px: { xs: 1.5, sm: 2 },
+            py: { xs: 1, sm: 0.75 },
+            borderRadius: 1,
+            bgcolor: alpha(tokens.dark.surfaceAlt, 0.88),
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            border: `1px solid ${alpha(tokens.dark.border, 0.7)}`,
+            boxShadow: `0 1px 0 ${alpha("#ffffff", 0.04)}`,
           }}
         >
           <Link
@@ -106,7 +80,16 @@ export default function MainNav() {
               },
             }}
           >
-            <Typography variant="subtitle1" sx={{ fontWeight: 800, letterSpacing: "-0.02em" }} noWrap>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                fontFamily: "var(--font-outfit), var(--font-plus-jakarta), sans-serif",
+                fontWeight: 800,
+                letterSpacing: "-0.02em",
+                fontSize: { xs: "1.1rem", sm: "1.2rem" },
+              }}
+              noWrap
+            >
               {t.nav.siteName}
             </Typography>
             <Typography variant="caption" display="block" noWrap className="nav-tagline" sx={{ lineHeight: 1.35 }}>
@@ -130,10 +113,11 @@ export default function MainNav() {
                         borderRadius: 9999,
                         px: 1.5,
                         fontWeight: 600,
-                        color: active ? "primary.main" : tokens.dark.textSecondary,
-                        bgcolor: active ? alpha(theme.palette.primary.main, 0.26) : "transparent",
+                        color: active ? "text.primary" : tokens.dark.textSecondary,
+                        bgcolor: active ? alpha(theme.palette.primary.main, 0.16) : "transparent",
                         "&:hover": {
-                          bgcolor: alpha(theme.palette.primary.main, active ? 0.3 : 0.14),
+                          bgcolor: alpha(theme.palette.primary.main, active ? 0.22 : 0.1),
+                          color: "text.primary",
                         },
                       })}
                     >
@@ -153,9 +137,9 @@ export default function MainNav() {
                 display: { xs: "none", md: "inline-flex" },
                 flexShrink: 0,
                 fontWeight: 700,
-                color: `${theme.palette.common.black} !important`,
-                "&:hover": { color: `${theme.palette.common.black} !important` },
-                "&:focusVisible": { color: `${theme.palette.common.black} !important` },
+                color: `${theme.palette.primary.contrastText} !important`,
+                "&:hover": { color: `${theme.palette.primary.contrastText} !important` },
+                "&:focusVisible": { color: `${theme.palette.primary.contrastText} !important` },
               })}
             >
               {t.nav.takeAction}
@@ -207,9 +191,9 @@ export default function MainNav() {
               onClick={() => setOpen(false)}
               sx={(theme) => ({
                 fontWeight: 700,
-                color: `${theme.palette.common.black} !important`,
-                "&:hover": { color: `${theme.palette.common.black} !important` },
-                "&:focusVisible": { color: `${theme.palette.common.black} !important` },
+                color: `${theme.palette.primary.contrastText} !important`,
+                "&:hover": { color: `${theme.palette.primary.contrastText} !important` },
+                "&:focusVisible": { color: `${theme.palette.primary.contrastText} !important` },
               })}
             >
               {t.nav.takeAction}

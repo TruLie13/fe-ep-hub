@@ -53,59 +53,106 @@ export default function Home() {
   return (
     <Box id="printable-home" className="printable-root">
       <JsonLd data={buildPageJsonLd(HOME_SEO)} />
-      {/* Flat hero: solid surface, typographic focus — no decorative gradients */}
+      {/* Full-bleed photo hero — place as visual plane, type over left */}
       <Box
         sx={{
-          bgcolor: "background.paper",
+          position: "relative",
           borderBottom: 1,
           borderColor: "divider",
+          minHeight: { xs: 420, md: 520 },
+          display: "flex",
+          alignItems: "flex-end",
+          overflow: "hidden",
+          backgroundImage: {
+            md: "linear-gradient(105deg, rgba(10,13,18,0.94) 0%, rgba(10,13,18,0.78) 42%, rgba(10,13,18,0.35) 100%), url('/images/elpaso_downtown.webp')",
+            xs: "linear-gradient(180deg, rgba(10,13,18,0.55) 0%, rgba(10,13,18,0.82) 55%, rgba(10,13,18,0.96) 100%), url('/images/elpaso_downtown.webp')",
+          },
+          backgroundSize: "cover",
+          backgroundPosition: "center 30%",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        <Container maxWidth="lg" sx={{ py: { xs: 8, md: 11 } }}>
-          <Grid container spacing={{ xs: 3, md: 4 }} alignItems="flex-start">
-            <Grid size={{ xs: 12 }}>
-              <Stack spacing={{ xs: 3.5, md: 3 }}>
-                <Box
-                  sx={{
-                    width: 48,
-                    height: 4,
-                    borderRadius: 1,
-                    bgcolor: "primary.main",
-                  }}
-                  aria-hidden
-                />
-                <Typography component="h1" variant="h1">
-                  {t.home.heroTitle}
-                </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ maxWidth: "min(70ch, 100%)", fontSize: { md: "1.125rem" } }}>
-                  {t.home.heroSubtitle}
-                </Typography>
-                <Stack direction={{ xs: "column", sm: "row" }} spacing={2} alignItems={{ xs: "stretch", sm: "center" }} flexWrap="wrap" useFlexGap>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    href="/learn"
-                    endIcon={<ArrowForwardRoundedIcon />}
-                    sx={{
-                      color: "#000000 !important",
-                      "&:hover": { color: "#000000 !important" },
-                      "&:focusVisible": { color: "#000000 !important" },
-                    }}
-                  >
-                    {t.home.startLearning}
-                  </Button>
-                  <Button variant="outlined" size="large" href="/data-center" endIcon={<ArrowForwardRoundedIcon />}>
-                    {t.home.viewRegionalImpacts}
-                  </Button>
-                  {/*
-                    <Button variant="outlined" size="large" href="/pledge">
-                      {t.home.takePledge}
-                    </Button>
-                  */}
-                </Stack>
-              </Stack>
-            </Grid>
-          </Grid>
+        <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 }, position: "relative", zIndex: 1 }}>
+          <Stack spacing={{ xs: 2.5, md: 3 }} sx={{ maxWidth: { md: "34rem" } }}>
+            <Typography
+              className="ep-motion-hero"
+              variant="subtitle1"
+              sx={{
+                fontFamily: "var(--font-outfit), var(--font-plus-jakarta), sans-serif",
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+                color: "common.white",
+                fontSize: { xs: "1.25rem", md: "1.5rem" },
+              }}
+            >
+              {t.nav.siteName}
+            </Typography>
+            <Typography
+              component="h1"
+              variant="h1"
+              className="ep-motion-hero"
+              sx={{ color: "common.white", textShadow: "0 1px 18px rgba(0,0,0,0.35)" }}
+            >
+              {t.home.heroTitle}
+            </Typography>
+            <Typography
+              variant="body1"
+              className="ep-motion-hero-delay"
+              sx={{
+                color: "rgba(244,247,250,0.88)",
+                maxWidth: "min(70ch, 100%)",
+                fontSize: { md: "1.1875rem" },
+              }}
+            >
+              {t.home.heroSubtitle}
+            </Typography>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={2}
+              alignItems={{ xs: "stretch", sm: "center" }}
+              flexWrap="wrap"
+              useFlexGap
+              className="ep-motion-hero-delay"
+            >
+              <Button
+                variant="contained"
+                size="large"
+                href="/learn"
+                endIcon={<ArrowForwardRoundedIcon />}
+                sx={{
+                  color: "#000000 !important",
+                  transition: "transform 160ms ease",
+                  "&:hover": {
+                    color: "#000000 !important",
+                    transform: "translateY(-1px)",
+                  },
+                  "&:focusVisible": { color: "#000000 !important" },
+                  "@media (prefers-reduced-motion: reduce)": {
+                    transition: "none",
+                    "&:hover": { transform: "none" },
+                  },
+                }}
+              >
+                {t.home.startLearning}
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                href="/data-center"
+                endIcon={<ArrowForwardRoundedIcon />}
+                sx={{
+                  borderColor: "rgba(255,255,255,0.55)",
+                  color: "common.white",
+                  "&:hover": {
+                    borderColor: "common.white",
+                    bgcolor: "rgba(255,255,255,0.08)",
+                  },
+                }}
+              >
+                {t.home.viewRegionalImpacts}
+              </Button>
+            </Stack>
+          </Stack>
         </Container>
       </Box>
 
@@ -115,13 +162,22 @@ export default function Home() {
           title={t.home.quickFacts.title}
           description={t.home.quickFacts.description}
         >
-          <Grid container spacing={2}>
-            {quickFacts.map((fact) => (
-              <Grid key={fact.href} size={{ xs: 12, sm: 6, md: 4 }}>
-                <FactCard {...fact} ctaLabel={t.home.quickFacts.readFullSection} />
-              </Grid>
-            ))}
-          </Grid>
+          <Stack spacing={2}>
+            {quickFacts[0] ? (
+              <FactCard
+                {...quickFacts[0]}
+                featured
+                ctaLabel={t.home.quickFacts.readFullSection}
+              />
+            ) : null}
+            <Grid container spacing={2}>
+              {quickFacts.slice(1).map((fact) => (
+                <Grid key={fact.href} size={{ xs: 12, sm: 6, md: 4 }}>
+                  <FactCard {...fact} ctaLabel={t.home.quickFacts.readFullSection} />
+                </Grid>
+              ))}
+            </Grid>
+          </Stack>
           <Button
             variant="outlined"
             size="large"
@@ -213,8 +269,8 @@ export default function Home() {
                         variant="overline"
                         color="primary.main"
                         sx={{
-                          fontWeight: 700,
-                          letterSpacing: "0.12em",
+                          fontWeight: 600,
+                          letterSpacing: "0.06em",
                           ...(isTakeAction
                             ? {
                                 textShadow:

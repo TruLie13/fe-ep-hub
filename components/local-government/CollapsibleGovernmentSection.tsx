@@ -91,8 +91,8 @@ export default function CollapsibleGovernmentSection({
             <Typography
               variant="overline"
               sx={{
-                fontWeight: 700,
-                letterSpacing: "0.16em",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
                 color: "text.secondary",
               }}
             >

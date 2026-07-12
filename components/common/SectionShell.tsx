@@ -13,7 +13,7 @@ export type SectionShellProps = {
 };
 
 /**
- * Consistent section header + body spacing for civic pages.
+ * Section header with editorial hairline — hierarchy via type + rule, not product labels.
  */
 export default function SectionShell({
   id,
@@ -29,15 +29,16 @@ export default function SectionShell({
       id={id}
       component="section"
       spacing={2.5}
+      className="ep-motion-section"
       sx={{ py: dense ? { xs: 4, md: 5 } : { xs: 5, md: 8 } }}
     >
-      <Box>
+      <Box sx={{ maxWidth: "min(40rem, 100%)" }}>
         {eyebrow ? (
           <Typography
             variant="overline"
             sx={{
-              fontWeight: 700,
-              letterSpacing: "0.16em",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
               color: "text.secondary",
               display: "block",
             }}
@@ -55,6 +56,15 @@ export default function SectionShell({
         >
           {title}
         </Typography>
+        <Box
+          sx={{
+            mt: 2,
+            width: 48,
+            height: 1,
+            bgcolor: "divider",
+          }}
+          aria-hidden
+        />
         {description ? (
           <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: "min(72ch, 100%)" }}>
             {description}

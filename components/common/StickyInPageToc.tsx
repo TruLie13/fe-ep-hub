@@ -86,7 +86,7 @@ export default function StickyInPageToc({
     titleAdornment != null ? (
       <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 1.5 }}>
         {titleAdornment}
-        <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: "0.12em" }}>
+        <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 600, letterSpacing: "0.08em" }}>
           {title}
         </Typography>
       </Stack>
@@ -95,7 +95,7 @@ export default function StickyInPageToc({
         variant="overline"
         sx={{
           fontWeight: 700,
-          letterSpacing: "0.14em",
+          letterSpacing: "0.08em",
           color: "text.secondary",
           px: 2,
           display: "block",
@@ -114,7 +114,7 @@ export default function StickyInPageToc({
           const primarySlotProps = {
             variant: preset === "dataCenters" ? ("overline" as const) : ("body2" as const),
             fontWeight: preset === "dataCenters" ? 700 : 600,
-            letterSpacing: preset === "dataCenters" ? "0.12em" : undefined,
+            letterSpacing: undefined,
             color:
               preset === "dataCenters"
                 ? isActive

@@ -390,7 +390,7 @@ export default async function CityMeetingsPage() {
               sx={{ px: { xs: 2, sm: 3 }, py: 2 }}
             >
               <Stack spacing={0.5}>
-                <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: "0.14em" }}>
+                <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 600, letterSpacing: "0.08em" }}>
                   {mt.recent}
                 </Typography>
                 <Typography variant="h6" component="span">
@@ -436,7 +436,7 @@ export default async function CityMeetingsPage() {
               sx={{ px: { xs: 2, sm: 3 }, py: 2 }}
             >
               <Stack spacing={0.5}>
-                <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: "0.14em" }}>
+                <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 600, letterSpacing: "0.08em" }}>
                   {mt.cancelled}
                 </Typography>
                 <Typography variant="h6" component="span">

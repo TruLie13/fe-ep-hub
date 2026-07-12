@@ -525,7 +525,7 @@ export default async function LocalGovernmentPage() {
               const member = legistarMayor ?? findMember(legistarMembers, official.displayName);
               return (
                 <Box>
-                  <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.14em" }}>
+                  <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.08em" }}>
                     {citySeatLabel("mayor")}
                   </Typography>
                   <Grid container spacing={2} sx={{ mt: 1 }}>
@@ -547,7 +547,7 @@ export default async function LocalGovernmentPage() {
             })()}
 
             <Box>
-              <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.14em" }}>
+              <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.08em" }}>
                 {t.localGov.cityCouncil}
               </Typography>
               <Grid container spacing={2} sx={{ mt: 1 }}>
@@ -605,7 +605,7 @@ export default async function LocalGovernmentPage() {
               const st = officialStances(bundle, official.id);
               return (
                 <Box>
-                  <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.14em" }}>
+                  <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.08em" }}>
                     {countySeatLabel(key)}
                   </Typography>
                   <Grid container spacing={2} sx={{ mt: 1 }}>
@@ -626,7 +626,7 @@ export default async function LocalGovernmentPage() {
             })()}
 
             <Box>
-              <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.14em" }}>
+              <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.08em" }}>
                 {t.localGov.commissionersCourt}
               </Typography>
               <Grid container spacing={2} sx={{ mt: 1 }}>

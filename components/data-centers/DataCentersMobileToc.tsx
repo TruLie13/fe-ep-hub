@@ -112,7 +112,7 @@ export default function DataCentersMobileToc({
         >
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
             <Box>
-              <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: "0.12em" }}>
+              <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 600, letterSpacing: "0.08em" }}>
                 {label}
               </Typography>
               <Typography variant="body2" fontWeight={600} color="primary.main">
@@ -166,8 +166,8 @@ export default function DataCentersMobileToc({
                       <Typography
                         variant="overline"
                         sx={{
-                          fontWeight: 700,
-                          letterSpacing: "0.12em",
+                          fontWeight: 600,
+                          letterSpacing: "0.04em",
                           color: active ? "primary.main" : "text.secondary",
                           display: "block",
                         }}

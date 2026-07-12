@@ -12,7 +12,8 @@ export type ThemeTokens = {
 };
 
 /**
- * Flat civic UI tokens — cool neutrals + one confident accent (2026-style clarity, not default MUI teal).
+ * Dark-first civic tokens — sky blue accent (readable on dark).
+ * Light tokens exist but the app runs dark-only.
  */
 export const tokens: Record<ThemeMode, ThemeTokens> = {
   light: {
@@ -26,13 +27,13 @@ export const tokens: Record<ThemeMode, ThemeTokens> = {
     border: "#E2E8F0",
   },
   dark: {
-    surface: "#0B0F14",
-    surfaceAlt: "#121820",
-    textPrimary: "#F1F5F9",
-    textSecondary: "#94A3B8",
+    surface: "#0A0D12",
+    surfaceAlt: "#141A22",
+    textPrimary: "#F4F7FA",
+    textSecondary: "#A8B3C2",
     accent: "#60A5FA",
     accentContrast: "#0B0F14",
     warning: "#FB923C",
-    border: "#2A3441",
+    border: "#2E3848",
   },
 };

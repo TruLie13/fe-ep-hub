@@ -85,7 +85,7 @@ export default async function NewsPage() {
           <Stack spacing={0.5}>
             <Stack direction="row" spacing={1} alignItems="center">
               <ForumRoundedIcon sx={{ fontSize: 18, color: "text.secondary" }} />
-              <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: "0.14em" }}>
+              <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 600, letterSpacing: "0.08em" }}>
                 {nt.redditSection}
               </Typography>
             </Stack>
@@ -113,7 +113,7 @@ export default async function NewsPage() {
         <Stack spacing={0.5}>
           <Stack direction="row" spacing={1} alignItems="center">
             <RssFeedRoundedIcon sx={{ fontSize: 18, color: "text.secondary" }} />
-            <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: "0.14em" }}>
+            <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 600, letterSpacing: "0.08em" }}>
               {nt.feedSection}
             </Typography>
           </Stack>
@@ -144,7 +144,7 @@ export default async function NewsPage() {
         <Stack spacing={0.5}>
           <Stack direction="row" spacing={1} alignItems="center">
             <RssFeedRoundedIcon sx={{ fontSize: 18, color: "text.secondary" }} />
-            <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, letterSpacing: "0.14em" }}>
+            <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 600, letterSpacing: "0.08em" }}>
               {nt.nationalFeedSection}
             </Typography>
           </Stack>

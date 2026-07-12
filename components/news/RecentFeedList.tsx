@@ -46,7 +46,9 @@ export function RecentFeedList({
           p: 0,
           display: "flex",
           flexDirection: "column",
-          gap: 1.5,
+          gap: 0,
+          borderTop: 1,
+          borderColor: "divider",
         }}
       >
         {slice.map((item) => (
