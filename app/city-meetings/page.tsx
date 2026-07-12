@@ -29,14 +29,17 @@ import {
   denverYmdAtLocalTime,
   type CouncilSignUpWindowState,
 } from "@/lib/city-meetings/elPasoCalendar";
-import { CITY_MEETINGS_REVALIDATE_DEFAULT_SECONDS } from "@/lib/constants/city-meetings";
 import { fetchNextCityCouncilCalendarHint } from "@/lib/city-meetings/fetch-legistar-calendar-hint";
 import { fetchLegistarEvents } from "@/lib/city-meetings/fetch-legistar-events";
 import { dict, type Dictionary } from "@/lib/i18n/dictionary";
 import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
-/** Quiet-day floor; Legistar fetches use adaptive TTL via `getCityMeetingsRevalidateSeconds`. */
-export const revalidate = CITY_MEETINGS_REVALIDATE_DEFAULT_SECONDS;
+/**
+ * Quiet-day floor (15 min). Must be a static literal per Next.js segment config rules.
+ * Keep in sync with `CITY_MEETINGS_REVALIDATE_DEFAULT_SECONDS`; Legistar fetches raise
+ * the effective frequency via adaptive `getCityMeetingsRevalidateSeconds`.
+ */
+export const revalidate = 900;
 
 const CITY_MEETINGS_SEO = {
   title: "City Meetings",
