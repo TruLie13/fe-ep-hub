@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "feed-health": "node scripts/feed-health.mjs"
+    "feed-health": "node scripts/feed-health.mjs",
+    "refresh-reddit-snapshot": "node scripts/refresh-reddit-snapshot.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

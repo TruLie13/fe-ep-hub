@@ -11,6 +11,7 @@ export type {
   MutableProvenance,
   NewsBundle,
   NewsLink,
+  RedditElPasoSnapshotBundle,
   OfficeSeat,
   Official,
   OfficialContact,

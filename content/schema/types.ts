@@ -269,6 +269,14 @@ export interface NewsBundle {
   links: NewsLink[];
 }
 
+/** Checked-in fallback for `/news` Reddit section when live fetches fail. */
+export interface RedditElPasoSnapshotBundle {
+  schemaVersion: 1;
+  /** ISO timestamp when the snapshot was last refreshed. */
+  fetchedAt: string;
+  links: NewsLink[];
+}
+
 /** Maps to MUI icons on the data-centers page; optional per section in JSON. */
 export type DataCentersSectionIconKey =
   | "map"

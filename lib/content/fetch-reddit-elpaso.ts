@@ -1,14 +1,17 @@
+import fs from "node:fs";
+import path from "node:path";
 import { XMLParser } from "fast-xml-parser";
-import type { NewsLink } from "@/content/schema";
+import type { NewsLink, RedditElPasoSnapshotBundle } from "@/content/schema";
 import { NEWS_PAGE_REVALIDATE_SECONDS } from "@/lib/constants/news";
 
 const REDDIT_USER = "Tru_Lie";
-const SUBMITTED_ATOM = `https://www.reddit.com/user/${REDDIT_USER}/submitted.rss`;
+export const SUBMITTED_ATOM = `https://www.reddit.com/user/${REDDIT_USER}/submitted.rss`;
+const RSS2JSON_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SUBMITTED_ATOM)}`;
 const MAX_RESULTS = 20;
 
-const USER_AGENT = "eptruth/1.0 (El Paso Hub news page; +https://github.com/)";
+const USER_AGENT = "eptruth/1.0 (El Paso Hub news page; +https://elpasohub.org)";
 
-const LOG_PREFIX = "[eptruth/news] Reddit Atom";
+const LOG_PREFIX = "[eptruth/news] Reddit";
 
 /**
  * Hardcoded thumbnail overrides by Reddit post id (`/comments/{id}/` in the URL).
@@ -18,6 +21,16 @@ const THUMBNAIL_OVERRIDES: Record<string, string> = {
   // https://www.reddit.com/r/ElPaso/comments/1s1mb9l/good_job_el_paso_we_took_one_small_step_towards
   "1s1mb9l": "/images/news/reddit-1s1mb9l.jpg",
 };
+
+interface Rss2JsonItem {
+  title?: string;
+  link?: string;
+  guid?: string;
+  pubDate?: string;
+  thumbnail?: string;
+  description?: string;
+  content?: string;
+}
 
 function redditPostIdFromUrl(postUrl: string): string | undefined {
   const m = postUrl.match(/\/comments\/([a-z0-9]+)\//i);
@@ -65,10 +78,14 @@ function categoryTerm(entry: Record<string, unknown>): string | undefined {
   return cat["@_term"];
 }
 
+function isElPasoUrl(url: string): boolean {
+  return /\/r\/elpaso\//i.test(url);
+}
+
 function isElPasoEntry(entry: Record<string, unknown>): boolean {
   const term = categoryTerm(entry);
   if (term && term.toLowerCase() === "elpaso") return true;
-  return /\/r\/elpaso\//i.test(atomLinkHref(entry));
+  return isElPasoUrl(atomLinkHref(entry));
 }
 
 function thumbnailFromEntry(entry: Record<string, unknown>): string | undefined {
@@ -112,57 +129,167 @@ function toISODate(published: string | undefined): string | undefined {
   }
 }
 
-/**
- * Posts by REDDIT_USER filtered to r/ElPaso only (Atom category or URL).
- * Thumbnail URL (in order): optional `THUMBNAIL_OVERRIDES` by post id, then Atom
- * `media:thumbnail` `@url`, else first `<img src>` in `content`.
- * Reddit usually sends one preview per post; there is no multi-size picker in this feed.
- * Free, no Reddit API key.
- */
-export async function fetchRedditElPasoPosts(): Promise<NewsLink[]> {
+function toNewsLink(args: {
+  id: string;
+  headline: string;
+  url: string;
+  published?: string;
+  html: string;
+  thumbRaw?: string;
+}): NewsLink {
+  const thumb = applyThumbnailOverride(args.url, args.thumbRaw);
+  const video = isVideoPost(args.html);
+  return {
+    id: args.id,
+    headline: args.headline,
+    url: args.url,
+    outlet: "r/ElPaso",
+    publishedAt: toISODate(args.published),
+    summary: htmlToPlain(args.html, 280),
+    tags: ["reddit", "el-paso"],
+    thumbnailUrl: thumb,
+    mediaHint: video ? "video" : thumb ? "image" : undefined,
+    provenance: "reddit",
+  };
+}
+
+/** Pure Atom → NewsLink mapping (r/ElPaso only). Exported for tests and refresh tooling. */
+export function newsLinksFromAtomXml(xml: string): NewsLink[] {
+  return parseAtomEntries(xml)
+    .filter(isElPasoEntry)
+    .slice(0, MAX_RESULTS)
+    .map((entry, i) => {
+      const url = atomLinkHref(entry);
+      const html = contentHtml(entry);
+      return toNewsLink({
+        id: `reddit-${String(entry.id ?? i)}`,
+        headline: String(entry.title ?? "Untitled"),
+        url,
+        published: typeof entry.published === "string" ? entry.published : undefined,
+        html,
+        thumbRaw: thumbnailFromEntry(entry) ?? firstImageFromContent(html),
+      });
+    });
+}
+
+/** Pure rss2json items → NewsLink mapping (r/ElPaso only). */
+export function newsLinksFromRss2JsonItems(items: Rss2JsonItem[]): NewsLink[] {
+  return items
+    .filter((item) => typeof item.link === "string" && isElPasoUrl(item.link))
+    .slice(0, MAX_RESULTS)
+    .map((item, i) => {
+      const url = item.link as string;
+      const html = item.content || item.description || "";
+      const thumbRaw =
+        (typeof item.thumbnail === "string" && item.thumbnail) ||
+        firstImageFromContent(html);
+      return toNewsLink({
+        id: `reddit-${String(item.guid ?? i)}`,
+        headline: String(item.title ?? "Untitled"),
+        url,
+        published: item.pubDate,
+        html,
+        thumbRaw: thumbRaw || undefined,
+      });
+    });
+}
+
+export function loadRedditElPasoSnapshot(): NewsLink[] {
+  const filePath = path.join(process.cwd(), "content", "data", "reddit-elpaso.json");
+  try {
+    const raw = fs.readFileSync(filePath, "utf8");
+    const parsed = JSON.parse(raw) as Partial<RedditElPasoSnapshotBundle>;
+    if (!Array.isArray(parsed.links)) return [];
+    return parsed.links.filter(
+      (link): link is NewsLink =>
+        Boolean(link) &&
+        typeof link.id === "string" &&
+        typeof link.headline === "string" &&
+        typeof link.url === "string",
+    );
+  } catch (err) {
+    console.warn(LOG_PREFIX, "snapshot read failed", err);
+    return [];
+  }
+}
+
+async function fetchFromAtom(): Promise<NewsLink[]> {
   const res = await fetch(SUBMITTED_ATOM, {
     headers: { "User-Agent": USER_AGENT },
     next: { revalidate: NEWS_PAGE_REVALIDATE_SECONDS },
   });
 
   if (!res.ok) {
-    console.warn(LOG_PREFIX, "HTTP", res.status, res.statusText);
     throw new Error(`Reddit Atom HTTP ${res.status}`);
   }
 
   const xml = await res.text();
-
-  let entries: Record<string, unknown>[];
-  try {
-    entries = parseAtomEntries(xml);
-  } catch (err) {
-    console.warn(LOG_PREFIX, "parse error", err);
-    throw err;
+  if (!xml.includes("<feed") && !xml.trimStart().startsWith("<?xml")) {
+    throw new Error("Reddit Atom returned non-XML body");
   }
 
-  return entries
-    .filter(isElPasoEntry)
-    .slice(0, MAX_RESULTS)
-    .map((entry, i): NewsLink => {
-      const url = atomLinkHref(entry);
-      const html = contentHtml(entry);
-      const thumbRaw = thumbnailFromEntry(entry) ?? firstImageFromContent(html);
-      const thumb = applyThumbnailOverride(url, thumbRaw);
-      const video = isVideoPost(html);
+  return newsLinksFromAtomXml(xml);
+}
 
-      return {
-        id: `reddit-${String(entry.id ?? i)}`,
-        headline: String(entry.title ?? "Untitled"),
-        url,
-        outlet: "r/ElPaso",
-        publishedAt: toISODate(
-          typeof entry.published === "string" ? entry.published : undefined,
-        ),
-        summary: htmlToPlain(html, 280),
-        tags: ["reddit", "el-paso"],
-        thumbnailUrl: thumb,
-        mediaHint: video ? "video" : thumb ? "image" : undefined,
-        provenance: "reddit",
-      };
-    });
+async function fetchFromRss2Json(): Promise<NewsLink[]> {
+  const res = await fetch(RSS2JSON_URL, {
+    next: { revalidate: NEWS_PAGE_REVALIDATE_SECONDS },
+  });
+
+  if (!res.ok) {
+    throw new Error(`rss2json HTTP ${res.status}`);
+  }
+
+  const data = (await res.json()) as {
+    status?: string;
+    message?: string;
+    items?: Rss2JsonItem[];
+  };
+
+  if (data.status !== "ok" || !Array.isArray(data.items)) {
+    throw new Error(`rss2json error: ${data.message ?? "invalid response"}`);
+  }
+
+  return newsLinksFromRss2JsonItems(data.items);
+}
+
+/**
+ * Posts by REDDIT_USER filtered to r/ElPaso only.
+ * Cascade: direct Atom → rss2json proxy → checked-in snapshot.
+ * Throws only when every path yields no posts.
+ */
+export async function fetchRedditElPasoPosts(
+  options?: { loadSnapshot?: () => NewsLink[] },
+): Promise<NewsLink[]> {
+  const loadSnapshot = options?.loadSnapshot ?? loadRedditElPasoSnapshot;
+
+  try {
+    const items = await fetchFromAtom();
+    if (items.length > 0) {
+      console.info(LOG_PREFIX, "source", "direct");
+      return items;
+    }
+    console.warn(LOG_PREFIX, "direct returned no r/ElPaso posts");
+  } catch (err) {
+    console.warn(LOG_PREFIX, "direct failed", err);
+  }
+
+  try {
+    const items = await fetchFromRss2Json();
+    if (items.length > 0) {
+      console.info(LOG_PREFIX, "source", "proxy");
+      return items;
+    }
+    console.warn(LOG_PREFIX, "proxy returned no r/ElPaso posts");
+  } catch (err) {
+    console.warn(LOG_PREFIX, "proxy failed", err);
+  }
+
+  const snap = loadSnapshot();
+  if (snap.length > 0) {
+    console.info(LOG_PREFIX, "source", "snapshot");
+    return snap;
+  }
+
+  throw new Error("Reddit posts unavailable from direct, proxy, and snapshot");
 }
