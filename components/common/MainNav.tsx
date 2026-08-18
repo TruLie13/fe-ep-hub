@@ -28,6 +28,33 @@ import ContentFontScaleControl from "@/components/common/ContentFontScaleControl
 const t = enDict;
 const navItems = getMainNavItems(t.nav);
 
+/** Patriotic accent stripe + navy field — readable on the dark nav bar. */
+const electionCtaSx = {
+  fontWeight: 700,
+  color: "#FFFFFF !important",
+  bgcolor: "#002868",
+  position: "relative",
+  overflow: "hidden",
+  boxShadow: "none",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 3,
+    background: "linear-gradient(90deg, #B22234 33%, #FFFFFF 33%, #FFFFFF 66%, #3C3B6E 66%)",
+  },
+  "&:hover": {
+    bgcolor: "#1a3a7a",
+    color: "#FFFFFF !important",
+    boxShadow: "none",
+  },
+  "&:focusVisible": {
+    color: "#FFFFFF !important",
+  },
+} as const;
+
 export default function MainNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -129,6 +156,21 @@ export default function MainNav() {
             </Box>
             <Button
               component={NextLink}
+              href="/election"
+              variant="contained"
+              size="small"
+              aria-label={t.nav.localElection2026Aria}
+              aria-current={pathname === "/election" ? "page" : undefined}
+              sx={{
+                ...electionCtaSx,
+                display: { xs: "none", md: "inline-flex" },
+                flexShrink: 0,
+              }}
+            >
+              {t.nav.localElection2026}
+            </Button>
+            <Button
+              component={NextLink}
               href="/take-action"
               variant="contained"
               size="small"
@@ -182,7 +224,18 @@ export default function MainNav() {
               ))}
             </List>
           </Box>
-          <Box sx={{ p: 2 }}>
+          <Box sx={{ p: 2, display: "flex", flexDirection: "column", gap: 1.25 }}>
+            <Button
+              component={NextLink}
+              href="/election"
+              variant="contained"
+              fullWidth
+              onClick={() => setOpen(false)}
+              aria-label={t.nav.localElection2026Aria}
+              sx={electionCtaSx}
+            >
+              {t.nav.localElection2026}
+            </Button>
             <Button
               component={NextLink}
               href="/take-action"

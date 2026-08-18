@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sourceUrl": "https://www2.elpasotexas.gov/municipal-clerk/CCElectionDocs/elections/election-2026-11-03.php",
+  "sourceRetrievedAt": "2026-08-17",
+  "electionDate": "2026-11-03",
+  "registrationDeadline": "2026-10-05",
+  "earlyVotingStart": "2026-10-19",
+  "earlyVotingEnd": "2026-10-30",
+  "districts": [
+    {
+      "district": 1,
+      "candidates": [
+        {
+          "id": "d1-armijo",
+          "displayName": "Sam Armijo",
+          "dataCenterStance": { "position": "unknown" }
+        },
+        {
+          "id": "d1-kozik",
+          "displayName": "Matthew James Kozik",
+          "campaignWebsiteUrl": "https://votemjk.com/",
+          "instagramUrl": "https://www.instagram.com/votemjk/",
+          "instagramHandle": "@votemjk",
+          "dataCenterStance": { "position": "oppose" }
+        },
+        {
+          "id": "d1-chavez",
+          "displayName": "Alejandra Chávez",
+          "instagramUrl": "https://www.instagram.com/repchavez/",
+          "instagramHandle": "@repchavez",
+          "dataCenterStance": { "position": "support" }
+        },
+        {
+          "id": "d1-garcia",
+          "displayName": "Daniela Garcia",
+          "dataCenterStance": { "position": "support" }
+        }
+      ]
+    },
+    {
+      "district": 5,
+      "candidates": [
+        {
+          "id": "d5-nino",
+          "displayName": "Ivan Niño",
+          "instagramUrl": "https://www.instagram.com/cityrepivannino/",
+          "instagramHandle": "@cityrepivannino",
+          "dataCenterStance": { "position": "support" }
+        },
+        {
+          "id": "d5-horn",
+          "displayName": "Jacqueline P. Horn",
+          "dataCenterStance": { "position": "unknown" }
+        },
+        {
+          "id": "d5-genera",
+          "displayName": "Richard Genera",
+          "dataCenterStance": { "position": "oppose" }
+        }
+      ]
+    },
+    {
+      "district": 6,
+      "candidates": [
+        {
+          "id": "d6-fernandez",
+          "displayName": "Pedro Fernandez Jr.",
+          "campaignWebsiteUrl": "https://www.pedroforelpaso.com/",
+          "instagramUrl": "https://www.instagram.com/pedritofernandez2026/",
+          "instagramHandle": "@pedritofernandez2026",
+          "dataCenterStance": { "position": "oppose" }
+        },
+        {
+          "id": "d6-fierro",
+          "displayName": "Art Fierro",
+          "instagramUrl": "https://www.instagram.com/repartfierro/",
+          "instagramHandle": "@repartfierro",
+          "dataCenterStance": { "position": "support" }
+        },
+        {
+          "id": "d6-moreno",
+          "displayName": "Jesus Moreno",
+          "instagramUrl": "https://www.instagram.com/jessetexas915",
+          "instagramHandle": "@jessetexas915",
+          "dataCenterStance": { "position": "oppose" }
+        },
+        {
+          "id": "d6-contreras-siller",
+          "displayName": "Claudia Contreras Siller",
+          "instagramUrl": "https://www.instagram.com/claudia_contreras_siller_dist6/",
+          "instagramHandle": "@claudia_contreras_siller_dist6",
+          "dataCenterStance": { "position": "oppose" }
+        },
+        {
+          "id": "d6-alva",
+          "displayName": "Hector Alva",
+          "dataCenterStance": { "position": "unknown" }
+        }
+      ]
+    },
+    {
+      "district": 8,
+      "candidates": [
+        {
+          "id": "d8-alluin",
+          "displayName": "Arturo R. Alluin",
+          "dataCenterStance": { "position": "unknown" }
+        },
+        {
+          "id": "d8-guzman",
+          "displayName": "Matthew Guzman",
+          "dataCenterStance": { "position": "unknown" }
+        },
+        {
+          "id": "d8-ochoa-todd",
+          "displayName": "Laura Ochoa-Todd",
+          "dataCenterStance": { "position": "unknown" }
+        },
+        {
+          "id": "d8-canales",
+          "displayName": "Chris Canales",
+          "instagramUrl": "https://www.instagram.com/cityrepchriscanales/",
+          "instagramHandle": "@cityrepchriscanales",
+          "dataCenterStance": { "position": "oppose" }
+        },
+        {
+          "id": "d8-gonzalez",
+          "displayName": "Johnny J. Gonzalez",
+          "dataCenterStance": { "position": "unknown" }
+        }
+      ]
+    }
+  ]
+}

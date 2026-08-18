@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { Box, Container, Stack } from "@mui/material";
 import { CONTENT_FONT_SCALE_INIT_SCRIPT_INNER } from "@/lib/theme/contentFontScaleInitScriptInner";
@@ -44,8 +45,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="dark" data-mui-color-scheme="dark">
       <body className={`${plusJakarta.variable} ${outfit.variable}`}>
-        <script id="mui-color-scheme-init" dangerouslySetInnerHTML={{ __html: MUI_COLOR_SCHEME_INIT_SCRIPT_INNER }} />
-        <script id="content-font-scale-init" dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }} />
+        <Script
+          id="mui-color-scheme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: MUI_COLOR_SCHEME_INIT_SCRIPT_INNER }}
+        />
+        <Script
+          id="content-font-scale-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: CONTENT_FONT_SCALE_INIT_SCRIPT_INNER }}
+        />
         <GoogleAnalyticsScripts />
         <GoogleAnalyticsPageView />
         <ThemeRegistry>

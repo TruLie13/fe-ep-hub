@@ -159,8 +159,28 @@ export type StancePosition =
   | "support"
   | "oppose"
   | "neutral"
-  | "unknown"
-  | "mixed";
+  | "unknown";
+
+export type CouncilVoteDisposition = "for" | "against";
+
+/** Council agenda action tied to data center policy (shared metadata). */
+export interface CouncilVoteEvent {
+  id: string;
+  meetingDate: ISODateString;
+  /** Short label shown on official cards, e.g. "Data Center Contract". */
+  shortLabel: string;
+  /** Full agenda item text; shown in a tooltip on the vote row. */
+  agendaText: string;
+  agendaItemNumbers?: string[];
+}
+
+/** One official's recorded vote on a council agenda action. */
+export interface CouncilVoteRecord {
+  id: string;
+  voteEventId: string;
+  officialId: string;
+  disposition: CouncilVoteDisposition;
+}
 
 export type StanceSubject =
   | { type: "official"; officialId: string }
@@ -253,6 +273,10 @@ export interface LocalGovernmentBundleJson {
   candidates: Candidate[];
   city: CityGovernment;
   county: CountyGovernment;
+  /** Data-center-related council votes (agenda metadata). */
+  councilVoteEvents?: CouncilVoteEvent[];
+  /** Per-official vote rows; a row renders only when both event and record exist. */
+  councilVotes?: CouncilVoteRecord[];
   stances: Stance[];
 }
 
@@ -260,7 +284,12 @@ export interface LocalGovernmentBundleJson {
  * Normalized bundle returned by `loadLocalGovernmentBundle()`:
  * includes flattened `officials` and merged `candidates` (bundle + per-seat `running`).
  */
-export interface LocalGovernmentBundle extends LocalGovernmentBundleJson {
+export interface LocalGovernmentBundle extends Omit<
+  LocalGovernmentBundleJson,
+  "councilVoteEvents" | "councilVotes"
+> {
+  councilVoteEvents: CouncilVoteEvent[];
+  councilVotes: CouncilVoteRecord[];
   officials: Official[];
 }
 
@@ -384,6 +413,40 @@ export interface DataCentersImpactsBundle {
   noiseTable?: DataCentersNoiseTable;
   /** Omit when the page should not show the economic comparison table. */
   economicTable?: DataCentersEconomicTable;
+}
+
+// ---------------------------------------------------------------------------
+// Local election 2026 (`/election`)
+// ---------------------------------------------------------------------------
+
+export interface LocalElection2026DataCenterStance {
+  position: StancePosition;
+  summary?: string;
+}
+
+export interface LocalElection2026Candidate {
+  id: string;
+  displayName: string;
+  campaignWebsiteUrl?: string;
+  instagramUrl?: string;
+  instagramHandle?: string;
+  dataCenterStance: LocalElection2026DataCenterStance;
+}
+
+export interface LocalElection2026District {
+  district: number;
+  candidates: LocalElection2026Candidate[];
+}
+
+export interface LocalElection2026Bundle {
+  schemaVersion: 1;
+  sourceUrl: string;
+  sourceRetrievedAt?: ISODateString;
+  electionDate: ISODateString;
+  registrationDeadline: ISODateString;
+  earlyVotingStart: ISODateString;
+  earlyVotingEnd: ISODateString;
+  districts: LocalElection2026District[];
 }
 
 /** Facts may be loaded per-file; optional index for search / sitemap. */

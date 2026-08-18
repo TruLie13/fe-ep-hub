@@ -17,6 +17,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
 import JsonLd from "@/components/seo/JsonLd";
 import CollapsibleGovernmentSection from "@/components/local-government/CollapsibleGovernmentSection";
+import CouncilVoteRow from "@/components/local-government/CouncilVoteRow";
 import SectionShell from "@/components/common/SectionShell";
 import type { Candidate, Official, Stance, StancePosition } from "@/content/schema";
 import { dict } from "@/lib/i18n/dictionary";
@@ -31,8 +32,14 @@ import {
   countySeatLabel,
   isReelectionBadgeYear,
   nextElectionDateFromTermEnd,
+  normalizePersonName,
   officialStances,
 } from "@/lib/local-government/helpers";
+import {
+  clarifyingStanceSummary,
+  meaningfulStanceSources,
+  officialCouncilVotes,
+} from "@/lib/local-government/council-votes";
 import type { CitySeatKey, CountySeatKey } from "@/lib/local-government/seat-keys";
 import {
   fetchCityLegistarOfficeData,
@@ -58,14 +65,23 @@ function stanceColor(position: StancePosition): "default" | "primary" | "seconda
       return "error";
     case "oppose":
       return "success";
-    case "mixed":
-      return "warning";
     case "neutral":
       return "default";
     default:
       return "default";
   }
 }
+
+const stanceChipSx = {
+  "& .MuiChip-label": {
+    display: "inline-flex",
+    alignItems: "center",
+    lineHeight: 1,
+    py: 0,
+    // Optical vertical centering: MUI small chips sit the glyph a hair low.
+    transform: "translateY(-1px)",
+  },
+} as const;
 
 type CardLabels = {
   onBallotThisYear: string;
@@ -75,11 +91,26 @@ type CardLabels = {
   officialPage: string;
   ballotpedia: string;
   publicStanceNotes: string;
+  stanceSupports: string;
+  stanceOpposes: string;
+  voteFor: string;
+  voteAgainst: string;
   noStances: string;
   declaredForSeat: string;
   campaignSite: string;
   term: string;
 };
+
+function stanceLabel(position: StancePosition, labels: CardLabels): string {
+  switch (position) {
+    case "support":
+      return labels.stanceSupports;
+    case "oppose":
+      return labels.stanceOpposes;
+    default:
+      return position;
+  }
+}
 
 function formatTermDate(iso: string): string {
   if (!iso) return "";
@@ -87,23 +118,26 @@ function formatTermDate(iso: string): string {
   return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }
 
-function normalizePersonName(name: string): string {
-  return name
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/["']/g, "")
-    .replace(/\b(dr\.?|jr\.?|sr\.?|iii?|iv)\b/gi, "")
-    .replace(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
-}
-
 function hasNameChanged(officialName: string, legistarName?: string): boolean {
   if (!legistarName) return false;
   const a = normalizePersonName(officialName);
   const b = normalizePersonName(legistarName);
   if (!a || !b) return false;
-  return a !== b;
+  if (a === b || a.includes(b) || b.includes(a)) return false;
+
+  const aParts = a.split(" ");
+  const bParts = b.split(" ");
+  const aLast = aParts.at(-1) ?? "";
+  const bLast = bParts.at(-1) ?? "";
+  const aFirst = aParts[0] ?? "";
+  const bFirst = bParts[0] ?? "";
+  if (!aLast || !bLast || aLast !== bLast) return true;
+
+  const shorter = aFirst.length <= bFirst.length ? aFirst : bFirst;
+  const longer = aFirst.length <= bFirst.length ? bFirst : aFirst;
+  if (shorter.length >= 3 && longer.startsWith(shorter)) return false;
+
+  return aFirst !== bFirst;
 }
 
 function FindRepsLink({
@@ -159,6 +193,7 @@ function OfficialCard({
   sourceById,
   instagramUrl,
   instagramHandle,
+  councilVotes,
 }: {
   official: Official;
   stances: Stance[];
@@ -167,6 +202,7 @@ function OfficialCard({
   sourceById: Map<string, Source>;
   instagramUrl: string;
   instagramHandle: string;
+  councilVotes: ReturnType<typeof officialCouncilVotes>;
 }) {
   const displayName = legistarMember?.fullName ?? official.displayName;
   const showReelectionBadge = isReelectionBadgeYear(
@@ -188,7 +224,7 @@ function OfficialCard({
   const [noStancesBefore, noStancesAfter] = labels.noStances.split("{instagramLink}");
 
   return (
-    <Card variant="outlined" sx={{ height: "100%" }}>
+    <Card variant="outlined" id={official.id} sx={{ height: "100%", scrollMarginTop: { xs: 88, md: 112 } }}>
       <CardContent>
         <Stack spacing={1.5}>
           <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap alignItems="center">
@@ -270,11 +306,12 @@ function OfficialCard({
               <Chip
                 size="small"
                 color={stanceColor(knownStances[0].position)}
-                label={knownStances[0].position}
+                label={stanceLabel(knownStances[0].position, labels)}
+                sx={stanceChipSx}
               />
             ) : null}
           </Stack>
-          {knownStances.length === 0 ? (
+          {knownStances.length === 0 && councilVotes.length === 0 ? (
             <Typography variant="body2" color="text.secondary">
               {noStancesBefore}
               <Link
@@ -289,29 +326,44 @@ function OfficialCard({
               </Link>
               {noStancesAfter}
             </Typography>
-          ) : (
-            knownStances.map((stance) => (
-              <Stack key={stance.id} spacing={0.75}>
-                {knownStances.length > 1 ? (
-                  <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
-                    <Chip
-                      size="small"
-                      color={stanceColor(stance.position)}
-                      label={stance.position}
-                    />
-                  </Stack>
-                ) : null}
-                <Typography variant="body2" color="text.secondary">
-                  {stance.summary}
-                </Typography>
-                {stance.sourceIds?.length ? (
-                  <Typography variant="caption" color="text.secondary">
-                    Source:{" "}
-                    {stance.sourceIds
-                      .map((id) => sourceById.get(id))
-                      .filter((source): source is Source => Boolean(source))
-                      .slice(0, 1)
-                      .map((source) => (
+          ) : knownStances.length > 0 ? (
+            knownStances.map((stance) => {
+              const summary = clarifyingStanceSummary(stance);
+              const sources = meaningfulStanceSources(stance.sourceIds, sourceById);
+
+              return (
+                <Stack key={stance.id} spacing={0.75}>
+                  {knownStances.length > 1 ? (
+                    <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
+                      <Chip
+                        size="small"
+                        color={stanceColor(stance.position)}
+                        label={stanceLabel(stance.position, labels)}
+                        sx={stanceChipSx}
+                      />
+                    </Stack>
+                  ) : null}
+                  {councilVotes.length > 0 ? (
+                    <Stack spacing={1}>
+                      {councilVotes.map((vote) => (
+                        <CouncilVoteRow
+                          key={vote.event.id}
+                          vote={vote}
+                          voteForLabel={labels.voteFor}
+                          voteAgainstLabel={labels.voteAgainst}
+                        />
+                      ))}
+                    </Stack>
+                  ) : null}
+                  {summary ? (
+                    <Typography variant="body2" color="text.secondary">
+                      {summary}
+                    </Typography>
+                  ) : null}
+                  {sources.length > 0 ? (
+                    <Typography variant="caption" color="text.secondary">
+                      Source:{" "}
+                      {sources.slice(0, 1).map((source) => (
                         <Link
                           key={source.id}
                           href={source.url}
@@ -324,10 +376,22 @@ function OfficialCard({
                           <OpenInNewRoundedIcon sx={{ fontSize: 12 }} />
                         </Link>
                       ))}
-                  </Typography>
-                ) : null}
-              </Stack>
-            ))
+                    </Typography>
+                  ) : null}
+                </Stack>
+              );
+            })
+          ) : (
+            <Stack spacing={1}>
+              {councilVotes.map((vote) => (
+                <CouncilVoteRow
+                  key={vote.event.id}
+                  vote={vote}
+                  voteForLabel={labels.voteFor}
+                  voteAgainstLabel={labels.voteAgainst}
+                />
+              ))}
+            </Stack>
           )}
         </Stack>
       </CardContent>
@@ -444,6 +508,10 @@ export default async function LocalGovernmentPage() {
     officialPage: t.common.officialPage,
     ballotpedia: t.common.ballotpedia,
     publicStanceNotes: t.localGov.publicStanceNotes,
+    stanceSupports: t.localGov.stanceSupports,
+    stanceOpposes: t.localGov.stanceOpposes,
+    voteFor: t.localGov.voteFor,
+    voteAgainst: t.localGov.voteAgainst,
     noStances: t.localGov.noStances,
     declaredForSeat: t.localGov.declaredForSeat,
     campaignSite: t.common.campaignSite,
@@ -538,6 +606,7 @@ export default async function LocalGovernmentPage() {
                         sourceById={sourceById}
                         instagramUrl={instagramUrl}
                         instagramHandle={instagramHandle}
+                        councilVotes={officialCouncilVotes(bundle, official.id)}
                       />
                       <SeatRunningBlock candidates={seat.running} bundle={bundle} labels={cardLabels} />
                     </Grid>
@@ -546,7 +615,10 @@ export default async function LocalGovernmentPage() {
               );
             })()}
 
-            <Box>
+            <Box
+              id="city-council"
+              sx={{ scrollMarginTop: { xs: 88, md: 112 } }}
+            >
               <Typography variant="overline" color="text.secondary" sx={{ letterSpacing: "0.08em" }}>
                 {t.localGov.cityCouncil}
               </Typography>
@@ -580,6 +652,7 @@ export default async function LocalGovernmentPage() {
                         sourceById={sourceById}
                         instagramUrl={instagramUrl}
                         instagramHandle={instagramHandle}
+                        councilVotes={officialCouncilVotes(bundle, official.id)}
                       />
                       <SeatRunningBlock candidates={seat.running} bundle={bundle} labels={cardLabels} />
                     </Grid>
@@ -617,6 +690,7 @@ export default async function LocalGovernmentPage() {
                         sourceById={sourceById}
                         instagramUrl={instagramUrl}
                         instagramHandle={instagramHandle}
+                        councilVotes={officialCouncilVotes(bundle, official.id)}
                       />
                       <SeatRunningBlock candidates={seat.running} bundle={bundle} labels={cardLabels} />
                     </Grid>
@@ -657,6 +731,7 @@ export default async function LocalGovernmentPage() {
                         sourceById={sourceById}
                         instagramUrl={instagramUrl}
                         instagramHandle={instagramHandle}
+                        councilVotes={officialCouncilVotes(bundle, official.id)}
                       />
                       <SeatRunningBlock candidates={seat.running} bundle={bundle} labels={cardLabels} />
                     </Grid>

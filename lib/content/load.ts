@@ -3,6 +3,7 @@ import path from "node:path";
 
 import type {
   DataCentersImpactsBundle,
+  LocalElection2026Bundle,
   LocalGovernmentBundle,
   NewsBundle,
   Source,
@@ -41,6 +42,12 @@ export function loadLocalGovernmentBundle(): LocalGovernmentBundle {
   const filePath = path.join(contentRoot, "data", "local-government.json");
   const raw = fs.readFileSync(filePath, "utf8");
   return normalizeLocalGovernment(JSON.parse(raw) as unknown);
+}
+
+export function loadLocalElection2026Bundle(): LocalElection2026Bundle {
+  const filePath = path.join(contentRoot, "data", "local-election-2026.json");
+  const raw = fs.readFileSync(filePath, "utf8");
+  return JSON.parse(raw) as LocalElection2026Bundle;
 }
 
 export function sourcesById(bundle: SourcesBundle): Map<string, Source> {

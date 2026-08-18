@@ -36,6 +36,8 @@ export function normalizeLocalGovernment(raw: unknown): LocalGovernmentBundle {
   const { officials, running } = collectFromSeats(json);
   return {
     ...json,
+    councilVoteEvents: json.councilVoteEvents ?? [],
+    councilVotes: json.councilVotes ?? [],
     officials,
     candidates: [...(json.candidates ?? []), ...running],
   };

@@ -584,6 +584,16 @@
       "provenance": "repo"
     },
     {
+      "id": "ktsm-mayor-johnson-defends-meta-2026",
+      "kind": "article",
+      "title": "El Paso mayor defends city's legal and financial position on Meta project",
+      "url": "https://www.ktsm.com/news/el-paso-mayor-defends-citys-legal-and-financial-position-on-meta-project/",
+      "publisher": "KTSM",
+      "relevanceNote": "Mayor Renard Johnson publicly defends the city's legal and financial position on the Meta data center project.",
+      "citationLabel": "KTSM — Mayor defends Meta project position",
+      "provenance": "repo"
+    },
+    {
       "id": "meta-water-faq-local-anchor",
       "kind": "gov_doc",
       "title": "Data Center page — Water FAQ anchor",

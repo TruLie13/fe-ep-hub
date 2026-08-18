@@ -36,6 +36,12 @@ export const appTheme = extendTheme({
           primary: tokens.dark.textPrimary,
           secondary: tokens.dark.textSecondary,
         },
+        error: {
+          main: "#F87171",
+          light: "#FCA5A5",
+          dark: "#B91C1C",
+          contrastText: tokens.dark.accentContrast,
+        },
         warning: {
           main: tokens.dark.warning,
           light: "#FDBA74",

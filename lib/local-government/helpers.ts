@@ -103,6 +103,46 @@ export function officialStances(bundle: LocalGovernmentBundle, officialId: strin
   );
 }
 
+export function normalizePersonName(name: string): string {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/["']/g, "")
+    .replace(/\b(dr\.?|jr\.?|sr\.?|iii?|iv)\b/gi, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function namesLikelyMatch(a: string, b: string): boolean {
+  const left = normalizePersonName(a);
+  const right = normalizePersonName(b);
+  if (!left || !right) return false;
+  if (left === right || left.includes(right) || right.includes(left)) return true;
+
+  const leftParts = left.split(" ");
+  const rightParts = right.split(" ");
+  const leftLast = leftParts.at(-1) ?? "";
+  const rightLast = rightParts.at(-1) ?? "";
+  const leftFirst = leftParts[0] ?? "";
+  const rightFirst = rightParts[0] ?? "";
+  if (!leftLast || !rightLast || leftLast !== rightLast) return false;
+  if (!leftFirst || !rightFirst) return false;
+  return leftFirst === rightFirst || leftFirst.startsWith(rightFirst) || rightFirst.startsWith(leftFirst);
+}
+
+export function isIncumbentDistrictCandidate(
+  bundle: LocalGovernmentBundle,
+  district: number,
+  displayName: string,
+): boolean {
+  const key = `district${district}` as CitySeatKey;
+  if (!(CITY_SEAT_KEYS as readonly string[]).includes(key)) return false;
+  const sitting = bundle.city[key].sitting;
+  if (!sitting) return false;
+  return namesLikelyMatch(displayName, sitting.displayName);
+}
+
 export function candidateStances(bundle: LocalGovernmentBundle, candidateId: string): Stance[] {
   return bundle.stances.filter(
     (s) => s.subject.type === "candidate" && s.subject.candidateId === candidateId

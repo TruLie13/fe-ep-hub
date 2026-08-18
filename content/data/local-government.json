@@ -335,19 +335,104 @@
       "running": []
     }
   },
+  "councilVoteEvents": [
+    {
+      "id": "vote-2023-12-05-data-center-contract",
+      "meetingDate": "2023-12-05",
+      "agendaItemNumbers": ["30", "31", "32"],
+      "shortLabel": "Data Center Contract",
+      "agendaText": "Data Center Contract (agenda items 30, 31, and 32)."
+    },
+    {
+      "id": "vote-2026-05-26-no-hyperscale-incentives",
+      "meetingDate": "2026-05-26",
+      "agendaItemNumbers": ["22"],
+      "shortLabel": "Prevent incentives for future data centers",
+      "agendaText": "Discussion and action to adopt as a general policy direction of the City of El Paso that future development of hyperscale data centers should not be actively recruited, pursued, or incentivized due to their misalignment with the City's long-term sustainability and infrastructure resilience goals; that hyperscale data centers shall not be considered for tax abatements, rebates, permit fee waivers, public financing assistance, economic development grants, or similar economic development tools; and that the policy directions effectuated by this action remain in effect until and unless reversed by the City Council. Further, directing the City Manager to continue the ongoing process for the development of a future-focused Data Center Policy Framework for consideration by the City Council."
+    },
+    {
+      "id": "vote-2026-06-09-terminate-meta-agreement",
+      "meetingDate": "2026-06-09",
+      "agendaItemNumbers": ["37"],
+      "shortLabel": "Negotiate or potentially cancel the contract",
+      "agendaText": "Discussion and action to direct the City Manager and City Attorney to initiate negotiations to terminate the Chapter 380 Economic Development Program Agreement and any related incentive agreements with Wurldwide LLC and Meta Platforms, Inc., in light of significant public concern regarding utility affordability, water resources, environmental impacts, infrastructure burdens, transparency concerns, questions regarding contractual enforceability and governmental immunity, and the adequacy of projected public benefits associated with the project."
+    }
+  ],
+  "councilVotes": [
+    {
+      "id": "cv-fierro-2023-12-05",
+      "voteEventId": "vote-2023-12-05-data-center-contract",
+      "officialId": "city-council-d6",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-canales-2023-12-05",
+      "voteEventId": "vote-2023-12-05-data-center-contract",
+      "officialId": "city-council-d8",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d1-2026-06-09",
+      "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
+      "officialId": "city-council-d1",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d2-2026-06-09",
+      "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
+      "officialId": "city-council-d2",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d3-2026-06-09",
+      "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
+      "officialId": "city-council-d3",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d4-2026-06-09",
+      "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
+      "officialId": "city-council-d4",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d5-2026-06-09",
+      "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
+      "officialId": "city-council-d5",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d6-2026-06-09",
+      "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
+      "officialId": "city-council-d6",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d7-2026-06-09",
+      "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
+      "officialId": "city-council-d7",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d8-2026-06-09",
+      "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
+      "officialId": "city-council-d8",
+      "disposition": "for"
+    }
+  ],
   "stances": [
     {
       "id": "stance-city-mayor-renard-johnson-dc",
       "topicKey": "data-center-efficiency",
       "topicLabel": "Data center siting & efficiency",
-      "position": "unknown",
-      "summary": "Add a verified quote, vote, or public statement from the mayor’s office once you have a primary source.",
+      "position": "support",
+      "summary": "Defended the city's legal and financial position on the Meta data center project. Encouraged City Council to vote against finding options to renegotiate the contract with Meta.",
       "subject": {
         "type": "official",
         "officialId": "city-mayor-renard-johnson"
       },
       "sourceIds": [
-        "el-paso-city-gov"
+        "ktsm-mayor-johnson-defends-meta-2026"
       ],
       "provenance": "repo"
     },
@@ -355,105 +440,91 @@
       "id": "stance-city-council-d1-dc",
       "topicKey": "data-center-efficiency",
       "topicLabel": "Data center siting & efficiency",
-      "position": "unknown",
-      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "position": "support",
+      "summary": "Supports data center development in El Paso.",
       "subject": {
         "type": "official",
         "officialId": "city-council-d1"
       },
-      "sourceIds": [
-        "el-paso-city-gov"
-      ],
+      "sourceIds": [],
       "provenance": "repo"
     },
     {
       "id": "stance-city-council-d2-dc",
       "topicKey": "data-center-efficiency",
       "topicLabel": "Data center siting & efficiency",
-      "position": "unknown",
-      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "position": "oppose",
+      "summary": "Opposes data center development in El Paso.",
       "subject": {
         "type": "official",
         "officialId": "city-council-d2"
       },
-      "sourceIds": [
-        "el-paso-city-gov"
-      ],
+      "sourceIds": [],
       "provenance": "repo"
     },
     {
       "id": "stance-city-council-d3-dc",
       "topicKey": "data-center-efficiency",
       "topicLabel": "Data center siting & efficiency",
-      "position": "unknown",
-      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "position": "support",
+      "summary": "Supports data center development in El Paso.",
       "subject": {
         "type": "official",
         "officialId": "city-council-d3"
       },
-      "sourceIds": [
-        "el-paso-city-gov"
-      ],
+      "sourceIds": [],
       "provenance": "repo"
     },
     {
       "id": "stance-city-council-d4-dc",
       "topicKey": "data-center-efficiency",
       "topicLabel": "Data center siting & efficiency",
-      "position": "unknown",
-      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "position": "support",
+      "summary": "Supports data center development in El Paso.",
       "subject": {
         "type": "official",
         "officialId": "city-council-d4"
       },
-      "sourceIds": [
-        "el-paso-city-gov"
-      ],
+      "sourceIds": [],
       "provenance": "repo"
     },
     {
       "id": "stance-city-council-d5-dc",
       "topicKey": "data-center-efficiency",
       "topicLabel": "Data center siting & efficiency",
-      "position": "unknown",
-      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "position": "support",
+      "summary": "Supports data center development in El Paso.",
       "subject": {
         "type": "official",
         "officialId": "city-council-d5"
       },
-      "sourceIds": [
-        "el-paso-city-gov"
-      ],
+      "sourceIds": [],
       "provenance": "repo"
     },
     {
       "id": "stance-city-council-d6-dc",
       "topicKey": "data-center-efficiency",
       "topicLabel": "Data center siting & efficiency",
-      "position": "mixed",
-      "summary": "Fierro was part of the council who approved the 380 Agreement on December 2023. He stands by the decision and believes there is a positive econmic valuue.  However, he has concerns over future additional data centers in the region affecting our limited resources.",
+      "position": "support",
+      "summary": "Fierro was part of the council who approved the 380 Agreement on December 2023. He stands by the decision and believes there is positive economic value from data centers.",
       "subject": {
         "type": "official",
         "officialId": "city-council-d6"
       },
-      "sourceIds": [
-        "insta-art-fierro-380-and-future-concerns"
-      ],
+      "sourceIds": [],
       "provenance": "repo"
     },
     {
       "id": "stance-city-council-d7-dc",
       "topicKey": "data-center-efficiency",
       "topicLabel": "Data center siting & efficiency",
-      "position": "unknown",
-      "summary": "No verified public position captured yet — ask the representative for a written stance and link the source.",
+      "position": "oppose",
+      "summary": "Opposes data center development in El Paso.",
       "subject": {
         "type": "official",
         "officialId": "city-council-d7"
       },
-      "sourceIds": [
-        "el-paso-city-gov"
-      ],
+      "sourceIds": [],
       "provenance": "repo"
     },
     {

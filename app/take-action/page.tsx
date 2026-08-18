@@ -1,10 +1,7 @@
 import AccountBalanceRoundedIcon from "@mui/icons-material/AccountBalanceRounded";
 import FactCheckRoundedIcon from "@mui/icons-material/FactCheckRounded";
 import HowToVoteRoundedIcon from "@mui/icons-material/HowToVoteRounded";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkRoundedIcon from "@mui/icons-material/LinkRounded";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
-import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
 import SupervisedUserCircleRoundedIcon from "@mui/icons-material/SupervisedUserCircleRounded";
 import {
@@ -21,6 +18,11 @@ import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { Metadata } from "next";
 import NextLink from "next/link";
 import type { ComponentType, ReactNode } from "react";
+import OutboundProfileLink, {
+  linktreeDisplay,
+  websiteHostDisplay,
+  type OutboundProfileLinkItem,
+} from "@/components/common/OutboundProfileLink";
 import PageHero from "@/components/common/PageHero";
 import JsonLd from "@/components/seo/JsonLd";
 import SectionShell from "@/components/common/SectionShell";
@@ -36,37 +38,6 @@ const inlineNavLinkSx = {
 } as const;
 
 const actionCardSx = { borderRadius: 1, height: "100%" } as const;
-
-const volunteerCardLinkSx = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: 0.5,
-  fontWeight: 600,
-  verticalAlign: "baseline",
-  textUnderlineOffset: "0.2em",
-} as const;
-
-/** Host + TLD only (no path), strips leading www. */
-function volunteerWebsiteHostDisplay(href: string): string {
-  try {
-    const u = new URL(href);
-    return u.hostname.replace(/^www\./i, "");
-  } catch {
-    return href;
-  }
-}
-
-/** Host + path for short links (e.g. linktr.ee/handle). */
-function volunteerLinktreeDisplay(href: string): string {
-  try {
-    const u = new URL(href);
-    const host = u.hostname.replace(/^www\./i, "");
-    const path = u.pathname.replace(/\/$/, "");
-    return path ? `${host}${path}` : host;
-  } catch {
-    return href;
-  }
-}
 
 function ExternalTakeActionLink({
   href,
@@ -99,48 +70,6 @@ function ExternalTakeActionLink({
   );
 }
 
-type VolunteerHandsLink =
-  | { kind: "website"; href: string; ariaLabel: string }
-  | { kind: "linktree"; href: string; ariaLabel: string }
-  | { kind: "instagram"; href: string; handle: string; ariaLabel: string };
-
-function VolunteerHandsOutboundLink({ item }: { item: VolunteerHandsLink }) {
-  if (item.kind === "instagram") {
-    return (
-      <Link
-        href={item.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        color="primary"
-        underline="hover"
-        aria-label={item.ariaLabel}
-        sx={volunteerCardLinkSx}
-      >
-        <InstagramIcon sx={{ fontSize: "1.125rem", flexShrink: 0 }} aria-hidden />
-        {item.handle}
-      </Link>
-    );
-  }
-
-  const label = item.kind === "website" ? volunteerWebsiteHostDisplay(item.href) : volunteerLinktreeDisplay(item.href);
-  const Icon = item.kind === "website" ? PublicRoundedIcon : LinkRoundedIcon;
-
-  return (
-    <Link
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      color="primary"
-      underline="hover"
-      aria-label={item.ariaLabel}
-      sx={volunteerCardLinkSx}
-    >
-      <Icon sx={{ fontSize: "1.125rem", flexShrink: 0 }} aria-hidden />
-      {label}
-    </Link>
-  );
-}
-
 function VolunteerHandsCard({
   title,
   description,
@@ -148,7 +77,7 @@ function VolunteerHandsCard({
 }: {
   title: string;
   description: string;
-  links: VolunteerHandsLink[];
+  links: OutboundProfileLinkItem[];
 }) {
   return (
     <Card variant="outlined" sx={actionCardSx}>
@@ -162,7 +91,7 @@ function VolunteerHandsCard({
           </Typography>
           <Stack direction="row" component="nav" aria-label={`${title} links`} flexWrap="wrap" useFlexGap spacing={1.5}>
             {links.map((item) => (
-              <VolunteerHandsOutboundLink key={`${item.kind}-${item.href}`} item={item} />
+              <OutboundProfileLink key={`${item.kind}-${item.href}`} item={item} />
             ))}
           </Stack>
         </Stack>
@@ -353,7 +282,7 @@ export default function TakeActionPage() {
                   {
                     kind: "website" as const,
                     href: t.volunteerTrashMobWebsiteUrl,
-                    ariaLabel: `${t.volunteerTrashMobName} ${volunteerWebsiteHostDisplay(t.volunteerTrashMobWebsiteUrl)} ${t.handsOnOpensNew}`,
+                    ariaLabel: `${t.volunteerTrashMobName} ${websiteHostDisplay(t.volunteerTrashMobWebsiteUrl)} ${t.handsOnOpensNew}`,
                   },
                   {
                     kind: "instagram" as const,
@@ -372,7 +301,7 @@ export default function TakeActionPage() {
                   {
                     kind: "website" as const,
                     href: t.volunteerDesertRescueWebsiteUrl,
-                    ariaLabel: `${t.volunteerDesertRescueName} ${volunteerWebsiteHostDisplay(t.volunteerDesertRescueWebsiteUrl)} ${t.handsOnOpensNew}`,
+                    ariaLabel: `${t.volunteerDesertRescueName} ${websiteHostDisplay(t.volunteerDesertRescueWebsiteUrl)} ${t.handsOnOpensNew}`,
                   },
                   {
                     kind: "instagram" as const,
@@ -391,7 +320,7 @@ export default function TakeActionPage() {
                   {
                     kind: "linktree" as const,
                     href: t.volunteerSunCityLinktreeUrl,
-                    ariaLabel: `${t.volunteerSunCityName} ${volunteerLinktreeDisplay(t.volunteerSunCityLinktreeUrl)} ${t.handsOnOpensNew}`,
+                    ariaLabel: `${t.volunteerSunCityName} ${linktreeDisplay(t.volunteerSunCityLinktreeUrl)} ${t.handsOnOpensNew}`,
                   },
                   {
                     kind: "instagram" as const,
@@ -415,7 +344,7 @@ export default function TakeActionPage() {
                   {
                     kind: "website" as const,
                     href: t.volunteerRescueRunnersWebsiteUrl,
-                    ariaLabel: `${t.volunteerRescueRunnersName} ${volunteerWebsiteHostDisplay(t.volunteerRescueRunnersWebsiteUrl)} ${t.handsOnOpensNew}`,
+                    ariaLabel: `${t.volunteerRescueRunnersName} ${websiteHostDisplay(t.volunteerRescueRunnersWebsiteUrl)} ${t.handsOnOpensNew}`,
                   },
                   {
                     kind: "instagram" as const,

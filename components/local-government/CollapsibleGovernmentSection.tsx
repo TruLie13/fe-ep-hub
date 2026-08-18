@@ -39,6 +39,18 @@ export default function CollapsibleGovernmentSection({
   const [expanded, setExpanded] = useState(defaultExpanded);
 
   useEffect(() => {
+    const hash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    const root = document.getElementById(`gov-section-${id}`);
+    const target = hash ? document.getElementById(hash) : null;
+    const hashInSection = Boolean(root && target && root.contains(target));
+
+    if (hashInSection || hash === id) {
+      queueMicrotask(() => {
+        setExpanded(true);
+      });
+      return;
+    }
+
     try {
       const raw = sessionStorage.getItem(`${STORAGE_PREFIX}${id}`);
       if (raw !== null) {
@@ -66,6 +78,7 @@ export default function CollapsibleGovernmentSection({
 
   return (
     <Accordion
+      id={`gov-section-${id}`}
       expanded={expanded}
       onChange={handleChange}
       disableGutters

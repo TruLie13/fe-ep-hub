@@ -24,6 +24,9 @@ export type {
   Stance,
   StancePosition,
   StanceSubject,
+  CouncilVoteDisposition,
+  CouncilVoteEvent,
+  CouncilVoteRecord,
   FactsIndexBundle,
   DataCentersBulletGroup,
   DataCentersEconomicTable,
@@ -35,4 +38,8 @@ export type {
   DataCentersNoiseTableRow,
   DataCentersSectionIconKey,
   DataCentersStatItem,
+  LocalElection2026Bundle,
+  LocalElection2026Candidate,
+  LocalElection2026DataCenterStance,
+  LocalElection2026District,
 } from "./types";

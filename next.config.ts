@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         destination: "/data-center/:path*",
         permanent: true,
       },
+      {
+        source: "/local-election-2026",
+        destination: "/election",
+        permanent: true,
+      },
     ];
   },
   images: {
