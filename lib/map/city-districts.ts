@@ -73,23 +73,42 @@ export function isInteractiveCityDistrict(
 }
 
 export function districtFillColorExpression(interactiveDistricts?: Iterable<number>): unknown[] {
-  const interactive = interactiveDistricts ? new Set(interactiveDistricts) : null;
-  const expr: unknown[] = ["match", ["get", "DISTRICT"]];
+  const fullColorExpr: unknown[] = ["match", ["get", "DISTRICT"]];
   for (const district of CITY_DISTRICT_NUMBERS) {
-    const onBallot = interactive === null || interactive.has(district);
-    expr.push(district, onBallot ? CITY_DISTRICT_COLORS[district] : CITY_DISTRICT_MUTED_COLORS[district]);
+    fullColorExpr.push(district, CITY_DISTRICT_COLORS[district]);
   }
-  expr.push("#64748B");
-  return expr;
+  fullColorExpr.push("#64748B");
+
+  const interactive = interactiveDistricts ? new Set(interactiveDistricts) : null;
+  if (interactive === null) {
+    return fullColorExpr;
+  }
+
+  const idleColorExpr: unknown[] = ["match", ["get", "DISTRICT"]];
+  for (const district of CITY_DISTRICT_NUMBERS) {
+    const onBallot = interactive.has(district);
+    idleColorExpr.push(
+      district,
+      onBallot ? CITY_DISTRICT_COLORS[district] : CITY_DISTRICT_MUTED_COLORS[district],
+    );
+  }
+  idleColorExpr.push("#64748B");
+
+  return [
+    "case",
+    ["boolean", ["feature-state", "hover"], false],
+    fullColorExpr,
+    idleColorExpr,
+  ];
 }
 
 export function districtFillOpacityExpression(interactiveDistricts?: Iterable<number>): unknown[] {
   const interactive = interactiveDistricts ? new Set(interactiveDistricts) : null;
   const restOpacity = (onBallot: boolean, hovered: boolean): number => {
     if (onBallot) {
-      return hovered ? 0.55 : 0.36;
+      return hovered ? 0.55 : 0.60;
     }
-    return hovered ? 0.28 : 0.16;
+    return hovered ? 0.55 : 0.16;
   };
   const idle: unknown[] = ["match", ["get", "DISTRICT"]];
   const hover: unknown[] = ["match", ["get", "DISTRICT"]];

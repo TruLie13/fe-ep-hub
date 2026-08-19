@@ -11,6 +11,7 @@ import {
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { applyDarkRoadContrast } from "@/lib/map/apply-dark-road-contrast";
+import { registerOpenFreeMapSpriteAliases } from "@/lib/map/openfreemap-sprites";
 import styles from "./MapCanvas.module.css";
 
 /** Served from /public/maplibre via scripts/copy-maplibre-worker.mjs */
@@ -121,6 +122,7 @@ export default function MapCanvas({
       renderWorldCopies: false,
     });
     mapRef.current = map;
+    registerOpenFreeMapSpriteAliases(map);
 
     if (mobileZoomDelta !== 0 && window.matchMedia("(max-width: 899px)").matches) {
       map.setZoom(map.getZoom() + mobileZoomDelta);
@@ -204,8 +206,11 @@ export default function MapCanvas({
       map.resize();
     });
     resizeObserver.observe(container);
+    const onWindowResize = () => map.resize();
+    window.addEventListener("resize", onWindowResize);
 
     return () => {
+      window.removeEventListener("resize", onWindowResize);
       resizeObserver.disconnect();
       map.remove();
       mapRef.current = null;

@@ -664,7 +664,7 @@
     "calendarElectionDayDescription": "Polls are open 7:00 a.m. to 7:00 p.m. Vote at your assigned polling place or an Election Day vote center. epcountyvotes.com",
     "districtEyebrow": "District {district}",
     "districtTitle": "City Representative, District {district}",
-    "districtDescription": "{count} candidate(s) filed for this seat.",
+    "districtDescription": "{count} candidates filed for this seat.",
     "dataCenterStance": "Data centers:",
     "stanceSupports": "Supports",
     "stanceOpposes": "Opposes",

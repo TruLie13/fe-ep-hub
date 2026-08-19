@@ -1,13 +1,12 @@
 import {
   Box,
-  Card,
-  CardContent,
   Container,
   Link,
   Stack,
   Typography,
 } from "@mui/material";
 import type { Metadata } from "next";
+import CollapsibleCard from "@/components/common/CollapsibleCard";
 import PageHero from "@/components/common/PageHero";
 import SectionShell from "@/components/common/SectionShell";
 import CityDistrictsMap from "@/components/map/CityDistrictsMap";
@@ -134,162 +133,124 @@ export default function LocalElection2026Page() {
         title={page.title}
         subtitle={page.subtitle}
         meta={
-          <Typography variant="body1" color="text.secondary" maxWidth="70ch">
+          <Typography variant="caption" color="text.secondary" display="block" maxWidth="70ch">
             {page.sourceNote}
           </Typography>
         }
       />
 
       <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 } }}>
-        <Card
-          variant="outlined"
-          sx={{
-            borderRadius: 1,
-            bgcolor: "background.paper",
-            mb: { xs: 5, md: 7 },
-          }}
-        >
-          <CardContent sx={{ p: { xs: 2.5, md: 3.5 } }}>
-            <Stack spacing={2.5}>
-              <Stack spacing={1}>
-                <Typography variant="overline" sx={{ fontWeight: 600, letterSpacing: "0.08em", color: "text.secondary" }}>
-                  {page.votingEyebrow}
-                </Typography>
-              </Stack>
-
-              <Stack spacing={1} sx={{ maxWidth: "72ch" }}>
-                <Typography variant="body1" sx={{ fontWeight: 700 }}>
-                  {page.registerHeading}
-                </Typography>
-                <Box
-                  component="ul"
-                  sx={{
-                    m: 0,
-                    pl: 2.5,
-                    "& li": { mb: 0.75 },
-                    "& li:last-child": { mb: 0 },
-                  }}
-                >
-                  <Typography component="li" variant="body1">
-                    <Link
-                      href={page.libraryUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="primary"
-                      fontWeight={600}
-                      sx={{ textUnderlineOffset: "0.2em" }}
-                      aria-label={page.libraryAria}
-                    >
-                      {page.registerLibrary}
-                    </Link>
-                  </Typography>
-                  <Typography component="li" variant="body1">
-                    {page.registerUsps}
-                  </Typography>
-                  <Typography component="li" variant="body1">
-                    <Link
-                      href={page.registerDpsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="primary"
-                      fontWeight={600}
-                      sx={{ textUnderlineOffset: "0.2em" }}
-                      aria-label={page.registerDpsAria}
-                    >
-                      {page.registerDps}
-                    </Link>
-                  </Typography>
-                  <Typography component="li" variant="body1">
-                    <Link
-                      href={page.registerHhscUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="primary"
-                      fontWeight={600}
-                      sx={{ textUnderlineOffset: "0.2em" }}
-                      aria-label={page.registerHhscAria}
-                    >
-                      {page.registerHhsc}
-                    </Link>
-                  </Typography>
-                  <Typography component="li" variant="body1">
-                    <Link
-                      href={takeAction.voterRegistrationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="primary"
-                      fontWeight={600}
-                      sx={{ textUnderlineOffset: "0.2em" }}
-                      aria-label={page.registerByMailAria}
-                    >
-                      {page.registerByMail}
-                    </Link>
-                  </Typography>
-                </Box>
-              </Stack>
-
-              <VotingDates rows={votingDates} addToCalendarLabel={page.addToCalendar} />
-
-              <Typography variant="body1" color="text.secondary" sx={{ maxWidth: "72ch" }}>
+        <CollapsibleCard id="before-you-vote" eyebrow={page.votingEyebrow}>
+          <Stack spacing={1} sx={{ maxWidth: "72ch" }}>
+            <Typography variant="body1" sx={{ fontWeight: 700 }}>
+              {page.registerHeading}
+            </Typography>
+            <Box
+              component="ul"
+              sx={{
+                m: 0,
+                pl: 2.5,
+                "& li": { mb: 0.75 },
+                "& li:last-child": { mb: 0 },
+              }}
+            >
+              <Typography component="li" variant="body1">
                 <Link
-                  href={takeAction.voterDashboardUrl}
+                  href={page.libraryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   color="primary"
                   fontWeight={600}
                   sx={{ textUnderlineOffset: "0.2em" }}
-                  aria-label={page.dashboardAria}
+                  aria-label={page.libraryAria}
                 >
-                  {page.dashboardLink}
+                  {page.registerLibrary}
                 </Link>
-                {page.dashboardAfter}
               </Typography>
-            </Stack>
-          </CardContent>
-        </Card>
+              <Typography component="li" variant="body1">
+                {page.registerUsps}
+              </Typography>
+              <Typography component="li" variant="body1">
+                <Link
+                  href={page.registerDpsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="primary"
+                  fontWeight={600}
+                  sx={{ textUnderlineOffset: "0.2em" }}
+                  aria-label={page.registerDpsAria}
+                >
+                  {page.registerDps}
+                </Link>
+              </Typography>
+              <Typography component="li" variant="body1">
+                <Link
+                  href={page.registerHhscUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="primary"
+                  fontWeight={600}
+                  sx={{ textUnderlineOffset: "0.2em" }}
+                  aria-label={page.registerHhscAria}
+                >
+                  {page.registerHhsc}
+                </Link>
+              </Typography>
+              <Typography component="li" variant="body1">
+                <Link
+                  href={takeAction.voterRegistrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="primary"
+                  fontWeight={600}
+                  sx={{ textUnderlineOffset: "0.2em" }}
+                  aria-label={page.registerByMailAria}
+                >
+                  {page.registerByMail}
+                </Link>
+              </Typography>
+            </Box>
+          </Stack>
 
-        <Card
-          id="district-map"
-          component="section"
-          variant="outlined"
-          sx={{
-            borderRadius: 1,
-            bgcolor: "background.paper",
-            mb: { xs: 5, md: 7 },
-          }}
-        >
-          <CardContent sx={{ p: { xs: 2.5, md: 3.5 } }}>
-            <Stack spacing={2.5}>
-              <Stack spacing={1}>
-                <Typography variant="overline" sx={{ fontWeight: 600, letterSpacing: "0.08em", color: "text.secondary" }}>
-                  {page.mapEyebrow}
-                </Typography>
-                <Typography component="h2" variant="h3">
-                  {page.mapTitle}
-                </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ maxWidth: "72ch" }}>
-                  {page.mapDescription}
-                </Typography>
-              </Stack>
+          <VotingDates rows={votingDates} addToCalendarLabel={page.addToCalendar} />
 
-              <CityDistrictsMap
-                interactiveDistricts={interactiveDistricts}
-                labels={{
-                  ariaLabel: page.mapAriaLabel,
-                  legendAria: page.mapLegendAria,
-                  districtLabel: page.mapDistrictLabel,
-                  districtJumpAria: page.mapDistrictJumpAria,
-                  notOnBallot: page.mapNotOnBallot,
-                  notOnBallotAria: page.mapNotOnBallotAria,
-                  sourceBefore: page.mapSourceBefore,
-                  sourceLink: page.mapSourceLink,
-                  sourceAria: page.mapSourceAria,
-                  sourceAfter: page.mapSourceAfter,
-                }}
-              />
-            </Stack>
-          </CardContent>
-        </Card>
+          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: "72ch" }}>
+            <Link
+              href={takeAction.voterDashboardUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              color="primary"
+              fontWeight={600}
+              sx={{ textUnderlineOffset: "0.2em" }}
+              aria-label={page.dashboardAria}
+            >
+              {page.dashboardLink}
+            </Link>
+            {page.dashboardAfter}
+          </Typography>
+        </CollapsibleCard>
+
+        <CollapsibleCard id="district-map" eyebrow={page.mapEyebrow} title={page.mapTitle}>
+          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: "72ch" }}>
+            {page.mapDescription}
+          </Typography>
+
+          <CityDistrictsMap
+            interactiveDistricts={interactiveDistricts}
+            labels={{
+              ariaLabel: page.mapAriaLabel,
+              legendAria: page.mapLegendAria,
+              districtLabel: page.mapDistrictLabel,
+              districtJumpAria: page.mapDistrictJumpAria,
+              notOnBallot: page.mapNotOnBallot,
+              notOnBallotAria: page.mapNotOnBallotAria,
+              sourceBefore: page.mapSourceBefore,
+              sourceLink: page.mapSourceLink,
+              sourceAria: page.mapSourceAria,
+              sourceAfter: page.mapSourceAfter,
+            }}
+          />
+        </CollapsibleCard>
 
         {bundle.districts.map((district) => (
           <SectionShell

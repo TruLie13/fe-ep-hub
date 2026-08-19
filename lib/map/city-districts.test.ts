@@ -50,8 +50,18 @@ describe("districtFillColorExpression", () => {
 
   it("uses muted colors for districts left off the interactive list", () => {
     const expr = districtFillColorExpression([1, 5, 6, 8]);
-    const colorAt = (district: number) => expr[expr.indexOf(district) + 1];
+    const idleExpr = expr[3] as unknown[];
+    const colorAt = (district: number) => idleExpr[idleExpr.indexOf(district) + 1];
     expect(colorAt(1)).toBe(CITY_DISTRICT_COLORS[1]);
     expect(colorAt(2)).toBe(CITY_DISTRICT_MUTED_COLORS[2]);
+  });
+
+  it("uses full colors on hover even for off-ballot districts", () => {
+    const expr = districtFillColorExpression([1, 5, 6, 8]);
+    expect(expr[0]).toBe("case");
+    expect(expr[1]).toEqual(["boolean", ["feature-state", "hover"], false]);
+    const hoverExpr = expr[2] as unknown[];
+    const colorAt = (district: number) => hoverExpr[hoverExpr.indexOf(district) + 1];
+    expect(colorAt(2)).toBe(CITY_DISTRICT_COLORS[2]);
   });
 });

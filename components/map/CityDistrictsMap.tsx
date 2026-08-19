@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { Box, ButtonBase, Link, Stack, Typography } from "@mui/material";
+import { Box, ButtonBase, Link, Stack, Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import type { MapCanvasLayer, MapCanvasSource } from "@/components/map/MapCanvas";
 import {
   CITY_DISTRICT_BOUNDS,
@@ -70,11 +71,63 @@ function scrollToDistrictSection(district: number): void {
   el.focus({ preventScroll: true });
 }
 
+function districtBadgeRadiusExpression(
+  stops: readonly (readonly [zoom: number, idle: number])[],
+  hoverDelta = 2.5,
+): unknown[] {
+  const expr: unknown[] = ["interpolate", ["linear"], ["zoom"]];
+  for (const [zoom, idle] of stops) {
+    expr.push(zoom, [
+      "case",
+      ["boolean", ["feature-state", "hover"], false],
+      idle + hoverDelta,
+      idle,
+    ]);
+  }
+  return expr;
+}
+
+const MOBILE_BADGE_RADIUS_STOPS: readonly (readonly [number, number])[] = [
+  [8, 7],
+  [10, 9.5],
+  [12, 14],
+  [14, 16],
+];
+
+const DESKTOP_BADGE_RADIUS_STOPS: readonly (readonly [number, number])[] = [
+  [8, 7],
+  [10, 11],
+  [12, 16],
+  [14, 18],
+];
+
+const MOBILE_BADGE_HALO_RADIUS_STOPS: readonly (readonly [number, number])[] = [
+  [8, 9],
+  [10, 11.5],
+  [12, 16.5],
+  [14, 18.5],
+];
+
+const DESKTOP_BADGE_HALO_RADIUS_STOPS: readonly (readonly [number, number])[] = [
+  [8, 9],
+  [10, 13],
+  [12, 18.5],
+  [14, 20.5],
+];
+
+const MOBILE_BADGE_STROKE_WIDTH = ["interpolate", ["linear"], ["zoom"], 8, 3, 10, 3.5, 12, 4] as const;
+const DESKTOP_BADGE_STROKE_WIDTH = ["interpolate", ["linear"], ["zoom"], 8, 3.5, 10, 4, 12, 4.5] as const;
+
+const MOBILE_LABEL_SIZE = ["interpolate", ["linear"], ["zoom"], 8, 10, 10, 11, 12, 14, 14, 15] as const;
+const DESKTOP_LABEL_SIZE = ["interpolate", ["linear"], ["zoom"], 8, 10, 10, 12, 12, 15, 14, 16] as const;
+
 export default function CityDistrictsMap({
   labels,
   interactiveDistricts,
   onDistrictSelect,
 }: CityDistrictsMapProps) {
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const [hoveredDistrict, setHoveredDistrict] = useState<CityDistrictNumber | null>(null);
   const [noticeDistrict, setNoticeDistrict] = useState<CityDistrictNumber | null>(null);
 
@@ -101,8 +154,10 @@ export default function CityDistrictsMap({
     [],
   );
 
-  const layers = useMemo<MapCanvasLayer[]>(
-    () => [
+  const layers = useMemo<MapCanvasLayer[]>(() => {
+    const badgeRadiusStops = isDesktop ? DESKTOP_BADGE_RADIUS_STOPS : MOBILE_BADGE_RADIUS_STOPS;
+    const badgeHaloRadiusStops = isDesktop ? DESKTOP_BADGE_HALO_RADIUS_STOPS : MOBILE_BADGE_HALO_RADIUS_STOPS;
+    return [
       {
         id: "mexico-mask",
         source: "mexico-mask",
@@ -137,16 +192,29 @@ export default function CityDistrictsMap({
         },
       },
       {
+        id: "city-districts-badge-halo",
+        source: "city-districts",
+        type: "circle",
+        filter: ["==", ["get", "role"], "label"],
+        paint: {
+          "circle-radius": districtBadgeRadiusExpression(badgeHaloRadiusStops),
+          "circle-color": "#0A0D12",
+          "circle-opacity": 0.88,
+          "circle-blur": 0.1,
+        },
+      },
+      {
         id: "city-districts-badge",
         source: "city-districts",
         type: "circle",
         filter: ["==", ["get", "role"], "label"],
         paint: {
-          "circle-radius": ["case", ["boolean", ["feature-state", "hover"], false], 16, 13],
-          "circle-color": "#141A22",
-          "circle-opacity": 0.94,
-          "circle-stroke-width": 2,
-          "circle-stroke-color": districtFillColorExpression(interactiveDistricts),
+          "circle-radius": districtBadgeRadiusExpression(badgeRadiusStops),
+          "circle-color": "#101620",
+          "circle-opacity": 1,
+          "circle-stroke-width": isDesktop ? DESKTOP_BADGE_STROKE_WIDTH : MOBILE_BADGE_STROKE_WIDTH,
+          "circle-stroke-color": districtFillColorExpression(),
+          "circle-stroke-opacity": 1,
         },
       },
       {
@@ -156,19 +224,21 @@ export default function CityDistrictsMap({
         filter: ["==", ["get", "role"], "label"],
         layout: {
           "text-field": ["to-string", ["get", "DISTRICT"]],
-          "text-font": ["Noto Sans Regular"],
-          "text-size": 13,
+          "text-font": ["Noto Sans Bold"],
+          "text-size": isDesktop ? DESKTOP_LABEL_SIZE : MOBILE_LABEL_SIZE,
           "text-allow-overlap": true,
           "text-ignore-placement": true,
           "text-anchor": "center",
+          "text-padding": 0,
         },
         paint: {
-          "text-color": "#F4F7FA",
+          "text-color": "#FFFFFF",
+          "text-halo-color": "#101620",
+          "text-halo-width": 1.5,
         },
       },
-    ],
-    [interactiveDistricts],
-  );
+    ] as MapCanvasLayer[];
+  }, [interactiveDistricts, isDesktop]);
 
   function selectDistrict(district: CityDistrictNumber): void {
     if (!isInteractiveCityDistrict(district, interactiveDistricts)) {
@@ -203,11 +273,12 @@ export default function CityDistrictsMap({
         }}
       >
         <MapCanvas
+          key={isDesktop ? "desktop" : "mobile"}
           ariaLabel={labels.ariaLabel}
           center={CITY_DISTRICT_CENTER}
           zoom={10.2}
           bounds={CITY_DISTRICT_BOUNDS}
-          minZoom={8}
+          minZoom={isDesktop? 9.5: 8.75}
           mobileZoomDelta={-0.075}
           maxBounds={[
             [CITY_DISTRICT_BOUNDS[0][0] - 0.28, CITY_DISTRICT_BOUNDS[0][1] - 0.2],
@@ -215,7 +286,11 @@ export default function CityDistrictsMap({
           ]}
           sources={sources}
           layers={layers}
-          interactiveLayerIds={["city-districts-fill", "city-districts-badge"]}
+          interactiveLayerIds={[
+            "city-districts-fill",
+            "city-districts-badge-halo",
+            "city-districts-badge",
+          ]}
           onFeatureClick={(properties) => {
             const district = parseCityDistrictNumber(properties.DISTRICT);
             if (district) {
