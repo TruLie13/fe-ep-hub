@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# MapLibre worker files copied from node_modules at predev/prebuild
+/public/maplibre/
+
 # next.js
 /.next/
 /out/

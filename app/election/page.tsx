@@ -10,6 +10,7 @@ import {
 import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
 import SectionShell from "@/components/common/SectionShell";
+import CityDistrictsMap from "@/components/map/CityDistrictsMap";
 import ElectionCandidateRow from "@/components/local-election/ElectionCandidateRow";
 import VotingDates from "@/components/local-election/VotingDates";
 import JsonLd from "@/components/seo/JsonLd";
@@ -239,6 +240,46 @@ export default function LocalElection2026Page() {
                 </Link>
                 {page.dashboardAfter}
               </Typography>
+            </Stack>
+          </CardContent>
+        </Card>
+
+        <Card
+          id="district-map"
+          component="section"
+          variant="outlined"
+          sx={{
+            borderRadius: 1,
+            bgcolor: "background.paper",
+            mb: { xs: 5, md: 7 },
+          }}
+        >
+          <CardContent sx={{ p: { xs: 2.5, md: 3.5 } }}>
+            <Stack spacing={2.5}>
+              <Stack spacing={1}>
+                <Typography variant="overline" sx={{ fontWeight: 600, letterSpacing: "0.08em", color: "text.secondary" }}>
+                  {page.mapEyebrow}
+                </Typography>
+                <Typography component="h2" variant="h3">
+                  {page.mapTitle}
+                </Typography>
+                <Typography variant="body1" color="text.secondary" sx={{ maxWidth: "72ch" }}>
+                  {page.mapDescription}
+                </Typography>
+              </Stack>
+
+              <CityDistrictsMap
+                labels={{
+                  ariaLabel: page.mapAriaLabel,
+                  legendAria: page.mapLegendAria,
+                  districtLabel: page.mapDistrictLabel,
+                  districtJumpAria: page.mapDistrictJumpAria,
+                  sourceBefore: page.mapSourceBefore,
+                  sourceLink: page.mapSourceLink,
+                  sourceAria: page.mapSourceAria,
+                  sourceAfter: page.mapSourceAfter,
+                }}
+              />
             </Stack>
           </CardContent>
         </Card>
