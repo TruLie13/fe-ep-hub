@@ -5,10 +5,10 @@ export const CITY_DISTRICT_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8] as const;
 export type CityDistrictNumber = (typeof CITY_DISTRICT_NUMBERS)[number];
 
 /** Snapshot served from /public. Retrieved from City of El Paso GIS RepDistricts. */
-export const CITY_DISTRICT_GEOJSON_HREF = "/geo/el-paso-city-representative-districts.geojson";
+export const CITY_DISTRICT_GEOJSON_HREF = "/geo/el-paso-city-representative-districts.geojson?v=2";
 
-/** Large polygon with holes for the eight districts, used to hide streets outside the city. */
-export const CITY_OUTSIDE_MASK_GEOJSON_HREF = "/geo/el-paso-outside-city-mask.geojson";
+/** Mexico land in the El Paso viewport, used to hide Juárez streets. */
+export const CITY_MEXICO_MASK_GEOJSON_HREF = "/geo/el-paso-mexico-mask.geojson?v=2";
 
 export const CITY_DISTRICT_SOURCE_URL =
   "https://gis.elpasotexas.gov/dev/rest/services/OpenData/RepDistricts/FeatureServer";

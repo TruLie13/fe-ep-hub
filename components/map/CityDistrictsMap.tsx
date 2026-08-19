@@ -11,7 +11,7 @@ import {
   CITY_DISTRICT_GEOJSON_HREF,
   CITY_DISTRICT_NUMBERS,
   CITY_DISTRICT_SOURCE_URL,
-  CITY_OUTSIDE_MASK_GEOJSON_HREF,
+  CITY_MEXICO_MASK_GEOJSON_HREF,
   cityDistrictSectionId,
   districtFillColorExpression,
   parseCityDistrictNumber,
@@ -69,8 +69,8 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
   const sources = useMemo<MapCanvasSource[]>(
     () => [
       {
-        id: "city-outside-mask",
-        data: CITY_OUTSIDE_MASK_GEOJSON_HREF,
+        id: "mexico-mask",
+        data: CITY_MEXICO_MASK_GEOJSON_HREF,
       },
       {
         id: "city-districts",
@@ -84,13 +84,13 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
   const layers = useMemo<MapCanvasLayer[]>(
     () => [
       {
-        id: "city-outside-mask",
-        source: "city-outside-mask",
+        id: "mexico-mask",
+        source: "mexico-mask",
         type: "fill",
-        beforeId: "highway_major_casing",
+        beforeId: "boundary_state",
         paint: {
           "fill-color": "#0A0D12",
-          "fill-opacity": 0.5,
+          "fill-opacity": 1,
           "fill-antialias": true,
         },
       },
@@ -169,9 +169,11 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
           center={CITY_DISTRICT_CENTER}
           zoom={10.2}
           bounds={CITY_DISTRICT_BOUNDS}
+          minZoom={8}
+          mobileZoomDelta={-.1}
           maxBounds={[
-            [CITY_DISTRICT_BOUNDS[0][0] - 0.18, CITY_DISTRICT_BOUNDS[0][1] - 0.12],
-            [CITY_DISTRICT_BOUNDS[1][0] + 0.18, CITY_DISTRICT_BOUNDS[1][1] + 0.12],
+            [CITY_DISTRICT_BOUNDS[0][0] - 0.28, CITY_DISTRICT_BOUNDS[0][1] - 0.2],
+            [CITY_DISTRICT_BOUNDS[1][0] + 0.28, CITY_DISTRICT_BOUNDS[1][1] + 0.2],
           ]}
           sources={sources}
           layers={layers}

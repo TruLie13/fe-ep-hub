@@ -53,6 +53,8 @@ export type MapCanvasProps = {
   onFeatureHover?: (properties: Record<string, unknown> | null) => void;
   customizeStyle?: (map: MapLibreMap) => void;
   cooperativeGestures?: boolean;
+  /** Added to the initial zoom on viewports below 900px. Use -1 to start one step out on phones. */
+  mobileZoomDelta?: number;
 };
 
 function toProperties(feature: MapGeoJSONFeature | undefined): Record<string, unknown> | null {
@@ -78,6 +80,7 @@ export default function MapCanvas({
   onFeatureHover,
   customizeStyle = applyDarkRoadContrast,
   cooperativeGestures = true,
+  mobileZoomDelta = 0,
 }: MapCanvasProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
@@ -118,6 +121,10 @@ export default function MapCanvas({
       renderWorldCopies: false,
     });
     mapRef.current = map;
+
+    if (mobileZoomDelta !== 0 && window.matchMedia("(max-width: 899px)").matches) {
+      map.setZoom(map.getZoom() + mobileZoomDelta);
+    }
 
     map.addControl(new NavigationControl({ showCompass: false, visualizePitch: false }), "top-right");
 
