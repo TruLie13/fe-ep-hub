@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { Box, ButtonBase, Link, Stack, Typography } from "@mui/material";
 import type { MapCanvasLayer, MapCanvasSource } from "@/components/map/MapCanvas";
@@ -14,6 +14,8 @@ import {
   CITY_MEXICO_MASK_GEOJSON_HREF,
   cityDistrictSectionId,
   districtFillColorExpression,
+  districtFillOpacityExpression,
+  isInteractiveCityDistrict,
   parseCityDistrictNumber,
   type CityDistrictNumber,
 } from "@/lib/map/city-districts";
@@ -40,10 +42,15 @@ export type CityDistrictsMapLabels = {
   sourceLink: string;
   sourceAria: string;
   sourceAfter: string;
+  notOnBallot?: string;
+  notOnBallotAria?: string;
 };
 
 type CityDistrictsMapProps = {
   labels: CityDistrictsMapLabels;
+  /** When set, only these districts jump on click. Others stay visible and quieter. */
+  interactiveDistricts?: readonly CityDistrictNumber[];
+  onDistrictSelect?: (district: CityDistrictNumber) => void;
 };
 
 function formatDistrict(template: string, district: number): string {
@@ -63,8 +70,21 @@ function scrollToDistrictSection(district: number): void {
   el.focus({ preventScroll: true });
 }
 
-export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
+export default function CityDistrictsMap({
+  labels,
+  interactiveDistricts,
+  onDistrictSelect,
+}: CityDistrictsMapProps) {
   const [hoveredDistrict, setHoveredDistrict] = useState<CityDistrictNumber | null>(null);
+  const [noticeDistrict, setNoticeDistrict] = useState<CityDistrictNumber | null>(null);
+
+  useEffect(() => {
+    if (!noticeDistrict) {
+      return;
+    }
+    const timer = window.setTimeout(() => setNoticeDistrict(null), 4000);
+    return () => window.clearTimeout(timer);
+  }, [noticeDistrict]);
 
   const sources = useMemo<MapCanvasSource[]>(
     () => [
@@ -100,8 +120,8 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
         type: "fill",
         filter: ["==", ["geometry-type"], "Polygon"],
         paint: {
-          "fill-color": districtFillColorExpression(),
-          "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.55, 0.34],
+          "fill-color": districtFillColorExpression(interactiveDistricts),
+          "fill-opacity": districtFillOpacityExpression(interactiveDistricts),
           "fill-outline-color": "rgba(0,0,0,0)",
         },
       },
@@ -111,9 +131,9 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
         type: "line",
         filter: ["==", ["geometry-type"], "Polygon"],
         paint: {
-          "line-color": districtFillColorExpression(),
+          "line-color": districtFillColorExpression(interactiveDistricts),
           "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 3, 1.6],
-          "line-opacity": 0.95,
+          "line-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.95, 0.85],
         },
       },
       {
@@ -126,7 +146,7 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
           "circle-color": "#141A22",
           "circle-opacity": 0.94,
           "circle-stroke-width": 2,
-          "circle-stroke-color": districtFillColorExpression(),
+          "circle-stroke-color": districtFillColorExpression(interactiveDistricts),
         },
       },
       {
@@ -147,8 +167,26 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
         },
       },
     ],
-    [],
+    [interactiveDistricts],
   );
+
+  function selectDistrict(district: CityDistrictNumber): void {
+    if (!isInteractiveCityDistrict(district, interactiveDistricts)) {
+      setNoticeDistrict(district);
+      return;
+    }
+    setNoticeDistrict(null);
+    if (onDistrictSelect) {
+      onDistrictSelect(district);
+      return;
+    }
+    scrollToDistrictSection(district);
+  }
+
+  const shownDistrict = hoveredDistrict ?? noticeDistrict;
+  const shownIsInteractive = shownDistrict
+    ? isInteractiveCityDistrict(shownDistrict, interactiveDistricts)
+    : true;
 
   return (
     <Stack spacing={2}>
@@ -170,7 +208,7 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
           zoom={10.2}
           bounds={CITY_DISTRICT_BOUNDS}
           minZoom={8}
-          mobileZoomDelta={-.1}
+          mobileZoomDelta={-0.075}
           maxBounds={[
             [CITY_DISTRICT_BOUNDS[0][0] - 0.28, CITY_DISTRICT_BOUNDS[0][1] - 0.2],
             [CITY_DISTRICT_BOUNDS[1][0] + 0.28, CITY_DISTRICT_BOUNDS[1][1] + 0.2],
@@ -181,14 +219,14 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
           onFeatureClick={(properties) => {
             const district = parseCityDistrictNumber(properties.DISTRICT);
             if (district) {
-              scrollToDistrictSection(district);
+              selectDistrict(district);
             }
           }}
           onFeatureHover={(properties) => {
             setHoveredDistrict(properties ? parseCityDistrictNumber(properties.DISTRICT) : null);
           }}
         />
-        {hoveredDistrict ? (
+        {shownDistrict ? (
           <Box
             sx={{
               position: "absolute",
@@ -204,8 +242,13 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
             }}
           >
             <Typography variant="caption" sx={{ fontWeight: 700, color: "text.primary" }}>
-              {formatDistrict(labels.districtLabel, hoveredDistrict)}
+              {formatDistrict(labels.districtLabel, shownDistrict)}
             </Typography>
+            {!shownIsInteractive && labels.notOnBallot ? (
+              <Typography variant="caption" display="block" color="text.secondary">
+                {labels.notOnBallot}
+              </Typography>
+            ) : null}
           </Box>
         ) : null}
       </Box>
@@ -222,12 +265,15 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
           listStyle: "none",
         }}
       >
-        {CITY_DISTRICT_NUMBERS.map((district) => {
+        {CITY_DISTRICT_NUMBERS.filter((district) =>
+          isInteractiveCityDistrict(district, interactiveDistricts),
+        ).map((district) => {
           const active = hoveredDistrict === district;
+
           return (
             <Box key={district} component="li" sx={{ minWidth: 0 }}>
               <ButtonBase
-                onClick={() => scrollToDistrictSection(district)}
+                onClick={() => selectDistrict(district)}
                 aria-label={formatDistrict(labels.districtJumpAria, district)}
                 sx={{
                   width: "100%",
@@ -262,7 +308,7 @@ export default function CityDistrictsMap({ labels }: CityDistrictsMapProps) {
         })}
       </Box>
 
-      <Typography variant="body2" color="text.secondary" sx={{ maxWidth: "72ch" }}>
+      <Typography variant="caption" color="text.secondary" display="block" sx={{ maxWidth: "72ch" }}>
         {labels.sourceBefore}
         <Link
           href={CITY_DISTRICT_SOURCE_URL}

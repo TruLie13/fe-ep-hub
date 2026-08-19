@@ -18,6 +18,7 @@ import type { ISODateString } from "@/content/schema";
 import { loadLocalElection2026Bundle, loadLocalGovernmentBundle } from "@/lib/content/load";
 import { dict } from "@/lib/i18n/dictionary";
 import { isIncumbentDistrictCandidate } from "@/lib/local-government/helpers";
+import { parseCityDistrictNumber, type CityDistrictNumber } from "@/lib/map/city-districts";
 import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
 function formatElectionDate(iso: ISODateString): string {
@@ -60,6 +61,9 @@ export default function LocalElection2026Page() {
   const takeAction = t.takeAction;
   const bundle = loadLocalElection2026Bundle();
   const government = loadLocalGovernmentBundle();
+  const interactiveDistricts = bundle.districts
+    .map((district) => parseCityDistrictNumber(district.district))
+    .filter((district): district is CityDistrictNumber => district !== null);
 
   const pageSeo = {
     title: page.metaTitle,
@@ -269,11 +273,14 @@ export default function LocalElection2026Page() {
               </Stack>
 
               <CityDistrictsMap
+                interactiveDistricts={interactiveDistricts}
                 labels={{
                   ariaLabel: page.mapAriaLabel,
                   legendAria: page.mapLegendAria,
                   districtLabel: page.mapDistrictLabel,
                   districtJumpAria: page.mapDistrictJumpAria,
+                  notOnBallot: page.mapNotOnBallot,
+                  notOnBallotAria: page.mapNotOnBallotAria,
                   sourceBefore: page.mapSourceBefore,
                   sourceLink: page.mapSourceLink,
                   sourceAria: page.mapSourceAria,
