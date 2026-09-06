@@ -81,6 +81,8 @@ export default function LocalElection2026Page() {
     opensNewTab: page.opensNewTab,
     incumbent: page.incumbent,
     incumbentAria: page.incumbentAria,
+    removedFromBallot: page.removedFromBallot,
+    removedFromBallotAria: page.removedFromBallotAria,
   };
 
   const votingDates = [

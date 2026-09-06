@@ -674,6 +674,8 @@
     "opensNewTab": "opens in new tab",
     "incumbent": "Current representative",
     "incumbentAria": "Current representative. View city council representatives on the local government page",
+    "removedFromBallot": "Removed from ballot",
+    "removedFromBallotAria": "{name} was removed from the ballot",
     "sourceBefore": "Candidate names from the ",
     "sourceLink": "City Clerk election filing list",
     "sourceAria": "City Clerk November 3, 2026 election documentation (opens in new tab)",

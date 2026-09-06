@@ -48,14 +48,19 @@
           "dataCenterStance": { "position": "support" }
         },
         {
-          "id": "d5-horn",
-          "displayName": "Jacqueline P. Horn",
-          "dataCenterStance": { "position": "unknown" }
-        },
-        {
           "id": "d5-genera",
           "displayName": "Richard Genera",
+          "campaignWebsiteUrl": "https://richardfordistrict5.com/",
           "dataCenterStance": { "position": "oppose" }
+        },
+        {
+          "id": "d5-horn",
+          "displayName": "Jacqueline P. Horn",
+          "removedFromBallot": true,
+          "dataCenterStance": {
+            "position": "oppose",
+            "summary": "Removed from ballot due to voter registration address not fully processing before the filing deadline."
+          }
         }
       ]
     },
@@ -80,8 +85,9 @@
         {
           "id": "d6-moreno",
           "displayName": "Jesus Moreno",
-          "instagramUrl": "https://www.instagram.com/jessetexas915",
-          "instagramHandle": "@jessetexas915",
+          "campaignWebsiteUrl": "https://jesseforelpaso.com/",
+          "instagramUrl": "https://www.instagram.com/jesseforelpaso",
+          "instagramHandle": "@jesseforelpaso",
           "dataCenterStance": { "position": "oppose" }
         },
         {

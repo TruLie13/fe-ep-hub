@@ -430,6 +430,8 @@ export interface LocalElection2026Candidate {
   campaignWebsiteUrl?: string;
   instagramUrl?: string;
   instagramHandle?: string;
+  /** Candidate filed but is no longer on the ballot. */
+  removedFromBallot?: boolean;
   dataCenterStance: LocalElection2026DataCenterStance;
 }
 

@@ -52,6 +52,8 @@ export type ElectionCandidateRowLabels = {
   opensNewTab: string;
   incumbent: string;
   incumbentAria: string;
+  removedFromBallot: string;
+  removedFromBallotAria: string;
 };
 
 type ElectionCandidateRowProps = {
@@ -129,6 +131,23 @@ export default function ElectionCandidateRow({
                 }}
               />
             </NextLink>
+          ) : null}
+          {candidate.removedFromBallot ? (
+            <Chip
+              size="small"
+              label={labels.removedFromBallot}
+              aria-label={labels.removedFromBallotAria.replace("{name}", candidate.displayName)}
+              sx={{
+                fontWeight: 700,
+                "& .MuiChip-label": {
+                  display: "inline-flex",
+                  alignItems: "center",
+                  lineHeight: 1,
+                  py: 0,
+                  transform: "translateY(-1px)",
+                },
+              }}
+            />
           ) : null}
         </Stack>
 
