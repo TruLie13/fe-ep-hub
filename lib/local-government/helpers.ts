@@ -1,4 +1,4 @@
-import type { Candidate, LocalGovernmentBundle, Stance } from "@/content/schema";
+import type { Candidate, LocalGovernmentBundle, Official, Stance } from "@/content/schema";
 
 import {
   CITY_SEAT_KEYS,
@@ -136,11 +136,19 @@ export function isIncumbentDistrictCandidate(
   district: number,
   displayName: string,
 ): boolean {
-  const key = `district${district}` as CitySeatKey;
-  if (!(CITY_SEAT_KEYS as readonly string[]).includes(key)) return false;
-  const sitting = bundle.city[key].sitting;
+  const sitting = sittingOfficialForDistrict(bundle, district);
   if (!sitting) return false;
   return namesLikelyMatch(displayName, sitting.displayName);
+}
+
+/** Sitting city council official for a district number, or null if vacant / invalid. */
+export function sittingOfficialForDistrict(
+  bundle: LocalGovernmentBundle,
+  district: number,
+): Official | null {
+  const key = `district${district}` as CitySeatKey;
+  if (!(CITY_SEAT_KEYS as readonly string[]).includes(key)) return null;
+  return bundle.city[key].sitting;
 }
 
 export function candidateStances(bundle: LocalGovernmentBundle, candidateId: string): Stance[] {

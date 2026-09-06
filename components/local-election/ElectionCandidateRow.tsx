@@ -4,7 +4,11 @@ import OutboundProfileLink, {
   instagramHandleFromUrl,
   type OutboundProfileLinkItem,
 } from "@/components/common/OutboundProfileLink";
+import OfficialVotingHistory, {
+  type OfficialVotingHistoryLabels,
+} from "@/components/local-government/OfficialVotingHistory";
 import type { LocalElection2026Candidate, StancePosition } from "@/content/schema";
+import type { OfficialStanceTopicPanel } from "@/lib/local-government/council-votes";
 
 const stanceChipSx = {
   "& .MuiChip-label": {
@@ -29,7 +33,7 @@ function stanceColor(position: StancePosition): "default" | "primary" | "seconda
   }
 }
 
-function stanceLabel(position: StancePosition, labels: ElectionCandidateRowLabels): string {
+function challengerStanceLabel(position: StancePosition, labels: ElectionCandidateRowLabels): string {
   switch (position) {
     case "support":
       return labels.stanceSupports;
@@ -60,15 +64,22 @@ type ElectionCandidateRowProps = {
   candidate: LocalElection2026Candidate;
   labels: ElectionCandidateRowLabels;
   isIncumbent?: boolean;
+  /** When set (incumbents), Voting History comes from local-government data. */
+  votingHistoryPanels?: OfficialStanceTopicPanel[];
+  votingHistoryLabels?: OfficialVotingHistoryLabels;
 };
 
 export default function ElectionCandidateRow({
   candidate,
   labels,
   isIncumbent = false,
+  votingHistoryPanels,
+  votingHistoryLabels,
 }: ElectionCandidateRowProps) {
   const { dataCenterStance } = candidate;
   const links: OutboundProfileLinkItem[] = [];
+  const useOfficialVotingHistory =
+    Boolean(isIncumbent && votingHistoryPanels && votingHistoryLabels);
 
   if (candidate.campaignWebsiteUrl) {
     links.push({
@@ -159,24 +170,35 @@ export default function ElectionCandidateRow({
           </Stack>
         ) : null}
 
-        <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ alignItems: "center" }}>
-          <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600 }}>
-            {labels.dataCenterStance}
-          </Typography>
-          <Chip
-            size="small"
-            label={stanceLabel(dataCenterStance.position, labels)}
-            color={stanceColor(dataCenterStance.position)}
-            variant={dataCenterStance.position === "unknown" ? "outlined" : "filled"}
-            sx={stanceChipSx}
+        {useOfficialVotingHistory && votingHistoryPanels && votingHistoryLabels ? (
+          <OfficialVotingHistory
+            panels={votingHistoryPanels}
+            labels={votingHistoryLabels}
+            showTitle={false}
+            topicLabelColor="text.secondary"
           />
-        </Stack>
+        ) : (
+          <>
+            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ alignItems: "center" }}>
+              <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600 }}>
+                {labels.dataCenterStance}
+              </Typography>
+              <Chip
+                size="small"
+                label={challengerStanceLabel(dataCenterStance.position, labels)}
+                color={stanceColor(dataCenterStance.position)}
+                variant={dataCenterStance.position === "unknown" ? "outlined" : "filled"}
+                sx={stanceChipSx}
+              />
+            </Stack>
 
-        {dataCenterStance.summary ? (
-          <Typography variant="body2" color="text.secondary" sx={{ maxWidth: "72ch" }}>
-            {dataCenterStance.summary}
-          </Typography>
-        ) : null}
+            {dataCenterStance.summary ? (
+              <Typography variant="body2" color="text.secondary" sx={{ maxWidth: "72ch" }}>
+                {dataCenterStance.summary}
+              </Typography>
+            ) : null}
+          </>
+        )}
       </Stack>
     </Box>
   );

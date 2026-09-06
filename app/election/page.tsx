@@ -11,12 +11,25 @@ import PageHero from "@/components/common/PageHero";
 import SectionShell from "@/components/common/SectionShell";
 import CityDistrictsMap from "@/components/map/CityDistrictsMap";
 import ElectionCandidateRow from "@/components/local-election/ElectionCandidateRow";
+import type { OfficialVotingHistoryLabels } from "@/components/local-government/OfficialVotingHistory";
 import VotingDates from "@/components/local-election/VotingDates";
 import JsonLd from "@/components/seo/JsonLd";
 import type { ISODateString } from "@/content/schema";
-import { loadLocalElection2026Bundle, loadLocalGovernmentBundle } from "@/lib/content/load";
+import {
+  loadLocalElection2026Bundle,
+  loadLocalGovernmentBundle,
+  loadSourcesBundle,
+} from "@/lib/content/load";
 import { dict } from "@/lib/i18n/dictionary";
-import { isIncumbentDistrictCandidate } from "@/lib/local-government/helpers";
+import {
+  buildOfficialStanceTopicPanels,
+  officialCouncilVotes,
+} from "@/lib/local-government/council-votes";
+import {
+  isIncumbentDistrictCandidate,
+  officialStances,
+  sittingOfficialForDistrict,
+} from "@/lib/local-government/helpers";
 import { parseCityDistrictNumber, type CityDistrictNumber } from "@/lib/map/city-districts";
 import { buildPageJsonLd, buildPageMetadata } from "@/lib/seo/site";
 
@@ -60,6 +73,8 @@ export default function LocalElection2026Page() {
   const takeAction = t.takeAction;
   const bundle = loadLocalElection2026Bundle();
   const government = loadLocalGovernmentBundle();
+  const sourceBundle = loadSourcesBundle();
+  const sourceById = new Map(sourceBundle.sources.map((source) => [source.id, source]));
   const interactiveDistricts = bundle.districts
     .map((district) => parseCityDistrictNumber(district.district))
     .filter((district): district is CityDistrictNumber => district !== null);
@@ -83,6 +98,18 @@ export default function LocalElection2026Page() {
     incumbentAria: page.incumbentAria,
     removedFromBallot: page.removedFromBallot,
     removedFromBallotAria: page.removedFromBallotAria,
+  };
+
+  const votingHistoryLabels: OfficialVotingHistoryLabels = {
+    votingHistory: t.localGov.votingHistory,
+    stanceTopicDataCenters: t.localGov.stanceTopicDataCenters,
+    stanceTopicIncreaseTaxes: t.localGov.stanceTopicIncreaseTaxes,
+    stanceTopicFlockCameras: t.localGov.stanceTopicFlockCameras,
+    stanceSupports: t.localGov.stanceSupports,
+    stanceOpposes: t.localGov.stanceOpposes,
+    stanceUnknown: t.localGov.stanceUnknown,
+    voteFor: t.localGov.voteFor,
+    voteAgainst: t.localGov.voteAgainst,
   };
 
   const votingDates = [
@@ -264,18 +291,34 @@ export default function LocalElection2026Page() {
             dense
           >
             <Box sx={{ maxWidth: "48rem" }}>
-              {district.candidates.map((candidate) => (
-                <ElectionCandidateRow
-                  key={candidate.id}
-                  candidate={candidate}
-                  labels={candidateLabels}
-                  isIncumbent={isIncumbentDistrictCandidate(
-                    government,
-                    district.district,
-                    candidate.displayName,
-                  )}
-                />
-              ))}
+              {district.candidates.map((candidate) => {
+                const isIncumbent = isIncumbentDistrictCandidate(
+                  government,
+                  district.district,
+                  candidate.displayName,
+                );
+                const sitting = isIncumbent
+                  ? sittingOfficialForDistrict(government, district.district)
+                  : null;
+                const votingHistoryPanels = sitting
+                  ? buildOfficialStanceTopicPanels(
+                      officialStances(government, sitting.id),
+                      officialCouncilVotes(government, sitting.id),
+                      sourceById,
+                    )
+                  : undefined;
+
+                return (
+                  <ElectionCandidateRow
+                    key={candidate.id}
+                    candidate={candidate}
+                    labels={candidateLabels}
+                    isIncumbent={isIncumbent}
+                    votingHistoryPanels={votingHistoryPanels}
+                    votingHistoryLabels={votingHistoryPanels ? votingHistoryLabels : undefined}
+                  />
+                );
+              })}
             </Box>
           </SectionShell>
         ))}

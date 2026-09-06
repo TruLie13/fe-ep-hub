@@ -38,6 +38,8 @@ export type CollapsibleStanceTopicProps = {
   chipLabel: string;
   chipColor: "default" | "primary" | "secondary" | "success" | "warning" | "error";
   chipVariant?: "filled" | "outlined";
+  /** @default "text.primary" */
+  topicLabelColor?: "text.primary" | "text.secondary";
   votes: ResolvedCouncilVote[];
   summary: string | null;
   sources: CollapsibleStanceTopicSource[];
@@ -54,10 +56,14 @@ function StanceTopicHeader({
   chipLabel,
   chipColor,
   chipVariant,
-}: Pick<CollapsibleStanceTopicProps, "topicLabel" | "chipLabel" | "chipColor" | "chipVariant">) {
+  topicLabelColor = "text.primary",
+}: Pick<
+  CollapsibleStanceTopicProps,
+  "topicLabel" | "chipLabel" | "chipColor" | "chipVariant" | "topicLabelColor"
+>) {
   return (
     <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
-      <Typography variant="subtitle2" component="span">
+      <Typography variant="body2" component="span" color={topicLabelColor} sx={{ fontWeight: 600 }}>
         {topicLabel}
       </Typography>
       <Chip
@@ -130,6 +136,7 @@ export default function CollapsibleStanceTopic({
   chipLabel,
   chipColor,
   chipVariant = "filled",
+  topicLabelColor = "text.primary",
   votes,
   summary,
   sources,
@@ -142,12 +149,13 @@ export default function CollapsibleStanceTopic({
 
   if (!expandable) {
     return (
-      <Box sx={{ py: 0.5 }}>
+      <Box sx={{ py: 0.25, minHeight: 36, display: "flex", alignItems: "center" }}>
         <StanceTopicHeader
           topicLabel={topicLabel}
           chipLabel={chipLabel}
           chipColor={chipColor}
           chipVariant={chipVariant}
+          topicLabelColor={topicLabelColor}
         />
       </Box>
     );
@@ -165,12 +173,16 @@ export default function CollapsibleStanceTopic({
       }}
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreRoundedIcon aria-hidden />}
+        expandIcon={<ExpandMoreRoundedIcon sx={{ fontSize: 20 }} aria-hidden />}
         sx={{
-          minHeight: 44,
+          minHeight: 36,
+          minWidth: 0,
           px: 0,
-          py: 0.5,
+          py: 0,
+          "&.Mui-expanded": { minHeight: 36 },
           "& .MuiAccordionSummary-content": { my: 0, mr: 1 },
+          "& .MuiAccordionSummary-content.Mui-expanded": { my: 0 },
+          "& .MuiAccordionSummary-expandIconWrapper": { color: "text.secondary" },
         }}
         aria-label={`${topicLabel}: ${chipLabel}`}
       >
@@ -179,6 +191,7 @@ export default function CollapsibleStanceTopic({
           chipLabel={chipLabel}
           chipColor={chipColor}
           chipVariant={chipVariant}
+          topicLabelColor={topicLabelColor}
         />
       </AccordionSummary>
       <AccordionDetails sx={{ px: 0, pt: 0.5, pb: 1 }}>

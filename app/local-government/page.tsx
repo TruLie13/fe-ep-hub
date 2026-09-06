@@ -17,9 +17,11 @@ import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
 import JsonLd from "@/components/seo/JsonLd";
 import CollapsibleGovernmentSection from "@/components/local-government/CollapsibleGovernmentSection";
-import CollapsibleStanceTopic from "@/components/local-government/CollapsibleStanceTopic";
+import OfficialVotingHistory, {
+  type OfficialVotingHistoryLabels,
+} from "@/components/local-government/OfficialVotingHistory";
 import SectionShell from "@/components/common/SectionShell";
-import type { Candidate, Official, OfficialStanceTopicKey, Stance, StancePosition } from "@/content/schema";
+import type { Candidate, Official, Stance } from "@/content/schema";
 import { dict } from "@/lib/i18n/dictionary";
 import { loadLocalGovernmentBundle } from "@/lib/content/load";
 import { loadSourcesBundle } from "@/lib/content/load";
@@ -58,66 +60,18 @@ const LOCAL_GOVERNMENT_SEO = {
 
 export const metadata: Metadata = buildPageMetadata(LOCAL_GOVERNMENT_SEO);
 
-function stanceColor(position: StancePosition): "default" | "primary" | "secondary" | "success" | "warning" | "error" {
-  switch (position) {
-    case "support":
-      return "error";
-    case "oppose":
-      return "success";
-    case "neutral":
-      return "default";
-    default:
-      return "default";
-  }
-}
-
-type CardLabels = {
+type CardLabels = OfficialVotingHistoryLabels & {
   onBallotThisYear: string;
   notedElectionDate: string;
   email: string;
   phone: string;
   officialPage: string;
   ballotpedia: string;
-  stanceTopicDataCenters: string;
-  stanceTopicIncreaseTaxes: string;
-  stanceTopicFlockCameras: string;
-  votingHistory: string;
-  stanceSupports: string;
-  stanceOpposes: string;
-  stanceUnknown: string;
-  voteFor: string;
-  voteAgainst: string;
   noStances: string;
   declaredForSeat: string;
   campaignSite: string;
   term: string;
 };
-
-function stanceLabel(position: StancePosition, labels: CardLabels): string {
-  switch (position) {
-    case "support":
-      return labels.stanceSupports;
-    case "oppose":
-      return labels.stanceOpposes;
-    case "unknown":
-      return labels.stanceUnknown;
-    default:
-      return position;
-  }
-}
-
-function topicLabel(topicKey: OfficialStanceTopicKey, labels: CardLabels): string {
-  switch (topicKey) {
-    case "data-center-efficiency":
-      return labels.stanceTopicDataCenters;
-    case "increase-taxes":
-      return labels.stanceTopicIncreaseTaxes;
-    case "flock-cameras":
-      return labels.stanceTopicFlockCameras;
-    default:
-      return topicKey;
-  }
-}
 
 function formatTermDate(iso: string): string {
   if (!iso) return "";
@@ -228,9 +182,6 @@ function OfficialCard({
   const activeStances = officialReplaced ? [] : stances;
   const activeVotes = officialReplaced ? [] : councilVotes;
   const topicPanels = buildOfficialStanceTopicPanels(activeStances, activeVotes, sourceById);
-  const hasAnyDocumentedTopic = topicPanels.some(
-    (panel) => panel.position !== "unknown" || panel.hasDetails,
-  );
   const [noStancesBefore, noStancesAfter] = labels.noStances.split("{instagramLink}");
 
   return (
@@ -310,47 +261,26 @@ function OfficialCard({
 
           <Divider sx={{ my: 1 }} />
 
-          {hasAnyDocumentedTopic ? (
-            <Stack spacing={0.25}>
-              <Typography variant="subtitle2">{labels.votingHistory}</Typography>
-              {topicPanels
-                .filter((panel) => panel.position !== "unknown" || panel.hasDetails)
-                .map((panel) => (
-                  <CollapsibleStanceTopic
-                    key={panel.topicKey}
-                    topicLabel={topicLabel(panel.topicKey, labels)}
-                    chipLabel={stanceLabel(panel.position, labels)}
-                    chipColor={stanceColor(panel.position)}
-                    chipVariant={panel.position === "unknown" ? "outlined" : "filled"}
-                    votes={panel.votes}
-                    summary={panel.summary}
-                    sources={panel.sources.map((source) => ({
-                      id: source.id,
-                      url: source.url,
-                      label: source.publisher ?? source.title,
-                    }))}
-                    voteForLabel={labels.voteFor}
-                    voteAgainstLabel={labels.voteAgainst}
-                    expandable={panel.hasDetails}
-                  />
-                ))}
-            </Stack>
-          ) : (
-            <Typography variant="body2" color="text.secondary">
-              {noStancesBefore}
-              <Link
-                href={instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                underline="always"
-                sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
-              >
-                {instagramHandle}
-                <OpenInNewRoundedIcon sx={{ fontSize: 12 }} aria-hidden />
-              </Link>
-              {noStancesAfter}
-            </Typography>
-          )}
+          <OfficialVotingHistory
+            panels={topicPanels}
+            labels={labels}
+            emptyState={
+              <Typography variant="body2" color="text.secondary">
+                {noStancesBefore}
+                <Link
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  underline="always"
+                  sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
+                >
+                  {instagramHandle}
+                  <OpenInNewRoundedIcon sx={{ fontSize: 12 }} aria-hidden />
+                </Link>
+                {noStancesAfter}
+              </Typography>
+            }
+          />
         </Stack>
       </CardContent>
     </Card>
