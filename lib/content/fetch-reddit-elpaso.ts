@@ -3,6 +3,9 @@ import path from "node:path";
 import { XMLParser } from "fast-xml-parser";
 import type { NewsLink, RedditElPasoSnapshotBundle } from "@/content/schema";
 import { NEWS_PAGE_REVALIDATE_SECONDS } from "@/lib/constants/news";
+import { sanitizeThumbnailUrl } from "@/lib/content/sanitize-thumbnail-url";
+
+export { sanitizeThumbnailUrl } from "@/lib/content/sanitize-thumbnail-url";
 
 const REDDIT_USER = "Tru_Lie";
 export const SUBMITTED_ATOM = `https://www.reddit.com/user/${REDDIT_USER}/submitted.rss`;
@@ -45,7 +48,7 @@ function applyThumbnailOverride(
   if (id && THUMBNAIL_OVERRIDES[id]) {
     return THUMBNAIL_OVERRIDES[id];
   }
-  return fromFeed;
+  return fromFeed ? sanitizeThumbnailUrl(fromFeed) : undefined;
 }
 
 function parseAtomEntries(xml: string): Record<string, unknown>[] {
@@ -91,14 +94,14 @@ function isElPasoEntry(entry: Record<string, unknown>): boolean {
 function thumbnailFromEntry(entry: Record<string, unknown>): string | undefined {
   const media = entry["media:thumbnail"] as { "@_url"?: string } | undefined;
   const url = media?.["@_url"];
-  return typeof url === "string" ? url : undefined;
+  return typeof url === "string" ? sanitizeThumbnailUrl(url) : undefined;
 }
 
 /** Fallback when Reddit omits `media:thumbnail` (first `<img>` in entry HTML). */
 function firstImageFromContent(html: string): string | undefined {
   const m = html.match(/<img[^>]+src=["']([^"']+)["']/i);
   if (!m?.[1]) return undefined;
-  return m[1].replace(/&amp;/g, "&");
+  return sanitizeThumbnailUrl(m[1]);
 }
 
 function contentHtml(entry: Record<string, unknown>): string {
@@ -200,13 +203,19 @@ export function loadRedditElPasoSnapshot(): NewsLink[] {
     const raw = fs.readFileSync(filePath, "utf8");
     const parsed = JSON.parse(raw) as Partial<RedditElPasoSnapshotBundle>;
     if (!Array.isArray(parsed.links)) return [];
-    return parsed.links.filter(
-      (link): link is NewsLink =>
-        Boolean(link) &&
-        typeof link.id === "string" &&
-        typeof link.headline === "string" &&
-        typeof link.url === "string",
-    );
+    return parsed.links
+      .filter(
+        (link): link is NewsLink =>
+          Boolean(link) &&
+          typeof link.id === "string" &&
+          typeof link.headline === "string" &&
+          typeof link.url === "string",
+      )
+      .map((link) =>
+        link.thumbnailUrl
+          ? { ...link, thumbnailUrl: sanitizeThumbnailUrl(link.thumbnailUrl) }
+          : link,
+      );
   } catch (err) {
     console.warn(LOG_PREFIX, "snapshot read failed", err);
     return [];

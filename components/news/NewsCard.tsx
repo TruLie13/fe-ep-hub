@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import type { NewsLink } from "@/content/schema";
 import { formatPublishedLine } from "@/lib/date/format-published";
+import { sanitizeThumbnailUrl } from "@/lib/content/sanitize-thumbnail-url";
 
 /** 16:9 — non-Reddit link/image posts */
 const THUMB_IMAGE = {
@@ -41,6 +42,7 @@ export function NewsCard({
   const showVideoBadge = isVideoPost && Boolean(videoLabel);
   const thumbSize = isRedditPost || isVideoPost ? THUMB_VIDEO : THUMB_IMAGE;
   const showOutletBadge = item.provenance !== "reddit";
+  const thumbnailSrc = item.thumbnailUrl ? sanitizeThumbnailUrl(item.thumbnailUrl) : undefined;
 
   return (
     <Box
@@ -65,7 +67,7 @@ export function NewsCard({
           borderRadius: 1,
         }}
       >
-        {showThumb && item.thumbnailUrl ? (
+        {showThumb && thumbnailSrc ? (
           <Box
             sx={{
               position: "relative",
@@ -86,12 +88,12 @@ export function NewsCard({
             }}
           >
             <Image
-              src={item.thumbnailUrl}
+              src={thumbnailSrc}
               alt=""
               fill
               sizes="(max-width: 600px) 108px, 128px"
               style={{ objectFit: "cover", objectPosition: "center" }}
-              unoptimized={item.thumbnailUrl.startsWith("http")}
+              unoptimized={thumbnailSrc.startsWith("http")}
             />
             {showVideoBadge ? (
               <Chip

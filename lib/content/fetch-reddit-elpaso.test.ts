@@ -4,6 +4,7 @@ import {
   newsLinksFromAtomXml,
   newsLinksFromRss2JsonItems,
 } from "./fetch-reddit-elpaso";
+import { sanitizeThumbnailUrl } from "./sanitize-thumbnail-url";
 
 const ATOM_EL_PASO_ENTRY = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -35,6 +36,22 @@ const SNAPSHOT_LINKS = [
   },
 ];
 
+describe("sanitizeThumbnailUrl", () => {
+  it("decodes double-encoded Reddit query separators", () => {
+    const raw =
+      "https://external-preview.redd.it/x.png?width=640&amp;amp;crop=smart&amp;amp;auto=webp&amp;amp;s=abc";
+    expect(sanitizeThumbnailUrl(raw)).toBe(
+      "https://external-preview.redd.it/x.png?width=640&crop=smart&auto=webp&s=abc",
+    );
+  });
+
+  it("leaves already-clean URLs unchanged", () => {
+    const clean =
+      "https://external-preview.redd.it/x.png?width=640&crop=smart&auto=webp&s=abc";
+    expect(sanitizeThumbnailUrl(clean)).toBe(clean);
+  });
+});
+
 describe("newsLinksFromAtomXml", () => {
   it("keeps only r/ElPaso entries", () => {
     const items = newsLinksFromAtomXml(ATOM_EL_PASO_ENTRY);
@@ -44,6 +61,24 @@ describe("newsLinksFromAtomXml", () => {
     expect(items[0]?.url).toContain("/r/ElPaso/");
     expect(items[0]?.provenance).toBe("reddit");
     expect(items[0]?.tags).toContain("reddit");
+  });
+
+  it("sanitizes double-encoded thumbnail URLs from entry HTML", () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <title>Thumb post</title>
+    <id>tag:reddit.com,item:thumb1</id>
+    <published>2024-02-01T15:30:00Z</published>
+    <link href="https://www.reddit.com/r/ElPaso/comments/thumb1/thumb_post/"/>
+    <category term="elpaso"/>
+    <content type="html">&lt;img src=&quot;https://external-preview.redd.it/x.png?width=640&amp;amp;crop=smart&amp;amp;s=abc&quot; /&gt;</content>
+  </entry>
+</feed>`;
+    const items = newsLinksFromAtomXml(xml);
+    expect(items[0]?.thumbnailUrl).toBe(
+      "https://external-preview.redd.it/x.png?width=640&crop=smart&s=abc",
+    );
   });
 });
 
