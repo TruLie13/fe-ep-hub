@@ -27,6 +27,7 @@ export type {
   CouncilVoteDisposition,
   CouncilVoteEvent,
   CouncilVoteRecord,
+  OfficialStanceTopicKey,
   FactsIndexBundle,
   DataCentersBulletGroup,
   DataCentersEconomicTable,

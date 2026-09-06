@@ -17,9 +17,9 @@ import type { Metadata } from "next";
 import PageHero from "@/components/common/PageHero";
 import JsonLd from "@/components/seo/JsonLd";
 import CollapsibleGovernmentSection from "@/components/local-government/CollapsibleGovernmentSection";
-import CouncilVoteRow from "@/components/local-government/CouncilVoteRow";
+import CollapsibleStanceTopic from "@/components/local-government/CollapsibleStanceTopic";
 import SectionShell from "@/components/common/SectionShell";
-import type { Candidate, Official, Stance, StancePosition } from "@/content/schema";
+import type { Candidate, Official, OfficialStanceTopicKey, Stance, StancePosition } from "@/content/schema";
 import { dict } from "@/lib/i18n/dictionary";
 import { loadLocalGovernmentBundle } from "@/lib/content/load";
 import { loadSourcesBundle } from "@/lib/content/load";
@@ -36,8 +36,7 @@ import {
   officialStances,
 } from "@/lib/local-government/helpers";
 import {
-  clarifyingStanceSummary,
-  meaningfulStanceSources,
+  buildOfficialStanceTopicPanels,
   officialCouncilVotes,
 } from "@/lib/local-government/council-votes";
 import type { CitySeatKey, CountySeatKey } from "@/lib/local-government/seat-keys";
@@ -72,17 +71,6 @@ function stanceColor(position: StancePosition): "default" | "primary" | "seconda
   }
 }
 
-const stanceChipSx = {
-  "& .MuiChip-label": {
-    display: "inline-flex",
-    alignItems: "center",
-    lineHeight: 1,
-    py: 0,
-    // Optical vertical centering: MUI small chips sit the glyph a hair low.
-    transform: "translateY(-1px)",
-  },
-} as const;
-
 type CardLabels = {
   onBallotThisYear: string;
   notedElectionDate: string;
@@ -90,9 +78,13 @@ type CardLabels = {
   phone: string;
   officialPage: string;
   ballotpedia: string;
-  publicStanceNotes: string;
+  stanceTopicDataCenters: string;
+  stanceTopicIncreaseTaxes: string;
+  stanceTopicFlockCameras: string;
+  votingHistory: string;
   stanceSupports: string;
   stanceOpposes: string;
+  stanceUnknown: string;
   voteFor: string;
   voteAgainst: string;
   noStances: string;
@@ -107,8 +99,23 @@ function stanceLabel(position: StancePosition, labels: CardLabels): string {
       return labels.stanceSupports;
     case "oppose":
       return labels.stanceOpposes;
+    case "unknown":
+      return labels.stanceUnknown;
     default:
       return position;
+  }
+}
+
+function topicLabel(topicKey: OfficialStanceTopicKey, labels: CardLabels): string {
+  switch (topicKey) {
+    case "data-center-efficiency":
+      return labels.stanceTopicDataCenters;
+    case "increase-taxes":
+      return labels.stanceTopicIncreaseTaxes;
+    case "flock-cameras":
+      return labels.stanceTopicFlockCameras;
+    default:
+      return topicKey;
   }
 }
 
@@ -218,9 +225,12 @@ function OfficialCard({
     official.nextElectionDate;
 
   const officialReplaced = hasNameChanged(official.displayName, legistarMember?.fullName);
-  const knownStances = officialReplaced
-    ? []
-    : stances.filter((s) => s.position !== "unknown");
+  const activeStances = officialReplaced ? [] : stances;
+  const activeVotes = officialReplaced ? [] : councilVotes;
+  const topicPanels = buildOfficialStanceTopicPanels(activeStances, activeVotes, sourceById);
+  const hasAnyDocumentedTopic = topicPanels.some(
+    (panel) => panel.position !== "unknown" || panel.hasDetails,
+  );
   const [noStancesBefore, noStancesAfter] = labels.noStances.split("{instagramLink}");
 
   return (
@@ -300,18 +310,32 @@ function OfficialCard({
 
           <Divider sx={{ my: 1 }} />
 
-          <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
-            <Typography variant="subtitle2">{labels.publicStanceNotes}</Typography>
-            {knownStances.length === 1 ? (
-              <Chip
-                size="small"
-                color={stanceColor(knownStances[0].position)}
-                label={stanceLabel(knownStances[0].position, labels)}
-                sx={stanceChipSx}
-              />
-            ) : null}
-          </Stack>
-          {knownStances.length === 0 && councilVotes.length === 0 ? (
+          {hasAnyDocumentedTopic ? (
+            <Stack spacing={0.25}>
+              <Typography variant="subtitle2">{labels.votingHistory}</Typography>
+              {topicPanels
+                .filter((panel) => panel.position !== "unknown" || panel.hasDetails)
+                .map((panel) => (
+                  <CollapsibleStanceTopic
+                    key={panel.topicKey}
+                    topicLabel={topicLabel(panel.topicKey, labels)}
+                    chipLabel={stanceLabel(panel.position, labels)}
+                    chipColor={stanceColor(panel.position)}
+                    chipVariant={panel.position === "unknown" ? "outlined" : "filled"}
+                    votes={panel.votes}
+                    summary={panel.summary}
+                    sources={panel.sources.map((source) => ({
+                      id: source.id,
+                      url: source.url,
+                      label: source.publisher ?? source.title,
+                    }))}
+                    voteForLabel={labels.voteFor}
+                    voteAgainstLabel={labels.voteAgainst}
+                    expandable={panel.hasDetails}
+                  />
+                ))}
+            </Stack>
+          ) : (
             <Typography variant="body2" color="text.secondary">
               {noStancesBefore}
               <Link
@@ -326,72 +350,6 @@ function OfficialCard({
               </Link>
               {noStancesAfter}
             </Typography>
-          ) : knownStances.length > 0 ? (
-            knownStances.map((stance) => {
-              const summary = clarifyingStanceSummary(stance);
-              const sources = meaningfulStanceSources(stance.sourceIds, sourceById);
-
-              return (
-                <Stack key={stance.id} spacing={0.75}>
-                  {knownStances.length > 1 ? (
-                    <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
-                      <Chip
-                        size="small"
-                        color={stanceColor(stance.position)}
-                        label={stanceLabel(stance.position, labels)}
-                        sx={stanceChipSx}
-                      />
-                    </Stack>
-                  ) : null}
-                  {councilVotes.length > 0 ? (
-                    <Stack spacing={1}>
-                      {councilVotes.map((vote) => (
-                        <CouncilVoteRow
-                          key={vote.event.id}
-                          vote={vote}
-                          voteForLabel={labels.voteFor}
-                          voteAgainstLabel={labels.voteAgainst}
-                        />
-                      ))}
-                    </Stack>
-                  ) : null}
-                  {summary ? (
-                    <Typography variant="body2" color="text.secondary">
-                      {summary}
-                    </Typography>
-                  ) : null}
-                  {sources.length > 0 ? (
-                    <Typography variant="caption" color="text.secondary">
-                      Source:{" "}
-                      {sources.slice(0, 1).map((source) => (
-                        <Link
-                          key={source.id}
-                          href={source.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          underline="hover"
-                          sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
-                        >
-                          {source.publisher ?? source.title}
-                          <OpenInNewRoundedIcon sx={{ fontSize: 12 }} />
-                        </Link>
-                      ))}
-                    </Typography>
-                  ) : null}
-                </Stack>
-              );
-            })
-          ) : (
-            <Stack spacing={1}>
-              {councilVotes.map((vote) => (
-                <CouncilVoteRow
-                  key={vote.event.id}
-                  vote={vote}
-                  voteForLabel={labels.voteFor}
-                  voteAgainstLabel={labels.voteAgainst}
-                />
-              ))}
-            </Stack>
           )}
         </Stack>
       </CardContent>
@@ -507,9 +465,13 @@ export default async function LocalGovernmentPage() {
     phone: t.localGov.phone,
     officialPage: t.common.officialPage,
     ballotpedia: t.common.ballotpedia,
-    publicStanceNotes: t.localGov.publicStanceNotes,
+    stanceTopicDataCenters: t.localGov.stanceTopicDataCenters,
+    stanceTopicIncreaseTaxes: t.localGov.stanceTopicIncreaseTaxes,
+    stanceTopicFlockCameras: t.localGov.stanceTopicFlockCameras,
+    votingHistory: t.localGov.votingHistory,
     stanceSupports: t.localGov.stanceSupports,
     stanceOpposes: t.localGov.stanceOpposes,
+    stanceUnknown: t.localGov.stanceUnknown,
     voteFor: t.localGov.voteFor,
     voteAgainst: t.localGov.voteAgainst,
     noStances: t.localGov.noStances,

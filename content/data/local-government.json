@@ -24,7 +24,8 @@
         "ballotpediaUrl": "https://ballotpedia.org/Renard_Johnson",
         "nextElectionDate": "2028-11-07",
         "stanceIds": [
-          "stance-city-mayor-renard-johnson-dc"
+          "stance-city-mayor-renard-johnson-dc",
+          "stance-city-mayor-renard-johnson-flock"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -47,7 +48,9 @@
         "ballotpediaUrl": "https://ballotpedia.org/Alejandra_Ch%C3%A1vez",
         "nextElectionDate": "2026-11-03",
         "stanceIds": [
-          "stance-city-council-d1-dc"
+          "stance-city-council-d1-dc",
+          "stance-city-council-d1-flock",
+          "stance-city-council-d1-taxes"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -69,7 +72,9 @@
         },
         "nextElectionDate": "2028-11-07",
         "stanceIds": [
-          "stance-city-council-d2-dc"
+          "stance-city-council-d2-dc",
+          "stance-city-council-d2-flock",
+          "stance-city-council-d2-taxes"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -93,7 +98,9 @@
         "ballotpediaUrl": "https://ballotpedia.org/Deanna_Maldonado-Rocha",
         "nextElectionDate": "2028-11-07",
         "stanceIds": [
-          "stance-city-council-d3-dc"
+          "stance-city-council-d3-dc",
+          "stance-city-council-d3-flock",
+          "stance-city-council-d3-taxes"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -116,7 +123,9 @@
         "ballotpediaUrl": "https://ballotpedia.org/Cynthia_Boyar_Trejo",
         "nextElectionDate": "2028-11-07",
         "stanceIds": [
-          "stance-city-council-d4-dc"
+          "stance-city-council-d4-dc",
+          "stance-city-council-d4-flock",
+          "stance-city-council-d4-taxes"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -139,7 +148,9 @@
         "ballotpediaUrl": "https://ballotpedia.org/Ivan_Ni%C3%B1o",
         "nextElectionDate": "2026-11-03",
         "stanceIds": [
-          "stance-city-council-d5-dc"
+          "stance-city-council-d5-dc",
+          "stance-city-council-d5-flock",
+          "stance-city-council-d5-taxes"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -162,7 +173,9 @@
         "ballotpediaUrl": "https://ballotpedia.org/Art_Fierro",
         "nextElectionDate": "2026-11-03",
         "stanceIds": [
-          "stance-city-council-d6-dc"
+          "stance-city-council-d6-dc",
+          "stance-city-council-d6-flock",
+          "stance-city-council-d6-taxes"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -185,7 +198,9 @@
         "ballotpediaUrl": "https://ballotpedia.org/Lily_Limon",
         "nextElectionDate": "2028-11-07",
         "stanceIds": [
-          "stance-city-council-d7-dc"
+          "stance-city-council-d7-dc",
+          "stance-city-council-d7-flock",
+          "stance-city-council-d7-taxes"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -208,7 +223,9 @@
         "ballotpediaUrl": "https://ballotpedia.org/Chris_Canales",
         "nextElectionDate": "2026-11-03",
         "stanceIds": [
-          "stance-city-council-d8-dc"
+          "stance-city-council-d8-dc",
+          "stance-city-council-d8-flock",
+          "stance-city-council-d8-taxes"
         ],
         "sourceIds": [
           "el-paso-city-gov"
@@ -338,6 +355,7 @@
   "councilVoteEvents": [
     {
       "id": "vote-2023-12-05-data-center-contract",
+      "topicKey": "data-center-efficiency",
       "meetingDate": "2023-12-05",
       "agendaItemNumbers": ["30", "31", "32"],
       "shortLabel": "Data Center Contract",
@@ -345,6 +363,7 @@
     },
     {
       "id": "vote-2026-05-26-no-hyperscale-incentives",
+      "topicKey": "data-center-efficiency",
       "meetingDate": "2026-05-26",
       "agendaItemNumbers": ["22"],
       "shortLabel": "Prevent incentives for future data centers",
@@ -352,10 +371,27 @@
     },
     {
       "id": "vote-2026-06-09-terminate-meta-agreement",
+      "topicKey": "data-center-efficiency",
       "meetingDate": "2026-06-09",
       "agendaItemNumbers": ["37"],
-      "shortLabel": "Negotiate or potentially cancel the contract",
+      "shortLabel": "Negotiate or potentially cancel the 380 contract with Meta",
       "agendaText": "Discussion and action to direct the City Manager and City Attorney to initiate negotiations to terminate the Chapter 380 Economic Development Program Agreement and any related incentive agreements with Wurldwide LLC and Meta Platforms, Inc., in light of significant public concern regarding utility affordability, water resources, environmental impacts, infrastructure burdens, transparency concerns, questions regarding contractual enforceability and governmental immunity, and the adequacy of projected public benefits associated with the project."
+    },
+    {
+      "id": "vote-2026-03-03-end-flock-cameras",
+      "topicKey": "flock-cameras",
+      "meetingDate": "2026-03-03",
+      "agendaItemNumbers": ["24"],
+      "shortLabel": "Renew contract with Flock",
+      "agendaText": "Discussion and action directing the City Manager to refrain from renewing any existing agreements and/or entering into any new agreement with Flock Group Inc., operating as Flock Safety, for the provision, operation, or use of Automated License Plate Recognition technology, and to refrain from utilizing future grant awards or City of El Paso funds to contract for similar technology. For clarity, this item does not pertain to user-operated handheld or vehicle-mounted license plate readers for parking enforcement or similar uses."
+    },
+    {
+      "id": "vote-2026-08-18-property-tax-levy",
+      "topicKey": "increase-taxes",
+      "meetingDate": "2026-08-18",
+      "agendaItemNumbers": ["28", "29"],
+      "shortLabel": "Increase property taxes",
+      "agendaText": "Discussion and action to ratify the property tax reflected in the Annual Budget for FY 2026 - 2027 for the City of El Paso.\n\nDiscussion and action on an Ordinance levying FY 2026 - 2027 taxes."
     }
   ],
   "councilVotes": [
@@ -418,6 +454,102 @@
       "voteEventId": "vote-2026-06-09-terminate-meta-agreement",
       "officialId": "city-council-d8",
       "disposition": "for"
+    },
+    {
+      "id": "cv-d1-2026-03-03-flock",
+      "voteEventId": "vote-2026-03-03-end-flock-cameras",
+      "officialId": "city-council-d1",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d2-2026-03-03-flock",
+      "voteEventId": "vote-2026-03-03-end-flock-cameras",
+      "officialId": "city-council-d2",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d3-2026-03-03-flock",
+      "voteEventId": "vote-2026-03-03-end-flock-cameras",
+      "officialId": "city-council-d3",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d4-2026-03-03-flock",
+      "voteEventId": "vote-2026-03-03-end-flock-cameras",
+      "officialId": "city-council-d4",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d5-2026-03-03-flock",
+      "voteEventId": "vote-2026-03-03-end-flock-cameras",
+      "officialId": "city-council-d5",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d6-2026-03-03-flock",
+      "voteEventId": "vote-2026-03-03-end-flock-cameras",
+      "officialId": "city-council-d6",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d7-2026-03-03-flock",
+      "voteEventId": "vote-2026-03-03-end-flock-cameras",
+      "officialId": "city-council-d7",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d8-2026-03-03-flock",
+      "voteEventId": "vote-2026-03-03-end-flock-cameras",
+      "officialId": "city-council-d8",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d1-2026-08-18-taxes",
+      "voteEventId": "vote-2026-08-18-property-tax-levy",
+      "officialId": "city-council-d1",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d2-2026-08-18-taxes",
+      "voteEventId": "vote-2026-08-18-property-tax-levy",
+      "officialId": "city-council-d2",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d3-2026-08-18-taxes",
+      "voteEventId": "vote-2026-08-18-property-tax-levy",
+      "officialId": "city-council-d3",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d4-2026-08-18-taxes",
+      "voteEventId": "vote-2026-08-18-property-tax-levy",
+      "officialId": "city-council-d4",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d5-2026-08-18-taxes",
+      "voteEventId": "vote-2026-08-18-property-tax-levy",
+      "officialId": "city-council-d5",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d6-2026-08-18-taxes",
+      "voteEventId": "vote-2026-08-18-property-tax-levy",
+      "officialId": "city-council-d6",
+      "disposition": "for"
+    },
+    {
+      "id": "cv-d7-2026-08-18-taxes",
+      "voteEventId": "vote-2026-08-18-property-tax-levy",
+      "officialId": "city-council-d7",
+      "disposition": "against"
+    },
+    {
+      "id": "cv-d8-2026-08-18-taxes",
+      "voteEventId": "vote-2026-08-18-property-tax-levy",
+      "officialId": "city-council-d8",
+      "disposition": "for"
     }
   ],
   "stances": [
@@ -433,6 +565,21 @@
       },
       "sourceIds": [
         "ktsm-mayor-johnson-defends-meta-2026"
+      ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-mayor-renard-johnson-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "support",
+      "summary": "Posted pro-Flock propaganda on his Instagram.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-mayor-renard-johnson"
+      },
+      "sourceIds": [
+        "insta-mayor-johnson-pro-flock"
       ],
       "provenance": "repo"
     },
@@ -540,6 +687,214 @@
       "sourceIds": [
         "insta-chris-canales-no-more-data-centers"
       ],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d1-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "support",
+      "summary": "Supports continued use of Flock cameras in El Paso.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d1"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d2-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "support",
+      "summary": "Supports continued use of Flock cameras in El Paso.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d2"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d3-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "support",
+      "summary": "Supports continued use of Flock cameras in El Paso.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d3"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d4-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "support",
+      "summary": "Supports continued use of Flock cameras in El Paso.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d4"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d5-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "support",
+      "summary": "Supports continued use of Flock cameras in El Paso.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d5"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d6-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "support",
+      "summary": "Supports continued use of Flock cameras in El Paso.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d6"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d7-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "oppose",
+      "summary": "Opposes continued use of Flock cameras in El Paso.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d7"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d8-flock",
+      "topicKey": "flock-cameras",
+      "topicLabel": "Flock cameras",
+      "position": "oppose",
+      "summary": "Opposes continued use of Flock cameras in El Paso.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d8"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d1-taxes",
+      "topicKey": "increase-taxes",
+      "topicLabel": "Increase property taxes",
+      "position": "support",
+      "summary": "Supports increasing property taxes for FY 2026-2027.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d1"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d2-taxes",
+      "topicKey": "increase-taxes",
+      "topicLabel": "Increase property taxes",
+      "position": "support",
+      "summary": "Supports increasing property taxes for FY 2026-2027.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d2"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d3-taxes",
+      "topicKey": "increase-taxes",
+      "topicLabel": "Increase property taxes",
+      "position": "support",
+      "summary": "Supports increasing property taxes for FY 2026-2027.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d3"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d4-taxes",
+      "topicKey": "increase-taxes",
+      "topicLabel": "Increase property taxes",
+      "position": "oppose",
+      "summary": "Opposes increasing property taxes for FY 2026-2027.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d4"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d5-taxes",
+      "topicKey": "increase-taxes",
+      "topicLabel": "Increase property taxes",
+      "position": "support",
+      "summary": "Supports increasing property taxes for FY 2026-2027.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d5"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d6-taxes",
+      "topicKey": "increase-taxes",
+      "topicLabel": "Increase property taxes",
+      "position": "support",
+      "summary": "Supports increasing property taxes for FY 2026-2027.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d6"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d7-taxes",
+      "topicKey": "increase-taxes",
+      "topicLabel": "Increase property taxes",
+      "position": "oppose",
+      "summary": "Opposes increasing property taxes for FY 2026-2027.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d7"
+      },
+      "sourceIds": [],
+      "provenance": "repo"
+    },
+    {
+      "id": "stance-city-council-d8-taxes",
+      "topicKey": "increase-taxes",
+      "topicLabel": "Increase property taxes",
+      "position": "support",
+      "summary": "Supports increasing property taxes for FY 2026-2027.",
+      "subject": {
+        "type": "official",
+        "officialId": "city-council-d8"
+      },
+      "sourceIds": [],
       "provenance": "repo"
     },
     {

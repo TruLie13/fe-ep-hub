@@ -163,9 +163,17 @@ export type StancePosition =
 
 export type CouncilVoteDisposition = "for" | "against";
 
-/** Council agenda action tied to data center policy (shared metadata). */
+/** Canonical issue keys for official stance + vote groupings on `/local-government`. */
+export type OfficialStanceTopicKey =
+  | "data-center-efficiency"
+  | "increase-taxes"
+  | "flock-cameras";
+
+/** Council agenda action tied to a stance topic (shared metadata). */
 export interface CouncilVoteEvent {
   id: string;
+  /** Issue key matching `Stance.topicKey`, e.g. `data-center-efficiency`. */
+  topicKey: OfficialStanceTopicKey | string;
   meetingDate: ISODateString;
   /** Short label shown on official cards, e.g. "Data Center Contract". */
   shortLabel: string;
@@ -273,7 +281,7 @@ export interface LocalGovernmentBundleJson {
   candidates: Candidate[];
   city: CityGovernment;
   county: CountyGovernment;
-  /** Data-center-related council votes (agenda metadata). */
+  /** Council votes by topic (agenda metadata). */
   councilVoteEvents?: CouncilVoteEvent[];
   /** Per-official vote rows; a row renders only when both event and record exist. */
   councilVotes?: CouncilVoteRecord[];
